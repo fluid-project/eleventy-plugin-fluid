@@ -11,8 +11,8 @@ https://github.com/greatislander/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 "use strict";
 
-var limitFilter = require("./src/limit-filter.js");
-var slugFilter = require("./src/slug-filter.js");
+var limitFilter = require("./src/filters/limit-filter.js");
+var slugFilter = require("./src/filters/slug-filter.js");
 
 module.exports = function(eleventyConfig) {
 	eleventyConfig.addFilter("limit", limitFilter);
