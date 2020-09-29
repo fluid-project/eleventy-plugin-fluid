@@ -1,0 +1,35 @@
+{
+    "name": "@fluid-project/eleventy-plugin-fluid",
+    "version": "0.0.1",
+    "description": "Eleventy plugin which provides common filters, shortcodes and transforms for Fluid Project websites.",
+    "publishConfig": {
+        "access": "public"
+    },
+    "main": ".eleventy.js",
+    "scripts": {
+        "lint": "grunt lint",
+        "test": "ava"
+    },
+    "repository": {
+    "type": "git",
+        "url": "git+https://github.com/greatislander/eleventy-plugin-fluid.git"
+    },
+    "keywords": [
+        "eleventy-plugin"
+    ],
+    "author": "OCAD University <idrc@ocadu.ca>",
+    "license": "BSD-3-Clause",
+    "bugs": {
+        "url": "https://github.com/greatislander/eleventy-plugin-fluid/issues"
+    },
+    "homepage": "https://github.com/greatislander/eleventy-plugin-fluid#readme",
+    "devDependencies": {
+        "ava": "3.13.0",
+        "fluid-grunt-lint-all": "1.0.8",
+        "grunt": "1.3.0"
+    },
+    "dependencies": {
+        "@11ty/eleventy": "0.11.0",
+        "slugify": "1.4.5"
+    }
+}
