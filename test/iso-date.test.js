@@ -15,5 +15,5 @@ const test = require("ava");
 const isoDateFilter = require("../src/filters/iso-date-filter.js");
 
 test("Formats date properly", function (t) {
-    t.is(isoDateFilter("2020-01-01"), "2020-01-01T00:00:00.000Z");
+    t.is(isoDateFilter("Sun Jun 21 2020 18:00:00 GMT-0300 (Atlantic Daylight Time)"), "2020-06-21T21:00:00.000Z");
 });
