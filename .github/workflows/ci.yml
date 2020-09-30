@@ -2,23 +2,23 @@ name: CI
 
 on:
   pull_request:
-	branches: [main]
+    branches: [main]
 
 jobs:
   lint:
-	name: Lint and test
-	runs-on: ubuntu-latest
-	steps:
-	- uses: actions/checkout@v2
-	- name: Cache node modules
-	  uses: actions/cache@v2
-	  with:
-		path: node_modules
-		key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
-	- name: Install dependencies, and lint JavaScript and JSON files, and run tests
-	  run: |
-		npm i
-		npm run lint
-		npm test
-	  env:
-		CI: true
+    name: Lint and test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Cache node modules
+      uses: actions/cache@v2
+      with:
+        path: node_modules
+        key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+    - name: Install dependencies, and lint JavaScript and JSON files, and run tests
+      run: |
+        npm i
+        npm run lint
+        npm test
+      env:
+        CI: true
