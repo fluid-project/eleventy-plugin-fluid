@@ -11,6 +11,9 @@ https://github.com/greatislander/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 "use strict";
 
-module.exports = function (array, limit) {
-    return array.slice(0, limit);
-};
+const test = require("ava");
+const limitFilter = require("../src/filters/limit-filter.js");
+
+test("Limits array to n items", function (t) {
+    t.deepEqual(limitFilter(["a", "b", "c"], 2), ["a", "b"]);
+});

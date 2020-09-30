@@ -11,6 +11,9 @@ https://github.com/greatislander/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 "use strict";
 
-module.exports = function (array, limit) {
-    return array.slice(0, limit);
-};
+const test = require("ava");
+const isoDateFilter = require("../src/filters/iso-date-filter.js");
+
+test("Formats date properly", function (t) {
+    t.is(isoDateFilter("2020-09-30"), "2020-09-30T00:00:00.000Z");
+});

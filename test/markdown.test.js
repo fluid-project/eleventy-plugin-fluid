@@ -11,9 +11,9 @@ https://github.com/greatislander/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 "use strict";
 
-var test = require("ava");
-var limitFilter = require("../src/filters/limit-filter.js");
+const test = require("ava");
+const markdownFilter = require("../src/filters/markdown-filter.js");
 
-test("Limits array to n items", function (t) {
-  t.deepEqual(limitFilter(["a", "b", "c"], 2), ["a", "b"]);
+test("Formats date properly", function (t) {
+    t.is(markdownFilter("A paragraph with some _emphasis_."), "<p>A paragraph with some <em>emphasis</em>.</p>\n");
 });
