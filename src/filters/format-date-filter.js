@@ -20,11 +20,9 @@ const getOrdinal = function (n) {
 };
 
 module.exports = function dateFilter(value) {
-    let [y, m, d] = value.split("-");
-    m = parseInt(m, 10);
-    d = parseInt(d, 10);
+    const dateObject = new Date(value);
 
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-    return `${months[m - 1]} ${getOrdinal(d)}, ${y}`;
+    return `${months[dateObject.getMonth()]} ${getOrdinal(dateObject.getDate())}, ${dateObject.getFullYear()}`;
 };

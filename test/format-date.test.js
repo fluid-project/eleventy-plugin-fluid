@@ -15,5 +15,5 @@ const test = require("ava");
 const formatDateFilter = require("../src/filters/format-date-filter.js");
 
 test("Formats date properly", function (t) {
-    t.is(formatDateFilter("2020-01-01"), "January 1st, 2020");
+    t.is(formatDateFilter("Sun Jun 21 2020 21:00:00 GMT-0300 (Atlantic Daylight Time)"), "June 21st, 2020");
 });
