@@ -12,7 +12,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/greatislander/eleventy-plugin-fluid.git"
+        "url": "git+https://github.com/fluid-project/eleventy-plugin-fluid.git"
     },
     "keywords": [
         "eleventy-plugin"
@@ -20,9 +20,9 @@
     "author": "OCAD University <idrc@ocadu.ca>",
     "license": "BSD-3-Clause",
     "bugs": {
-        "url": "https://github.com/greatislander/eleventy-plugin-fluid/issues"
+        "url": "https://github.com/fluid-project/eleventy-plugin-fluid/issues"
     },
-    "homepage": "https://github.com/greatislander/eleventy-plugin-fluid#readme",
+    "homepage": "https://github.com/fluid-project/eleventy-plugin-fluid#readme",
     "devDependencies": {
         "ava": "3.13.0",
         "fluid-grunt-lint-all": "github:jobara/fluid-grunt-lint-all#issue-14",
