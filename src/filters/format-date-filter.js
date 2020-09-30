@@ -19,8 +19,8 @@ const getOrdinal = function (n) {
     return n + (s[(v - 20) % 10] || s[v] || s[0]);
 };
 
-module.exports = function dateFilter(value) {
-    let [y, m, d] = value.split("-");
+module.exports = function dateFilter(date) {
+    let [y, m, d] = date.split("-");
     m = parseInt(m, 10);
     d = parseInt(d, 10);
 
