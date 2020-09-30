@@ -12,8 +12,8 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 "use strict";
 
 const test = require("ava");
-const dateFilter = require("../src/filters/date-filter.js");
+const formatDateFilter = require("../src/filters/format-date-filter.js");
 
 test("Formats date properly", function (t) {
-    t.is(dateFilter("2020-01-01"), "January 1st, 2020");
+    t.is(formatDateFilter("2020-01-01"), "January 1st, 2020");
 });
