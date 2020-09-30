@@ -11,6 +11,6 @@ https://github.com/greatislander/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 "use strict";
 
-module.exports = function (array, limit) {
-    return array.slice(0, limit);
+module.exports = function isoDate(value) {
+    return new Date(value).toISOString();
 };
