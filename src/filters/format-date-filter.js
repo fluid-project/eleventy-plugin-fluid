@@ -20,7 +20,7 @@ const getOrdinal = function (n) {
 };
 
 module.exports = function dateFilter(value) {
-    const dateObject = new Date(value);
+    const dateObject = new Date(new Date(value).toUTCString());
 
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
