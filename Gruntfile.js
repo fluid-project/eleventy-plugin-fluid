@@ -15,20 +15,20 @@ https://github.com/greatislander/eleventy-plugin-fluid/raw/main/LICENSE.md.
 
 module.exports = function (grunt) {
 
-	// Project configuration.
-	grunt.initConfig({
-		// Project package file destination.
-		pkg: grunt.file.readJSON("package.json"),
-		lintAll: {
-			sources: {
-				json: ["package.json"],
-				js: ["./src/**/*.js",".eleventy.js","Gruntfile.js"]
-			}
-		}
-	});
-	// Load the plugin(s):
-	grunt.loadNpmTasks("fluid-grunt-lint-all");
-	// Custom tasks:
-	grunt.registerTask("default", ["lint"]);
-	grunt.registerTask("lint", "Perform all standard lint checks.", ["lint-all"]);
+    // Project configuration.
+    grunt.initConfig({
+        // Project package file destination.
+        pkg: grunt.file.readJSON("package.json"),
+        lintAll: {
+            sources: {
+                json: [".eslintrc.json", "package.json"],
+                js: ["./src/**/*.js","!.eleventy.js","Gruntfile.js"]
+            }
+        }
+    });
+    // Load the plugin(s):
+    grunt.loadNpmTasks("fluid-grunt-lint-all");
+    // Custom tasks:
+    grunt.registerTask("default", ["lint"]);
+    grunt.registerTask("lint", "Perform all standard lint checks.", ["lint-all"]);
 };

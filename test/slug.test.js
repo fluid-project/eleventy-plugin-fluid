@@ -11,6 +11,9 @@ https://github.com/greatislander/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 "use strict";
 
-module.exports = function (array, limit) {
-    return array.slice(0, limit);
-};
+const test = require("ava");
+const slugFilter = require("../src/filters/slug-filter.js");
+
+test("Removes special characters", function (t) {
+    t.is(slugFilter("Here’s my title!"), "heres-my-title");
+});

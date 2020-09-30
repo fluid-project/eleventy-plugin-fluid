@@ -11,12 +11,12 @@ https://github.com/greatislander/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 "use strict";
 
-var slugify = require("slugify");
+const slugify = require("slugify");
 
 module.exports = function (string) {
-	return slugify(string, {
-		replacement: "-",
-		lower: true,
-		strict: true
-	});
+    return slugify(string, {
+        replacement: "-",
+        lower: true,
+        strict: true
+    });
 };
