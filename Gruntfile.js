@@ -22,7 +22,7 @@ module.exports = function (grunt) {
         lintAll: {
             sources: {
                 json: [".eslintrc.json", "package.json"],
-                js: ["./src/**/*.js","!.eleventy.js","Gruntfile.js"]
+                js: ["./src/**/*.js", "!.eleventy.js", "Gruntfile.js"]
             }
         }
     });
