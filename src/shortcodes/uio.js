@@ -18,24 +18,38 @@ module.exports = {
     <link href="/lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" rel="stylesheet">`;
     },
     uioScripts: function () {
-	    return `<link rel="preload" href="/lib/infusion/infusion-uio.min.js" as="script" />
+	      return `<link rel="preload" href="/lib/infusion/infusion-uio.min.js" as="script" />
     <script src="/lib/infusion/infusion-uio.min.js"></script>`;
     },
     uioTemplate: function () {
         return `<div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
-	<div class="fl-panelBar fl-panelBar-smallScreen" id ="Editorspace">
+  	<div class="fl-panelBar fl-panelBar-smallScreen" id ="Editorspace">
       <span class="fl-prefsEditor-buttons">
-	    <button class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide"> Show/Hide</button>
-	    <button class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+  	  <button class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide"> Show/Hide</button>
+  	  <button class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
       </span>
-	</div>
-	<div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
-	<div class="fl-panelBar fl-panelBar-wideScreen">
+  	</div>
+  	<div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
+  	<div class="fl-panelBar fl-panelBar-wideScreen">
       <span class="fl-prefsEditor-buttons">
-	    <button class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide"> Show/Hide</button>
-	    <button class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+  	  <button class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide"> Show/Hide</button>
+  	  <button class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
       </span>
-	</div>
+	  </div>
   </div>`;
+    },
+    uioInit: function () {
+        return `<script>
+    (function ($, fluid) {
+      fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
+        terms: {
+          "templatePrefix": "/lib/infusion/src/framework/preferences/html",
+          "messagePrefix": "/lib/infusion/src/framework/preferences/messages"
+        },
+        "tocTemplate": "/lib/infusion/src/components/tableOfContents/html/TableOfContents.html",
+        "tocMessage": "/lib/infusion/src/framework/preferences/messages/tableOfContents-enactor.json"
+      });
+    })(jQuery, fluid);
+  </script>`;
     }
 };

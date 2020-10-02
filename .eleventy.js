@@ -17,7 +17,7 @@ const limitFilter = require("./src/filters/limit-filter.js");
 const markdownFilter = require("./src/filters/markdown-filter.js");
 const slugFilter = require("./src/filters/slug-filter.js");
 const uioShortcodes = require("./src/shortcodes/uio.js");
-const uioAssets = require("./src/config/uio-assets.js");
+const uioAssets = require("./src/config/uio-assets.json");
 
 module.exports = function(eleventyConfig) {
     eleventyConfig.addFilter("formatDate", formatDateFilter);

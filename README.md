@@ -60,8 +60,96 @@ Output: `heres-my-title`
 
 ## Shortcodes
 
-Coming soon.
+### uioStyles
+
+Outputs links to the required CSS assets for an instance of [Infusion User Interface Options][1].
+
+```liquid
+{% uioStyles %}
+```
+
+Result:
+
+```html
+<link href="/lib/infusion/src/framework/preferences/css/Enactors.css" rel="stylesheet">
+<link href="/lib/infusion/src/framework/preferences/css/PrefsEditor.css" rel="stylesheet">
+<link href="/lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" rel="stylesheet">
+```
+
+### uioScripts
+
+Outputs links to the required JavaScript assets for an instance of [Infusion User Interface Options][1].
+
+```liquid
+{% uioScripts %}
+```
+
+Result:
+
+```html
+<link rel="preload" href="/lib/infusion/infusion-uio.min.js" as="script" />
+<script src="/lib/infusion/infusion-uio.min.js"></script>
+```
+
+### uioTemplate
+
+Outputs the required HTML template markup for an instance of [Infusion User Interface Options][1]. This should used directly after the opening `<body>` tag.
+
+```liquid
+{% uioTemplate %}
+```
+
+Result:
+
+```html
+<div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
+  <div class="fl-panelBar fl-panelBar-smallScreen" id ="Editorspace">
+    <span class="fl-prefsEditor-buttons">
+	  <button class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide"> Show/Hide</button>
+	  <button class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+    </span>
+  </div>
+  <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
+  <div class="fl-panelBar fl-panelBar-wideScreen">
+	<span class="fl-prefsEditor-buttons">
+	  <button class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide"> Show/Hide</button>
+      <button class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+	</span>
+  </div>
+</div>
+```
+
+### uioInit
+
+Outputs the required JavaScript to initialize an instance of [Infusion User Interface Options][1]. This should used directly before the closing `</body>` tag.
+
+```liquid
+{% uioInit %}
+```
+
+Result:
+
+```html
+<script>
+  (function ($, fluid) {
+    fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
+      terms: {
+        "templatePrefix": "/lib/infusion/src/framework/preferences/html",
+        "messagePrefix": "/lib/infusion/src/framework/preferences/messages"
+      },
+      "tocTemplate": "/lib/infusion/src/components/tableOfContents/html/TableOfContents.html",
+      "tocMessage": "/lib/infusion/src/framework/preferences/messages/tableOfContents-enactor.json"
+    });
+  })(jQuery, fluid);
+</script>
+```
 
 ## Transforms
 
 Coming soon.
+
+## Passthrough Copy
+
+By default, `eleventy-plugin-fluid` copies the [required assets](src/config/uio-assets.json) for an instance of [Infusion User Interface Options][1] into the `lib/infusion` directory of the build directory.
+
+[1]: https://docs.fluidproject.org/infusion/development/tutorial-userInterfaceOptions/UserInterfaceOptions.html
