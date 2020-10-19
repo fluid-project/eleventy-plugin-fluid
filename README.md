@@ -131,16 +131,14 @@ Result:
 
 ```html
 <script>
-  (function ($, fluid) {
-    fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
-      terms: {
-        "templatePrefix": "/lib/infusion/src/framework/preferences/html",
-        "messagePrefix": "/lib/infusion/src/framework/preferences/messages"
-      },
-      "tocTemplate": "/lib/infusion/src/components/tableOfContents/html/TableOfContents.html",
-      "tocMessage": "/lib/infusion/src/framework/preferences/messages/tableOfContents-enactor.json"
-    });
-  })(jQuery, fluid);
+  fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
+    terms: {
+      "templatePrefix": "/lib/infusion/src/framework/preferences/html",
+      "messagePrefix": "/lib/infusion/src/framework/preferences/messages"
+    },
+    "tocTemplate": "/lib/infusion/src/components/tableOfContents/html/TableOfContents.html",
+    "tocMessage": "/lib/infusion/src/framework/preferences/messages/tableOfContents-enactor.json"
+  });
 </script>
 ```
 
