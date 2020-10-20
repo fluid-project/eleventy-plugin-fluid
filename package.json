@@ -1,5 +1,5 @@
 {
-    "name": "@fluid-project/eleventy-plugin-fluid",
+    "name": "eleventy-plugin-fluid",
     "version": "0.0.1",
     "description": "Eleventy plugin which provides common filters, shortcodes and transforms for Fluid Project websites.",
     "publishConfig": {
