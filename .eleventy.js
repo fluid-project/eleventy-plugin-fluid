@@ -16,6 +16,7 @@ const isoDateFilter = require("./src/filters/iso-date-filter.js");
 const limitFilter = require("./src/filters/limit-filter.js");
 const markdownFilter = require("./src/filters/markdown-filter.js");
 const slugFilter = require("./src/filters/slug-filter.js");
+const splitFilter = require("./src/filters/split-filter.js");
 const uioShortcodes = require("./src/shortcodes/uio.js");
 const uioAssets = require("./src/config/uio-assets.json");
 
@@ -25,6 +26,7 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addFilter("limit", limitFilter);
     eleventyConfig.addFilter("markdown", markdownFilter);
     eleventyConfig.addFilter("slug", slugFilter);
+    eleventyConfig.addFilter("split", splitFilter);
 
     Object.keys(uioShortcodes).forEach((shortcodeName) => {
         eleventyConfig.addShortcode(shortcodeName, uioShortcodes[shortcodeName])
