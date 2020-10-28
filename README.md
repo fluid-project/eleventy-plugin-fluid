@@ -60,6 +60,16 @@ slug("Here’s my title!");
 
 Output: `heres-my-title`
 
+#### split
+
+Splits an input string into an array based on a provided delimiter.
+
+```javascript
+split(["a,b,c"], ",");
+```
+
+Output: `["a", "b", "c"]`
+
 ### Shortcodes
 
 Coming soon.

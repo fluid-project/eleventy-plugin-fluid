@@ -16,6 +16,7 @@ var isoDateFilter = require("./src/filters/iso-date-filter.js");
 var limitFilter = require("./src/filters/limit-filter.js");
 var markdownFilter = require("./src/filters/markdown-filter.js");
 var slugFilter = require("./src/filters/slug-filter.js");
+var splitFilter = require("./src/filters/split-filter.js");
 
 module.exports = function(eleventyConfig) {
 	eleventyConfig.addFilter("formatDate", formatDateFilter);
@@ -23,4 +24,5 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addFilter("limit", limitFilter);
 	eleventyConfig.addFilter("markdown", markdownFilter);
 	eleventyConfig.addFilter("slug", slugFilter);
+    eleventyConfig.addFilter("split", splitFilter);
 };
