@@ -11,12 +11,12 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 "use strict";
 
-var formatDateFilter = require("./src/filters/format-date-filter.js");
-var isoDateFilter = require("./src/filters/iso-date-filter.js");
-var limitFilter = require("./src/filters/limit-filter.js");
-var markdownFilter = require("./src/filters/markdown-filter.js");
-var slugFilter = require("./src/filters/slug-filter.js");
-var splitFilter = require("./src/filters/split-filter.js");
+const formatDateFilter = require("./src/filters/format-date-filter.js");
+const isoDateFilter = require("./src/filters/iso-date-filter.js");
+const limitFilter = require("./src/filters/limit-filter.js");
+const markdownFilter = require("./src/filters/markdown-filter.js");
+const slugFilter = require("./src/filters/slug-filter.js");
+const splitFilter = require("./src/filters/split-filter.js");
 
 module.exports = function(eleventyConfig) {
 	eleventyConfig.addFilter("formatDate", formatDateFilter);
