@@ -92,7 +92,7 @@ Result:
 
 Outputs links to the required JavaScript assets for an instance of [Infusion User Interface Options][1].
 
-```liquid
+```nunjucks
 {% uioScripts %}
 ```
 
@@ -105,9 +105,10 @@ Result:
 
 ### uioTemplate
 
-Outputs the required HTML template markup for an instance of [Infusion User Interface Options][1]. This should used directly after the opening `<body>` tag.
+Outputs the required HTML template markup for an instance of [Infusion User Interface Options][1]. This should used
+directly after the opening `<body>` tag.
 
-```liquid
+```nunjucks
 {% uioTemplate %}
 ```
 
@@ -117,25 +118,29 @@ Result:
 <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
   <div class="fl-panelBar fl-panelBar-smallScreen" id ="Editorspace">
     <span class="fl-prefsEditor-buttons">
-	  <button class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide"> Show/Hide</button>
-	  <button class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+    <button class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide"> Show/Hide</button>
+    <button class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
     </span>
   </div>
   <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
   <div class="fl-panelBar fl-panelBar-wideScreen">
-	<span class="fl-prefsEditor-buttons">
-	  <button class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide"> Show/Hide</button>
+  <span class="fl-prefsEditor-buttons">
+    <button class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide"> Show/Hide</button>
       <button class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
-	</span>
+  </span>
   </div>
 </div>
 ```
 
+If you want to use a custom integration of User Interface Options, you can insert the required markup directly into your
+[base template](https://github.com/fluid-project/fluidic-11ty/blob/main/src/_includes/layouts/base.njk).
+
 ### uioInit
 
-Outputs the required JavaScript to initialize an instance of [Infusion User Interface Options][1]. This should used directly before the closing `</body>` tag.
+Outputs the required JavaScript to initialize an instance of [Infusion User Interface Options][1]. This should used
+directly before the closing `</body>` tag.
 
-```liquid
+```nunjucks
 {% uioInit %}
 ```
 
@@ -154,13 +159,17 @@ Result:
 </script>
 ```
 
+If you want to use a custom integration of User Interface Options, you can insert the required script tag directly into your
+[base template](https://github.com/fluid-project/fluidic-11ty/blob/main/src/_includes/layouts/base.njk).
+
 ### Transforms
 
 Coming soon.
 
 ## Passthrough Copy
 
-By default, `eleventy-plugin-fluid` copies the [required assets](src/config/uio-assets.json) for an instance of [Infusion User Interface Options][1] into the `lib/infusion` directory of the build directory.
+By default, `eleventy-plugin-fluid` copies the [required assets](src/config/uio-assets.json) for an instance of
+[Infusion User Interface Options][1] into the `lib/infusion` directory of the build directory.
 
 [1]: https://docs.fluidproject.org/infusion/development/tutorial-userInterfaceOptions/UserInterfaceOptions.html
 
@@ -168,15 +177,18 @@ By default, `eleventy-plugin-fluid` copies the [required assets](src/config/uio-
 
 ### Releasing
 
-This package uses [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), enforced with [commitlint](https://commitlint.js.org/). This facilitates releasing new versions of the package. To cut a release, run:
+This package uses [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), enforced with
+[commitlint](https://commitlint.js.org/). This facilitates releasing new versions of the package. To cut a release, run:
 
 ```bash
 npm run release
 ```
 
-This will tag an appropriate [semantic version](https://semver.org) based on the nature of the recent commits to the project and update [the changelog](CHANGELOG.md).
+This will tag an appropriate [semantic version](https://semver.org) based on the nature of the recent commits to the
+project and update [the changelog](CHANGELOG.md).
 
-You will then need to publish the updated version to the [npm registry](http://npmjs.com). This requires an npm account with appropriate maintainer permissions. To publish the package, run:
+You will then need to publish the updated version to the [npm registry](http://npmjs.com). This requires an npm account
+with appropriate maintainer permissions. To publish the package, run:
 
 ```bash
 npm publish
