@@ -78,6 +78,10 @@ Output: `["a", "b", "c"]`
 
 ### Shortcodes
 
+All examples use the [Nunjucks](https://mozilla.github.io/nunjucks/) template language. Eleventy supports a number of
+other template languages; see Eleventy's [documentation on shortcodes](https://www.11ty.dev/docs/shortcodes/) for usage with
+different template languages.
+
 ### uioStyles
 
 Outputs links to the required CSS assets for an instance of [Infusion User Interface Options][1].
