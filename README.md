@@ -10,22 +10,27 @@ Eleventy plugin which provides common filters, shortcodes and transforms for [Fl
 
 ### Filters
 
+All examples use the [Nunjucks](https://mozilla.github.io/nunjucks/) template language. Eleventy supports a number of
+other template languages; see Eleventy's [documentation on filters](https://www.11ty.dev/docs/filters/) for usage with
+different template languages.
+
 #### formatDate
 
 Formats a date string.
 
-```javascript
-formatDate("Sun Jun 21 2020 18:00:00 GMT-0300 (Atlantic Daylight Time)");
+```nunjucks
+{{ "Sun Jun 21 2020 18:00:00 GMT-0300 (Atlantic Daylight Time)" | formatDate }}
 ```
 
 Output: `June 21st, 2020`
 
 #### isoDate
 
-Formats a date string to [ISO 8601](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString) format.
+Formats a date string to [ISO 8601](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString)
+format.
 
-```javascript
-isoDate("Sun Jun 21 2020 18:00:00 GMT-0300 (Atlantic Daylight Time)");
+```nunjucks
+{{ "Sun Jun 21 2020 18:00:00 GMT-0300 (Atlantic Daylight Time)") | }}
 ```
 
 Output: `2020-06-21T21:00:00.000Z`
@@ -34,8 +39,8 @@ Output: `2020-06-21T21:00:00.000Z`
 
 Trims an array to the specified length.
 
-```javascript
-limit(["a", "b", "c"], 2);
+```nunjucks
+{{ ["a", "b", "c"] | limit(2) | dump }}
 ```
 
 Output: `["a", "b"]`
@@ -44,18 +49,19 @@ Output: `["a", "b"]`
 
 Processes an input string using [Markdown](https://markdown-it.github.io).
 
-```javascript
-markdown("A paragraph with some _emphasis_.");
+```nunjucks
+{{ "A paragraph with some _emphasis_." | markdown | safe }}
 ```
 
 Output: `<p>A paragraph with some <em>emphasis</em>.</p>\n`
 
 #### slug
 
-Processes an input string by lowercasing it, replacing whitespace with hyphens, and stripping special characters to create a URL-safe version.
+Processes an input string by lowercasing it, replacing whitespace with hyphens, and stripping special characters to
+create a URL-safe version.
 
-```javascript
-slug("Here’s my title!");
+```nunjucks
+{{ "Here’s my title!" | slug }};
 ```
 
 Output: `heres-my-title`
@@ -64,8 +70,8 @@ Output: `heres-my-title`
 
 Splits an input string into an array based on a provided delimiter.
 
-```javascript
-split(["a,b,c"], ",");
+```nunjucks
+{{ "a,b,c" | split(",") | dump }}
 ```
 
 Output: `["a", "b", "c"]`
