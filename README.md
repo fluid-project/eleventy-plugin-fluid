@@ -76,7 +76,7 @@ Output: `["a", "b", "c"]`
 
 Outputs links to the required CSS assets for an instance of [Infusion User Interface Options][1].
 
-```liquid
+```nunjucks
 {% uioStyles %}
 ```
 
