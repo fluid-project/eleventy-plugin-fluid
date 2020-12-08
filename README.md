@@ -10,12 +10,16 @@ Eleventy plugin which provides common filters, shortcodes and transforms for [Fl
 
 ### Filters
 
+All examples use the [Nunjucks](https://mozilla.github.io/nunjucks/) template language. Eleventy supports a number of
+other template languages; see Eleventy's [documentation on filters](https://www.11ty.dev/docs/filters/) for usage with
+different template languages.
+
 #### formatDate
 
 Formats a date string.
 
-```javascript
-formatDate("Sun Jun 21 2020 18:00:00 GMT-0300 (Atlantic Daylight Time)");
+```nunjucks
+{{ "Sun Jun 21 2020 18:00:00 GMT-0300 (Atlantic Daylight Time)" | formatDate }}
 ```
 
 Output: `June 21st, 2020`
@@ -25,8 +29,8 @@ Output: `June 21st, 2020`
 Formats a date string to [ISO 8601](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString)
 format.
 
-```javascript
-isoDate("Sun Jun 21 2020 18:00:00 GMT-0300 (Atlantic Daylight Time)");
+```nunjucks
+{{ "Sun Jun 21 2020 18:00:00 GMT-0300 (Atlantic Daylight Time)") | }}
 ```
 
 Output: `2020-06-21T21:00:00.000Z`
@@ -35,8 +39,8 @@ Output: `2020-06-21T21:00:00.000Z`
 
 Trims an array to the specified length.
 
-```javascript
-limit(["a", "b", "c"], 2);
+```nunjucks
+{{ ["a", "b", "c"] | limit(2) | dump }}
 ```
 
 Output: `["a", "b"]`
@@ -45,8 +49,8 @@ Output: `["a", "b"]`
 
 Processes an input string using [Markdown](https://markdown-it.github.io).
 
-```javascript
-markdown("A paragraph with some _emphasis_.");
+```nunjucks
+{{ "A paragraph with some _emphasis_." | markdown | safe }}
 ```
 
 Output: `<p>A paragraph with some <em>emphasis</em>.</p>\n`
@@ -56,8 +60,8 @@ Output: `<p>A paragraph with some <em>emphasis</em>.</p>\n`
 Processes an input string by lowercasing it, replacing whitespace with hyphens, and stripping special characters to
 create a URL-safe version.
 
-```javascript
-slug("Here’s my title!");
+```nunjucks
+{{ "Here’s my title!" | slug }};
 ```
 
 Output: `heres-my-title`
@@ -66,8 +70,8 @@ Output: `heres-my-title`
 
 Splits an input string into an array based on a provided delimiter.
 
-```javascript
-split(["a,b,c"], ",");
+```nunjucks
+{{ "a,b,c" | split(",") | dump }}
 ```
 
 Output: `["a", "b", "c"]`
@@ -75,8 +79,8 @@ Output: `["a", "b", "c"]`
 ### Shortcodes
 
 All examples use the [Nunjucks](https://mozilla.github.io/nunjucks/) template language. Eleventy supports a number of
-other template languages; see Eleventy's [documentation on shortcodes](https://www.11ty.dev/docs/shortcodes/) for usage
-with different template languages.
+other template languages; see Eleventy's [documentation on shortcodes](https://www.11ty.dev/docs/shortcodes/) for usage with
+different template languages.
 
 ### `figure`
 
@@ -101,9 +105,106 @@ Output:
 </figure>
 ```
 
+### uioStyles
+
+Outputs links to the required CSS assets for an instance of [Infusion User Interface Options][1].
+
+```nunjucks
+{% uioStyles %}
+```
+
+Result:
+
+```html
+<link href="/lib/infusion/src/framework/preferences/css/Enactors.css" rel="stylesheet">
+<link href="/lib/infusion/src/framework/preferences/css/PrefsEditor.css" rel="stylesheet">
+<link href="/lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" rel="stylesheet">
+```
+
+### uioScripts
+
+Outputs links to the required JavaScript assets for an instance of [Infusion User Interface Options][1].
+
+```nunjucks
+{% uioScripts %}
+```
+
+Result:
+
+```html
+<link rel="preload" href="/lib/infusion/infusion-uio.min.js" as="script" />
+<script src="/lib/infusion/infusion-uio.min.js"></script>
+```
+
+### uioTemplate
+
+Outputs the required HTML template markup for an instance of [Infusion User Interface Options][1]. This should used
+directly after the opening `<body>` tag.
+
+```nunjucks
+{% uioTemplate %}
+```
+
+Result:
+
+```html
+<div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
+  <div class="fl-panelBar fl-panelBar-smallScreen" id ="Editorspace">
+    <span class="fl-prefsEditor-buttons">
+    <button class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide"> Show/Hide</button>
+    <button class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+    </span>
+  </div>
+  <div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
+  <div class="fl-panelBar fl-panelBar-wideScreen">
+  <span class="fl-prefsEditor-buttons">
+    <button class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide"> Show/Hide</button>
+      <button class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+  </span>
+  </div>
+</div>
+```
+
+If you want to use a custom integration of User Interface Options, you can insert the required markup directly into your
+[base template](https://github.com/fluid-project/fluidic-11ty/blob/main/src/_includes/layouts/base.njk).
+
+### uioInit
+
+Outputs the required JavaScript to initialize an instance of [Infusion User Interface Options][1]. This should used
+directly before the closing `</body>` tag.
+
+```nunjucks
+{% uioInit %}
+```
+
+Result:
+
+```html
+<script>
+  fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
+    terms: {
+      "templatePrefix": "/lib/infusion/src/framework/preferences/html",
+      "messagePrefix": "/lib/infusion/src/framework/preferences/messages"
+    },
+    "tocTemplate": "/lib/infusion/src/components/tableOfContents/html/TableOfContents.html",
+    "tocMessage": "/lib/infusion/src/framework/preferences/messages/tableOfContents-enactor.json"
+  });
+</script>
+```
+
+If you want to use a custom integration of User Interface Options, you can insert the required script tag directly into your
+[base template](https://github.com/fluid-project/fluidic-11ty/blob/main/src/_includes/layouts/base.njk).
+
 ### Transforms
 
 Coming soon.
+
+## Passthrough Copy
+
+By default, `eleventy-plugin-fluid` copies the [required assets](src/config/uio-assets.json) for an instance of
+[Infusion User Interface Options][1] into the `lib/infusion` directory of the build directory.
+
+[1]: https://docs.fluidproject.org/infusion/development/tutorial-userInterfaceOptions/UserInterfaceOptions.html
 
 ## Development
 
