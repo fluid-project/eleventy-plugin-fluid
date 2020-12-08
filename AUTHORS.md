@@ -4,9 +4,9 @@
 
 Copyright 2020
 
-This is the list of eleventy-plugin-fluid copyright holders. It does not list all individual contributors because some have assigned
-copyright to an institution, only made minor changes, or their contributions no longer appear in the codebase.
-Please see the version control system's revision history for details on contributions.
+This is the list of eleventy-plugin-fluid copyright holders. It does not list all individual contributors because some
+have assigned copyright to an institution, only made minor changes, or their contributions no longer appear in the
+codebase. Please see the version control system's revision history for details on contributions.
 
 * OCAD University
 
