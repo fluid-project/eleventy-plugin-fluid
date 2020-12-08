@@ -23,9 +23,9 @@ const uioAssets = require("./src/config/uio-assets.json");
 module.exports = {
     initArguments: {},
 	configFunction: function(eleventyConfig, options = {}) {
-        if(!options.uio) {
-            options.uio = true;
-        }
+        options = Object.assign({
+            uio: true,
+        }, options);
 
         eleventyConfig.addFilter("formatDate", formatDateFilter);
         eleventyConfig.addFilter("isoDate", isoDateFilter);
