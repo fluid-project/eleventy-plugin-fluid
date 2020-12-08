@@ -7,6 +7,7 @@
     },
     "main": ".eleventy.js",
     "scripts": {
+        "build": "eleventy",
         "lint": "grunt lint",
         "test": "ava",
         "release": "standard-version -t ''"
@@ -40,6 +41,7 @@
     },
     "dependencies": {
         "@11ty/eleventy": "0.11.1",
+        "infusion": "3.0.0-dev.20200326T173810Z.24ddb2718",
         "markdown-it": "12.0.2",
         "slugify": "1.4.6"
     }
