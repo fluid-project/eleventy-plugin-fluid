@@ -11,6 +11,7 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 "use strict";
 
+const figureShortcode = require("./src/shortcodes/figure-shortcode.js");
 const formatDateFilter = require("./src/filters/format-date-filter.js");
 const isoDateFilter = require("./src/filters/iso-date-filter.js");
 const limitFilter = require("./src/filters/limit-filter.js");
@@ -25,4 +26,6 @@ module.exports = function(eleventyConfig) {
 	eleventyConfig.addFilter("markdown", markdownFilter);
 	eleventyConfig.addFilter("slug", slugFilter);
     eleventyConfig.addFilter("split", splitFilter);
+
+    eleventyConfig.addShortcode("figure", figureShortcode);
 };
