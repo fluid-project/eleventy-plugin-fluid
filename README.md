@@ -82,7 +82,7 @@ All examples use the [Nunjucks](https://mozilla.github.io/nunjucks/) template la
 other template languages; see Eleventy's [documentation on shortcodes](https://www.11ty.dev/docs/shortcodes/) for usage with
 different template languages.
 
-### `figure`
+### figure
 
 Outputs a `<figure>` element with a `<figcaption>`. The first and second parameters in the opening tag of the shortcode
 are the image URL and alternative text respectively. Caption content, which can use Markdown, goes in between the
