@@ -14,6 +14,7 @@
     "src/framework/enhancement/css/",
     "src/framework/core/css/",
     "src/framework/core/images/",
+    "src/lib/hypher/patterns",
     "src/lib/jquery/ui/css/default-theme/",
     "src/lib/normalize/css/",
     "src/lib/open-dyslexic/fonts/",
