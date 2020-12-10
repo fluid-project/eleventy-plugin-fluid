@@ -41,7 +41,7 @@
     },
     "dependencies": {
         "@11ty/eleventy": "0.11.1",
-        "infusion": "3.0.0-dev.20201007T193943Z.440be20ec.FLUID-6145",
+        "infusion": "3.0.0-dev.20201113T153152Z.32176dcbe.FLUID-6145",
         "markdown-it": "12.0.2",
         "slugify": "1.4.6"
     }
