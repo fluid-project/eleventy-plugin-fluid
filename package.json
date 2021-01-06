@@ -42,7 +42,7 @@
         "standard-version": "9.1.0"
     },
     "dependencies": {
-        "infusion": "3.0.0-dev.20201113T153152Z.32176dcbe.FLUID-6145",
+        "infusion": "3.0.0-dev.20210102T174310Z.0683e98e7.FLUID-6580",
         "markdown-it": "12.0.4",
         "slugify": "1.4.6"
     }
