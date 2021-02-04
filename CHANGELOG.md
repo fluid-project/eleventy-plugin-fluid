@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [0.2.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/0.1.0...0.2.0) (2021-02-04)
 
+
+### Features
+
+* update to development version of Infusion ([589ba25](https://github.com/fluid-project/eleventy-plugin-fluid/commit/589ba25927d7f28c3c6d68b60510bb81b8543b27))
+
+
 ## 0.1.0 (2020-12-08)
 
 
