@@ -12,15 +12,15 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 
 "use strict";
 
-const fluidPlugin = require('./index.js');
+const fluidPlugin = require("./index.js");
 
-module.exports = function(eleventyConfig) {
+module.exports = function (eleventyConfig) {
     eleventyConfig.addPlugin(fluidPlugin);
 
     return {
         dir: {
             input: "test",
-            output: "dist",
+            output: "dist"
         },
         passthroughFileCopy: true
     };

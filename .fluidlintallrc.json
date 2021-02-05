@@ -1,0 +1,15 @@
+{
+    "eslint": {
+        "js": {
+            "includes": ["./.eleventy.js"]
+        }
+    },
+    "lintspaces": {
+        "newlines": {
+            "excludes": ["./CHANGELOG.md"]
+        }
+    },
+    "markdownlint": {
+        "excludes": ["./CHANGELOG.md"]
+    }
+}
