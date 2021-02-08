@@ -1,6 +1,6 @@
 {
     "name": "eleventy-plugin-fluid",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "Eleventy plugin which provides common filters, shortcodes and transforms for Fluid Project websites.",
     "publishConfig": {
         "access": "public"
@@ -8,7 +8,7 @@
     "main": "index.js",
     "scripts": {
         "build": "eleventy",
-        "lint": "grunt lint",
+        "lint": "fluid-lint-all",
         "start": "eleventy --serve",
         "test": "ava",
         "release": "standard-version -t ''"
@@ -36,15 +36,18 @@
         "@commitlint/cli": "11.0.0",
         "@commitlint/config-conventional": "11.0.0",
         "ava": "3.15.0",
-        "fluid-grunt-lint-all": "2.0.0",
-        "grunt": "1.3.0",
+        "eslint-config-fluid": "2.0.0",
+        "fluid-lint-all": "1.0.4",
         "husky": "4.3.8",
+        "infusion": "3.0.0-dev.20210120T204128Z.6e4be079f.FLUID-6580",
         "standard-version": "9.1.0"
     },
     "dependencies": {
         "html-minifier": "4.0.0",
-        "infusion": "3.0.0-dev.20210120T204128Z.6e4be079f.FLUID-6580",
         "markdown-it": "12.0.4",
         "slugify": "1.4.6"
+    },
+    "peerDependencies": {
+        "infusion": "3.0.0-dev.20210120T204128Z.6e4be079f.FLUID-6580"
     }
 }

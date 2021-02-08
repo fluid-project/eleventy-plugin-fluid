@@ -1,5 +1,6 @@
 {
     "extends": "eslint-config-fluid",
+    "ignorePatterns": ["!.eleventy.js"],
     "globals": {
         "fluid": true
     },
