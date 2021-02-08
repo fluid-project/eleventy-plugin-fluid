@@ -35,7 +35,7 @@ module.exports = {
         eleventyConfig.addFilter("slug", slugFilter);
         eleventyConfig.addFilter("split", splitFilter);
 
-        eleventyConfig.addShortcode("figure", figureShortcode);
+        eleventyConfig.addPairedShortcode("figure", figureShortcode);
 
         if (options.uio) {
             Object.keys(uioShortcodes).forEach((shortcodeName) => {

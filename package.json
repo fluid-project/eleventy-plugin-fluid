@@ -9,7 +9,7 @@
     "scripts": {
         "build": "eleventy",
         "lint": "fluid-lint-all",
-        "start": "eleventy --serve",
+        "start": "rimraf dist && eleventy --serve",
         "test": "ava",
         "release": "standard-version -t ''"
     },
@@ -40,6 +40,7 @@
         "fluid-lint-all": "1.0.4",
         "husky": "4.3.8",
         "infusion": "3.0.0-dev.20210120T204128Z.6e4be079f.FLUID-6580",
+        "rimraf": "3.0.2",
         "standard-version": "9.1.0"
     },
     "dependencies": {
