@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.1](https://github.com/fluid-project/eleventy-plugin-fluid/compare/0.2.0...0.2.1) (2021-02-08)
+
+
+### Bug Fixes
+
+* move infusion to peerDependencies and add installation guide to README ([#32](https://github.com/fluid-project/eleventy-plugin-fluid/issues/32)) ([98c6657](https://github.com/fluid-project/eleventy-plugin-fluid/commit/98c66575a9f5dbcc39366cdae4e6d413bfb81933))
+* resolve issue with paired figure shortcode ([585346d](https://github.com/fluid-project/eleventy-plugin-fluid/commit/585346d68e4754c36d3609e51543aaa1889cf13f))
+
 ## [0.2.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/0.1.0...0.2.0) (2021-02-04)
 
 

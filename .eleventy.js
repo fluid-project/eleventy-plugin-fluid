@@ -16,6 +16,7 @@ const fluidPlugin = require("./index.js");
 
 module.exports = function (eleventyConfig) {
     eleventyConfig.addPlugin(fluidPlugin);
+    eleventyConfig.addPassthroughCopy("test/assets/", "/assets/");
 
     return {
         dir: {

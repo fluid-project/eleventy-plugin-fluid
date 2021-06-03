@@ -1,6 +1,6 @@
 {
     "name": "eleventy-plugin-fluid",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "Eleventy plugin which provides common filters, shortcodes and transforms for Fluid Project websites.",
     "publishConfig": {
         "access": "public"
@@ -9,7 +9,7 @@
     "scripts": {
         "build": "eleventy",
         "lint": "fluid-lint-all",
-        "start": "eleventy --serve",
+        "start": "rimraf dist && eleventy --serve",
         "test": "ava",
         "release": "standard-version -t ''"
     },
@@ -32,20 +32,21 @@
         }
     },
     "devDependencies": {
-        "@11ty/eleventy": "0.11.1",
-        "@commitlint/cli": "11.0.0",
-        "@commitlint/config-conventional": "11.0.0",
+        "@11ty/eleventy": "0.12.1",
+        "@commitlint/cli": "12.1.4",
+        "@commitlint/config-conventional": "12.1.4",
         "ava": "3.15.0",
         "eslint-config-fluid": "2.0.0",
         "fluid-lint-all": "1.0.4",
         "husky": "4.3.8",
         "infusion": "3.0.0-dev.20210120T204128Z.6e4be079f.FLUID-6580",
-        "standard-version": "9.1.0"
+        "rimraf": "3.0.2",
+        "standard-version": "9.3.0"
     },
     "dependencies": {
         "html-minifier": "4.0.0",
-        "markdown-it": "12.0.4",
-        "slugify": "1.4.6"
+        "markdown-it": "12.0.6",
+        "slugify": "1.5.3"
     },
     "peerDependencies": {
         "infusion": "3.0.0-dev.20210120T204128Z.6e4be079f.FLUID-6580"
