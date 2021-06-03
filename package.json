@@ -44,7 +44,7 @@
         "standard-version": "9.1.1"
     },
     "dependencies": {
-        "markdown-it": "12.0.4",
+        "markdown-it": "12.0.6",
         "slugify": "1.5.0"
     },
     "peerDependencies": {
