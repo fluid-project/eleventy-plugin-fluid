@@ -13,6 +13,7 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 
 const figureShortcode = require("./src/shortcodes/figure-shortcode.js");
 const formatDateFilter = require("./src/filters/format-date-filter.js");
+const htmlMinifyTransform = require("./src/transforms/html-minify-transform.js");
 const isoDateFilter = require("./src/filters/iso-date-filter.js");
 const limitFilter = require("./src/filters/limit-filter.js");
 const markdownFilter = require("./src/filters/markdown-filter.js");
@@ -48,5 +49,7 @@ module.exports = {
                 eleventyConfig.addPassthroughCopy(fileMapping);
             });
         }
+
+        eleventyConfig.addTransform("htmlMinify", htmlMinifyTransform);
     }
 };
