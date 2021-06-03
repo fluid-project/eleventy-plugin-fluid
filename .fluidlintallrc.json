@@ -5,6 +5,9 @@
         }
     },
     "lintspaces": {
+        "jsonindentation": {
+            "excludes": ["./package-lock.json"]
+        },
         "newlines": {
             "excludes": ["./CHANGELOG.md"]
         }
