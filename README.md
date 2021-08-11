@@ -52,7 +52,7 @@ Formats a date string to [ISO 8601](https://developer.mozilla.org/en-US/docs/Web
 format.
 
 ```nunjucks
-{{ "Sun Jun 21 2020 18:00:00 GMT-0300 (Atlantic Daylight Time)") | }}
+{{ "Sun Jun 21 2020 18:00:00 GMT-0300 (Atlantic Daylight Time)") | isoDate }}
 ```
 
 Output: `2020-06-21T21:00:00.000Z`
