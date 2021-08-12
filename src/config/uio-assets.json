@@ -1,6 +1,6 @@
 [
-    "dist/infusion-uio.min.js",
-    "dist/infusion-uio.min.js.map",
+    "dist/infusion-uio.js",
+    "dist/infusion-uio.js.map",
     "src/components/tableOfContents/css/",
     "src/components/tableOfContents/html/",
     "src/components/textfieldControl/css/",
