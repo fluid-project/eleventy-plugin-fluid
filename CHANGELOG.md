@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://www.github.com/fluid-project/eleventy-plugin-fluid/compare/v0.2.1...v0.3.0) (2021-08-23)
+
+
+### Features
+
+* add HTML minifier (resolves [#20](https://www.github.com/fluid-project/eleventy-plugin-fluid/issues/20)) ([#29](https://www.github.com/fluid-project/eleventy-plugin-fluid/issues/29)) ([6ba865b](https://www.github.com/fluid-project/eleventy-plugin-fluid/commit/6ba865b6231a888055a60f102cd13a056e94ce49))
+* add multilingual UIO (resolves [#58](https://www.github.com/fluid-project/eleventy-plugin-fluid/issues/58)) ([#67](https://www.github.com/fluid-project/eleventy-plugin-fluid/issues/67)) ([e1f80bc](https://www.github.com/fluid-project/eleventy-plugin-fluid/commit/e1f80bc3e5048b2fb5f584b944785fd15387af32))
+
+
+### Bug Fixes
+
+* exclude package-lock.json ([9b266de](https://www.github.com/fluid-project/eleventy-plugin-fluid/commit/9b266de37770fdacfcbf39006818294d49b524ce))
+
 ### [0.2.1](https://github.com/fluid-project/eleventy-plugin-fluid/compare/0.2.0...0.2.1) (2021-02-08)
 
 
