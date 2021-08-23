@@ -1,54 +1,54 @@
 {
-    "name": "eleventy-plugin-fluid",
-    "version": "0.2.1",
-    "description": "Eleventy plugin which provides common filters, shortcodes and transforms for Fluid Project websites.",
-    "publishConfig": {
-        "access": "public"
-    },
-    "main": "index.js",
-    "scripts": {
-        "build": "eleventy",
-        "lint": "fluid-lint-all",
-        "start": "rimraf dist && eleventy --serve",
-        "test": "ava",
-        "release": "standard-version -t ''"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/fluid-project/eleventy-plugin-fluid.git"
-    },
-    "keywords": [
-        "eleventy-plugin"
-    ],
-    "author": "OCAD University <idrc@ocadu.ca>",
-    "license": "BSD-3-Clause",
-    "bugs": {
-        "url": "https://github.com/fluid-project/eleventy-plugin-fluid/issues"
-    },
-    "homepage": "https://github.com/fluid-project/eleventy-plugin-fluid#readme",
-    "husky": {
-        "hooks": {
-            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-        }
-    },
-    "devDependencies": {
-        "@11ty/eleventy": "0.12.1",
-        "@commitlint/cli": "13.1.0",
-        "@commitlint/config-conventional": "13.1.0",
-        "ava": "3.15.0",
-        "eslint-config-fluid": "2.0.0",
-        "fluid-lint-all": "1.1.4",
-        "husky": "4.3.8",
-        "infusion": "4.0.0-dev.20210622T193827Z.ac6adb829.FLUID-6629",
-        "rimraf": "3.0.2",
-        "standard-version": "9.3.1"
-    },
-    "dependencies": {
-        "html-minifier": "4.0.0",
-        "markdown-it": "12.2.0",
-        "slugify": "1.6.0"
-    },
-    "peerDependencies": {
-        "infusion": "4.x"
+  "name": "eleventy-plugin-fluid",
+  "version": "0.3.0",
+  "description": "Eleventy plugin which provides common filters, shortcodes and transforms for Fluid Project websites.",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build": "eleventy",
+    "lint": "fluid-lint-all",
+    "start": "rimraf dist && eleventy --serve",
+    "test": "ava",
+    "release": "standard-version -t ''"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fluid-project/eleventy-plugin-fluid.git"
+  },
+  "keywords": [
+    "eleventy-plugin"
+  ],
+  "author": "OCAD University <idrc@ocadu.ca>",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/fluid-project/eleventy-plugin-fluid/issues"
+  },
+  "homepage": "https://github.com/fluid-project/eleventy-plugin-fluid#readme",
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "0.12.1",
+    "@commitlint/cli": "13.1.0",
+    "@commitlint/config-conventional": "13.1.0",
+    "ava": "3.15.0",
+    "eslint-config-fluid": "2.0.0",
+    "fluid-lint-all": "1.1.4",
+    "husky": "4.3.8",
+    "infusion": "4.0.0-dev.20210622T193827Z.ac6adb829.FLUID-6629",
+    "rimraf": "3.0.2",
+    "standard-version": "9.3.1"
+  },
+  "dependencies": {
+    "html-minifier": "4.0.0",
+    "markdown-it": "12.2.0",
+    "slugify": "1.6.0"
+  },
+  "peerDependencies": {
+    "infusion": "4.x"
+  }
 }
