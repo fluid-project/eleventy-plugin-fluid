@@ -18,8 +18,8 @@ module.exports = {
     <link href="/lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" rel="stylesheet">`;
     },
     uioScripts: function () {
-	      return `<link rel="preload" href="/lib/infusion/infusion-uio.min.js" as="script" />
-    <script src="/lib/infusion/infusion-uio.min.js"></script>`;
+	      return `<link rel="preload" href="/lib/infusion/infusion-uio.js" as="script" />
+    <script src="/lib/infusion/infusion-uio.js"></script>`;
     },
     uioTemplate: function () {
         return `<div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
@@ -38,26 +38,32 @@ module.exports = {
 	  </div>
   </div>`;
     },
-    uioInit: function () {
-        return `<script>
-            fluid.uiOptions(".flc-prefsEditor-separatedPanel", {
-                auxiliarySchema: {
-                    terms: {
-                        "templatePrefix": "/lib/infusion/src/framework/preferences/html",
-                        "messagePrefix": "/lib/infusion/src/framework/preferences/messages"
-                    },
-                    "fluid.prefs.tableOfContents": {
-                        enactor: {
-                            "tocTemplate": "/lib/infusion/src/components/tableOfContents/html/TableOfContents.html",
-                            "tocMessage": "/lib/infusion/src/framework/preferences/messages/tableOfContents-enactor.json",
-                            ignoreForToC: {}
+    uioInit: function (locale, direction) {
+        let options = {
+            auxiliarySchema: {
+                terms: {
+                    "templatePrefix": "/lib/infusion/src/framework/preferences/html",
+                    "messagePrefix": "/lib/infusion/src/framework/preferences/messages"
+                },
+                "fluid.prefs.tableOfContents": {
+                    enactor: {
+                        "tocTemplate": "/lib/infusion/src/components/tableOfContents/html/TableOfContents.html",
+                        "tocMessage": "/lib/infusion/src/framework/preferences/messages/tableOfContents-enactor.json",
+                        ignoreForToC: {
+                            ignoreClass: ".flc-toc-ignore"
                         }
                     }
-                },
-                prefsEditorLoader: {
-                    lazyLoad: true
                 }
-            });
+            },
+            prefsEditorLoader: {
+                lazyLoad: true
+            },
+            locale: locale,
+            direction: direction
+        };
+
+        return `<script>
+            fluid.uiOptions.multilingual(".flc-prefsEditor-separatedPanel", ${JSON.stringify(options)});
         </script>`;
     }
 };

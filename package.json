@@ -33,15 +33,15 @@
     },
     "devDependencies": {
         "@11ty/eleventy": "0.12.1",
-        "@commitlint/cli": "12.1.4",
-        "@commitlint/config-conventional": "12.1.4",
+        "@commitlint/cli": "13.1.0",
+        "@commitlint/config-conventional": "13.1.0",
         "ava": "3.15.0",
         "eslint-config-fluid": "2.0.0",
-        "fluid-lint-all": "1.1.1",
+        "fluid-lint-all": "1.1.4",
         "husky": "4.3.8",
-        "infusion": "3.0.0-dev.20210120T204128Z.6e4be079f.FLUID-6580",
+        "infusion": "4.0.0-dev.20210622T193827Z.ac6adb829.FLUID-6629",
         "rimraf": "3.0.2",
-        "standard-version": "9.3.0"
+        "standard-version": "9.3.1"
     },
     "dependencies": {
         "html-minifier": "4.0.0",
@@ -49,6 +49,6 @@
         "slugify": "1.5.3"
     },
     "peerDependencies": {
-        "infusion": "3.0.0-dev.20210120T204128Z.6e4be079f.FLUID-6580"
+        "infusion": "4.x"
     }
 }

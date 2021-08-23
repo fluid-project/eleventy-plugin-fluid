@@ -154,8 +154,8 @@ Outputs links to the required JavaScript assets for an instance of [Infusion Use
 Result:
 
 ```html
-<link rel="preload" href="/lib/infusion/infusion-uio.min.js" as="script" />
-<script src="/lib/infusion/infusion-uio.min.js"></script>
+<link rel="preload" href="/lib/infusion/infusion-uio.js" as="script" />
+<script src="/lib/infusion/infusion-uio.js"></script>
 ```
 
 ### uioTemplate
@@ -203,13 +203,60 @@ Result:
 
 ```html
 <script>
-  fluid.uiOptions.prefsEditor(".flc-prefsEditor-separatedPanel", {
-    terms: {
-      "templatePrefix": "/lib/infusion/src/framework/preferences/html",
-      "messagePrefix": "/lib/infusion/src/framework/preferences/messages"
+  fluid.uiOptions.multilingual(".flc-prefsEditor-separatedPanel", {
+    "auxiliarySchema": {
+        "terms": {
+            "templatePrefix": "/lib/infusion/src/framework/preferences/html",
+            "messagePrefix": "/lib/infusion/src/framework/preferences/messages"
+        },
+        "fluid.prefs.tableOfContents": {
+            "enactor": {
+                "tocTemplate": "/lib/infusion/src/components/tableOfContents/html/TableOfContents.html",
+                "tocMessage": "/lib/infusion/src/framework/preferences/messages/tableOfContents-enactor.json",
+                "ignoreForToC": {
+                    "ignoreClass": ".flc-toc-ignore"
+                }
+            }
+        }
     },
-    "tocTemplate": "/lib/infusion/src/components/tableOfContents/html/TableOfContents.html",
-    "tocMessage": "/lib/infusion/src/framework/preferences/messages/tableOfContents-enactor.json"
+    "prefsEditorLoader": {
+        "lazyLoad": true
+    }
+  });
+</script>
+```
+
+Optionally, to support localization, you can pass in locale and direction arguments.
+
+```nunjucks
+{% uioInit "fa", "rtl" %}
+```
+
+Result:
+
+```html
+<script>
+  fluid.uiOptions.multilingual(".flc-prefsEditor-separatedPanel", {
+    "auxiliarySchema": {
+        "terms": {
+            "templatePrefix": "/lib/infusion/src/framework/preferences/html",
+            "messagePrefix": "/lib/infusion/src/framework/preferences/messages"
+        },
+        "fluid.prefs.tableOfContents": {
+            "enactor": {
+                "tocTemplate": "/lib/infusion/src/components/tableOfContents/html/TableOfContents.html",
+                "tocMessage": "/lib/infusion/src/framework/preferences/messages/tableOfContents-enactor.json",
+                "ignoreForToC": {
+                    "ignoreClass": ".flc-toc-ignore"
+                }
+            }
+        }
+    },
+    "prefsEditorLoader": {
+        "lazyLoad": true
+    },
+    "locale": "fa",
+    "direction": "rtl"
   });
 </script>
 ```
