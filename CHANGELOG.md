@@ -8,7 +8,7 @@ All notable changes to this project will be documented in this file. See [standa
 ### Bug Fixes
 
 * exclude package.json from lintspaces.jsonindentation ([d7904d9](https://www.github.com/fluid-project/eleventy-plugin-fluid/commit/d7904d9d3f1b579c0c1a6df0b32e9e77d3abdb3d))
-* prevent injection of <br> tags for line breaks in <p> (Resolves [#76](https://www.github.com/fluid-project/eleventy-plugin-fluid/issues/76)) ([#77](https://www.github.com/fluid-project/eleventy-plugin-fluid/issues/77)) ([3208197](https://www.github.com/fluid-project/eleventy-plugin-fluid/commit/32081973d4f8f685fc2150c1eb7567e2eda9f350))
+* prevent injection of `<br>` tags for line breaks in `<p>` (Resolves [#76](https://www.github.com/fluid-project/eleventy-plugin-fluid/issues/76)) ([#77](https://www.github.com/fluid-project/eleventy-plugin-fluid/issues/77)) ([3208197](https://www.github.com/fluid-project/eleventy-plugin-fluid/commit/32081973d4f8f685fc2150c1eb7567e2eda9f350))
 
 ## [0.3.0](https://www.github.com/fluid-project/eleventy-plugin-fluid/compare/v0.2.1...v0.3.0) (2021-08-23)
 
