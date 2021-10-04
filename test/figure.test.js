@@ -22,6 +22,10 @@ test("Renders without caption", function (t) {
     t.is(figureShortcode("\n", "/assets/image.png", "A description of the image."), "<figure><img src=\"/assets/image.png\" alt=\"A description of the image.\"></figure>\n");
 });
 
+test("Renders caption containing line breaks without <br> tag", function (t) {
+    t.is(figureShortcode("A caption\nwith line break.", "/assets/image.png", "A description of the image."), "<figure><img src=\"/assets/image.png\" alt=\"A description of the image.\"><figcaption><p>A caption\nwith line break.</p></figcaption></figure>\n");
+});
+
 test("Returns empty string with missing source", function (t) {
     t.is(figureShortcode("A caption.", "", "A description of the image."), "");
 });
