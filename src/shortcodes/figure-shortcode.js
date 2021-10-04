@@ -25,7 +25,6 @@ module.exports = function (content, src, alt) {
     if (content.trim()) {
         const md = new MarkdownIt({
             html: true,
-            breaks: true,
             linkify: true
         });
 
