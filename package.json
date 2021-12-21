@@ -49,6 +49,6 @@
     "slugify": "1.6.0"
   },
   "peerDependencies": {
-    "infusion": "4.x"
+    "infusion": ">=4.0.0-dev.0"
   }
 }
