@@ -46,7 +46,7 @@
   "dependencies": {
     "html-minifier": "4.0.0",
     "markdown-it": "12.3.2",
-    "slugify": "1.6.4"
+    "slugify": "1.6.5"
   },
   "peerDependencies": {
     "infusion": "4.x"
