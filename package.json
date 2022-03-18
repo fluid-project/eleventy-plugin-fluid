@@ -41,7 +41,7 @@
     "husky": "4.3.8",
     "infusion": "4.0.0-dev.20210622T193827Z.ac6adb829.FLUID-6629",
     "rimraf": "3.0.2",
-    "standard-version": "9.3.1"
+    "standard-version": "9.3.2"
   },
   "dependencies": {
     "html-minifier": "4.0.0",
