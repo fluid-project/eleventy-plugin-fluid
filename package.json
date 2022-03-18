@@ -39,7 +39,7 @@
     "eslint-config-fluid": "2.0.0",
     "fluid-lint-all": "1.1.5",
     "husky": "4.3.8",
-    "infusion": "4.0.0-dev.20210622T193827Z.ac6adb829.FLUID-6629",
+    "infusion": "4.0.0",
     "rimraf": "3.0.2",
     "standard-version": "9.3.1"
   },
