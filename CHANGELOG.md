@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v0.3.1...v1.0.0) (2022-03-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* chore(deps-dev): require Eleventy 1.0
+
+### Features
+
+* add internationalization support to formatDate (fix [#60](https://github.com/fluid-project/eleventy-plugin-fluid/issues/60)) ([a8511e7](https://github.com/fluid-project/eleventy-plugin-fluid/commit/a8511e7a40488bdaba1968ff11cd218ace3076e0))
+* markdown filter inherits base configuration (fix [#85](https://github.com/fluid-project/eleventy-plugin-fluid/issues/85)) ([a8511e7](https://github.com/fluid-project/eleventy-plugin-fluid/commit/a8511e7a40488bdaba1968ff11cd218ace3076e0))
+* support Eleventy 1.0 (resolve [#93](https://github.com/fluid-project/eleventy-plugin-fluid/issues/93)) ([#109](https://github.com/fluid-project/eleventy-plugin-fluid/issues/109)) ([a8511e7](https://github.com/fluid-project/eleventy-plugin-fluid/commit/a8511e7a40488bdaba1968ff11cd218ace3076e0))
+
+
+### Bug Fixes
+
+* add fluid.css to uioStyles shortcode and add shortcode for CSS Custom Props (resolves [#81](https://github.com/fluid-project/eleventy-plugin-fluid/issues/81)) ([#110](https://github.com/fluid-project/eleventy-plugin-fluid/issues/110)) ([90d2489](https://github.com/fluid-project/eleventy-plugin-fluid/commit/90d24892786246830659ca9934ba3c210c4e4ff8))
+
 ### [0.3.1](https://www.github.com/fluid-project/eleventy-plugin-fluid/compare/v0.3.0...v0.3.1) (2021-10-04)
 
 
