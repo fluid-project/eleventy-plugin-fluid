@@ -13,7 +13,13 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 
 module.exports = {
     uioStyles: function () {
-        return `<link href="/lib/infusion/src/framework/preferences/css/Enactors.css" rel="stylesheet">
+        return `<link href="/lib/infusion/src/framework/core/css/fluid.css" rel="stylesheet">
+    <link href="/lib/infusion/src/framework/preferences/css/Enactors.css" rel="stylesheet">
+    <link href="/lib/infusion/src/framework/preferences/css/PrefsEditor.css" rel="stylesheet">
+    <link href="/lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" rel="stylesheet">`;
+    },
+    uioStyleProps: function () {
+        return `<link href="/lib/infusion/src/framework/preferences/css/Enactors_base.css" rel="stylesheet">
     <link href="/lib/infusion/src/framework/preferences/css/PrefsEditor.css" rel="stylesheet">
     <link href="/lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" rel="stylesheet">`;
     },

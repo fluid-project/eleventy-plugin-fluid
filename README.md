@@ -129,7 +129,9 @@ Output:
 
 ### uioStyles
 
-Outputs links to the required CSS assets for an instance of [Infusion User Interface Options][1].
+Outputs links to the required CSS assets for an instance of [Infusion User Interface Options][1]. Use this when you want
+the out-of-the-box/drop-in experience with UI Options styles overriding the site styles. This is the quickest way to
+start, but harder to customize and fit with your site's own styling.
 
 ```nunjucks
 {% uioStyles %}
@@ -138,7 +140,27 @@ Outputs links to the required CSS assets for an instance of [Infusion User Inter
 Result:
 
 ```html
+<link href="/lib/infusion/src/framework/core/css/fluid.css" rel="stylesheet">
 <link href="/lib/infusion/src/framework/preferences/css/Enactors.css" rel="stylesheet">
+<link href="/lib/infusion/src/framework/preferences/css/PrefsEditor.css" rel="stylesheet">
+<link href="/lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" rel="stylesheet">
+```
+
+### uioStyleProps
+
+Outputs links to the required CSS assets for an instance of [Infusion User Interface Options][1]. This only includes the
+related CSS Custom Properties. Use this when you want to have control over how the enactor styles are applied.
+
+See: [Integrating UI Options Styling Preferences](https://docs.fluidproject.org/infusion/development/tutorial-userinterfaceoptions/integratinguioptionsstylingpreferences)
+
+```nunjucks
+{% uioStyleProps %}
+```
+
+Result:
+
+```html
+<link href="/lib/infusion/src/framework/preferences/css/Enactors_base.css" rel="stylesheet">
 <link href="/lib/infusion/src/framework/preferences/css/PrefsEditor.css" rel="stylesheet">
 <link href="/lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" rel="stylesheet">
 ```
