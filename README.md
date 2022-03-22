@@ -77,16 +77,12 @@ Processes an input string using [Markdown](https://markdown-it.github.io).
 
 Output: `<p>A paragraph with some <em>emphasis</em>.</p>\n`
 
-#### slug
+#### slug (deprecated)
 
 Processes an input string by lowercasing it, replacing whitespace with hyphens, and stripping special characters to
 create a URL-safe version.
 
-```nunjucks
-{{ "Here’s my title!" | slug }};
-```
-
-Output: `heres-my-title`
+**NOTE: This filter is deprecated as of eleventy-plugin-fluid 1.0. Instead, use Eleventy's new `slugify` filter.**
 
 #### split
 
@@ -280,11 +276,8 @@ By default, `eleventy-plugin-fluid` copies the [required assets](src/config/uio-
 ### Releasing
 
 This package uses [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), enforced with
-[commitlint](https://commitlint.js.org/). This facilitates releasing new versions of the package. To cut a release, run:
-
-```bash
-npm run release
-```
+[commitlint](https://commitlint.js.org/). This facilitates releasing new versions of the package via [Release Please](https://github.com/googleapis/release-please).
+To cut a release, merge the current [release pull request](https://github.com/google-github-actions/release-please-action#whats-a-release-pr).
 
 This will tag an appropriate [semantic version](https://semver.org) based on the nature of the recent commits to the
 project and update [the changelog](CHANGELOG.md).

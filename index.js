@@ -17,7 +17,6 @@ const htmlMinifyTransform = require("./src/transforms/html-minify-transform.js")
 const isoDateFilter = require("./src/filters/iso-date-filter.js");
 const limitFilter = require("./src/filters/limit-filter.js");
 const markdownFilter = require("./src/filters/markdown-filter.js");
-const slugFilter = require("./src/filters/slug-filter.js");
 const splitFilter = require("./src/filters/split-filter.js");
 const uioShortcodes = require("./src/shortcodes/uio.js");
 const uioAssets = require("./src/config/uio-assets.json");
@@ -33,7 +32,9 @@ module.exports = {
         eleventyConfig.addFilter("isoDate", isoDateFilter);
         eleventyConfig.addFilter("limit", limitFilter);
         eleventyConfig.addFilter("markdown", markdownFilter);
-        eleventyConfig.addFilter("slug", slugFilter);
+        eleventyConfig.addFilter("slug", () => {
+            throw new Error("`slug` filter is no longer supported. Please use `slugify`.");
+        });
         eleventyConfig.addFilter("split", splitFilter);
 
         eleventyConfig.addPairedShortcode("figure", figureShortcode);
