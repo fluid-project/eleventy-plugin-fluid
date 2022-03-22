@@ -18,6 +18,11 @@ module.exports = {
     <link href="/lib/infusion/src/framework/preferences/css/PrefsEditor.css" rel="stylesheet">
     <link href="/lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" rel="stylesheet">`;
     },
+    uioStylesProps: function () {
+        return `<link href="/lib/infusion/src/framework/preferences/css/Enactors_base.css" rel="stylesheet">
+    <link href="/lib/infusion/src/framework/preferences/css/PrefsEditor.css" rel="stylesheet">
+    <link href="/lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" rel="stylesheet">`;
+    },
     uioScripts: function () {
 	      return `<link rel="preload" href="/lib/infusion/infusion-uio.js" as="script" />
     <script src="/lib/infusion/infusion-uio.js"></script>`;
