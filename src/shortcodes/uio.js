@@ -18,7 +18,7 @@ module.exports = {
     <link href="/lib/infusion/src/framework/preferences/css/PrefsEditor.css" rel="stylesheet">
     <link href="/lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" rel="stylesheet">`;
     },
-    uioStylesProps: function () {
+    uioStyleProps: function () {
         return `<link href="/lib/infusion/src/framework/preferences/css/Enactors_base.css" rel="stylesheet">
     <link href="/lib/infusion/src/framework/preferences/css/PrefsEditor.css" rel="stylesheet">
     <link href="/lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" rel="stylesheet">`;
