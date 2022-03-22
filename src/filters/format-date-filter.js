@@ -11,18 +11,34 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 "use strict";
 
-// @see https://stackoverflow.com/a/31615643
-const getOrdinal = function (n) {
-    const s = ["th", "st", "nd", "rd"],
-        v = n % 100;
+const formatOrdinal = function (n) {
+    const pr = new Intl.PluralRules("en", {
+        type: "ordinal"
+    });
 
-    return n + (s[(v - 20) % 10] || s[v] || s[0]);
+    const suffixes = new Map([
+        ["one",   "st"],
+        ["two",   "nd"],
+        ["few",   "rd"],
+        ["other", "th"]
+    ]);
+
+    const rule = pr.select(n);
+    const suffix = suffixes.get(rule);
+    return `${n}${suffix}`;
 };
 
-module.exports = function dateFilter(value) {
+module.exports = function dateFilter(value, locale = "en") {
     const dateObject = new Date(new Date(value).toUTCString());
+    const options = { year: "numeric", month: "long", day: "numeric"};
 
-    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    if (locale.startsWith("en")) {
+        let date = dateObject.toLocaleDateString(locale, options);
+        const regex = /([A-Z]\w+) ([0-9]{1,2}), ([0-9]{4})/g;
+        return date.replace(regex, (match, p1, p2, p3) => {
+            return `${p1} ${formatOrdinal(p2)}, ${p3}`;
+        });
+    }
 
-    return `${months[dateObject.getMonth()]} ${getOrdinal(dateObject.getDate())}, ${dateObject.getFullYear()}`;
+    return dateObject.toLocaleDateString(locale, options);
 };

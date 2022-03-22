@@ -46,6 +46,15 @@ Formats a date string.
 
 Output: `June 21st, 2020`
 
+Optionally, a [`locale` parameter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locale_identification_and_negotiation)
+can be supplied to format a date in a locale other than English.
+
+```nunjucks
+{{ "Sun Jun 21 2020 18:00:00 GMT-0300 (Atlantic Daylight Time)" | formatDate('fr') }}
+```
+
+Output: `21 juin 2020`
+
 #### isoDate
 
 Formats a date string to [ISO 8601](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString)
