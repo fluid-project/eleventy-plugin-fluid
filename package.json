@@ -42,8 +42,7 @@
     "rimraf": "3.0.2"
   },
   "dependencies": {
-    "html-minifier": "4.0.0",
-    "markdown-it": "12.3.2"
+    "html-minifier": "4.0.0"
   },
   "peerDependencies": {
     "infusion": "4.0.0"
