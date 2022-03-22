@@ -91,8 +91,8 @@ Output: `<p>A paragraph with some <em>emphasis</em>.</p>\n`
 Processes an input string by lowercasing it, replacing whitespace with hyphens, and stripping special characters to
 create a URL-safe version.
 
-**NOTE: This filter is deprecated and the `slug-filter.js` file has been removed as of eleventy-plugin-fluid 1.0. Instead, use Eleventy's new [`slugify`](https://www.11ty.dev/docs/filters/slugify/)
-filter.**
+**NOTE: This filter is deprecated and the `slug-filter.js` file has been removed as of eleventy-plugin-fluid 1.0. 
+Instead, use Eleventy's new [`slugify`](https://www.11ty.dev/docs/filters/slugify/) filter.**
 
 #### split
 
