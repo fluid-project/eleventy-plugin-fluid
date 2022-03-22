@@ -46,6 +46,15 @@ Formats a date string.
 
 Output: `June 21st, 2020`
 
+Optionally, a [`locale` parameter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locale_identification_and_negotiation)
+can be supplied to format a date in a locale other than English.
+
+```nunjucks
+{{ "Sun Jun 21 2020 18:00:00 GMT-0300 (Atlantic Daylight Time)" | formatDate('fr') }}
+```
+
+Output: `21 juin 2020`
+
 #### isoDate
 
 Formats a date string to [ISO 8601](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString)
@@ -77,16 +86,13 @@ Processes an input string using [Markdown](https://markdown-it.github.io).
 
 Output: `<p>A paragraph with some <em>emphasis</em>.</p>\n`
 
-#### slug
+#### slug (deprecated)
 
 Processes an input string by lowercasing it, replacing whitespace with hyphens, and stripping special characters to
 create a URL-safe version.
 
-```nunjucks
-{{ "Here’s my title!" | slug }};
-```
-
-Output: `heres-my-title`
+**NOTE: This filter is deprecated and the `slug-filter.js` file has been removed as of eleventy-plugin-fluid 1.0.
+Instead, use Eleventy's new [`slugify`](https://www.11ty.dev/docs/filters/slugify/) filter.**
 
 #### split
 
@@ -302,11 +308,8 @@ By default, `eleventy-plugin-fluid` copies the [required assets](src/config/uio-
 ### Releasing
 
 This package uses [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), enforced with
-[commitlint](https://commitlint.js.org/). This facilitates releasing new versions of the package. To cut a release, run:
-
-```bash
-npm run release
-```
+[commitlint](https://commitlint.js.org/). This facilitates releasing new versions of the package via [Release Please](https://github.com/googleapis/release-please).
+To cut a release, merge the current [release pull request](https://github.com/google-github-actions/release-please-action#whats-a-release-pr).
 
 This will tag an appropriate [semantic version](https://semver.org) based on the nature of the recent commits to the
 project and update [the changelog](CHANGELOG.md).
