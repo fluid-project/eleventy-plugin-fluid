@@ -7,11 +7,10 @@
   },
   "main": "index.js",
   "scripts": {
-    "build": "eleventy",
+    "build": "rimraf dist && eleventy",
     "lint": "fluid-lint-all",
     "start": "rimraf dist && eleventy --serve",
-    "test": "ava",
-    "release": "standard-version -t ''"
+    "test": "ava"
   },
   "repository": {
     "type": "git",
