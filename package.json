@@ -10,7 +10,8 @@
     "build": "rimraf dist && eleventy",
     "lint": "fluid-lint-all",
     "start": "rimraf dist && eleventy --serve",
-    "test": "ava"
+    "test": "ava",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -25,21 +26,16 @@
     "url": "https://github.com/fluid-project/eleventy-plugin-fluid/issues"
   },
   "homepage": "https://github.com/fluid-project/eleventy-plugin-fluid#readme",
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
   "devDependencies": {
-    "@11ty/eleventy": "1.0.0",
-    "@commitlint/cli": "16.2.3",
-    "@commitlint/config-conventional": "16.2.1",
-    "ava": "4.1.0",
-    "eslint-config-fluid": "2.0.1",
-    "fluid-lint-all": "1.1.5",
-    "husky": "4.3.8",
-    "infusion": "4.0.0",
-    "rimraf": "3.0.2"
+    "@11ty/eleventy": "2.0.1",
+    "@commitlint/cli": "17.6.5",
+    "@commitlint/config-conventional": "17.6.5",
+    "ava": "5.3.0",
+    "eslint-config-fluid": "2.1.1",
+    "fluid-lint-all": "1.2.9",
+    "husky": "^7.0.0",
+    "infusion": "4.6.0",
+    "rimraf": "5.0.1"
   },
   "dependencies": {
     "html-minifier": "4.0.0"

@@ -14,6 +14,6 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 const test = require("ava");
 const markdownFilter = require("../src/filters/markdown-filter.js");
 
-test("Formats date properly", function (t) {
+test("Renders Markdown properly", function (t) {
     t.is(markdownFilter("A paragraph with some _emphasis_."), "<p>A paragraph with some <em>emphasis</em>.</p>\n");
 });
