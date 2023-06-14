@@ -14,7 +14,7 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 const TemplateConfig = require("@11ty/eleventy/src/TemplateConfig.js");
 const TemplateEngineManager = require("@11ty/eleventy/src/TemplateEngineManager.js");
 module.exports = function markdown(value) {
-    let config = new TemplateConfig().getConfig();
+    let config = new TemplateConfig();
     let tem = new TemplateEngineManager(config);
     const md = tem.getEngine("md").engineLib;
     return md.render(value);
