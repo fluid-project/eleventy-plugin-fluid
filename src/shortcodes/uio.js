@@ -19,7 +19,10 @@ module.exports = {
     <link href="/lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" rel="stylesheet">`;
     },
     uioStyleProps: function () {
-        return `<link href="/lib/infusion/src/framework/preferences/css/Enactors_base.css" rel="stylesheet">
+        return `<link href="/lib/infusion/src/framework/core/css/fluid.css" rel="stylesheet">
+    <link href="/lib/infusion/src/framework/preferences/css/Contrast_base.css" rel="stylesheet">
+    <link href="/lib/infusion/src/framework/preferences/css/EnhanceInputs_base.css" rel="stylesheet">
+    <link href="/lib/infusion/src/framework/preferences/css/Font_base.css" rel="stylesheet">
     <link href="/lib/infusion/src/framework/preferences/css/PrefsEditor.css" rel="stylesheet">
     <link href="/lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" rel="stylesheet">`;
     },
