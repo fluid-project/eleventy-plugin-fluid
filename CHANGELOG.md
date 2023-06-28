@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.2](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v1.0.1...v1.0.2) (2023-06-28)
+
+
+### Bug Fixes
+
+* resolve issue with props-only UIO implementation ([#159](https://github.com/fluid-project/eleventy-plugin-fluid/issues/159)) ([6f8e33b](https://github.com/fluid-project/eleventy-plugin-fluid/commit/6f8e33b6657e4c0c3ce0d2180a03f066305e7fb1))
+
 ## [1.0.1](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v1.0.0...v1.0.1) (2023-06-14)
 
 
