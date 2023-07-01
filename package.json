@@ -28,7 +28,7 @@
   "homepage": "https://github.com/fluid-project/eleventy-plugin-fluid#readme",
   "devDependencies": {
     "@11ty/eleventy": "2.0.1",
-    "@commitlint/cli": "17.6.5",
+    "@commitlint/cli": "17.6.6",
     "@commitlint/config-conventional": "17.6.5",
     "ava": "5.3.0",
     "eslint-config-fluid": "2.1.1",
