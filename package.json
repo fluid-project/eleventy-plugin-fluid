@@ -29,7 +29,7 @@
   "devDependencies": {
     "@11ty/eleventy": "2.0.1",
     "@commitlint/cli": "17.6.6",
-    "@commitlint/config-conventional": "17.6.5",
+    "@commitlint/config-conventional": "17.6.6",
     "ava": "5.3.1",
     "eslint-config-fluid": "2.1.1",
     "fluid-lint-all": "1.2.9",
