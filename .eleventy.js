@@ -15,8 +15,10 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 const fluidPlugin = require("./index.js");
 
 module.exports = function (eleventyConfig) {
-    eleventyConfig.addPlugin(fluidPlugin);
-    eleventyConfig.addPassthroughCopy("test/assets/", "/assets/");
+    eleventyConfig.addPlugin(fluidPlugin, {
+        cssPaths: ["./test/assets/styles/app.css"]
+    });
+    eleventyConfig.addPassthroughCopy("test/assets/images", "/assets/");
 
     return {
         dir: {

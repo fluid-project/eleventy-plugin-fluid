@@ -20,14 +20,19 @@ const markdownFilter = require("./src/filters/markdown-filter.js");
 const splitFilter = require("./src/filters/split-filter.js");
 const uioShortcodes = require("./src/shortcodes/uio.js");
 const uioAssets = require("./src/config/uio-assets.json");
+const compileCss = require("./src/compilers/compileCss.js");
 
 module.exports = {
     initArguments: {},
     configFunction: function (eleventyConfig, options = {}) {
         options = Object.assign({
-            uio: true
+            uio: true,
+            cssPaths: [
+                "./src/assets/styles/app.css"
+            ]
         }, options);
 
+        /** Filters */
         eleventyConfig.addFilter("formatDate", formatDateFilter);
         eleventyConfig.addFilter("isoDate", isoDateFilter);
         eleventyConfig.addFilter("limit", limitFilter);
@@ -37,6 +42,7 @@ module.exports = {
         });
         eleventyConfig.addFilter("split", splitFilter);
 
+        /** Shortcodes */
         eleventyConfig.addPairedShortcode("figure", figureShortcode);
 
         if (options.uio) {
@@ -51,6 +57,16 @@ module.exports = {
             });
         }
 
+        /** Template Formats */
+        eleventyConfig.addTemplateFormats("css");
+        eleventyConfig.addExtension("css", {
+            outputFileExtension: "css",
+            compile: async (content, path) => {
+                return await compileCss(content, path, options.cssPaths);
+            }
+        });
+
+        /** Transforms */
         eleventyConfig.addTransform("htmlMinify", htmlMinifyTransform);
     }
 };
