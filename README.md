@@ -66,13 +66,13 @@ Default values are as follows:
 
 ```json
 {
-    basePath: "./src/assets/styles",
-    minify: true,
-    sourceMap: false,
-    drafts: {
-        nesting: true
+    "basePath": "./src/assets/styles",
+    "minify": true,
+    "sourceMap": false,
+    "drafts": {
+        "nesting": true
     },
-    browserslist: "> 1%"
+    "browserslist": "> 1%"
 }
 ```
 
