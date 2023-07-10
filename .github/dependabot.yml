@@ -19,7 +19,7 @@ updates:
       - dependency-name: "husky"
         versions: [">=5"]
   # Enable version updates for GitHub Actions
-  - package-ecosystem: "github_actions"
+  - package-ecosystem: "github-actions"
     directory: "/"
     # Check for updates once a month
     schedule:
