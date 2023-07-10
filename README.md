@@ -76,6 +76,8 @@ Default values are as follows:
 }
 ```
 
+If you wish to disable Browserslist altogether, you can pass an empty array (`[]`) to the `browserslist` key.
+
 For more options, see the [LightningCSS docs](https://lightningcss.dev/docs.html).
 
 ### Filters

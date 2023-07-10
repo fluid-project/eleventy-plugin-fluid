@@ -20,8 +20,8 @@ const markdownFilter = require("./src/filters/markdown-filter.js");
 const splitFilter = require("./src/filters/split-filter.js");
 const uioShortcodes = require("./src/shortcodes/uio.js");
 const uioAssets = require("./src/config/uio-assets.json");
-const compileCss = require("./src/compilers/compileCss.js");
-const deepMerge = require("./src/utils/deepMerge.js");
+const compileCss = require("./src/compilers/compile-css.js");
+const deepMerge = require("./src/utils/deep-merge.js");
 
 module.exports = {
     initArguments: {},
@@ -38,6 +38,7 @@ module.exports = {
                 browserslist: "> 1%"
             }
         }, options);
+
 
 
         /** Filters */
