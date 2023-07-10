@@ -11,14 +11,13 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 "use strict";
 
+const fs = require("fs");
 const test = require("ava");
 const Eleventy = require("@11ty/eleventy");
 
 test("Builds minified CSS", async function (t) {
     let elev = new Eleventy();
-    let json = await elev.toJSON();
-    let css = json.find(function (item) {
-        return item.outputPath === "dist/assets/styles/app.css";
-    });
-    t.is(css.content, "*+*{margin-top:var(--space, 1em)}");
+    await elev.write();
+    let css = fs.readFileSync("dist/assets/styles/app.css", "utf8");
+    t.is(css, "*+*{margin-top:var(--space,1em)}");
 });

@@ -38,10 +38,9 @@
     "rimraf": "5.0.1"
   },
   "dependencies": {
+    "browserslist": "4.21.9",
     "html-minifier": "4.0.0",
-    "postcss": "8.4.25",
-    "postcss-csso": "6.0.1",
-    "postcss-logical": "7.0.0"
+    "lightningcss": "1.21.5"
   },
   "peerDependencies": {
     "infusion": "4.x"
