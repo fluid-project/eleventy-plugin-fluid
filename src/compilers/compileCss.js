@@ -11,22 +11,26 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 "use strict";
 
-const { bundle } = require("lightningcss");
+const browserslist = require("browserslist");
+const { bundle, browserslistToTargets } = require("lightningcss");
+const path = require("node:path");
 
-module.exports = async (content, path, paths) => {
-    if (!paths.includes(path)) {
+module.exports = async (content, inputPath, options) => {
+    let parsed = path.parse(inputPath);
+    if (!inputPath.startsWith(options.basePath) || parsed.name.startsWith("_")) {
         return;
     }
 
+    let targets = browserslistToTargets(browserslist(options.browserslist));
+
     return async () => {
-        let { code } = await bundle({
-            filename: path,
-            minify: true,
-            sourceMap: false,
-            drafts: {
-                nesting: true
+        let { code } = await bundle(Object.assign(
+            options,
+            {
+                filename: inputPath,
+                targets
             }
-        });
+        ));
         return code;
     };
 };

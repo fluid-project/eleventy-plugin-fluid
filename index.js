@@ -21,16 +21,24 @@ const splitFilter = require("./src/filters/split-filter.js");
 const uioShortcodes = require("./src/shortcodes/uio.js");
 const uioAssets = require("./src/config/uio-assets.json");
 const compileCss = require("./src/compilers/compileCss.js");
+const deepMerge = require("./src/utils/deepMerge.js");
 
 module.exports = {
     initArguments: {},
     configFunction: function (eleventyConfig, options = {}) {
-        options = Object.assign({
+        options = deepMerge({
             uio: true,
-            cssPaths: [
-                "./src/assets/styles/app.css"
-            ]
+            css: {
+                basePath: "./src/assets/styles",
+                minify: true,
+                sourceMap: false,
+                drafts: {
+                    nesting: true
+                },
+                browserslist: "> 1%"
+            }
         }, options);
+
 
         /** Filters */
         eleventyConfig.addFilter("formatDate", formatDateFilter);
@@ -62,7 +70,7 @@ module.exports = {
         eleventyConfig.addExtension("css", {
             outputFileExtension: "css",
             compile: async (content, path) => {
-                return await compileCss(content, path, options.cssPaths);
+                return await compileCss(content, path, options.css);
             }
         });
 

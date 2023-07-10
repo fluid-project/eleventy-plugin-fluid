@@ -30,6 +30,54 @@ module.exports = function (config) {
 
 ## Usage
 
+### Asset Handling
+
+`eleventy-plugin-fluid` includes configuration for processing and bundling CSS files using [LightningCSS](https://lightningcss.dev/).
+
+Coming soon:
+
+- Sass files using [Sass](https://sass-lang.com) and [LightningCSS](https://lightningcss.dev/)
+- JavaScript files using [esbuild](https://esbuild.github.io).
+
+#### CSS
+
+By default, any CSS files found in the `./src/assets/styles/` directory or its children will be processed _unless their
+filename begins with an underscure (`_`)_. For this reason, if you are using CSS partials via the [`@import`](https://lightningcss.dev/bundling.html#%40import)
+rule, you should name them according to the pattern `_partial.css` to prevent them from being transformed as standalone
+files (this convention will be familiar to those who have worked with Sass and Sass partials).
+
+Options for LightningCSS may be modified by passing values to the `css` option when registering `eleventy-plugin-fluid`
+in your config:
+
+```diff
+const fluidPlugin = require("eleventy-plugin-fluid");
+
+module.exports = function (config) {
+-    config.addPlugin(fluidPlugin);
++    config.addPlugin(fluidPlugin, {
++        css: {
++              cssModules: true,
++        }
++    });
+};
+```
+
+Default values are as follows:
+
+```json
+{
+    basePath: "./src/assets/styles",
+    minify: true,
+    sourceMap: false,
+    drafts: {
+        nesting: true
+    },
+    browserslist: "> 1%"
+}
+```
+
+For more options, see the [LightningCSS docs](https://lightningcss.dev/docs.html).
+
 ### Filters
 
 All examples use the [Nunjucks](https://mozilla.github.io/nunjucks/) template language. Eleventy supports a number of
@@ -166,7 +214,10 @@ See: [Integrating UI Options Styling Preferences](https://docs.fluidproject.org/
 Result:
 
 ```html
-<link href="/lib/infusion/src/framework/preferences/css/Enactors_base.css" rel="stylesheet">
+<link href="/lib/infusion/src/framework/core/css/fluid.css" rel="stylesheet">
+<link href="/lib/infusion/src/framework/preferences/css/Contrast_base.css" rel="stylesheet">
+<link href="/lib/infusion/src/framework/preferences/css/EnhanceInputs_base.css" rel="stylesheet">
+<link href="/lib/infusion/src/framework/preferences/css/Font_base.css" rel="stylesheet">
 <link href="/lib/infusion/src/framework/preferences/css/PrefsEditor.css" rel="stylesheet">
 <link href="/lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" rel="stylesheet">
 ```
@@ -322,3 +373,16 @@ npm publish
 ```
 
 For more information on publishing to npm, see the [npm publish documentation](https://docs.npmjs.com/cli/publish).
+
+## Third Party Software in `eleventy-plugin-fluid`
+
+Trivet is based on other publicly available software, categorized by license:
+
+### ISC License
+
+- [eleventy-plugin-lightningcss](https://github.com/5t3ph/eleventy-plugin-lightningcss)
+- [eleventy-plugin-sass-lightningcss](https://github.com/5t3ph/eleventy-plugin-sass-lightningcss)
+
+### MIT License
+
+- [deepMerge.js](https://vanillajstoolkit.com/helpers/deepmerge/)

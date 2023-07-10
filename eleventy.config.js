@@ -17,7 +17,9 @@ const inputPath = "./fixtures";
 
 module.exports = function (eleventyConfig) {
     eleventyConfig.addPlugin(fluidPlugin, {
-        cssPaths: [`${inputPath}/assets/styles/app.css`]
+        css: {
+            basePath: `${inputPath}/assets/styles`
+        }
     });
     eleventyConfig.addPassthroughCopy(`${inputPath}/assets/images`, "/assets/");
 

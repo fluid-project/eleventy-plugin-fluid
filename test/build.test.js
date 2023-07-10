@@ -19,5 +19,5 @@ test("Builds minified CSS", async function (t) {
     let elev = new Eleventy();
     await elev.write();
     let css = fs.readFileSync("dist/assets/styles/app.css", "utf8");
-    t.is(css, "*+*{margin-top:var(--space,1em)}");
+    t.is(css, "*{box-sizing:border-box}*+*{margin-top:var(--space,1em)}");
 });
