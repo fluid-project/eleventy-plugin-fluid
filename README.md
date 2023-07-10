@@ -376,7 +376,7 @@ For more information on publishing to npm, see the [npm publish documentation](h
 
 ## Third Party Software in `eleventy-plugin-fluid`
 
-Trivet is based on other publicly available software, categorized by license:
+`eleventy-plugin-fluid` is based on other publicly available software, categorized by license:
 
 ### ISC License
 
