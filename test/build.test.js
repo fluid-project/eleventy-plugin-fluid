@@ -18,6 +18,8 @@ const Eleventy = require("@11ty/eleventy");
 test("Builds minified CSS", async function (t) {
     let elev = new Eleventy();
     await elev.write();
-    let css = fs.readFileSync("dist/assets/styles/app.css", "utf8");
-    t.is(css, "*{box-sizing:border-box}button{font-family:inherit;font-size:1rem}*+*{margin-top:var(--space,1em)}");
+    let mainCss = fs.readFileSync("dist/assets/styles/app.css", "utf8");
+    let timelineCss = fs.readFileSync("dist/assets/styles/pages/timeline.css", "utf8");
+    t.is(mainCss, "*{box-sizing:border-box}button{font-family:inherit;font-size:1rem}*+*{margin-top:var(--space,1em)}");
+    t.is(timelineCss, ".timeline ul{padding-inline-start:0;list-style:none}");
 });
