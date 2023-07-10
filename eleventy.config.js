@@ -9,20 +9,21 @@ Licensed under the New BSD license. You may not use this file except in complian
 You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
-
 "use strict";
 
 const fluidPlugin = require("./index.js");
 
+const inputPath = "./fixtures";
+
 module.exports = function (eleventyConfig) {
     eleventyConfig.addPlugin(fluidPlugin, {
-        cssPaths: ["./test/assets/styles/app.css"]
+        cssPaths: [`${inputPath}/assets/styles/app.css`]
     });
-    eleventyConfig.addPassthroughCopy("test/assets/images", "/assets/");
+    eleventyConfig.addPassthroughCopy(`${inputPath}/assets/images`, "/assets/");
 
     return {
         dir: {
-            input: "test",
+            input: inputPath,
             output: "dist"
         },
         passthroughFileCopy: true
