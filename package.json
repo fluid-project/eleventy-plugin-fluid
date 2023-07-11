@@ -47,5 +47,8 @@
   },
   "peerDependencies": {
     "infusion": "4.x"
+  },
+  "ava": {
+    "timeout": "15s"
   }
 }

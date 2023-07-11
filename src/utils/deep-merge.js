@@ -7,7 +7,7 @@
 
 "use strict";
 
-module.exports = function deepMerge(...objs) {
+let deepMerge = function (...objs) {
     /**
      * Get the object type
      * @param  {Any}       obj - The object
@@ -61,3 +61,5 @@ module.exports = function deepMerge(...objs) {
 
     return clone;
 };
+
+module.exports = deepMerge;
