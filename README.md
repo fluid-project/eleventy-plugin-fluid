@@ -32,17 +32,15 @@ module.exports = function (config) {
 
 ### Asset Handling
 
-`eleventy-plugin-fluid` includes configuration for processing and bundling CSS files using [LightningCSS](https://lightningcss.dev/).
+`eleventy-plugin-fluid` includes configuration for processing and bundling Sass and CSS files using [Sass](https://sass-lang.com)
+and [LightningCSS](https://lightningcss.dev/).
 
-Coming soon:
-
-- Sass files using [Sass](https://sass-lang.com) and [LightningCSS](https://lightningcss.dev/)
-- JavaScript files using [esbuild](https://esbuild.github.io).
+Coming soon: JavaScript files using [esbuild](https://esbuild.github.io).
 
 #### CSS
 
 By default, any CSS files found in the `./src/assets/styles/` directory or its children will be processed _unless their
-filename begins with an underscure (`_`)_. For this reason, if you are using CSS partials via the [`@import`](https://lightningcss.dev/bundling.html#%40import)
+filename begins with an underscore (`_`)_. For this reason, if you are using CSS partials via the [`@import`](https://lightningcss.dev/bundling.html#%40import)
 rule, you should name them according to the pattern `_partial.css` to prevent them from being transformed as standalone
 files (this convention will be familiar to those who have worked with Sass and Sass partials).
 
@@ -79,6 +77,47 @@ Default values are as follows:
 If you wish to disable Browserslist altogether, you can pass an empty array (`[]`) to the `browserslist` key.
 
 For more options, see the [LightningCSS docs](https://lightningcss.dev/docs.html).
+
+#### Sass
+
+By default, any Sass files with the `.scss` extension found in the `./src/assets/styles/` directory or its children will
+be processed _unless their filename begins with an underscore (`_`)_.
+
+Options for Sass and LightningCSS may be modified by passing values to the `css` option when registering `eleventy-plugin-fluid`
+in your config:
+
+```diff
+const fluidPlugin = require("eleventy-plugin-fluid");
+
+module.exports = function (config) {
+-    config.addPlugin(fluidPlugin);
++    config.addPlugin(fluidPlugin, {
++        css: {
++              browserslist: '> 1.5%',
++        }
++    });
+};
+```
+
+Default values are as follows:
+
+```json
+{
+    "basePath": "./src/assets/styles",
+    "minify": true,
+    "sourceMap": false,
+    "drafts": {
+        "nesting": true
+    },
+    "browserslist": "> 1%"
+}
+```
+
+Note that all of these will be passed to LightningCSS, not Sass, with the exception of `basePath`.
+
+If you wish to disable Browserslist altogether, you can pass an empty array (`[]`) to the `browserslist` key.
+
+For more options, see the [Sass](https://sass-lang.com/documentation/) and [LightningCSS docs](https://lightningcss.dev/docs.html).
 
 ### Filters
 
