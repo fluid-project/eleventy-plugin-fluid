@@ -21,6 +21,7 @@ const splitFilter = require("./src/filters/split-filter.js");
 const uioShortcodes = require("./src/shortcodes/uio.js");
 const uioAssets = require("./src/config/uio-assets.json");
 const compileCss = require("./src/compilers/compile-css.js");
+const compileSass = require("./src/compilers/compile-sass.js");
 const deepMerge = require("./src/utils/deep-merge.js");
 
 module.exports = {
@@ -38,8 +39,6 @@ module.exports = {
                 browserslist: "> 1%"
             }
         }, options);
-
-
 
         /** Filters */
         eleventyConfig.addFilter("formatDate", formatDateFilter);
@@ -70,8 +69,16 @@ module.exports = {
         eleventyConfig.addTemplateFormats("css");
         eleventyConfig.addExtension("css", {
             outputFileExtension: "css",
-            compile: async (content, path) => {
-                return await compileCss(content, path, options.css);
+            compile: async function (inputContent, inputPath) {
+                return await compileCss(inputContent, inputPath, options.css);
+            }
+        });
+
+        eleventyConfig.addTemplateFormats("scss");
+        eleventyConfig.addExtension("scss", {
+            outputFileExtension: "css",
+            compile: async function (inputContent, inputPath) {
+                return await compileSass(inputContent, inputPath, options.css, this);
             }
         });
 
