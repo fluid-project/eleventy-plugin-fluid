@@ -1,12 +1,15 @@
 .github
+.husky
+coverage
 dist
+fixtures
 test
 .commitlintrc.json
 .editorconfig
-.eleventy.js
 .eleventyignore
 .eslintrc.json
+.fluidlintallrc.json
 .gitignore
 .npmignore
-Gruntfile.js
+eleventy.config.js
 package-lock.json
