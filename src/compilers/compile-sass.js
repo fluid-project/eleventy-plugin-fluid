@@ -36,10 +36,12 @@ module.exports = async function (inputContent, inputPath, options, self) {
             options,
             {
                 code: Buffer.from(result.css),
-                sourcemap: false,
+                inputSourceMap: options.sourceMap ? result.sourceMap.toString() : null,
+                sourcemap: options.sourceMap,
                 targets
             }
         ));
+
         return code;
     };
 };
