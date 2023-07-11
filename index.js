@@ -21,7 +21,7 @@ const splitFilter = require("./src/filters/split-filter.js");
 const uioShortcodes = require("./src/shortcodes/uio.js");
 const uioAssets = require("./src/config/uio-assets.json");
 const compileCss = require("./src/compilers/compile-css.js");
-const deepMerge = require("./src/utils/deep-merge.js");
+const deepMerge = require("./src/utils/deepMerge.js");
 
 module.exports = {
     initArguments: {},
@@ -38,8 +38,6 @@ module.exports = {
                 browserslist: "> 1%"
             }
         }, options);
-
-
 
         /** Filters */
         eleventyConfig.addFilter("formatDate", formatDateFilter);

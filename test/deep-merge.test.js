@@ -12,7 +12,7 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 "use strict";
 
 const test = require("ava");
-const deepMerge = require("../src/utils/deep-merge.js");
+const deepMerge = require("../src/utils/deepMerge.js");
 
 test("Passing false replaces an original value", function (t) {
     t.deepEqual(deepMerge({browserslist: "> 2%"}, {browserslist: false}), {browserslist: false});
