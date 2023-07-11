@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v1.0.2...v1.1.0) (2023-07-11)
+
+
+### Features
+
+* add CSS processing configuration (resolves [#3](https://github.com/fluid-project/eleventy-plugin-fluid/issues/3)) ([#164](https://github.com/fluid-project/eleventy-plugin-fluid/issues/164)) ([c65a7cb](https://github.com/fluid-project/eleventy-plugin-fluid/commit/c65a7cb94e0eae9b968c2f57975b6aee98e59267))
+
 ## [1.0.2](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v1.0.1...v1.0.2) (2023-06-28)
 
 
