@@ -11,7 +11,7 @@
     "coverage": "c8 ava",
     "lint": "fluid-lint-all",
     "start": "rimraf dist && eleventy --serve",
-    "test": "ava --timeout=15s",
+    "test": "ava",
     "prepare": "husky install"
   },
   "repository": {
@@ -46,5 +46,8 @@
   },
   "peerDependencies": {
     "infusion": "4.x"
+  },
+  "ava": {
+    "timeout": "15s"
   }
 }
