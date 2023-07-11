@@ -8,6 +8,7 @@
   "main": "index.js",
   "scripts": {
     "build": "rimraf dist && eleventy",
+    "coverage": "c8 ava",
     "lint": "fluid-lint-all",
     "start": "rimraf dist && eleventy --serve",
     "test": "ava",
@@ -31,6 +32,7 @@
     "@commitlint/cli": "17.6.6",
     "@commitlint/config-conventional": "17.6.6",
     "ava": "5.3.1",
+    "c8": "8.0.0",
     "eslint-config-fluid": "2.1.1",
     "fluid-lint-all": "1.2.9",
     "husky": "^7.0.0",
@@ -38,9 +40,14 @@
     "rimraf": "5.0.1"
   },
   "dependencies": {
-    "html-minifier": "4.0.0"
+    "browserslist": "4.21.9",
+    "html-minifier": "4.0.0",
+    "lightningcss": "1.21.5"
   },
   "peerDependencies": {
     "infusion": "4.x"
+  },
+  "ava": {
+    "timeout": "15s"
   }
 }

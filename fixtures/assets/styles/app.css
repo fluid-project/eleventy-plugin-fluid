@@ -1,0 +1,6 @@
+@import "base/_reset.css";
+@import "components/_button.css";
+
+* + * {
+    margin-top: var(--space, 1em);
+}
