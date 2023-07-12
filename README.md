@@ -113,7 +113,7 @@ Default values are as follows:
 }
 ```
 
-Note that all of these will be passed to LightningCSS, not Sass, with the exception of `basePath`.
+Note that all of these will be passed to LightningCSS, not Sass, with the exception of `basePath` and `sourceMap`.
 
 If you wish to disable Browserslist altogether, you can pass an empty array (`[]`) to the `browserslist` key.
 
