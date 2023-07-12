@@ -2,7 +2,7 @@
 
 ## Copyright Holders
 
-Copyright 2020
+Copyright 2020-2023
 
 This is the list of eleventy-plugin-fluid copyright holders. It does not list all individual contributors because some
 have assigned copyright to an institution, only made minor changes, or their contributions no longer appear in the
