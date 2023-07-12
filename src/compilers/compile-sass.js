@@ -16,7 +16,7 @@ const { transform, browserslistToTargets } = require("lightningcss");
 const sass = require("sass");
 const path = require("node:path");
 
-module.exports = async function (inputContent, inputPath, options, self) {
+module.exports = async function (inputContent, inputPath, options, templateConfig) {
     let parsed = path.parse(inputPath);
     if (!inputPath.startsWith(options.basePath) || parsed.name.startsWith("_")) {
         return;
@@ -27,7 +27,8 @@ module.exports = async function (inputContent, inputPath, options, self) {
         sourceMap: options.sourceMap
     });
 
-    self.addDependencies(inputPath, result.loadedUrls);
+    /** Register dependencies of the input file: https://www.11ty.dev/docs/languages/custom/#registering-dependencies */
+    templateConfig.addDependencies(inputPath, result.loadedUrls);
 
     let targets = browserslistToTargets(browserslist(options.browserslist));
 
