@@ -20,12 +20,15 @@ test.before(async function () {
     await elev.write();
 });
 
-test("Builds minified CSS",  function (t) {
+test("Builds minified CSS from CSS", async function (t) {
     let mainCss = fs.readFileSync("dist/assets/styles/app.css", "utf8");
     let timelineCss = fs.readFileSync("dist/assets/styles/pages/timeline.css", "utf8");
-    let sassCss = fs.readFileSync("dist/assets/styles/sass.css", "utf8");
     t.is(mainCss, "*{box-sizing:border-box}button{font-family:inherit;font-size:1rem}*+*{margin-top:var(--space,1em)}");
     t.is(timelineCss, ".timeline ul{padding-inline-start:0;list-style:none}");
+});
+
+test("Builds minified CSS from Sass", async function (t) {
+    let sassCss = fs.readFileSync("dist/assets/styles/sass.css", "utf8");
     t.is(sassCss, "a{color:#600}mark{background-color:#f90}");
 });
 
