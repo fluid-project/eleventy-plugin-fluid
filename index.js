@@ -32,6 +32,7 @@ module.exports = {
             uio: true,
             css: {
                 basePath: "./src/assets/styles",
+                enabled: true,
                 minify: true,
                 sourceMap: false,
                 drafts: {
@@ -39,13 +40,20 @@ module.exports = {
                 },
                 browserslist: "> 1%"
             },
-            scss: true,
+            sass: {
+                basePath: "./src/assets/styles",
+                enabled: false,
+                minify: true,
+                sourceMap: false,
+                drafts: {
+                    nesting: true
+                },
+                browserslist: "> 1%"            },
             js: {
                 basePath: "./src/assets/scripts",
-                esbuild: {
-                    target: "es2020",
-                    minify: true
-                }
+                enabled: true,
+                minify: true,
+                target: "es2020"
             }
         }, options);
 
@@ -90,7 +98,7 @@ module.exports = {
             eleventyConfig.addExtension("scss", {
                 outputFileExtension: "css",
                 compile: async function (inputContent, inputPath) {
-                    return await compileSass(inputContent, inputPath, options.css, this);
+                    return await compileSass(inputContent, inputPath, options.sass, this);
                 }
             });
         }

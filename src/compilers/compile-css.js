@@ -24,6 +24,10 @@ module.exports = async (content, inputPath, options) => {
     let targets = browserslistToTargets(browserslist(options.browserslist));
 
     return async () => {
+        // These aren't used by LightningCSS, so we remove them before merging and passing the options object.
+        delete options.basePath;
+        delete options.enabled;
+
         let { code } = await bundle(Object.assign(
             options,
             {

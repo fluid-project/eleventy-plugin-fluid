@@ -20,6 +20,9 @@ module.exports = function (eleventyConfig) {
         css: {
             basePath: `${inputPath}/assets/styles`
         },
+        sass: {
+            enabled: true
+        },
         js: {
             basePath: `${inputPath}/assets/scripts`
         }
