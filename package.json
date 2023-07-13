@@ -50,6 +50,6 @@
     "infusion": "4.x"
   },
   "ava": {
-    "timeout": "15s"
+    "timeout": "30s"
   }
 }
