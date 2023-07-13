@@ -16,7 +16,7 @@ const test = require("ava");
 const Eleventy = require("@11ty/eleventy");
 
 test.before(async function () {
-    let elev = new Eleventy("fixtures", "dist", {quietMode: true});
+    let elev = new Eleventy();
     await elev.write();
 });
 
