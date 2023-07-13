@@ -6,6 +6,12 @@
 
 Eleventy plugin which provides common filters, shortcodes and transforms for [Fluid Project](https://fluidproject.org) websites.
 
+## Requirements
+
+- Node >= 18
+- Eleventy >= 2.0.1
+- Infusion >= 4.6.0
+
 ## Installation
 
 Add `eleventy-plugin-fluid` to your Eleventy-based static site by running:
@@ -18,7 +24,7 @@ npx install-peerdeps eleventy-plugin-fluid
 peer dependency in your project as well; the [`install-peerdeps`](https://www.npmjs.com/package/install-peerdeps)
 command handles both at the same time.)
 
-Then, in your Eleventy configuration file (usually `.eleventy.js`), load the plugin as follows:
+Then, in your Eleventy configuration file (usually `eleventy.config.js`), load the plugin as follows:
 
 ```js
 const fluidPlugin = require("eleventy-plugin-fluid");
