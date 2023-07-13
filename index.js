@@ -83,7 +83,7 @@ module.exports = {
         }
 
         /** Template Formats */
-        if (options.css !== false) {
+        if (options.css.enabled) {
             eleventyConfig.addTemplateFormats("css");
             eleventyConfig.addExtension("css", {
                 outputFileExtension: "css",
@@ -93,7 +93,7 @@ module.exports = {
             });
         }
 
-        if (options.scss !== false) {
+        if (options.sass.enabled) {
             eleventyConfig.addTemplateFormats("scss");
             eleventyConfig.addExtension("scss", {
                 outputFileExtension: "css",
@@ -103,7 +103,7 @@ module.exports = {
             });
         }
 
-        if (options.js !== false) {
+        if (options.js.enabled) {
             eleventyConfig.addTemplateFormats("js");
             eleventyConfig.addExtension("js", {
                 outputFileExtension: "js",
