@@ -39,6 +39,7 @@ module.exports = {
                 },
                 browserslist: "> 1%"
             },
+            scss: true,
             js: {
                 basePath: "./src/assets/scripts",
                 esbuild: {
@@ -74,36 +75,42 @@ module.exports = {
         }
 
         /** Template Formats */
-        eleventyConfig.addTemplateFormats("css");
-        eleventyConfig.addExtension("css", {
-            outputFileExtension: "css",
-            compile: async function (inputContent, inputPath) {
-                return await compileCss(inputContent, inputPath, options.css);
-            }
-        });
-
-        eleventyConfig.addTemplateFormats("scss");
-        eleventyConfig.addExtension("scss", {
-            outputFileExtension: "css",
-            compileOptions: {
-                permalink: function (inputContent, inputPath) {
-                    if (!inputPath.startsWith(options.js.basePath)) {
-                        return false;
-                    }
+        if (options.css !== false) {
+            eleventyConfig.addTemplateFormats("css");
+            eleventyConfig.addExtension("css", {
+                outputFileExtension: "css",
+                compile: async function (inputContent, inputPath) {
+                    return await compileCss(inputContent, inputPath, options.css);
                 }
-            },
-            compile: async function (inputContent, inputPath) {
-                return await compileSass(inputContent, inputPath, options.css, this);
-            }
-        });
+            });
+        }
 
-        eleventyConfig.addTemplateFormats("js");
-        eleventyConfig.addExtension("js", {
-            outputFileExtension: "js",
-            compile: async function (inputContent, inputPath) {
-                return await compileJs(inputContent, inputPath, options.js);
-            }
-        });
+        if (options.scss !== false) {
+            eleventyConfig.addTemplateFormats("scss");
+            eleventyConfig.addExtension("scss", {
+                outputFileExtension: "css",
+                compile: async function (inputContent, inputPath) {
+                    return await compileSass(inputContent, inputPath, options.css, this);
+                }
+            });
+        }
+
+        if (options.js !== false) {
+            eleventyConfig.addTemplateFormats("js");
+            eleventyConfig.addExtension("js", {
+                outputFileExtension: "js",
+                compileOptions: {
+                    permalink: function (inputContent, inputPath) {
+                        if (!inputPath.startsWith(options.js.basePath)) {
+                            return false;
+                        }
+                    }
+                },
+                compile: async function (inputContent, inputPath) {
+                    return await compileJs(inputContent, inputPath, options.js);
+                }
+            });
+        }
 
         /** Transforms */
         eleventyConfig.addTransform("htmlMinify", htmlMinifyTransform);

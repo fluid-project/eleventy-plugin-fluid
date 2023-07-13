@@ -12,8 +12,14 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 "use strict";
 
 const esbuild = require("esbuild");
+const path = require("node:path");
 
 module.exports = async (content, inputPath, options) => {
+    let parsed = path.parse(inputPath);
+    if (!inputPath.startsWith(options.basePath) || parsed.name.startsWith("_")) {
+        return;
+    }
+
     return async () => {
         let output = await esbuild.build(Object.assign(
             options.esbuild,
