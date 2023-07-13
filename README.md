@@ -39,9 +39,7 @@ module.exports = function (config) {
 ### Asset Handling
 
 `eleventy-plugin-fluid` includes configuration for processing and bundling Sass and CSS files using [Sass](https://sass-lang.com)
-and [LightningCSS](https://lightningcss.dev/).
-
-Coming soon: JavaScript files using [esbuild](https://esbuild.github.io).
+and [LightningCSS](https://lightningcss.dev/), and JavaScript files using [esbuild](https://esbuild.github.io).
 
 #### CSS
 
