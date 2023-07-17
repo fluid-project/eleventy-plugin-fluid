@@ -33,5 +33,6 @@ test("Builds minified CSS from Sass", async function (t) {
 });
 
 test("Builds minified JavaScript", async function (t) {
-    t.true(fs.existsSync("dist/assets/scripts/app.js"));
+    let javascript = fs.readFileSync("dist/assets/scripts/app.js", "utf8");
+    t.is(javascript, "\"use strict\";(()=>{var s=(e,t)=>()=>(t||e((t={exports:{}}).exports,t),t.exports);var c=s((S,a)=>{\"use strict\";var m=function(e){let t=new Intl.PluralRules(\"en\",{type:\"ordinal\"}),r=new Map([[\"one\",\"st\"],[\"two\",\"nd\"],[\"few\",\"rd\"],[\"other\",\"th\"]]),n=t.select(e),o=r.get(n);return`${e}${o}`};a.exports=function(t,r=\"en\"){let n=new Date(new Date(t).toUTCString()),o={year:\"numeric\",month:\"long\",day:\"numeric\"};if(r.startsWith(\"en\")){let l=n.toLocaleDateString(r,o),d=/([A-Z]\\w+) ([0-9]{1,2}), ([0-9]{4})/g;return l.replace(d,($,p,w,g)=>`${p} ${m(w)}, ${g}`)}return n.toLocaleDateString(r,o)}});var u=s((q,i)=>{\"use strict\";var D=c();i.exports=D});var h=s((L,f)=>{var x=u();f.exports={year:x(Date.now())}});h();})();\n");
 });
