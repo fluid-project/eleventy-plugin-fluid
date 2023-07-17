@@ -19,6 +19,10 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPlugin(fluidPlugin, {
         css: {
             basePath: `${inputPath}/assets/styles`
+        },
+        sass: {
+            basePath: `${inputPath}/assets/styles`,
+            enabled: true
         }
     });
     eleventyConfig.addPassthroughCopy(`${inputPath}/assets/images`, "/assets/");
