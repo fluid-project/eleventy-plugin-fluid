@@ -95,9 +95,9 @@ For more options, see the [LightningCSS docs](https://lightningcss.dev/docs.html
 
 #### Sass
 
-When Sass processing is enabled, any Sass files with the `.scss` extension found in the `./src/assets/styles/` directory
-or its children will be processed _unless the filename begins with an underscore (`_`)_. To enable Sass and disable CSS,
-add the following configuration when registering `eleventy-plugin-fluid` in your config:
+Sass processing is disabled by deafult. When enabled, any Sass files with the `.scss` extension found in the
+`./src/assets/styles/` directory or its children will be processed _unless the filename begins with an underscore (`_`)_.
+To enable Sass and disable CSS, add the following configuration when registering `eleventy-plugin-fluid` in your config:
 
 ```diff
 const fluidPlugin = require("eleventy-plugin-fluid");
@@ -139,9 +139,9 @@ Default values are as follows:
 
 ```js
 let options = {
-    /* Where should Eleventy look for CSS files to process? */
+    /* Where should Eleventy look for Sass files to process? */
     basePath: "./src/assets/styles",
-    /* Should CSS files be processed? */
+    /* Should Sass files be processed? */
     enabled: true,
     /* See: https://lightningcss.dev/minification.html */
     minify: true,
