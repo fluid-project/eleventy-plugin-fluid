@@ -21,18 +21,15 @@ module.exports = async (content, inputPath, options) => {
     }
 
     return async () => {
-        let esbuildOptions = Object.assign(options);
-        // These aren't used by esbuild, so we remove them before merging and passing the options object.
-        delete esbuildOptions.basePath;
-        delete esbuildOptions.enabled;
-        let output = await esbuild.build(Object.assign(
-            esbuildOptions,
-            {
-                bundle: true,
-                entryPoints: [inputPath],
-                write: false
-            }
-        ));
+        let {minify, target} = options;
+
+        let output = await esbuild.build({
+            bundle: true,
+            entryPoints: [inputPath],
+            minify,
+            target,
+            write: false
+        });
 
         return output.outputFiles[0].text;
     };
