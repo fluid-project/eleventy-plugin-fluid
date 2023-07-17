@@ -48,7 +48,8 @@ module.exports = {
                 drafts: {
                     nesting: true
                 },
-                browserslist: "> 1%"            },
+                browserslist: "> 1%"
+            },
             js: {
                 basePath: "./src/assets/scripts",
                 enabled: true,
