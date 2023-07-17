@@ -125,11 +125,11 @@ module.exports = function (config) {
 -    config.addPlugin(fluidPlugin);
 +    config.addPlugin(fluidPlugin, {
 +        css: {
-+              enabled: false,
++              enabled: false
 +        },
 +        sass: {
 +              browserslist: '> 1.5%',
-+              enabled: true,
++              enabled: true
 +        }
 +    });
 };
