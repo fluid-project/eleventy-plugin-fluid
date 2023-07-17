@@ -31,6 +31,17 @@ module.exports = {
             uio: true,
             css: {
                 basePath: "./src/assets/styles",
+                enabled: true,
+                minify: true,
+                sourceMap: false,
+                drafts: {
+                    nesting: true
+                },
+                browserslist: "> 1%"
+            },
+            sass: {
+                basePath: "./src/assets/styles",
+                enabled: false,
                 minify: true,
                 sourceMap: false,
                 drafts: {
@@ -66,21 +77,25 @@ module.exports = {
         }
 
         /** Template Formats */
-        eleventyConfig.addTemplateFormats("css");
-        eleventyConfig.addExtension("css", {
-            outputFileExtension: "css",
-            compile: async function (inputContent, inputPath) {
-                return await compileCss(inputContent, inputPath, options.css);
-            }
-        });
+        if (options.css.enabled) {
+            eleventyConfig.addTemplateFormats("css");
+            eleventyConfig.addExtension("css", {
+                outputFileExtension: "css",
+                compile: async function (inputContent, inputPath) {
+                    return await compileCss(inputContent, inputPath, options.css);
+                }
+            });
+        }
 
-        eleventyConfig.addTemplateFormats("scss");
-        eleventyConfig.addExtension("scss", {
-            outputFileExtension: "css",
-            compile: async function (inputContent, inputPath) {
-                return await compileSass(inputContent, inputPath, options.css, this);
-            }
-        });
+        if (options.sass.enabled) {
+            eleventyConfig.addTemplateFormats("scss");
+            eleventyConfig.addExtension("scss", {
+                outputFileExtension: "css",
+                compile: async function (inputContent, inputPath) {
+                    return await compileSass(inputContent, inputPath, options.sass, this);
+                }
+            });
+        }
 
         /** Transforms */
         eleventyConfig.addTransform("htmlMinify", htmlMinifyTransform);

@@ -45,7 +45,7 @@ Coming soon: JavaScript files using [esbuild](https://esbuild.github.io).
 
 #### CSS
 
-By default, any CSS files found in the `./src/assets/styles/` directory or its children will be processed _unless their
+By default, any CSS files found in the `./src/assets/styles/` directory or its children will be processed _unless the
 filename begins with an underscore (`_`)_. For this reason, if you are using CSS partials via the [`@import`](https://lightningcss.dev/bundling.html#%40import)
 rule, you should name them according to the pattern `_partial.css` to prevent them from being transformed as standalone
 files (this convention will be familiar to those who have worked with Sass and Sass partials).
@@ -68,17 +68,26 @@ module.exports = function (config) {
 
 Default values are as follows:
 
-```json
-{
-    "basePath": "./src/assets/styles",
-    "minify": true,
-    "sourceMap": false,
-    "drafts": {
-        "nesting": true
+```js
+let options = {
+    /* Where should Eleventy look for CSS files to process? */
+    basePath: "./src/assets/styles",
+    /* Should CSS files be processed? */
+    enabled: true,
+    /* See: https://lightningcss.dev/minification.html */
+    minify: true,
+    /* Not yet supported, see https://github.com/fluid-project/eleventy-plugin-fluid/issues/170 */
+    sourceMap: false,
+    /* See: https://lightningcss.dev/transpilation.html#draft-syntax */
+    drafts: {
+        nesting: true
     },
-    "browserslist": "> 1%"
-}
+    /* A Browserslist configuration string (see: https://browsersl.ist) */
+    browserslist: "> 1%"
+};
 ```
+
+If you wish to disable CSS processing altogether, set the `enabled` key of the `options.css` object to `false`.
 
 If you wish to disable Browserslist altogether, you can pass an empty array (`[]`) to the `browserslist` key.
 
@@ -86,10 +95,27 @@ For more options, see the [LightningCSS docs](https://lightningcss.dev/docs.html
 
 #### Sass
 
-By default, any Sass files with the `.scss` extension found in the `./src/assets/styles/` directory or its children will
-be processed _unless their filename begins with an underscore (`_`)_.
+When Sass processing is enabled, any Sass files with the `.scss` extension found in the `./src/assets/styles/` directory
+or its children will be processed _unless the filename begins with an underscore (`_`)_. To enable Sass and disable CSS,
+add the following configuration when registering `eleventy-plugin-fluid` in your config:
 
-Options for Sass and LightningCSS may be modified by passing values to the `css` option when registering `eleventy-plugin-fluid`
+```diff
+const fluidPlugin = require("eleventy-plugin-fluid");
+
+module.exports = function (config) {
+-    config.addPlugin(fluidPlugin);
++    config.addPlugin(fluidPlugin, {
++        css: {
++              enabled: false,
++        }
++        sass: {
++              enabled: true,
++        }
++    });
+};
+```
+
+Options for Sass may be modified by passing values to the `sass` option when registering `eleventy-plugin-fluid`
 in your config:
 
 ```diff
@@ -99,7 +125,11 @@ module.exports = function (config) {
 -    config.addPlugin(fluidPlugin);
 +    config.addPlugin(fluidPlugin, {
 +        css: {
++              enabled: false,
++        },
++        sass: {
 +              browserslist: '> 1.5%',
++              enabled: true,
 +        }
 +    });
 };
@@ -107,19 +137,28 @@ module.exports = function (config) {
 
 Default values are as follows:
 
-```json
-{
-    "basePath": "./src/assets/styles",
-    "minify": true,
-    "sourceMap": false,
-    "drafts": {
-        "nesting": true
+```js
+let options = {
+    /* Where should Eleventy look for CSS files to process? */
+    basePath: "./src/assets/styles",
+    /* Should CSS files be processed? */
+    enabled: true,
+    /* See: https://lightningcss.dev/minification.html */
+    minify: true,
+    /* Not yet supported, see https://github.com/fluid-project/eleventy-plugin-fluid/issues/170 */
+    sourceMap: false,
+    /* See: https://lightningcss.dev/transpilation.html#draft-syntax */
+    drafts: {
+        nesting: true
     },
-    "browserslist": "> 1%"
-}
+    /* A Browserslist configuration string (see: https://browsersl.ist) */
+    browserslist: "> 1%"
+};
 ```
 
-Note that all of these will be passed to LightningCSS, not Sass, with the exception of `basePath` and `sourceMap`.
+Note that all of these will be passed to LightningCSS, not Sass, with the exception of `basePath`, `enabled`, and `sourceMap`.
+
+If you wish to disable Sass processing altogether, set the `enabled` key of the `options.sass` object to `false`.
 
 If you wish to disable Browserslist altogether, you can pass an empty array (`[]`) to the `browserslist` key.
 
