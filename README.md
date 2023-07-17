@@ -106,10 +106,10 @@ module.exports = function (config) {
 -    config.addPlugin(fluidPlugin);
 +    config.addPlugin(fluidPlugin, {
 +        css: {
-+              enabled: false,
-+        }
++              enabled: false
++        },
 +        sass: {
-+              enabled: true,
++              enabled: true
 +        }
 +    });
 };
