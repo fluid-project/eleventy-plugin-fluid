@@ -142,7 +142,7 @@ let options = {
     /* Where should Eleventy look for Sass files to process? */
     basePath: "./src/assets/styles",
     /* Should Sass files be processed? */
-    enabled: true,
+    enabled: false,
     /* See: https://lightningcss.dev/minification.html */
     minify: true,
     /* Not yet supported, see https://github.com/fluid-project/eleventy-plugin-fluid/issues/170 */
