@@ -39,9 +39,7 @@ module.exports = function (config) {
 ### Asset Handling
 
 `eleventy-plugin-fluid` includes configuration for processing and bundling Sass and CSS files using [Sass](https://sass-lang.com)
-and [LightningCSS](https://lightningcss.dev/).
-
-Coming soon: JavaScript files using [esbuild](https://esbuild.github.io).
+and [LightningCSS](https://lightningcss.dev/), and JavaScript files using [esbuild](https://esbuild.github.io).
 
 #### CSS
 
@@ -163,6 +161,49 @@ If you wish to disable Sass processing altogether, set the `enabled` key of the 
 If you wish to disable Browserslist altogether, you can pass an empty array (`[]`) to the `browserslist` key.
 
 For more options, see the [Sass](https://sass-lang.com/documentation/) and [LightningCSS docs](https://lightningcss.dev/docs.html).
+
+#### JavaScript
+
+By default, any JavaScript files with the `.js` extension found in the `./src/assets/scripts/` directory or its children
+will be processed with [esbuild](https://esbuild.github.io) _unless the filename begins with an underscore (`_`)_.
+
+**NOTE:** If your project uses `*.11tydata.js` directory data files and defines a permalink structure
+in the directory data, this may cause the `*.11tydata.js` file to be processed as a template, even though it isn't in
+the configured `basePath`. See here for more details: <https://github.com/11ty/eleventy/discussions/2993>. To avoid the
+issue, ensure that any directories with an `*.11tydata.js` file don't define a permalink in the directory data.
+
+Options for esbuild may be modified by passing values to the `js` option when registering `eleventy-plugin-fluid`
+in your config:
+
+```diff
+const fluidPlugin = require("eleventy-plugin-fluid");
+
+module.exports = function (config) {
+-    config.addPlugin(fluidPlugin);
++    config.addPlugin(fluidPlugin, {
++        js: {
++            target: "esnext"
++        }
++    });
+};
+```
+
+Default values are as follows:
+
+```js
+let options = {
+    /* Where should Eleventy look for JavaScript files to process? */
+    basePath: "./src/assets/scripts",
+    /* Should JavaScript files be processed? */
+    enabled: true,
+    /* See: https://esbuild.github.io/api/#minify */
+    minify: true,
+    /* See: https://esbuild.github.io/content-types/#javascript */
+    target: "es2020"
+};
+```
+
+If you wish to disable JavaScript processing altogether, set the `enabled` key of the `options.js` object to `false`.
 
 ### Filters
 

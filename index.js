@@ -22,6 +22,7 @@ const uioShortcodes = require("./src/shortcodes/uio.js");
 const uioAssets = require("./src/config/uio-assets.json");
 const compileCss = require("./src/compilers/compile-css.js");
 const compileSass = require("./src/compilers/compile-sass.js");
+const compileJs = require("./src/compilers/compile-js.js");
 const deepMerge = require("./src/utils/deep-merge.js");
 
 module.exports = {
@@ -48,6 +49,12 @@ module.exports = {
                     nesting: true
                 },
                 browserslist: "> 1%"
+            },
+            js: {
+                basePath: "./src/assets/scripts",
+                enabled: true,
+                minify: true,
+                target: "es2020"
             }
         }, options);
 
@@ -93,6 +100,23 @@ module.exports = {
                 outputFileExtension: "css",
                 compile: async function (inputContent, inputPath) {
                     return await compileSass(inputContent, inputPath, options.sass, this);
+                }
+            });
+        }
+
+        if (options.js.enabled) {
+            eleventyConfig.addTemplateFormats("js");
+            eleventyConfig.addExtension("js", {
+                outputFileExtension: "js",
+                compileOptions: {
+                    permalink: function (inputContent, inputPath) {
+                        if (!inputPath.startsWith(options.js.basePath)) {
+                            return false;
+                        }
+                    }
+                },
+                compile: async function (inputContent, inputPath) {
+                    return await compileJs(inputContent, inputPath, options.js);
                 }
             });
         }

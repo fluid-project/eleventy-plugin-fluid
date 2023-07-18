@@ -23,6 +23,9 @@ module.exports = function (eleventyConfig) {
         sass: {
             basePath: `${inputPath}/assets/styles`,
             enabled: true
+        },
+        js: {
+            basePath: `${inputPath}/assets/scripts`
         }
     });
     eleventyConfig.addPassthroughCopy(`${inputPath}/assets/images`, "/assets/");
