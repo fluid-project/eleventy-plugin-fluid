@@ -11,12 +11,12 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 "use strict";
 
+const MarkdownIt = require("markdown-it");
 const figureShortcode = require("./src/shortcodes/figure-shortcode.js");
 const formatDateFilter = require("./src/filters/format-date-filter.js");
 const htmlMinifyTransform = require("./src/transforms/html-minify-transform.js");
 const isoDateFilter = require("./src/filters/iso-date-filter.js");
 const limitFilter = require("./src/filters/limit-filter.js");
-const markdownFilter = require("./src/filters/markdown-filter.js");
 const splitFilter = require("./src/filters/split-filter.js");
 const uioShortcodes = require("./src/shortcodes/uio.js");
 const uioAssets = require("./src/config/uio-assets.json");
@@ -30,6 +30,24 @@ module.exports = {
     configFunction: function (eleventyConfig, options = {}) {
         options = deepMerge({
             uio: true,
+            markdown: {
+                options: {
+                    html: true,
+                    linkify: true,
+                    typographer: true
+                },
+                plugins: {
+                    "markdown-it-footnote": "markdown-it-footnote"
+                }
+            },
+            markdownFilter: {
+                options: {
+                    html: true,
+                    linkify: true,
+                    typographer: true
+                },
+                plugins: {}
+            },
             css: {
                 basePath: "./src/assets/styles",
                 enabled: true,
@@ -62,7 +80,16 @@ module.exports = {
         eleventyConfig.addFilter("formatDate", formatDateFilter);
         eleventyConfig.addFilter("isoDate", isoDateFilter);
         eleventyConfig.addFilter("limit", limitFilter);
-        eleventyConfig.addFilter("markdown", markdownFilter);
+        eleventyConfig.addFilter("markdown", function (value) {
+            const md = new MarkdownIt(options.markdownFilter.options);
+            Object.values(options.markdownFilter.plugins).forEach(plugin => {
+                if (plugin) {
+                    md.use(require(plugin));
+                }
+            });
+
+            return md.render(value);
+        });
         eleventyConfig.addFilter("slug", () => {
             throw new Error("`slug` filter is no longer supported. Please use `slugify`.");
         });
@@ -84,6 +111,15 @@ module.exports = {
         }
 
         /** Template Formats */
+        eleventyConfig.amendLibrary("md", md => {
+            md.set(options.markdown.options);
+            Object.values(options.markdown.plugins).forEach(plugin => {
+                if (plugin) {
+                    md.use(require(plugin));
+                }
+            });
+        });
+
         if (options.css.enabled) {
             eleventyConfig.addTemplateFormats("css");
             eleventyConfig.addExtension("css", {
