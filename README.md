@@ -205,6 +205,56 @@ let options = {
 
 If you wish to disable JavaScript processing altogether, set the `enabled` key of the `options.js` object to `false`.
 
+### Markdown Configuration
+
+`eleventy-plugin-fluid` amends Eleventy's [default Markdown configuration](https://www.11ty.dev/docs/languages/markdown/#default-options)
+as follows (for more information see [markdown-it](https://github.com/markdown-it/markdown-it#init-with-presets-and-options)):
+
+```json
+{
+    "html": true,
+    "linkify": true,
+    "typographer": true
+}
+```
+
+Options for Markdown may be modified by passing values to the `markdown` option when registering `eleventy-plugin-fluid`
+in your config:
+
+```diff
+const fluidPlugin = require("eleventy-plugin-fluid");
+
+module.exports = function (config) {
+-    config.addPlugin(fluidPlugin);
++    config.addPlugin(fluidPlugin, {
++        markdown: {
++            options: {
++                breaks: "true"
++            }
++        }
++    });
+};
+```
+
+You can also enable [`markdown-it` plugins](https://www.npmjs.com/search?q=keywords:markdown-it-plugin) when
+registering `eleventy-plugin-fluid` as follows:
+
+```diff
+const fluidPlugin = require("eleventy-plugin-fluid");
++ const markdownItEmoji = require("markdown-it-emoji");
+
+module.exports = function (config) {
+-    config.addPlugin(fluidPlugin);
++    config.addPlugin(fluidPlugin, {
++        markdown: {
++            plugins: [
++                markdownItEmoji
++            ]
++        }
++    });
+};
+```
+
 ### Filters
 
 All examples use the [Nunjucks](https://mozilla.github.io/nunjucks/) template language. Eleventy supports a number of
@@ -253,7 +303,7 @@ Output: `["a", "b"]`
 
 #### markdown
 
-Processes an input string using [Markdown](https://markdown-it.github.io).
+Processes an input string using [Markdown](https://www.11ty.dev/docs/languages/markdown/).
 
 ```nunjucks
 {{ "A paragraph with some _emphasis_." | markdown | safe }}
@@ -306,6 +356,21 @@ Output:
         <p>An illustration of something, found <a href="https://example.com">here</a>.</p>
     </figcaption>
 </figure>
+```
+
+### renderString
+
+Renders a string with a supported [template engine](https://www.11ty.dev/docs/languages/) using the Eleventy [Render plugin](https://www.11ty.dev/docs/plugins/render/).
+
+```nunjucks
+{% set markdownString = "# Page Title" %}
+{% renderString markdownString, "md" %}
+```
+
+Result:
+
+```html
+<h1>Page Title</h1>
 ```
 
 ### uioStyles

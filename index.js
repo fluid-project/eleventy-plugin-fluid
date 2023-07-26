@@ -38,15 +38,7 @@ module.exports = {
                     linkify: true,
                     typographer: true
                 },
-                plugins: {}
-            },
-            markdownFilter: {
-                options: {
-                    html: true,
-                    linkify: true,
-                    typographer: true
-                },
-                plugins: {}
+                plugins: []
             },
             css: {
                 basePath: "./src/assets/styles",
@@ -88,8 +80,8 @@ module.exports = {
             // eslint-disable-next-line no-console
             console.warn("This filter will be removed in a future version of eleventy-plugin-fluid. Use the renderString shortcode instead.");
 
-            const md = new MarkdownIt(options.markdownFilter.options);
-            Object.values(options.markdownFilter.plugins).forEach(plugin => {
+            const md = new MarkdownIt(options.markdown.options);
+            options.markdown.plugins.forEach(plugin => {
                 if (plugin) {
                     md.use(require(plugin));
                 }
