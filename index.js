@@ -12,6 +12,8 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 "use strict";
 
 const MarkdownIt = require("markdown-it");
+const { EleventyRenderPlugin } = require("@11ty/eleventy");
+const pluginWebc = require("@11ty/eleventy-plugin-webc");
 const figureShortcode = require("./src/shortcodes/figure-shortcode.js");
 const formatDateFilter = require("./src/filters/format-date-filter.js");
 const htmlMinifyTransform = require("./src/transforms/html-minify-transform.js");
@@ -36,9 +38,7 @@ module.exports = {
                     linkify: true,
                     typographer: true
                 },
-                plugins: {
-                    "markdown-it-footnote": "markdown-it-footnote"
-                }
+                plugins: {}
             },
             markdownFilter: {
                 options: {
@@ -76,11 +76,18 @@ module.exports = {
             }
         }, options);
 
+        /** Plugins */
+        eleventyConfig.addPlugin(EleventyRenderPlugin);
+        eleventyConfig.addPlugin(pluginWebc);
+
         /** Filters */
         eleventyConfig.addFilter("formatDate", formatDateFilter);
         eleventyConfig.addFilter("isoDate", isoDateFilter);
         eleventyConfig.addFilter("limit", limitFilter);
         eleventyConfig.addFilter("markdown", function (value) {
+            // eslint-disable-next-line no-console
+            console.warn("This filter will be removed in a future version of eleventy-plugin-fluid. Use the renderString shortcode instead.");
+
             const md = new MarkdownIt(options.markdownFilter.options);
             Object.values(options.markdownFilter.plugins).forEach(plugin => {
                 if (plugin) {
@@ -96,6 +103,14 @@ module.exports = {
         eleventyConfig.addFilter("split", splitFilter);
 
         /** Shortcodes */
+        eleventyConfig.addShortcode("renderString", async function (content, format) {
+            if (["html", "md", "webc", "11ty.js", "liquid", "njk", "hbs", "mustache", "ejs", "haml", "pug"].includes(format)) {
+                return eleventyConfig.javascriptFunctions.renderTemplate.call(this, content, format);
+            }
+
+            return content;
+        });
+
         eleventyConfig.addPairedShortcode("figure", figureShortcode);
 
         if (options.uio) {
@@ -109,6 +124,8 @@ module.exports = {
                 eleventyConfig.addPassthroughCopy(fileMapping);
             });
         }
+
+
 
         /** Template Formats */
         eleventyConfig.amendLibrary("md", md => {

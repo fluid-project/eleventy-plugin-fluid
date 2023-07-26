@@ -39,12 +39,17 @@ test("Builds minified JavaScript", async function (t) {
     t.is(nojsJs, "\"use strict\";(()=>{document.documentElement.className=\"js\";})();\n");
 });
 
+test("Renders Markdown via shortcode", async function (t) {
+    let indexHtml = fs.readFileSync("dist/index.html", "utf8");
+    t.true(indexHtml.includes("<h1>eleventy-plugin-fluid</h1>"));
+});
+
+test("Doesn't render unsupported template language via shortcode", async function (t) {
+    let indexHtml = fs.readFileSync("dist/index.html", "utf8");
+    t.true(indexHtml.includes("{{ 'This template language doesn't exist!' }}"));
+});
+
 test("Renders Markdown via filter", async function (t) {
     let indexHtml = fs.readFileSync("dist/index.html", "utf8");
     t.true(indexHtml.includes("<p>Not much to see here!</p>"));
-});
-
-test("Renders Markdown content with footnotes", async function (t) {
-    let footnoteHtml = fs.readFileSync("dist/footnotes/index.html", "utf8");
-    t.true(footnoteHtml.includes("<p>Here is a footnote<sup class=\"footnote-ref\"><a href=\"#fn1\" id=\"fnref1\">[1]</a></sup>.</p><hr class=\"footnotes-sep\"><section class=\"footnotes\"><ol class=\"footnotes-list\"><li id=\"fn1\" class=\"footnote-item\"><p>It’s not a particularly interesting one. <a href=\"#fnref1\" class=\"footnote-backref\">↩︎</a></p></li></ol></section>"));
 });
