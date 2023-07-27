@@ -11,6 +11,8 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 "use strict";
 
+const fg = require("fast-glob");
+const path = require("node:path");
 const MarkdownIt = require("markdown-it");
 const { EleventyRenderPlugin } = require("@11ty/eleventy");
 const pluginWebc = require("@11ty/eleventy-plugin-webc");
@@ -41,7 +43,7 @@ module.exports = {
                 plugins: []
             },
             css: {
-                basePath: "./src/assets/styles",
+                basePath: ".src/assets/styles",
                 enabled: true,
                 minify: true,
                 sourceMap: false,
@@ -64,7 +66,8 @@ module.exports = {
                 basePath: "./src/assets/scripts",
                 enabled: true,
                 minify: true,
-                target: "es2020"
+                target: "es2020",
+                outdir: "./dist/assets/scripts"
             }
         }, options);
 
@@ -150,19 +153,16 @@ module.exports = {
         }
 
         if (options.js.enabled) {
-            eleventyConfig.addTemplateFormats("js");
-            eleventyConfig.addExtension("js", {
-                outputFileExtension: "js",
-                compileOptions: {
-                    permalink: function (inputContent, inputPath) {
-                        if (!inputPath.startsWith(options.js.basePath)) {
-                            return false;
-                        }
+            eleventyConfig.addWatchTarget(options.js.basePath);
+            eleventyConfig.on("eleventy.before", async () => {
+                const entryPoints = await fg([`${options.js.basePath}/**/*.js`]);
+                entryPoints.forEach(async item => {
+                    if (!path.basename(item).startsWith("_")) {
+                        await compileJs(item, options.js);
+                        // eslint-disable-next-line no-console
+                        console.log(`[11ty] Writing ${options.js.outdir}/${path.basename(item)} from ${item}`);
                     }
-                },
-                compile: async function (inputContent, inputPath) {
-                    return await compileJs(inputContent, inputPath, options.js);
-                }
+                });
             });
         }
 
