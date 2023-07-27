@@ -33,7 +33,7 @@ module.exports = {
         options = deepMerge({
             uio: true,
             css: {
-                basePath: `${eleventyConfig.dir.input}/assets/styles`,
+                basePath: ".src/assets/styles",
                 enabled: true,
                 minify: true,
                 sourceMap: false,
@@ -43,7 +43,7 @@ module.exports = {
                 browserslist: "> 1%"
             },
             sass: {
-                basePath: `${eleventyConfig.dir.input}/assets/styles`,
+                basePath: "./src/assets/styles",
                 enabled: false,
                 minify: true,
                 sourceMap: false,
@@ -53,11 +53,11 @@ module.exports = {
                 browserslist: "> 1%"
             },
             js: {
-                basePath: `${eleventyConfig.dir.input}/assets/scripts`,
+                basePath: "./src/assets/scripts",
                 enabled: true,
                 minify: true,
                 target: "es2020",
-                outdir: `${eleventyConfig.dir.output}/assets/scripts`
+                outdir: "./dist/assets/scripts"
             }
         }, options);
 
