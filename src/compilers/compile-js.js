@@ -12,25 +12,15 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 "use strict";
 
 const esbuild = require("esbuild");
-const path = require("node:path");
 
-module.exports = async (content, inputPath, options) => {
-    let parsed = path.parse(inputPath);
-    if (!inputPath.startsWith(options.basePath) || parsed.name.startsWith("_")) {
-        return;
-    }
+module.exports = async (inputPath, options) => {
+    let {minify, target, outdir} = options;
 
-    return async () => {
-        let {minify, target} = options;
-
-        let output = await esbuild.build({
-            bundle: true,
-            entryPoints: [inputPath],
-            minify,
-            target,
-            write: false
-        });
-
-        return output.outputFiles[0].text;
-    };
+    await esbuild.build({
+        bundle: true,
+        entryPoints: [inputPath],
+        minify,
+        target,
+        outdir
+    });
 };

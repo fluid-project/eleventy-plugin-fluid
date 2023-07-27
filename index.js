@@ -11,6 +11,8 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 "use strict";
 
+const fg = require("fast-glob");
+const path = require("node:path");
 const figureShortcode = require("./src/shortcodes/figure-shortcode.js");
 const formatDateFilter = require("./src/filters/format-date-filter.js");
 const htmlMinifyTransform = require("./src/transforms/html-minify-transform.js");
@@ -31,7 +33,7 @@ module.exports = {
         options = deepMerge({
             uio: true,
             css: {
-                basePath: "./src/assets/styles",
+                basePath: `${eleventyConfig.dir.input}/assets/styles`,
                 enabled: true,
                 minify: true,
                 sourceMap: false,
@@ -41,7 +43,7 @@ module.exports = {
                 browserslist: "> 1%"
             },
             sass: {
-                basePath: "./src/assets/styles",
+                basePath: `${eleventyConfig.dir.input}/assets/styles`,
                 enabled: false,
                 minify: true,
                 sourceMap: false,
@@ -51,10 +53,11 @@ module.exports = {
                 browserslist: "> 1%"
             },
             js: {
-                basePath: "./src/assets/scripts",
+                basePath: `${eleventyConfig.dir.input}/assets/scripts`,
                 enabled: true,
                 minify: true,
-                target: "es2020"
+                target: "es2020",
+                outdir: `${eleventyConfig.dir.output}/assets/scripts`
             }
         }, options);
 
@@ -105,19 +108,16 @@ module.exports = {
         }
 
         if (options.js.enabled) {
-            eleventyConfig.addTemplateFormats("js");
-            eleventyConfig.addExtension("js", {
-                outputFileExtension: "js",
-                compileOptions: {
-                    permalink: function (inputContent, inputPath) {
-                        if (!inputPath.startsWith(options.js.basePath)) {
-                            return false;
-                        }
+            eleventyConfig.addWatchTarget(options.js.basePath);
+            eleventyConfig.on("eleventy.before", async () => {
+                const entryPoints = await fg([`${options.js.basePath}/**/*.js`]);
+                entryPoints.forEach(async item => {
+                    if (!path.basename(item).startsWith("_")) {
+                        await compileJs(item, options.js);
+                        // eslint-disable-next-line no-console
+                        console.log(`[11ty] Writing ${options.js.outdir}/${path.basename(item)} from ${item}`);
                     }
-                },
-                compile: async function (inputContent, inputPath) {
-                    return await compileJs(inputContent, inputPath, options.js);
-                }
+                });
             });
         }
 

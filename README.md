@@ -69,7 +69,7 @@ Default values are as follows:
 ```js
 let options = {
     /* Where should Eleventy look for CSS files to process? */
-    basePath: "./src/assets/styles",
+    basePath: `${eleventyConfig.dir.input}/assets/styles`,
     /* Should CSS files be processed? */
     enabled: true,
     /* See: https://lightningcss.dev/minification.html */
@@ -93,7 +93,7 @@ For more options, see the [LightningCSS docs](https://lightningcss.dev/docs.html
 
 #### Sass
 
-Sass processing is disabled by deafult. When enabled, any Sass files with the `.scss` extension found in the
+Sass processing is disabled by default. When enabled, any Sass files with the `.scss` extension found in the
 `./src/assets/styles/` directory or its children will be processed _unless the filename begins with an underscore (`_`)_.
 To enable Sass and disable CSS, add the following configuration when registering `eleventy-plugin-fluid` in your config:
 
@@ -138,7 +138,7 @@ Default values are as follows:
 ```js
 let options = {
     /* Where should Eleventy look for Sass files to process? */
-    basePath: "./src/assets/styles",
+    basePath: `${eleventyConfig.dir.input}/assets/styles`,
     /* Should Sass files be processed? */
     enabled: false,
     /* See: https://lightningcss.dev/minification.html */
@@ -167,11 +167,6 @@ For more options, see the [Sass](https://sass-lang.com/documentation/) and [Ligh
 By default, any JavaScript files with the `.js` extension found in the `./src/assets/scripts/` directory or its children
 will be processed with [esbuild](https://esbuild.github.io) _unless the filename begins with an underscore (`_`)_.
 
-**NOTE:** If your project uses `*.11tydata.js` directory data files and defines a permalink structure
-in the directory data, this may cause the `*.11tydata.js` file to be processed as a template, even though it isn't in
-the configured `basePath`. See here for more details: <https://github.com/11ty/eleventy/discussions/2993>. To avoid the
-issue, ensure that any directories with an `*.11tydata.js` file don't define a permalink in the directory data.
-
 Options for esbuild may be modified by passing values to the `js` option when registering `eleventy-plugin-fluid`
 in your config:
 
@@ -193,13 +188,14 @@ Default values are as follows:
 ```js
 let options = {
     /* Where should Eleventy look for JavaScript files to process? */
-    basePath: "./src/assets/scripts",
+    basePath: `${eleventyConfig.dir.input}/assets/scripts`,
     /* Should JavaScript files be processed? */
     enabled: true,
     /* See: https://esbuild.github.io/api/#minify */
     minify: true,
     /* See: https://esbuild.github.io/content-types/#javascript */
-    target: "es2020"
+    target: "es2020",
+    outdir: `${eleventyConfig.dir.output}/assets/scripts`
 };
 ```
 
