@@ -14,7 +14,9 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 const fg = require("fast-glob");
 const path = require("node:path");
 const MarkdownIt = require("markdown-it");
-const { EleventyRenderPlugin } = require("@11ty/eleventy");
+const { EleventyRenderPlugin, EleventyI18nPlugin } = require("@11ty/eleventy");
+const { getLangDir } = require("rtl-detect");
+const i18n = require("eleventy-plugin-i18n-gettext");
 const pluginWebc = require("@11ty/eleventy-plugin-webc");
 const figureShortcode = require("./src/shortcodes/figure-shortcode.js");
 const formatDateFilter = require("./src/filters/format-date-filter.js");
@@ -24,6 +26,7 @@ const limitFilter = require("./src/filters/limit-filter.js");
 const splitFilter = require("./src/filters/split-filter.js");
 const uioShortcodes = require("./src/shortcodes/uio.js");
 const uioAssets = require("./src/config/uio-assets.json");
+const languages = require("./src/config/languages.json");
 const compileCss = require("./src/compilers/compile-css.js");
 const compileSass = require("./src/compilers/compile-sass.js");
 const compileJs = require("./src/compilers/compile-js.js");
@@ -69,6 +72,9 @@ module.exports = {
                 target: "es2020",
                 outdir: "./dist/assets/scripts"
             },
+            languages,
+            defaultLanguage: "en",
+            localesDirectory: "./src/locales",
             templateFormats: [
                 "html",
                 "md",
@@ -85,8 +91,18 @@ module.exports = {
         }, options);
 
         /** Plugins */
+        eleventyConfig.addPlugin(EleventyI18nPlugin, {
+            defaultLanguage: options.defaultLanguage
+        });
+        eleventyConfig.addPlugin(i18n, {
+            localesDirectory: options.localesDirectory
+        });
         eleventyConfig.addPlugin(EleventyRenderPlugin);
         eleventyConfig.addPlugin(pluginWebc);
+
+        /** Global Data */
+        eleventyConfig.addGlobalData("defaultLanguage", options.defaultLanguage);
+        eleventyConfig.addGlobalData("defaultLanguageDirection", getLangDir(options.defaultLanguage));
 
         /** Filters */
         eleventyConfig.addFilter("formatDate", formatDateFilter);
@@ -179,5 +195,6 @@ module.exports = {
 
         /** Transforms */
         eleventyConfig.addTransform("htmlMinify", htmlMinifyTransform);
-    }
+    },
+    generatePermalink: require("./src/utils/generate-permalink.js")
 };

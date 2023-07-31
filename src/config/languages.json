@@ -1,0 +1,44 @@
+{
+    "en": {
+        "slug": "en",
+        "uioSlug": "en",
+        "dir": "ltr",
+        "name": "English"
+    },
+    "en-CA": {
+        "slug": "en",
+        "uioSlug": "en_CA",
+        "dir": "ltr",
+        "name": "English (Canada)"
+    },
+    "en-US": {
+        "slug": "en",
+        "uioSlug": "en_US",
+        "dir": "ltr",
+        "name": "English (United States)"
+    },
+    "es": {
+        "slug": "es",
+        "uioSlug": "es",
+        "dir": "ltr",
+        "name": "Español"
+    },
+    "fa": {
+        "slug": "fa",
+        "uioSlug": "fa",
+        "dir": "rtl",
+        "name": "فارسی"
+    },
+    "fr": {
+        "slug": "fr",
+        "uioSlug": "fr",
+        "dir": "ltr",
+        "name": "Français"
+    },
+    "pt-BR": {
+        "slug": "pt-br",
+        "uioSlug": "pt_BR",
+        "dir": "ltr",
+        "name": "Português (Brasil)"
+    }
+}
