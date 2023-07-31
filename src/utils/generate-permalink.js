@@ -1,6 +1,7 @@
 "use strict";
 
 const { EleventyI18nPlugin } = require("@11ty/eleventy");
+const i18n = require("eleventy-plugin-i18n-gettext");
 const languages = require("../config/languages.json");
 const TemplateConfig = require("@11ty/eleventy/src/TemplateConfig.js");
 
@@ -11,7 +12,9 @@ module.exports = (data, collectionType, collectionSlug) => {
     }
 
     const lang = EleventyI18nPlugin.LangUtils.getLanguageCodeFromInputPath(data.page.inputPath);
+    const locale = lang;
     const langSlug = languages[lang].slug || lang;
+    collectionSlug = collectionSlug || collectionType;
     const eleventyConfig = new TemplateConfig();
     const slugify = eleventyConfig.userConfig.getFilter("slugify");
 
@@ -28,7 +31,10 @@ module.exports = (data, collectionType, collectionSlug) => {
 
         /* If the page is not the index page, return the page title in a URL-safe format, optionally prepended with the language code. */
         const slug = slugify(data.title);
-        return (lang === data.defaultLanguage) ? `/${slug}/` : `/${langSlug}/${slug}/${data.hasOwnProperty("pagination") && data.pagination.pageNumber > 0 ? `page/${data.pagination.pageNumber + 1}/` : ""}`;
+        if (data.hasOwnProperty("pagination") && data.pagination.pageNumber > 0) {
+            return (lang === data.defaultLanguage) ? `/${slug}/${i18n._(locale, "page")}/${data.pagination.pageNumber + 1}/` : `/${langSlug}/${slug}/${i18n._(locale, "page")}/${data.pagination.pageNumber + 1}/`;
+        }
+        return (lang === data.defaultLanguage) ? `/${slug}/` : `/${langSlug}/${slug}/`;
     } else {
         const slug = slugify(data.title);
         return (lang === data.defaultLanguage) ? `/${collectionSlug}/${slug}/` : `/${langSlug}/${collectionSlug}/${slug}/`;

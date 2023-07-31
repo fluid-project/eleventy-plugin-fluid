@@ -31,6 +31,12 @@ module.exports = function (eleventyConfig) {
     });
     eleventyConfig.addPassthroughCopy(`${inputPath}/assets/images`, "/assets/");
 
+    ["en", "fr"].forEach(lang => {
+        eleventyConfig.addCollection(`posts_${lang}`, collection => {
+            return collection.getFilteredByGlob(`./fixtures/posts/${lang}/*.md`);
+        });
+    });
+
     return {
         dir: {
             input: inputPath,

@@ -40,16 +40,32 @@ test("Builds minified JavaScript", async function (t) {
 });
 
 test("Renders Markdown via shortcode", async function (t) {
-    let indexHtml = fs.readFileSync("dist/index.html", "utf8");
-    t.true(indexHtml.includes("<h1>eleventy-plugin-fluid</h1>"));
+    let testHtml = fs.readFileSync("dist/test.html", "utf8");
+    t.true(testHtml.includes("<h1>eleventy-plugin-fluid</h1>"));
 });
 
 test("Doesn't render unsupported template language via shortcode", async function (t) {
-    let indexHtml = fs.readFileSync("dist/index.html", "utf8");
-    t.true(indexHtml.includes("{{ 'This template language doesn't exist!' }}"));
+    let testHtml = fs.readFileSync("dist/test.html", "utf8");
+    t.true(testHtml.includes("{{ 'This template language doesn't exist!' }}"));
 });
 
 test("Renders Markdown via filter", async function (t) {
-    let indexHtml = fs.readFileSync("dist/index.html", "utf8");
-    t.true(indexHtml.includes("<p>Not much to see here!</p>"));
+    let testHtml = fs.readFileSync("dist/test.html", "utf8");
+    t.true(testHtml.includes("<p>Not much to see here!</p>"));
+});
+
+test("Generates English permalinks", async function (t) {
+    let englishPost = fs.readFileSync("dist/posts/introduction/index.html", "utf8");
+    t.true(englishPost.includes("<h1>Introduction</h1>"));
+
+    let english404 = fs.readFileSync("dist/404.html", "utf8");
+    t.true(english404.includes("<h1>Page Not Found</h1>"));
+});
+
+test("Generates French permalinks", async function (t) {
+    let frPost = fs.readFileSync("dist/fr/posts/introduction/index.html", "utf8");
+    t.true(frPost.includes("<h1>Introduction</h1>"));
+
+    let fr404 = fs.readFileSync("dist/fr/404.html", "utf8");
+    t.true(fr404.includes("<h1>Page non trouvée</h1>"));
 });
