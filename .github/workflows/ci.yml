@@ -39,8 +39,9 @@ jobs:
       env:
         CI: true
     - name: Upload coverage to Codecov
+      if: matrix.os == 'ubuntu-latest'
       uses: codecov/codecov-action@v3
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
-        files: cover/clover.xml
+        files: coverage/clover.xml
         fail_ci_if_error: true
