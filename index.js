@@ -81,7 +81,7 @@ module.exports = {
         eleventyConfig.addFilter("limit", limitFilter);
         eleventyConfig.addFilter("markdown", function (value) {
             // eslint-disable-next-line no-console
-            console.warn("This filter will be removed in a future version of eleventy-plugin-fluid. Use the renderString shortcode instead.");
+            console.warn("The markdown filter will be removed in a future version of eleventy-plugin-fluid. Use the renderString shortcode instead.");
 
             const md = new MarkdownIt(options.markdown.options);
             options.markdown.plugins.forEach(plugin => {
