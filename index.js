@@ -43,7 +43,7 @@ module.exports = {
                 plugins: []
             },
             css: {
-                basePath: ".src/assets/styles",
+                basePath: "./src/assets/styles",
                 enabled: true,
                 minify: true,
                 sourceMap: false,
