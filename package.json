@@ -8,7 +8,7 @@
   "main": "index.js",
   "scripts": {
     "build": "rimraf dist && eleventy",
-    "coverage": "c8 ava",
+    "coverage": "c8 --reporter clover ava",
     "lint": "fluid-lint-all",
     "start": "rimraf dist && eleventy --serve",
     "test": "ava",
