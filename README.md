@@ -3,6 +3,7 @@
 [![License: BSD 3-Clause](https://badgen.net/github/license/fluid-project/eleventy-plugin-fluid/)](https://github.com/fluid-project/eleventy-plugin-fluid/blob/main/LICENSE.md)
 [![Latest Release](https://badgen.net/github/release/fluid-project/eleventy-plugin-fluid/)](https://github.com/fluid-project/eleventy-plugin-fluid/releases/latest/)
 [![NPM Package](https://badgen.net/npm/v/eleventy-plugin-fluid)](http://npmjs.com/package/eleventy-plugin-fluid)
+[![codecov](https://codecov.io/gh/fluid-project/eleventy-plugin-fluid/branch/main/graph/badge.svg?token=ZF3OHK4MUC)](https://codecov.io/gh/fluid-project/eleventy-plugin-fluid)
 
 Eleventy plugin which provides common filters, shortcodes and transforms for [Fluid Project](https://fluidproject.org) websites.
 
@@ -200,6 +201,10 @@ let options = {
 ```
 
 If you wish to disable JavaScript processing altogether, set the `enabled` key of the `options.js` object to `false`.
+
+### Localization
+
+TODO.
 
 ### Markdown Configuration
 
