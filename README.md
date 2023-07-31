@@ -385,6 +385,38 @@ Result:
 <p>This is what we do.</p>
 ```
 
+By default, the following template formats are supported:
+
+- [HTML (`html`)](https://11ty.dev/docs/languages/html/)
+- [Markdown (`md`)](https://11ty.dev/docs/languages/markdown/)
+- [WebC (`webc`)](https://11ty.dev/docs/languages/webc/)
+- [JavaScript (`11ty.js`)](https://11ty.dev/docs/languages/javascript/)
+- [Liquid (`liquid`)](https://11ty.dev/docs/languages/liquid/)
+- [Nunjucks (`njk`)](https://11ty.dev/docs/languages/nunjucks/)
+- [Handlebars (`hbs`)](https://11ty.dev/docs/languages/handlebars/)
+- [Mustache (`mustache`)](https://11ty.dev/docs/languages/mustache/)
+- [EJS (`ejs`)](https://11ty.dev/docs/languages/ejs/)
+- [Haml (`haml`)](https://11ty.dev/docs/languages/haml/)
+- [Pug (`pug`)](https://11ty.dev/docs/languages/pug/)
+
+For example, you could enable [Vue](https://github.com/11ty/eleventy-plugin-vue) support when registering
+`eleventy-plugin-fluid` as follows:
+
+```diff
+const fluidPlugin = require("eleventy-plugin-fluid");
++ const eleventyVue = require("@11ty/eleventy-plugin-vue");
+
+module.exports = function (config) {
++    config.addPlugin(eleventyVue);
+-    config.addPlugin(fluidPlugin);
++    config.addPlugin(fluidPlugin, {
++        templateFormats: [
++            "vue"
++        ]
++    });
+};
+```
+
 ### uioStyles
 
 Outputs links to the required CSS assets for an instance of [Infusion User Interface Options][1]. Use this when you want

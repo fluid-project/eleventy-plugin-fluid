@@ -68,7 +68,20 @@ module.exports = {
                 minify: true,
                 target: "es2020",
                 outdir: "./dist/assets/scripts"
-            }
+            },
+            templateFormats: [
+                "html",
+                "md",
+                "webc",
+                "11ty.js",
+                "liquid",
+                "njk",
+                "hbs",
+                "mustache",
+                "ejs",
+                "haml",
+                "pug"
+            ]
         }, options);
 
         /** Plugins */
@@ -99,7 +112,7 @@ module.exports = {
 
         /** Shortcodes */
         eleventyConfig.addShortcode("renderString", async function (content, format) {
-            if (["html", "md", "webc", "11ty.js", "liquid", "njk", "hbs", "mustache", "ejs", "haml", "pug"].includes(format)) {
+            if (options.templateFormats.includes(format)) {
                 return eleventyConfig.javascriptFunctions.renderTemplate.call(this, content, format);
             }
 
@@ -119,8 +132,6 @@ module.exports = {
                 eleventyConfig.addPassthroughCopy(fileMapping);
             });
         }
-
-
 
         /** Template Formats */
         eleventyConfig.amendLibrary("md", md => {
