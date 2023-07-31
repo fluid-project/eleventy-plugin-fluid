@@ -370,7 +370,7 @@ This is what we do.
 ```nunjucks
 <h1>{{ title }}</h1>
 <div class="subtitle">
-  {% renderString markdownString, "md" %}
+  {% renderString subtitle, "md" %}
 </div>
 {{ content | safe }}
 ```
