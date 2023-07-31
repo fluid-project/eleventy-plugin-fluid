@@ -34,7 +34,13 @@ jobs:
       run: npm run lint
       env:
         CI: true
-    - name: Run tests
-      run: npm test
+    - name: Run tests with coverage
+      run: npm run coverage
       env:
         CI: true
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        files: cover/clover.xml
+        fail_ci_if_error: true
