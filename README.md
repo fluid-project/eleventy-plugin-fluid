@@ -201,6 +201,56 @@ let options = {
 
 If you wish to disable JavaScript processing altogether, set the `enabled` key of the `options.js` object to `false`.
 
+### Markdown Configuration
+
+`eleventy-plugin-fluid` amends Eleventy's [default Markdown configuration](https://www.11ty.dev/docs/languages/markdown/#default-options)
+as follows (for more information see [markdown-it](https://github.com/markdown-it/markdown-it#init-with-presets-and-options)):
+
+```json
+{
+    "html": true,
+    "linkify": true,
+    "typographer": true
+}
+```
+
+Options for Markdown may be modified by passing values to the `markdown` option when registering `eleventy-plugin-fluid`
+in your config:
+
+```diff
+const fluidPlugin = require("eleventy-plugin-fluid");
+
+module.exports = function (config) {
+-    config.addPlugin(fluidPlugin);
++    config.addPlugin(fluidPlugin, {
++        markdown: {
++            options: {
++                breaks: "true"
++            }
++        }
++    });
+};
+```
+
+You can also enable [`markdown-it` plugins](https://www.npmjs.com/search?q=keywords:markdown-it-plugin) when
+registering `eleventy-plugin-fluid` as follows:
+
+```diff
+const fluidPlugin = require("eleventy-plugin-fluid");
++ const markdownItEmoji = require("markdown-it-emoji");
+
+module.exports = function (config) {
+-    config.addPlugin(fluidPlugin);
++    config.addPlugin(fluidPlugin, {
++        markdown: {
++            plugins: [
++                markdownItEmoji
++            ]
++        }
++    });
+};
+```
+
 ### Filters
 
 All examples use the [Nunjucks](https://mozilla.github.io/nunjucks/) template language. Eleventy supports a number of
@@ -249,7 +299,7 @@ Output: `["a", "b"]`
 
 #### markdown
 
-Processes an input string using [Markdown](https://markdown-it.github.io).
+Processes an input string using [Markdown](https://www.11ty.dev/docs/languages/markdown/).
 
 ```nunjucks
 {{ "A paragraph with some _emphasis_." | markdown | safe }}
@@ -302,6 +352,69 @@ Output:
         <p>An illustration of something, found <a href="https://example.com">here</a>.</p>
     </figcaption>
 </figure>
+```
+
+### renderString
+
+Renders a string with a supported [template engine](https://www.11ty.dev/docs/languages/) using the Eleventy [Render plugin](https://www.11ty.dev/docs/plugins/render/).
+This can be particularly useful when front matter data from a template needs to be processed using Markdown.
+
+```md
+---
+title: About
+subtitle: Learn about our [mission](/about/mission/), [vision](/about/vision/), and [values](/about/values/).
+---
+This is what we do.
+```
+
+```nunjucks
+<h1>{{ title }}</h1>
+<div class="subtitle">
+  {% renderString subtitle, "md" %}
+</div>
+{{ content | safe }}
+```
+
+Result:
+
+```html
+<h1>About</h1>
+<div class="subtitle">
+  <p>Learn about our <a href="/about/mission/">mission</a>, <a href="/about/vision/">vision</a>, and <a href="/about/values/">values</a>.</p>
+</div>
+<p>This is what we do.</p>
+```
+
+By default, the following template formats are supported:
+
+- [HTML (`html`)](https://11ty.dev/docs/languages/html/)
+- [Markdown (`md`)](https://11ty.dev/docs/languages/markdown/)
+- [WebC (`webc`)](https://11ty.dev/docs/languages/webc/)
+- [JavaScript (`11ty.js`)](https://11ty.dev/docs/languages/javascript/)
+- [Liquid (`liquid`)](https://11ty.dev/docs/languages/liquid/)
+- [Nunjucks (`njk`)](https://11ty.dev/docs/languages/nunjucks/)
+- [Handlebars (`hbs`)](https://11ty.dev/docs/languages/handlebars/)
+- [Mustache (`mustache`)](https://11ty.dev/docs/languages/mustache/)
+- [EJS (`ejs`)](https://11ty.dev/docs/languages/ejs/)
+- [Haml (`haml`)](https://11ty.dev/docs/languages/haml/)
+- [Pug (`pug`)](https://11ty.dev/docs/languages/pug/)
+
+For example, you could enable [Vue](https://github.com/11ty/eleventy-plugin-vue) support when registering
+`eleventy-plugin-fluid` as follows:
+
+```diff
+const fluidPlugin = require("eleventy-plugin-fluid");
++ const eleventyVue = require("@11ty/eleventy-plugin-vue");
+
+module.exports = function (config) {
++    config.addPlugin(eleventyVue);
+-    config.addPlugin(fluidPlugin);
++    config.addPlugin(fluidPlugin, {
++        templateFormats: [
++            "vue"
++        ]
++    });
+};
 ```
 
 ### uioStyles

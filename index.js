@@ -13,12 +13,14 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 
 const fg = require("fast-glob");
 const path = require("node:path");
+const MarkdownIt = require("markdown-it");
+const { EleventyRenderPlugin } = require("@11ty/eleventy");
+const pluginWebc = require("@11ty/eleventy-plugin-webc");
 const figureShortcode = require("./src/shortcodes/figure-shortcode.js");
 const formatDateFilter = require("./src/filters/format-date-filter.js");
 const htmlMinifyTransform = require("./src/transforms/html-minify-transform.js");
 const isoDateFilter = require("./src/filters/iso-date-filter.js");
 const limitFilter = require("./src/filters/limit-filter.js");
-const markdownFilter = require("./src/filters/markdown-filter.js");
 const splitFilter = require("./src/filters/split-filter.js");
 const uioShortcodes = require("./src/shortcodes/uio.js");
 const uioAssets = require("./src/config/uio-assets.json");
@@ -32,6 +34,14 @@ module.exports = {
     configFunction: function (eleventyConfig, options = {}) {
         options = deepMerge({
             uio: true,
+            markdown: {
+                options: {
+                    html: true,
+                    linkify: true,
+                    typographer: true
+                },
+                plugins: []
+            },
             css: {
                 basePath: "./src/assets/styles",
                 enabled: true,
@@ -58,20 +68,57 @@ module.exports = {
                 minify: true,
                 target: "es2020",
                 outdir: "./dist/assets/scripts"
-            }
+            },
+            templateFormats: [
+                "html",
+                "md",
+                "webc",
+                "11ty.js",
+                "liquid",
+                "njk",
+                "hbs",
+                "mustache",
+                "ejs",
+                "haml",
+                "pug"
+            ]
         }, options);
+
+        /** Plugins */
+        eleventyConfig.addPlugin(EleventyRenderPlugin);
+        eleventyConfig.addPlugin(pluginWebc);
 
         /** Filters */
         eleventyConfig.addFilter("formatDate", formatDateFilter);
         eleventyConfig.addFilter("isoDate", isoDateFilter);
         eleventyConfig.addFilter("limit", limitFilter);
-        eleventyConfig.addFilter("markdown", markdownFilter);
+        eleventyConfig.addFilter("markdown", function (value) {
+            // eslint-disable-next-line no-console
+            console.warn("The markdown filter will be removed in a future version of eleventy-plugin-fluid. Use the renderString shortcode instead.");
+
+            const md = new MarkdownIt(options.markdown.options);
+            options.markdown.plugins.forEach(plugin => {
+                if (plugin) {
+                    md.use(require(plugin));
+                }
+            });
+
+            return md.render(value);
+        });
         eleventyConfig.addFilter("slug", () => {
             throw new Error("`slug` filter is no longer supported. Please use `slugify`.");
         });
         eleventyConfig.addFilter("split", splitFilter);
 
         /** Shortcodes */
+        eleventyConfig.addShortcode("renderString", async function (content, format) {
+            if (options.templateFormats.includes(format)) {
+                return eleventyConfig.javascriptFunctions.renderTemplate.call(this, content, format);
+            }
+
+            return content;
+        });
+
         eleventyConfig.addPairedShortcode("figure", figureShortcode);
 
         if (options.uio) {
@@ -87,6 +134,15 @@ module.exports = {
         }
 
         /** Template Formats */
+        eleventyConfig.amendLibrary("md", md => {
+            md.set(options.markdown.options);
+            Object.values(options.markdown.plugins).forEach(plugin => {
+                if (plugin) {
+                    md.use(require(plugin));
+                }
+            });
+        });
+
         if (options.css.enabled) {
             eleventyConfig.addTemplateFormats("css");
             eleventyConfig.addExtension("css", {

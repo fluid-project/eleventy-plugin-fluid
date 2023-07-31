@@ -11,11 +11,15 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 "use strict";
 
-const TemplateConfig = require("@11ty/eleventy/src/TemplateConfig.js");
-const TemplateEngineManager = require("@11ty/eleventy/src/TemplateEngineManager.js");
-module.exports = function markdown(value) {
-    let config = new TemplateConfig();
-    let tem = new TemplateEngineManager(config);
-    const md = tem.getEngine("md").engineLib;
+const MarkdownIt = require("markdown-it");
+
+module.exports = function markdown(value, options, plugins) {
+    const md = new MarkdownIt(options);
+    Object.values(plugins).forEach(plugin => {
+        if (plugin) {
+            md.use(plugin);
+        }
+    });
+
     return md.render(value);
 };
