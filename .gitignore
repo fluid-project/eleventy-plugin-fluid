@@ -2,3 +2,4 @@ coverage
 dist
 fixtures/locales/*.js
 node_modules
+.DS_Store
