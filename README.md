@@ -357,16 +357,32 @@ Output:
 ### renderString
 
 Renders a string with a supported [template engine](https://www.11ty.dev/docs/languages/) using the Eleventy [Render plugin](https://www.11ty.dev/docs/plugins/render/).
+This can be particularly useful when front matter data from a template needs to be processed using Markdown.
+
+```md
+---
+title: About
+subtitle: Learn about our [mission](/about/mission/), [vision](/about/vision/), and [values](/about/values/).
+---
+This is what we do.
+```
 
 ```nunjucks
-{% set markdownString = "# Page Title" %}
-{% renderString markdownString, "md" %}
+<h1>{{ title }}</h1>
+<div class="subtitle">
+  {% renderString markdownString, "md" %}
+</div>
+{{ content | safe }}
 ```
 
 Result:
 
 ```html
-<h1>Page Title</h1>
+<h1>About</h1>
+<div class="subtitle">
+  <p>Learn about our <a href="/about/mission/">mission</a>, <a href="/about/vision/">vision</a>, and <a href="/about/values/">values</a>.</p>
+</div>
+<p>This is what we do.</p>
 ```
 
 ### uioStyles
