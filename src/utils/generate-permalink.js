@@ -4,7 +4,14 @@ const { EleventyI18nPlugin } = require("@11ty/eleventy");
 const i18n = require("eleventy-plugin-i18n-gettext");
 const TemplateConfig = require("@11ty/eleventy/src/TemplateConfig.js");
 
-module.exports = (data, collectionType, collectionSlug) => {
+/**
+ * @param  {Object} data - The data object for the current collection item.
+ * @param  {String} collectionType - The collection type.
+ * @param  {String} collectionSlug - A localized, URL-safe slug for the collection type, used in the generated permalink.
+ *
+ * @return {String} - The generated permalink.
+ */
+const generatePermalink = (data, collectionType, collectionSlug) => {
     /* If this post is a "stub" with no localized title, we assume it does not exist and prevent it from building. */
     if (!data.hasOwnProperty("title")) {
         return false;
@@ -39,3 +46,5 @@ module.exports = (data, collectionType, collectionSlug) => {
         return (lang === data.defaultLanguage) ? `/${collectionSlug}/${slug}/` : `/${langSlug}/${collectionSlug}/${slug}/`;
     }
 };
+
+module.exports = generatePermalink;

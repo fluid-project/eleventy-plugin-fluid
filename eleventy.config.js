@@ -29,11 +29,11 @@ module.exports = function (eleventyConfig) {
         },
         localesDirectory: `${inputPath}/locales`,
         supportedLanguages: {
-            "de": {
-                "slug": "de",
-                "uioSlug": "de",
-                "dir": "ltr",
-                "name": "Deutsch"
+            de: {
+                slug: "de",
+                uioSlug: "de",
+                dir: "ltr",
+                name: "Deutsch"
             }
         }
     });

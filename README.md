@@ -217,6 +217,146 @@ By default, the following languages are configured:
 - `fr`
 - `pt-br`
 
+You can add support for additional languages by passing values to the `supportedLanguages` option when registering
+`eleventy-plugin-fluid` in your config:
+
+```diff
+const fluidPlugin = require("eleventy-plugin-fluid");
+
+module.exports = function (config) {
+-    config.addPlugin(fluidPlugin);
++    config.addPlugin(fluidPlugin, {
++        supportedLanguages: {
++            de: {
++                // The slug which will be used in URLs to content in this language.
++                slug: "de",
++                // The slug which will be used to localize UIO (see: https://docs.fluidproject.org/infusion/development/localizationinthepreferencesframework#specifying-a-localization)
++                uioSlug: "de",
++                // The direction of the language.
++                dir: "ltr",
++                // The endonym of the language.
++                name: "Deutsch"
++            }
++        }
++    });
+};
+```
+
+`eleventy-plugin-fluid` provides the following [global data](https://www.11ty.dev/docs/data-global-custom/):
+
+```json
+{
+  "defaultLanguage": "en",
+  "defaultLanguageDir": "ltr",
+  "supportedLanguages": {
+      "en": {
+          "slug": "en",
+          "uioSlug": "en",
+          "dir": "ltr",
+          "name": "English"
+      },
+      "en-CA": {
+          "slug": "en-ca",
+          "uioSlug": "en_CA",
+          "dir": "ltr",
+          "name": "English (Canada)"
+      },
+      "en-US": {
+          "slug": "en-us",
+          "uioSlug": "en_US",
+          "dir": "ltr",
+          "name": "English (United States)"
+      },
+      "es": {
+          "slug": "es",
+          "uioSlug": "es",
+          "dir": "ltr",
+          "name": "Español"
+      },
+      "fa": {
+          "slug": "fa",
+          "uioSlug": "fa",
+          "dir": "rtl",
+          "name": "فارسی"
+      },
+      "fr": {
+          "slug": "fr",
+          "uioSlug": "fr",
+          "dir": "ltr",
+          "name": "Français"
+      },
+      "pt-BR": {
+          "slug": "pt-br",
+          "uioSlug": "pt_BR",
+          "dir": "ltr",
+          "name": "Português (Brasil)"
+      }
+  }
+}
+```
+
+The `defaultLanguage` can be overridden by passing a new value to the `defaultLanguage` options key when registering
+`eleventy-plugin-fluid`.
+
+By default, `eleventy-plugin-fluid` also configures a [`localesDirectory`](https://github.com/sgissinger/eleventy-plugin-i18n-gettext#localesdirectory)
+for `eleventy-plugin-i18n-getttext` as `./src/locales`. This can be overridden by passing a new value to the
+`localesDirectory` options key when registering `eleventy-plugin-fluid`.
+
+`eleventy-plugin-fluid` also provides two localization-related helpers:
+
+#### `generatePermalink`
+
+[`generatePermalink`](src/utils/generate-permalink.js) is used to generate localized permalinks for a collection type,
+with full support for [pagination](https://www.11ty.dev/docs/pagination/). Here's an example, as used in an `11tydata.js`
+file:
+
+```js
+const { EleventyI18nPlugin } = require("@11ty/eleventy");
+const { generatePermalink } = require("eleventy-plugin-fluid");
+const { _ } = require("eleventy-plugin-i18n-gettext");
+
+module.exports = {
+    layout: "layouts/base.njk",
+    eleventyComputed: {
+        lang: data => EleventyI18nPlugin.LangUtils.getLanguageCodeFromInputPath(data.page.inputPath),
+        langDir: data => data.supportedLanguages[data.lang].dir,
+        locale: data => data.lang,
+        permalink: data => {
+            const locale = data.locale;
+            return generatePermalink(data, "posts", _(locale, "posts"));
+        }
+    }
+};
+```
+
+In this example, [`eleventy-plugin-i18n-gettext`](https://github.com/sgissinger/eleventy-plugin-i18n-gettext) is used
+to localize the URL path for the collection. The `_()` method provided by `eleventy-plugin-i18n-gettext` requires a
+variable called `locale` as its first parameter (see [this issue](https://github.com/sgissinger/eleventy-plugin-i18n-gettext/issues/22)).
+
+#### `localizeData`
+
+[`localizeData`](src/utils/localize-data.js) is used to localize [directory data](https://www.11ty.dev/docs/data-template-dir/)
+for a directory of content in a specific language (where the directory name is the language code). Here's an example,
+as used in an `11tydata.js` file:
+
+```js
+const { localizeData } = require("eleventy-plugin-fluid");
+
+module.exports = () => {
+    return localizeData({}, __dirname);
+};
+```
+
+This helper is a wrapper for [`i18n.enhance11tydata`](https://github.com/sgissinger/eleventy-plugin-i18n-gettext#i18nenhance11tydataobj-locale-dir).
+
+#### Additional Reference
+
+For additional information on setting up localization/internationalization, see:
+
+- [Eleventy Internationalization plugin](https://www.11ty.dev/docs/plugins/i18n/)
+- [`eleventy-plugin-i18n-gettext`](https://github.com/sgissinger/eleventy-plugin-i18n-gettext)
+- [Trivet](https://github.com/fluid-project/trivet/#internationalization)
+
 ### Markdown Configuration
 
 `eleventy-plugin-fluid` amends Eleventy's [default Markdown configuration](https://www.11ty.dev/docs/languages/markdown/#default-options)
