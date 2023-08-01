@@ -45,7 +45,7 @@
     "esbuild": "0.18.13",
     "html-minifier": "4.0.0",
     "lightningcss": "1.21.5",
-    "sass": "1.63.6"
+    "sass": "1.64.2"
   },
   "peerDependencies": {
     "infusion": "4.x"
