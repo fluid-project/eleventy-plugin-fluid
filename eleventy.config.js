@@ -28,7 +28,7 @@ module.exports = function (eleventyConfig) {
             basePath: `${inputPath}/assets/scripts`
         },
         localesDirectory: `${inputPath}/locales`,
-        languages: {
+        supportedLanguages: {
             "de": {
                 "slug": "de",
                 "uioSlug": "de",

@@ -69,3 +69,8 @@ test("Generates French permalinks", async function (t) {
     let fr404 = fs.readFileSync("dist/fr/404.html", "utf8");
     t.true(fr404.includes("<h1>Page non trouvée</h1>"));
 });
+
+test("Generates user-configured language permalinks", async function (t) {
+    let dePost = fs.readFileSync("dist/de/posts/einfuehrung/index.html", "utf8");
+    t.true(dePost.includes("<h1>Einführung</h1>"));
+});
