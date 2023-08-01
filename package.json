@@ -46,6 +46,7 @@
     "esbuild": "0.18.13",
     "html-minifier": "4.0.0",
     "lightningcss": "1.21.5",
+    "node-ray": "^1.21.0",
     "rtl-detect": "1.0.4",
     "sass": "1.63.6"
   },

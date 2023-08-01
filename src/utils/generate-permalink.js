@@ -2,7 +2,6 @@
 
 const { EleventyI18nPlugin } = require("@11ty/eleventy");
 const i18n = require("eleventy-plugin-i18n-gettext");
-const languages = require("../config/languages.json");
 const TemplateConfig = require("@11ty/eleventy/src/TemplateConfig.js");
 
 module.exports = (data, collectionType, collectionSlug) => {
@@ -11,11 +10,11 @@ module.exports = (data, collectionType, collectionSlug) => {
         return false;
     }
 
+    const eleventyConfig = new TemplateConfig();
     const lang = EleventyI18nPlugin.LangUtils.getLanguageCodeFromInputPath(data.page.inputPath);
     const locale = lang;
-    const langSlug = languages[lang].slug || lang;
+    const langSlug = data.supportedLanguages[lang].slug || lang;
     collectionSlug = collectionSlug || collectionType;
-    const eleventyConfig = new TemplateConfig();
     const slugify = eleventyConfig.userConfig.getFilter("slugify");
 
     if (collectionType === "pages") {

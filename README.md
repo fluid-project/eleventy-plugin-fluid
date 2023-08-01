@@ -204,7 +204,18 @@ If you wish to disable JavaScript processing altogether, set the `enabled` key o
 
 ### Localization
 
-TODO.
+`eleventy-plugin-fluid` adds support for localization using Eleventy's [i18n plugin](https://11ty.dev/docs/plugins/i18n/)
+and [`eleventy-plugin-i18n-gettext`](https://github.com/sgissinger/eleventy-plugin-i18n-gettext) for string translation.
+
+By default, the following languages are configured:
+
+- `en`
+- `en-CA`
+- `en-US`
+- `es`
+- `fa`
+- `fr`
+- `pt-br`
 
 ### Markdown Configuration
 

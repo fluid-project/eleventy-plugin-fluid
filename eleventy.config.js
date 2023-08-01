@@ -27,7 +27,15 @@ module.exports = function (eleventyConfig) {
         js: {
             basePath: `${inputPath}/assets/scripts`
         },
-        localesDirectory: `${inputPath}/locales`
+        localesDirectory: `${inputPath}/locales`,
+        languages: {
+            "de": {
+                "slug": "de",
+                "uioSlug": "de",
+                "dir": "ltr",
+                "name": "Deutsch"
+            }
+        }
     });
     eleventyConfig.addPassthroughCopy(`${inputPath}/assets/images`, "/assets/");
 

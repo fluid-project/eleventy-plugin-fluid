@@ -6,13 +6,13 @@
         "name": "English"
     },
     "en-CA": {
-        "slug": "en",
+        "slug": "en-ca",
         "uioSlug": "en_CA",
         "dir": "ltr",
         "name": "English (Canada)"
     },
     "en-US": {
-        "slug": "en",
+        "slug": "en-us",
         "uioSlug": "en_US",
         "dir": "ltr",
         "name": "English (United States)"

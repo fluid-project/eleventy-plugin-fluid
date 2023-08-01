@@ -72,7 +72,7 @@ module.exports = {
                 target: "es2020",
                 outdir: "./dist/assets/scripts"
             },
-            languages,
+            supportedLanguages: languages,
             defaultLanguage: "en",
             localesDirectory: "./src/locales",
             templateFormats: [
@@ -103,6 +103,7 @@ module.exports = {
         /** Global Data */
         eleventyConfig.addGlobalData("defaultLanguage", options.defaultLanguage);
         eleventyConfig.addGlobalData("defaultLanguageDirection", getLangDir(options.defaultLanguage));
+        eleventyConfig.addGlobalData("supportedLanguages", options.supportedLanguages);
 
         /** Filters */
         eleventyConfig.addFilter("formatDate", formatDateFilter);
