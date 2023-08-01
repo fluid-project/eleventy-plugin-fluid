@@ -12,7 +12,7 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 "use strict";
 
 const fg = require("fast-glob");
-const path = require("node:path");
+const path = require("path");
 const MarkdownIt = require("markdown-it");
 const { EleventyRenderPlugin, EleventyI18nPlugin } = require("@11ty/eleventy");
 const { getLangDir } = require("rtl-detect");
@@ -197,5 +197,6 @@ module.exports = {
         /** Transforms */
         eleventyConfig.addTransform("htmlMinify", htmlMinifyTransform);
     },
-    generatePermalink: require("./src/utils/generate-permalink.js")
+    generatePermalink: require("./src/utils/generate-permalink.js"),
+    localizeData: require("./src/utils/localize-data.js")
 };

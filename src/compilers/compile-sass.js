@@ -14,7 +14,7 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 const browserslist = require("browserslist");
 const { transform, browserslistToTargets } = require("lightningcss");
 const sass = require("sass");
-const path = require("node:path");
+const path = require("path");
 
 module.exports = async function (inputContent, inputPath, options, templateConfig) {
     let parsed = path.parse(inputPath);
