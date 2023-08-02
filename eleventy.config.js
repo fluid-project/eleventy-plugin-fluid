@@ -13,7 +13,7 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 
 const fluidPlugin = require("./index.js");
 
-const inputPath = "./fixtures";
+const inputPath = "fixtures";
 
 module.exports = function (eleventyConfig) {
     eleventyConfig.addPlugin(fluidPlugin, {

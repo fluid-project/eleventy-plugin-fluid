@@ -46,7 +46,7 @@ module.exports = {
                 plugins: []
             },
             css: {
-                basePath: `${eleventyConfig.dir.input || "./src"}/assets/styles`,
+                basePath: `./${eleventyConfig.dir.input || "src"}/assets/styles`,
                 enabled: true,
                 minify: true,
                 sourceMap: false,
@@ -56,7 +56,7 @@ module.exports = {
                 browserslist: "> 1%"
             },
             sass: {
-                basePath: `${eleventyConfig.dir.input || "./src"}/assets/styles`,
+                basePath: `./${eleventyConfig.dir.input || "src"}/assets/styles`,
                 enabled: false,
                 minify: true,
                 sourceMap: false,
@@ -66,15 +66,15 @@ module.exports = {
                 browserslist: "> 1%"
             },
             js: {
-                basePath: `${eleventyConfig.dir.input || "./src"}/assets/scripts`,
+                basePath: `./${eleventyConfig.dir.input || "src"}/assets/scripts`,
                 enabled: true,
                 minify: true,
                 target: "es2020",
-                outdir: `${eleventyConfig.dir.output || "./_site"}/assets/scripts`
+                outdir: `./${eleventyConfig.dir.output || "_site"}/assets/scripts`
             },
             supportedLanguages: languages,
             defaultLanguage: "en",
-            localesDirectory: `${eleventyConfig.dir.input || "./src"}/locales`,
+            localesDirectory: `./${eleventyConfig.dir.input || "src"}/locales`,
             templateFormats: [
                 "html",
                 "md",
