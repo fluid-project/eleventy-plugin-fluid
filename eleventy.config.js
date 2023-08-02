@@ -26,9 +26,24 @@ module.exports = function (eleventyConfig) {
         },
         js: {
             basePath: `${inputPath}/assets/scripts`
+        },
+        localesDirectory: `${inputPath}/locales`,
+        supportedLanguages: {
+            de: {
+                slug: "de",
+                uioSlug: "de",
+                dir: "ltr",
+                name: "Deutsch"
+            }
         }
     });
     eleventyConfig.addPassthroughCopy(`${inputPath}/assets/images`, "/assets/");
+
+    ["en", "fr"].forEach(lang => {
+        eleventyConfig.addCollection(`posts_${lang}`, collection => {
+            return collection.getFilteredByGlob(`./fixtures/posts/${lang}/*.md`);
+        });
+    });
 
     return {
         dir: {

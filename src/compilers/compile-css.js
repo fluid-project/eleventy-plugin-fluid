@@ -13,7 +13,7 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 
 const browserslist = require("browserslist");
 const { bundle, browserslistToTargets } = require("lightningcss");
-const path = require("node:path");
+const path = require("path");
 
 module.exports = async (content, inputPath, options) => {
     let parsed = path.parse(inputPath);
