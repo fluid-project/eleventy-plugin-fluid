@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v1.2.0...v2.0.0) (2023-08-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* allow processing to be disabled (resolves #174) ([#176](https://github.com/fluid-project/eleventy-plugin-fluid/issues/176))
+
+### Features
+
+* add shared Markdown configuration and renderString shortcode (resolves [#158](https://github.com/fluid-project/eleventy-plugin-fluid/issues/158)) ([#179](https://github.com/fluid-project/eleventy-plugin-fluid/issues/179)) ([88f9c3b](https://github.com/fluid-project/eleventy-plugin-fluid/commit/88f9c3b616d079ab0fb4019d7e72f3b4a9745810))
+* allow processing to be disabled (resolves [#174](https://github.com/fluid-project/eleventy-plugin-fluid/issues/174)) ([#176](https://github.com/fluid-project/eleventy-plugin-fluid/issues/176)) ([10c6b0c](https://github.com/fluid-project/eleventy-plugin-fluid/commit/10c6b0c00002e5006effe9340c7ce8e0f323a26b))
+* include localization utilities in eleventy-plugin-fluid ([#184](https://github.com/fluid-project/eleventy-plugin-fluid/issues/184)) ([216b336](https://github.com/fluid-project/eleventy-plugin-fluid/commit/216b3368e629309ef710e8df75bea2c8afe4c337))
+* process JavaScript with esbuild (resolves [#4](https://github.com/fluid-project/eleventy-plugin-fluid/issues/4)) ([#175](https://github.com/fluid-project/eleventy-plugin-fluid/issues/175)) ([a417a8f](https://github.com/fluid-project/eleventy-plugin-fluid/commit/a417a8f2dd7094c73dee0add118601d124b7540b))
+* process JS in an event rather than as a template format ([#180](https://github.com/fluid-project/eleventy-plugin-fluid/issues/180)) ([df8120f](https://github.com/fluid-project/eleventy-plugin-fluid/commit/df8120fefc1d48eb1ea59c934a4912427822908e))
+* use Eleventy configuration for basePaths ([df8120f](https://github.com/fluid-project/eleventy-plugin-fluid/commit/df8120fefc1d48eb1ea59c934a4912427822908e))
+
+
+### Bug Fixes
+
+* resolve issue where use of eleventyConfig variables omitted files ([#181](https://github.com/fluid-project/eleventy-plugin-fluid/issues/181)) ([eccd990](https://github.com/fluid-project/eleventy-plugin-fluid/commit/eccd990232044cafb3cb91a62cba6e8f06321ffb))
+* resolve missing forward slash in configuration ([#182](https://github.com/fluid-project/eleventy-plugin-fluid/issues/182)) ([271b6c8](https://github.com/fluid-project/eleventy-plugin-fluid/commit/271b6c8d18606b53cafee7244a9055479011f39c))
+
 ## [1.2.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v1.1.0...v1.2.0) (2023-07-13)
 
 
