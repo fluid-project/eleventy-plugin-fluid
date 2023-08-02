@@ -70,7 +70,7 @@ Default values are as follows:
 ```js
 let options = {
     /* Where should Eleventy look for CSS files to process? */
-    basePath: "./src/assets/styles",
+    basePath: `${eleventyConfig.dir.input || "./src"}/assets/styles`,
     /* Should CSS files be processed? */
     enabled: true,
     /* See: https://lightningcss.dev/minification.html */
@@ -139,7 +139,7 @@ Default values are as follows:
 ```js
 let options = {
     /* Where should Eleventy look for Sass files to process? */
-    basePath: "./src/assets/styles",
+    basePath: `${eleventyConfig.dir.input || "./src"}/assets/styles`,
     /* Should Sass files be processed? */
     enabled: false,
     /* See: https://lightningcss.dev/minification.html */
@@ -189,14 +189,14 @@ Default values are as follows:
 ```js
 let options = {
     /* Where should Eleventy look for JavaScript files to process? */
-    basePath: "./src/assets/scripts",
+    basePath: `${eleventyConfig.dir.input || "./src"}/assets/scripts`,
     /* Should JavaScript files be processed? */
     enabled: true,
     /* See: https://esbuild.github.io/api/#minify */
     minify: true,
     /* See: https://esbuild.github.io/content-types/#javascript */
     target: "es2020",
-    outdir: "./dist/assets/scripts"
+    basePath: `${eleventyConfig.dir.output || "./_site"}/assets/scripts`
 };
 ```
 

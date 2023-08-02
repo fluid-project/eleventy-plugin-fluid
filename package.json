@@ -7,10 +7,10 @@
   },
   "main": "index.js",
   "scripts": {
-    "build": "rimraf dist && eleventy",
+    "build": "rimraf _site && eleventy",
     "coverage": "c8 -r text -r lcov -x \"test/*.js\" -x \"eleventy.config.js\" -x \"fixtures/**/*.js\" ava",
     "lint": "fluid-lint-all",
-    "start": "rimraf dist && eleventy --serve",
+    "start": "rimraf _site && eleventy --serve",
     "test": "ava",
     "prepare": "husky install"
   },
