@@ -1,7 +1,7 @@
 .github
 .husky
+_site
 coverage
-dist
 fixtures
 test
 .commitlintrc.json

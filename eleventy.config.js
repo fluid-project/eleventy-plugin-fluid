@@ -13,21 +13,13 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 
 const fluidPlugin = require("./index.js");
 
-const inputPath = "./fixtures";
+const inputPath = "fixtures";
 
 module.exports = function (eleventyConfig) {
     eleventyConfig.addPlugin(fluidPlugin, {
-        css: {
-            basePath: `${inputPath}/assets/styles`
-        },
         sass: {
-            basePath: `${inputPath}/assets/styles`,
             enabled: true
         },
-        js: {
-            basePath: `${inputPath}/assets/scripts`
-        },
-        localesDirectory: `${inputPath}/locales`,
         supportedLanguages: {
             de: {
                 slug: "de",
@@ -47,8 +39,7 @@ module.exports = function (eleventyConfig) {
 
     return {
         dir: {
-            input: inputPath,
-            output: "dist"
+            input: inputPath
         },
         passthroughFileCopy: true
     };
