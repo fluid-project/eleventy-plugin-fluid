@@ -29,8 +29,8 @@
   "homepage": "https://github.com/fluid-project/eleventy-plugin-fluid#readme",
   "devDependencies": {
     "@11ty/eleventy": "2.0.1",
-    "@commitlint/cli": "17.6.6",
-    "@commitlint/config-conventional": "17.6.6",
+    "@commitlint/cli": "17.6.7",
+    "@commitlint/config-conventional": "17.6.7",
     "ava": "5.3.1",
     "c8": "8.0.0",
     "eslint-config-fluid": "2.1.1",
@@ -41,14 +41,13 @@
   },
   "dependencies": {
     "@11ty/eleventy-plugin-webc": "0.11.1",
-    "browserslist": "4.21.9",
+    "browserslist": "4.21.10",
     "eleventy-plugin-i18n-gettext": "1.5.1",
-    "esbuild": "0.18.13",
+    "esbuild": "0.18.17",
     "html-minifier": "4.0.0",
     "lightningcss": "1.21.5",
-    "node-ray": "^1.21.0",
     "rtl-detect": "1.0.4",
-    "sass": "1.63.6"
+    "sass": "1.64.2"
   },
   "peerDependencies": {
     "infusion": "4.x"
