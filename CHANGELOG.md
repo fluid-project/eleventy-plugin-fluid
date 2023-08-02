@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.0.0...v2.1.0) (2023-08-02)
+
+
+### Features
+
+* use configured input and output paths ([#190](https://github.com/fluid-project/eleventy-plugin-fluid/issues/190)) ([253e59a](https://github.com/fluid-project/eleventy-plugin-fluid/commit/253e59a02b5cbf248fa3adea924e5fb5a5a974c5))
+
 ## [2.0.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v1.2.0...v2.0.0) (2023-08-02)
 
 
