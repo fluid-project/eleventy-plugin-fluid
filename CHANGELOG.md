@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.1.0...v2.2.0) (2023-08-02)
+
+
+### Features
+
+* use underscore for locales directory ([#192](https://github.com/fluid-project/eleventy-plugin-fluid/issues/192)) ([79181c1](https://github.com/fluid-project/eleventy-plugin-fluid/commit/79181c1c313a524155e54f9e864f4683610a53fe))
+
 ## [2.1.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.0.0...v2.1.0) (2023-08-02)
 
 
