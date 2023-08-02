@@ -74,7 +74,7 @@ module.exports = {
             },
             supportedLanguages: languages,
             defaultLanguage: "en",
-            localesDirectory: `./${eleventyConfig.dir.input || "src"}/locales`,
+            localesDirectory: `./${eleventyConfig.dir.input || "src"}/_locales`,
             templateFormats: [
                 "html",
                 "md",

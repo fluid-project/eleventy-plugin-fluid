@@ -299,7 +299,7 @@ The `defaultLanguage` can be overridden by passing a new value to the `defaultLa
 `eleventy-plugin-fluid`.
 
 By default, `eleventy-plugin-fluid` also configures a [`localesDirectory`](https://github.com/sgissinger/eleventy-plugin-i18n-gettext#localesdirectory)
-for `eleventy-plugin-i18n-getttext` as `./src/locales`. This can be overridden by passing a new value to the
+for `eleventy-plugin-i18n-getttext` as `./src/_locales`. This can be overridden by passing a new value to the
 `localesDirectory` options key when registering `eleventy-plugin-fluid`.
 
 `eleventy-plugin-fluid` also provides two localization-related helpers:
