@@ -74,6 +74,7 @@ module.exports = {
             },
             supportedLanguages: languages,
             defaultLanguage: "en",
+            i18n: true,
             localesDirectory: `./${eleventyConfig.dir.input || "src"}/_locales`,
             templateFormats: [
                 "html",
@@ -94,9 +95,11 @@ module.exports = {
         eleventyConfig.addPlugin(EleventyI18nPlugin, {
             defaultLanguage: options.defaultLanguage
         });
-        eleventyConfig.addPlugin(i18n, {
-            localesDirectory: options.localesDirectory
-        });
+        if (options.i18n) {
+            eleventyConfig.addPlugin(i18n, {
+                localesDirectory: options.localesDirectory
+            });
+        }
         eleventyConfig.addPlugin(EleventyRenderPlugin);
         eleventyConfig.addPlugin(pluginWebc);
 

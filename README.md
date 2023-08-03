@@ -323,7 +323,7 @@ module.exports = {
         locale: data => data.lang,
         permalink: data => {
             const locale = data.locale;
-            return generatePermalink(data, "posts", _(locale, "posts"));
+            return generatePermalink(data, "pages", _(locale, "pages"), _(locale, "page"));
         }
     }
 };
@@ -348,6 +348,26 @@ module.exports = () => {
 ```
 
 This helper is a wrapper for [`i18n.enhance11tydata`](https://github.com/sgissinger/eleventy-plugin-i18n-gettext#i18nenhance11tydataobj-locale-dir).
+
+#### Disabling String Translation
+
+If you don't need string translation features in your project, you can disable string translation by setting the `i18n`
+option to false when registering `eleventy-plugin-fluid` in your config:
+
+```diff
+const fluidPlugin = require("eleventy-plugin-fluid");
+
+module.exports = function (config) {
+-    config.addPlugin(fluidPlugin);
++    config.addPlugin(fluidPlugin, {
++        i18n: false
++    });
+};
+```
+
+Note that if you do this, you will need to remove any uses of the `localizeData` helper or
+[`eleventy-plugin-i18n-gettext` functions](https://github.com/sgissinger/eleventy-plugin-i18n-gettext#api) in your
+project.
 
 #### Additional Reference
 
