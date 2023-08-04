@@ -17,8 +17,8 @@ const generatePermalink = (data, collectionType, collectionSlug, paginationSlug 
     }
 
     const eleventyConfig = new TemplateConfig();
-    const lang = data.lang || data.defaultLanguage;
-    const langSlug = data.supportedLanguages[lang].slug || lang;
+    const locale = data.locale || data.defaultLanguage;
+    const langSlug = data.supportedLanguages[locale].slug || locale;
     collectionSlug = collectionSlug || collectionType;
     const slugify = eleventyConfig.userConfig.getFilter("slugify");
 
@@ -26,23 +26,23 @@ const generatePermalink = (data, collectionType, collectionSlug, paginationSlug 
 
         /* If the page is a 404 page, return 404.html, optionally prepended with the language code. */
         if (data.page.fileSlug === "404") {
-            return (lang === data.defaultLanguage) ? "/404.html" : `/${langSlug}/404.html`;
+            return (locale === data.defaultLanguage) ? "/404.html" : `/${langSlug}/404.html`;
         }
 
         /** If the page is the index page, the base path, optionally prepended with the language code. */
-        if (data.page.fileSlug === lang || data.page.inputPath.endsWith("index.md")) {
-            return (lang === data.defaultLanguage) ? "/" : `/${langSlug}/`;
+        if (data.page.fileSlug === locale || data.page.inputPath.endsWith("index.md")) {
+            return (locale === data.defaultLanguage) ? "/" : `/${langSlug}/`;
         }
 
         /* If the page is not the index page, return the page title in a URL-safe format, optionally prepended with the language code. */
         const slug = slugify(data.title);
         if (data.hasOwnProperty("pagination") && data.pagination.pageNumber > 0) {
-            return (lang === data.defaultLanguage) ? `/${slug}/${paginationSlug}/${data.pagination.pageNumber + 1}/` : `/${langSlug}/${slug}/${paginationSlug}/${data.pagination.pageNumber + 1}/`;
+            return (locale === data.defaultLanguage) ? `/${slug}/${paginationSlug}/${data.pagination.pageNumber + 1}/` : `/${langSlug}/${slug}/${paginationSlug}/${data.pagination.pageNumber + 1}/`;
         }
-        return (lang === data.defaultLanguage) ? `/${slug}/` : `/${langSlug}/${slug}/`;
+        return (locale === data.defaultLanguage) ? `/${slug}/` : `/${langSlug}/${slug}/`;
     } else {
         const slug = slugify(data.title);
-        return (lang === data.defaultLanguage) ? `/${collectionSlug}/${slug}/` : `/${langSlug}/${collectionSlug}/${slug}/`;
+        return (locale === data.defaultLanguage) ? `/${collectionSlug}/${slug}/` : `/${langSlug}/${collectionSlug}/${slug}/`;
     }
 };
 
