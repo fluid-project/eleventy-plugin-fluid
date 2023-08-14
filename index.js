@@ -191,7 +191,7 @@ module.exports = {
                     if (!path.basename(item).startsWith("_")) {
                         await compileJs(item, options.js);
                         // eslint-disable-next-line no-console
-                        console.log(`[11ty] Writing ${options.js.outdir}/${path.basename(item)} from ${item}`);
+                        console.log(`[11ty] Writing ${path.normalize(options.js.outdir)}/${path.basename(item)} from ${item}`);
                     }
                 });
             });
