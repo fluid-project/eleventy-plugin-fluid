@@ -10,7 +10,7 @@ const TemplateConfig = require("@11ty/eleventy/src/TemplateConfig.js");
  *
  * @return {String} - The generated permalink.
  */
-const generatePermalink = (data, collectionType, collectionSlug, paginationSlug = "pages") => {
+const generatePermalink = (data, collectionType, collectionSlug, paginationSlug = "page") => {
     /* If this post is a "stub" with no localized title, we assume it does not exist and prevent it from building. */
     if (!data.hasOwnProperty("title")) {
         return false;
