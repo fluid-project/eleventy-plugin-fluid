@@ -5,10 +5,10 @@ const { generatePermalink } = require("../../index.js");
 
 module.exports = {
     layout: "layouts/base.njk",
+    permalink: data => {
+        return generatePermalink(data, "pages");
+    },
     eleventyComputed: {
-        langDir: data => getLangDir(data.locale),
-        permalink: data => {
-            return generatePermalink(data, "pages");
-        }
+        langDir: data => getLangDir(data.locale)
     }
 };
