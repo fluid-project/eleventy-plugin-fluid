@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.2](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.3.1...v2.3.2) (2023-08-14)
+
+
+### Bug Fixes
+
+* don't use generatePermalink in eleventyComputed block ([#201](https://github.com/fluid-project/eleventy-plugin-fluid/issues/201)) ([2d4c1cf](https://github.com/fluid-project/eleventy-plugin-fluid/commit/2d4c1cffca6a847bbab7d5e15dbf9d71a0dd3b84))
+* normalize paths for compiled JS in console messages ([#203](https://github.com/fluid-project/eleventy-plugin-fluid/issues/203)) ([16f066a](https://github.com/fluid-project/eleventy-plugin-fluid/commit/16f066a271926a246cbf09565f4991939922176c))
+
 ## [2.3.1](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.3.0...v2.3.1) (2023-08-04)
 
 
