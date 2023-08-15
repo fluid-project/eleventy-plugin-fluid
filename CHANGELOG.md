@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.3.2...v2.4.0) (2023-08-15)
+
+
+### Features
+
+* exclude CSS and Sass files from collections ([#204](https://github.com/fluid-project/eleventy-plugin-fluid/issues/204)) ([d25c434](https://github.com/fluid-project/eleventy-plugin-fluid/commit/d25c4342d7952f111c54dd4b51a49f345b6577c5))
+
 ## [2.3.2](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.3.1...v2.3.2) (2023-08-14)
 
 
