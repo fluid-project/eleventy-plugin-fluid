@@ -167,6 +167,11 @@ module.exports = {
             eleventyConfig.addTemplateFormats("css");
             eleventyConfig.addExtension("css", {
                 outputFileExtension: "css",
+                getData: async function () {
+                    return {
+                        eleventyExcludeFromCollections: true
+                    };
+                },
                 compile: async function (inputContent, inputPath) {
                     return await compileCss(inputContent, inputPath, options.css);
                 }
@@ -177,6 +182,11 @@ module.exports = {
             eleventyConfig.addTemplateFormats("scss");
             eleventyConfig.addExtension("scss", {
                 outputFileExtension: "css",
+                getData: async function () {
+                    return {
+                        eleventyExcludeFromCollections: true
+                    };
+                },
                 compile: async function (inputContent, inputPath) {
                     return await compileSass(inputContent, inputPath, options.sass, this);
                 }
