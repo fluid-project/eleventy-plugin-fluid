@@ -41,7 +41,7 @@ test("Builds minified JavaScript", async function (t) {
 
 test("Renders Markdown via shortcode", async function (t) {
     let testHtml = fs.readFileSync("_site/test.html", "utf8");
-    t.true(testHtml.includes("<h1>eleventy-plugin-fluid</h1>"));
+    t.true(testHtml.includes("<h1 id=\"eleventy-plugin-fluid\" tabindex=\"-1\">eleventy-plugin-fluid</h1>"));
 });
 
 test("Doesn't render unsupported template language via shortcode", async function (t) {

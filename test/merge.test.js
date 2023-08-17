@@ -12,16 +12,24 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 "use strict";
 
 const test = require("ava");
-const deepMerge = require("../src/utils/deep-merge.js");
+const merge = require("@11ty/eleventy/src/Util/Merge.js");
 
 test("Passing false replaces an original value", function (t) {
-    t.deepEqual(deepMerge({browserslist: "> 2%"}, {browserslist: false}), {browserslist: false});
+    t.deepEqual(merge({browserslist: "> 2%"}, {browserslist: false}), {browserslist: false});
 });
+
+// TODO: Override option key
 
 test("Nested objects can be merged", function (t) {
-    t.deepEqual(deepMerge({drafts: {nesting: true}}, {drafts: {customMedia: true}}), {drafts: {nesting: true, customMedia: true}});
+    t.deepEqual(merge({drafts: {nesting: true}}, {drafts: {customMedia: true}}), {drafts: {nesting: true, customMedia: true}});
 });
 
+// TODO: Override option key
+
 test("Nested arrays can be merged", function (t) {
-    t.deepEqual(deepMerge({browserslist: ["ie 8", "ie 9"]}, {browserslist: ["ie 7"]}), {browserslist: ["ie 8", "ie 9", "ie 7"]});
+    t.deepEqual(merge({browserslist: ["ie 8", "ie 9"]}, {browserslist: ["ie 7"]}), {browserslist: ["ie 8", "ie 9", "ie 7"]});
+});
+
+test("Nested arrays can be overridden", function (t) {
+    t.deepEqual(merge({browserslist: ["ie 8", "ie 9"]}, {"override:browserslist": ["ie 7"]}), {browserslist: ["ie 7"]});
 });

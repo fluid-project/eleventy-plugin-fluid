@@ -37,6 +37,7 @@
     "fluid-lint-all": "1.2.9",
     "husky": "8.0.3",
     "infusion": "4.6.0",
+    "markdown-it-anchor": "8.6.7",
     "rimraf": "5.0.1"
   },
   "dependencies": {

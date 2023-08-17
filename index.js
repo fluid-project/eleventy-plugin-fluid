@@ -30,12 +30,12 @@ const languages = require("./src/config/languages.json");
 const compileCss = require("./src/compilers/compile-css.js");
 const compileSass = require("./src/compilers/compile-sass.js");
 const compileJs = require("./src/compilers/compile-js.js");
-const deepMerge = require("./src/utils/deep-merge.js");
+const merge = require("@11ty/eleventy/src/Util/Merge.js");
 
 module.exports = {
     initArguments: {},
     configFunction: function (eleventyConfig, options = {}) {
-        options = deepMerge({
+        options = merge({
             uio: true,
             markdown: {
                 options: {
@@ -118,8 +118,11 @@ module.exports = {
 
             const md = new MarkdownIt(options.markdown.options);
             options.markdown.plugins.forEach(plugin => {
-                if (plugin) {
+                if (typeof plugin === "string") {
                     md.use(require(plugin));
+                } else {
+                    const [pluginPackage, options = {}] = plugin;
+                    md.use(require(pluginPackage), options);
                 }
             });
 
@@ -156,9 +159,12 @@ module.exports = {
         /** Template Formats */
         eleventyConfig.amendLibrary("md", md => {
             md.set(options.markdown.options);
-            Object.values(options.markdown.plugins).forEach(plugin => {
-                if (plugin) {
+            options.markdown.plugins.forEach(plugin => {
+                if (typeof plugin === "string") {
                     md.use(require(plugin));
+                } else {
+                    const [pluginPackage, options = {}] = plugin;
+                    md.use(require(pluginPackage), options);
                 }
             });
         });
