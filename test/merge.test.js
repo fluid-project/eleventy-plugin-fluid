@@ -18,13 +18,17 @@ test("Passing false replaces an original value", function (t) {
     t.deepEqual(merge({browserslist: "> 2%"}, {browserslist: false}), {browserslist: false});
 });
 
-// TODO: Override option key
+test("Passing key with override prefix overrides an original value", function (t) {
+    t.deepEqual(merge({browserslist: "> 2%"}, {"override:browserslist": "> 1%"}), {browserslist: "> 1%"});
+});
 
 test("Nested objects can be merged", function (t) {
     t.deepEqual(merge({drafts: {nesting: true}}, {drafts: {customMedia: true}}), {drafts: {nesting: true, customMedia: true}});
 });
 
-// TODO: Override option key
+test("Nested objects can be overriden", function (t) {
+    t.deepEqual(merge({drafts: {nesting: true}}, {"override:drafts": {customMedia: true}}), {drafts: {customMedia: true}});
+});
 
 test("Nested arrays can be merged", function (t) {
     t.deepEqual(merge({browserslist: ["ie 8", "ie 9"]}, {browserslist: ["ie 7"]}), {browserslist: ["ie 8", "ie 9", "ie 7"]});
