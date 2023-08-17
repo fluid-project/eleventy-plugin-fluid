@@ -37,6 +37,26 @@ module.exports = function (config) {
 
 ## Usage
 
+For any options passed to `eleventy-plugin-fluid` in the configurations described below, you can override the default
+rather than merging with it by passing the option with `override:` as a prefix to the key. For example, to override the
+default options for the `css` configuration block, you could do the following:
+
+```diff
+const fluidPlugin = require("eleventy-plugin-fluid");
+
+module.exports = function (config) {
+-    config.addPlugin(fluidPlugin);
++    config.addPlugin(fluidPlugin, {
++        "override:css": {
++              // Your options here.
++        }
++    });
+};
+```
+
+Note that if you don't override required defaults when using this method, your configuration will not be valid, so
+proceed with caution if you are using this technique.
+
 ### Asset Handling
 
 `eleventy-plugin-fluid` includes configuration for processing and bundling Sass and CSS files using [Sass](https://sass-lang.com)
@@ -413,14 +433,16 @@ registering `eleventy-plugin-fluid` as follows:
 
 ```diff
 const fluidPlugin = require("eleventy-plugin-fluid");
-+ const markdownItEmoji = require("markdown-it-emoji");
 
 module.exports = function (config) {
 -    config.addPlugin(fluidPlugin);
 +    config.addPlugin(fluidPlugin, {
 +        markdown: {
 +            plugins: [
-+                markdownItEmoji
++                // The npm package name of the plugin, which must be installed in your project.
++                "markdown-it-emoji",
++                // The npm package name of the plugin, which must be installed in your project, and an options object for the plugin.
++                ["markdown-it-anchor", {}]
 +            ]
 +        }
 +    });

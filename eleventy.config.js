@@ -12,11 +12,17 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 "use strict";
 
 const fluidPlugin = require("./index.js");
+const slugify = require("@sindresorhus/slugify");
 
 const inputPath = "fixtures";
 
 module.exports = function (eleventyConfig) {
     eleventyConfig.addPlugin(fluidPlugin, {
+        markdown: {
+            plugins: [
+                ["markdown-it-anchor", { slugify: s => slugify(s) }]
+            ]
+        },
         sass: {
             enabled: true
         },
