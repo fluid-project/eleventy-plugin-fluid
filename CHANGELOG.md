@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.5.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.4.0...v2.5.0) (2023-08-17)
+
+
+### Features
+
+* handle markdown-it plugins with options ([#207](https://github.com/fluid-project/eleventy-plugin-fluid/issues/207)) ([931711a](https://github.com/fluid-project/eleventy-plugin-fluid/commit/931711ae98428a441d950fd5b9f9dd7fe362b26e))
+
 ## [2.4.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.3.2...v2.4.0) (2023-08-15)
 
 
