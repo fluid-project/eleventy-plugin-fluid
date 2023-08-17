@@ -440,9 +440,9 @@ module.exports = function (config) {
 +        markdown: {
 +            plugins: [
 +                // The npm package name of the plugin, which must be installed in your project.
-+                "markdown-it-emoji"
++                "markdown-it-emoji",
 +                // The npm package name of the plugin, which must be installed in your project, and an options object for the plugin.
-+                ["markdown-it-anchor", {}], 
++                ["markdown-it-anchor", {}]
 +            ]
 +        }
 +    });
