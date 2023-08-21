@@ -529,7 +529,7 @@ All examples use the [Nunjucks](https://mozilla.github.io/nunjucks/) template la
 other template languages; see Eleventy's [documentation on shortcodes](https://www.11ty.dev/docs/shortcodes/) for usage with
 different template languages.
 
-### figure
+#### figure
 
 Outputs a `<figure>` element with a `<figcaption>`. The first and second parameters in the opening tag of the shortcode
 are the image URL and alternative text respectively. Caption content, which can use Markdown, goes in between the
@@ -552,7 +552,7 @@ Output:
 </figure>
 ```
 
-### renderString
+#### renderString
 
 Renders a string with a supported [template engine](https://www.11ty.dev/docs/languages/) using the Eleventy [Render plugin](https://www.11ty.dev/docs/plugins/render/).
 This can be particularly useful when front matter data from a template needs to be processed using Markdown.
@@ -615,7 +615,7 @@ module.exports = function (config) {
 };
 ```
 
-### uioStyles
+#### uioStyles
 
 Outputs links to the required CSS assets for an instance of [Infusion User Interface Options][1]. Use this when you want
 the out-of-the-box/drop-in experience with UI Options styles overriding the site styles. This is the quickest way to
@@ -634,7 +634,7 @@ Result:
 <link href="/lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" rel="stylesheet">
 ```
 
-### uioStyleProps
+#### uioStyleProps
 
 Outputs links to the required CSS assets for an instance of [Infusion User Interface Options][1]. This only includes the
 related CSS Custom Properties. Use this when you want to have control over how the enactor styles are applied.
@@ -656,7 +656,7 @@ Result:
 <link href="/lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" rel="stylesheet">
 ```
 
-### uioScripts
+#### uioScripts
 
 Outputs links to the required JavaScript assets for an instance of [Infusion User Interface Options][1].
 
@@ -671,7 +671,7 @@ Result:
 <script src="/lib/infusion/infusion-uio.js"></script>
 ```
 
-### uioTemplate
+#### uioTemplate
 
 Outputs the required HTML template markup for an instance of [Infusion User Interface Options][1]. This should used
 directly after the opening `<body>` tag.
@@ -703,7 +703,7 @@ Result:
 If you want to use a custom integration of User Interface Options, you can insert the required markup directly into your
 [base template](https://github.com/fluid-project/fluidic-11ty/blob/main/src/_includes/layouts/base.njk).
 
-### uioInit
+#### uioInit
 
 Outputs the required JavaScript to initialize an instance of [Infusion User Interface Options][1]. This should used
 directly before the closing `</body>` tag.
@@ -777,9 +777,33 @@ Result:
 If you want to use a custom integration of User Interface Options, you can insert the required script tag directly into your
 [base template](https://github.com/fluid-project/fluidic-11ty/blob/main/src/_includes/layouts/base.njk).
 
+### Template Languages
+
+#### WebC
+
+`eleventy-plugin-fluid` adds the [Eleventy WebC plugin](https://www.11ty.dev/docs/languages/webc/) for WebC support. By
+default, the plugin will look for WebC components in `./src/_components/**/*.webc`. This, and [other options](https://www.11ty.dev/docs/languages/webc/#installation),
+can be modified when registering `eleventy-plugin-fluid`:
+
+```diff
+const fluidPlugin = require("eleventy-plugin-fluid");
+
+module.exports = function (config) {
+-    config.addPlugin(fluidPlugin);
++    config.addPlugin(fluidPlugin, {
++        webc: {
++            components: "./src/_includes/**/*.webc"
++        }
++    });
+};
+```
+
 ### Transforms
 
-Coming soon.
+#### HTML Minify
+
+`eleventy-plugin-fluid` adds an HTML minify transform to output files with a `.html` extension which minifies them
+using [`html-minifier`](https://www.npmjs.com/package/html-minifier).
 
 ## Passthrough Copy
 

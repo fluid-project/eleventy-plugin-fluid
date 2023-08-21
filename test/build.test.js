@@ -44,6 +44,11 @@ test("Renders Markdown via shortcode", async function (t) {
     t.true(testHtml.includes("<h1 id=\"eleventy-plugin-fluid\" tabindex=\"-1\">eleventy-plugin-fluid</h1>"));
 });
 
+test("Renders WebC components", async function (t) {
+    let testHtml = fs.readFileSync("_site/test.html", "utf8");
+    t.true(testHtml.includes("<p>Hello, WebC!</p>"));
+});
+
 test("Doesn't render unsupported template language via shortcode", async function (t) {
     let testHtml = fs.readFileSync("_site/test.html", "utf8");
     t.true(testHtml.includes("{{ 'This template language doesn't exist!' }}"));

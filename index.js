@@ -72,6 +72,9 @@ module.exports = {
                 target: "es2020",
                 outdir: `./${eleventyConfig.dir.output || "_site"}/assets/scripts`
             },
+            webc: {
+                components: `./${eleventyConfig.dir.input || "src"}/_components/**/*.webc`
+            },
             supportedLanguages: languages,
             defaultLanguage: "en",
             i18n: true,
@@ -101,7 +104,7 @@ module.exports = {
             });
         }
         eleventyConfig.addPlugin(EleventyRenderPlugin);
-        eleventyConfig.addPlugin(pluginWebc);
+        eleventyConfig.addPlugin(pluginWebc, options.webc);
 
         /** Global Data */
         eleventyConfig.addGlobalData("defaultLanguage", options.defaultLanguage);
