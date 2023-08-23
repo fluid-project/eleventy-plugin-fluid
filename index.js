@@ -72,6 +72,9 @@ module.exports = {
                 target: "es2020",
                 outdir: `./${eleventyConfig.dir.output || "_site"}/assets/scripts`
             },
+            webc: {
+                components: `./${eleventyConfig.dir.input || "src"}/_components/**/*.webc`
+            },
             supportedLanguages: languages,
             defaultLanguage: "en",
             i18n: true,
@@ -101,7 +104,7 @@ module.exports = {
             });
         }
         eleventyConfig.addPlugin(EleventyRenderPlugin);
-        eleventyConfig.addPlugin(pluginWebc);
+        eleventyConfig.addPlugin(pluginWebc, options.webc);
 
         /** Global Data */
         eleventyConfig.addGlobalData("defaultLanguage", options.defaultLanguage);
@@ -206,8 +209,11 @@ module.exports = {
                 entryPoints.forEach(async item => {
                     if (!path.basename(item).startsWith("_")) {
                         await compileJs(item, options.js);
+                        const outputBasename = path.basename(options.js.outdir);
+                        const relativePath = item.split(outputBasename)[1];
+                        const outputDir = `./${path.dirname(path.join(options.js.outdir, relativePath))}`;
                         // eslint-disable-next-line no-console
-                        console.log(`[11ty] Writing ${path.join(options.js.outdir, path.basename(item))} from ${item}`);
+                        console.log(`[11ty] Writing ${path.join(outputDir, path.basename(item))} from ${item}`);
                     }
                 });
             });

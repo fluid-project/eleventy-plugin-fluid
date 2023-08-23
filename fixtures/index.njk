@@ -13,6 +13,9 @@ permalink: /test.html
 	{% uioTemplate %}
 	{% set titleString = "# eleventy-plugin-fluid" %}
 	{% renderString titleString, 'md' %}
+	{% renderTemplate "webc" %}
+	<hello>WebC</hello>
+	{% endrenderTemplate %}
 	{{ 'Not much to see here!' | markdown | safe }}
 	{% set imaginaryString = "{{ 'This template language doesn't exist!' }}" %}
 	{% renderString imaginaryString, 'imaginary' %}
