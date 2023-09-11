@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.6.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.5.0...v2.6.0) (2023-09-11)
+
+
+### Features
+
+* allow WebC plugin to be customized (resolves [#209](https://github.com/fluid-project/eleventy-plugin-fluid/issues/209)) ([#210](https://github.com/fluid-project/eleventy-plugin-fluid/issues/210)) ([9e96185](https://github.com/fluid-project/eleventy-plugin-fluid/commit/9e961851ea166737d50f0c92286f5cb5512d62d5))
+
 ## [2.5.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.4.0...v2.5.0) (2023-08-17)
 
 
