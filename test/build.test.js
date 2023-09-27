@@ -67,6 +67,11 @@ test("Generates English permalinks", async function (t) {
     t.true(english404.includes("<h1>Page Not Found</h1>"));
 });
 
+test("Generates permalinks from a custom slug", async function (t) {
+    let tlaPage = fs.readFileSync("_site/tla/index.html", "utf8");
+    t.true(tlaPage.includes("<h1>Three Letter Acronym</h1>"));
+});
+
 test("Generates French permalinks", async function (t) {
     let frPost = fs.readFileSync("_site/fr/posts/introduction/index.html", "utf8");
     t.true(frPost.includes("<h1>Introduction</h1>"));
