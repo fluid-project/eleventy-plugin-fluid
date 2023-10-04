@@ -35,13 +35,13 @@ const generatePermalink = (data, collectionType, collectionSlug, paginationSlug 
         }
 
         /* If the page is not the index page, return the page title in a URL-safe format, optionally prepended with the language code. */
-        const slug = slugify(data.title);
+        const slug = data.slug || slugify(data.title);
         if (data.hasOwnProperty("pagination") && data.pagination.pageNumber > 0) {
             return (locale === data.defaultLanguage) ? `/${slug}/${paginationSlug}/${data.pagination.pageNumber + 1}/` : `/${langSlug}/${slug}/${paginationSlug}/${data.pagination.pageNumber + 1}/`;
         }
         return (locale === data.defaultLanguage) ? `/${slug}/` : `/${langSlug}/${slug}/`;
     } else {
-        const slug = slugify(data.title);
+        const slug = data.slug || slugify(data.title);
         return (locale === data.defaultLanguage) ? `/${collectionSlug}/${slug}/` : `/${langSlug}/${collectionSlug}/${slug}/`;
     }
 };
