@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.7.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.6.0...v2.7.0) (2023-10-04)
+
+
+### Features
+
+* use custom slugs for permalinks if set ([#218](https://github.com/fluid-project/eleventy-plugin-fluid/issues/218)) ([e28b6f2](https://github.com/fluid-project/eleventy-plugin-fluid/commit/e28b6f294a97c147033f57144e0fc9aaa72445b2))
+
 ## [2.6.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.5.0...v2.6.0) (2023-09-11)
 
 
