@@ -39,7 +39,7 @@ jobs:
       env:
         CI: true
     - name: Save code coverage to artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: code-coverage
         path: "coverage/lcov.info"
