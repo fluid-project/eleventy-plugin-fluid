@@ -38,7 +38,7 @@
     "husky": "8.0.3",
     "infusion": "4.6.0",
     "markdown-it-anchor": "8.6.7",
-    "rimraf": "5.0.1"
+    "rimraf": "5.0.5"
   },
   "dependencies": {
     "@11ty/eleventy-plugin-webc": "0.11.1",
