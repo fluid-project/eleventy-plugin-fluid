@@ -32,7 +32,7 @@
     "@commitlint/cli": "17.7.1",
     "@commitlint/config-conventional": "17.7.0",
     "ava": "6.0.1",
-    "c8": "8.0.1",
+    "c8": "9.0.0",
     "eslint-config-fluid": "2.1.1",
     "fluid-lint-all": "1.2.9",
     "husky": "8.0.3",
