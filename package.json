@@ -31,7 +31,7 @@
     "@11ty/eleventy": "2.0.1",
     "@commitlint/cli": "17.7.1",
     "@commitlint/config-conventional": "17.7.0",
-    "ava": "5.3.1",
+    "ava": "6.0.1",
     "c8": "8.0.1",
     "eslint-config-fluid": "2.1.1",
     "fluid-lint-all": "1.2.9",
