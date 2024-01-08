@@ -47,7 +47,7 @@
     "esbuild": "0.19.11",
     "html-minifier": "4.0.0",
     "lightningcss": "1.22.1",
-    "rtl-detect": "1.0.4",
+    "rtl-detect": "1.1.2",
     "sass": "1.66.1"
   },
   "peerDependencies": {
