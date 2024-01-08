@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.7.1](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.7.0...v2.7.1) (2024-01-08)
+
+
+### Bug Fixes
+
+* only upload code coverage once ([#244](https://github.com/fluid-project/eleventy-plugin-fluid/issues/244)) ([1749298](https://github.com/fluid-project/eleventy-plugin-fluid/commit/17492983793d56c5900bdedc170875cea59c8220))
+
 ## [2.7.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.6.0...v2.7.0) (2023-10-04)
 
 
