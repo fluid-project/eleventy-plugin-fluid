@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.7.1](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.7.0...v2.7.1) (2024-01-13)
+
+
+### Bug Fixes
+
+* resolve issue with LightningCSS ([#248](https://github.com/fluid-project/eleventy-plugin-fluid/issues/248)) ([caa6684](https://github.com/fluid-project/eleventy-plugin-fluid/commit/caa6684dfef7a60f4e53bee990a32524ef4bd4cd))
+
 ## [2.7.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.6.0...v2.7.0) (2023-10-04)
 
 
