@@ -34,7 +34,7 @@
     "ava": "6.0.1",
     "c8": "9.1.0",
     "eslint-config-fluid": "2.1.1",
-    "fluid-lint-all": "1.2.9",
+    "fluid-lint-all": "1.2.10",
     "husky": "8.0.3",
     "infusion": "4.6.0",
     "markdown-it-anchor": "8.6.7",
