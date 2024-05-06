@@ -44,7 +44,7 @@
     "@11ty/eleventy-plugin-webc": "0.11.2",
     "browserslist": "4.23.0",
     "eleventy-plugin-i18n-gettext": "1.5.1",
-    "esbuild": "0.19.11",
+    "esbuild": "0.20.2",
     "html-minifier": "4.0.0",
     "lightningcss": "1.22.1",
     "rtl-detect": "1.1.2",
