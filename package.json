@@ -29,13 +29,13 @@
   "homepage": "https://github.com/fluid-project/eleventy-plugin-fluid#readme",
   "devDependencies": {
     "@11ty/eleventy": "2.0.1",
-    "@commitlint/cli": "18.4.4",
+    "@commitlint/cli": "19.3.0",
     "@commitlint/config-conventional": "19.2.2",
     "ava": "6.0.1",
     "c8": "9.1.0",
-    "eslint-config-fluid": "2.1.1",
-    "fluid-lint-all": "1.2.9",
-    "husky": "8.0.3",
+    "eslint-config-fluid": "2.1.2",
+    "fluid-lint-all": "1.2.11",
+    "husky": "9.0.11",
     "infusion": "4.6.0",
     "markdown-it-anchor": "8.6.7",
     "rimraf": "5.0.5"
