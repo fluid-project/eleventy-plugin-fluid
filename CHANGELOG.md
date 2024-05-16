@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.7.2](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.7.1...v2.7.2) (2024-05-16)
+
+
+### Bug Fixes
+
+* resolve linting issues (fixes [#268](https://github.com/fluid-project/eleventy-plugin-fluid/issues/268)) ([#269](https://github.com/fluid-project/eleventy-plugin-fluid/issues/269)) ([032b6b8](https://github.com/fluid-project/eleventy-plugin-fluid/commit/032b6b8ae81b44b45b95eb3321001b0d0b7b7f88))
+
 ## [2.7.1](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.7.0...v2.7.1) (2024-01-13)
 
 
