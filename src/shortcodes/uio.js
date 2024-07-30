@@ -31,21 +31,23 @@ module.exports = {
     <script src="/lib/infusion/infusion-uio.js"></script>`;
     },
     uioTemplate: function () {
-        return `<div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
-  	<div class="fl-panelBar fl-panelBar-smallScreen" id ="Editorspace">
-      <span class="fl-prefsEditor-buttons">
-  	  <button class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide"> Show/Hide</button>
-  	  <button class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
-      </span>
-  	</div>
-  	<div class="flc-slidingPanel-panel flc-prefsEditor-iframe"></div>
-  	<div class="fl-panelBar fl-panelBar-wideScreen">
-      <span class="fl-prefsEditor-buttons">
-  	  <button class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide"> Show/Hide</button>
-  	  <button class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
-      </span>
-	  </div>
-  </div>`;
+        return `
+            <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
+                <div class="fl-panelBar fl-panelBar-smallScreen" id="Editorspace">
+                    <span class="fl-prefsEditor-buttons">
+                        <button class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide"> Show/Hide</button>
+                        <button class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+                    </span>
+                </div>
+                <div class="flc-slidingPanel-panel"></div>
+                <div class="fl-panelBar fl-panelBar-wideScreen">
+                    <span class="fl-prefsEditor-buttons">
+                        <button class="flc-slidingPanel-toggleButton fl-prefsEditor-showHide"> Show/Hide</button>
+                        <button class="flc-prefsEditor-reset fl-prefsEditor-reset"><span class="fl-icon-undo"></span> Reset</button>
+                    </span>
+                </div>
+            </div>
+        `;
     },
     uioInit: function (locale, direction) {
         let options = {

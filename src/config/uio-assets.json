@@ -17,6 +17,7 @@
     "src/lib/hypher/patterns",
     "src/lib/jquery/ui/css/default-theme/",
     "src/lib/normalize/css/",
-    "src/lib/open-dyslexic/fonts/",
+    "src/lib/atkinson-hyperlegible/fonts/",
+    "src/lib/opendyslexic/fonts/",
     "src/lib/opensans/fonts/"
 ]
