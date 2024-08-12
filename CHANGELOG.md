@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.7.2](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.7.1...v2.7.2) (2024-08-12)
+
+
+### Bug Fixes
+
+* **deps:** update dependency browserslist to v4.23.3 ([#291](https://github.com/fluid-project/eleventy-plugin-fluid/issues/291)) ([f2d242a](https://github.com/fluid-project/eleventy-plugin-fluid/commit/f2d242a2938ed24ba72041e09b9c4de7228edb14))
+* **deps:** update dependency lightningcss to v1.26.0 ([#294](https://github.com/fluid-project/eleventy-plugin-fluid/issues/294)) ([2d00e05](https://github.com/fluid-project/eleventy-plugin-fluid/commit/2d00e055e3a33a23cc388705d3cb5adf424e9160))
+* format renovate.json ([#289](https://github.com/fluid-project/eleventy-plugin-fluid/issues/289)) ([9105eeb](https://github.com/fluid-project/eleventy-plugin-fluid/commit/9105eebd995577741f5d4ca119261c8f65cf2ec4))
+* resolve linting issues (fixes [#268](https://github.com/fluid-project/eleventy-plugin-fluid/issues/268)) ([#269](https://github.com/fluid-project/eleventy-plugin-fluid/issues/269)) ([032b6b8](https://github.com/fluid-project/eleventy-plugin-fluid/commit/032b6b8ae81b44b45b95eb3321001b0d0b7b7f88))
+
 ## [2.7.1](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.7.0...v2.7.1) (2024-01-13)
 
 
