@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.7.3](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.7.2...v2.7.3) (2024-08-15)
+
+
+### Bug Fixes
+
+* update deprecated Husky command ([#297](https://github.com/fluid-project/eleventy-plugin-fluid/issues/297)) ([027df65](https://github.com/fluid-project/eleventy-plugin-fluid/commit/027df65bdea3a49cba6c1e1be737a67f4a0ddc1d))
+
 ## [2.7.2](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.7.1...v2.7.2) (2024-08-12)
 
 
