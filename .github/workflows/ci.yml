@@ -33,11 +33,18 @@ jobs:
         run: npm run lint
         env:
           CI: true
+      - name: Run tests
+        if: matrix.node != 20
+        run: npm run coverage
+        env:
+          CI: true
       - name: Run tests with coverage
+        if: matrix.node == 20
         run: npm run coverage
         env:
           CI: true
       - name: Save code coverage to artifact
+        if: matrix.node == 20
         uses: actions/upload-artifact@v4
         with:
           name: code-coverage
