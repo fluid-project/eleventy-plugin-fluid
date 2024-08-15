@@ -131,9 +131,6 @@ module.exports = {
 
             return md.render(value);
         });
-        eleventyConfig.addFilter("slug", () => {
-            throw new Error("`slug` filter is no longer supported. Please use `slugify`.");
-        });
         eleventyConfig.addFilter("split", splitFilter);
 
         /** Shortcodes */
