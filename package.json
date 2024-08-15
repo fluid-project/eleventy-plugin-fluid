@@ -12,7 +12,7 @@
     "lint": "fluid-lint-all",
     "start": "rimraf _site && eleventy --serve",
     "test": "ava",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",
