@@ -11,21 +11,20 @@ on:
 jobs:
   lint-and-test:
     name: Lint and test
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        node: [18, 20, 22]
     steps:
       - name: Set git to use LF
         run: |
           git config --global core.autocrlf false
           git config --global core.eol lf
       - uses: actions/checkout@v4
-      - name: Cache node modules
-        uses: actions/cache@v4
+      - uses: actions/setup-node@v4
         with:
-          path: node_modules
-          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+          node-version: ${{ matrix.node }}
+          cache: npm
       - name: Install dependencies
         run: npm i
         env:
@@ -34,18 +33,11 @@ jobs:
         run: npm run lint
         env:
           CI: true
-      - name: Run tests
-        if: matrix.os == 'windows-latest'
-        run: npm test
-        env:
-          CI: true
       - name: Run tests with coverage
-        if: matrix.os == 'ubuntu-latest'
         run: npm run coverage
         env:
           CI: true
       - name: Save code coverage to artifact
-        if: matrix.os == 'ubuntu-latest'
         uses: actions/upload-artifact@v4
         with:
           name: code-coverage
