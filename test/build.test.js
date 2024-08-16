@@ -43,6 +43,11 @@ test("Uses Markdown plugin", async  function (t) {
     t.true(indexPage.includes("<dl><dt>Term 1</dt><dd>Definition 1</dd></dl>"))
 })
 
+test("Uses Markdown plugin with options", async  function (t) {
+    let indexPage = fs.readFileSync("_site/index.html", "utf8");
+    t.true(indexPage.includes("<h2 id=\"this-should-have-an-anchor\" tabindex=\"-1\"><a class=\"header-anchor\" href=\"#this-should-have-an-anchor\"><span>This should have an anchor</span></a></h2>"));
+})
+
 test("Generates English permalinks", async function (t) {
     let englishPost = fs.readFileSync("_site/posts/introduction/index.html", "utf8");
     t.true(englishPost.includes("<h1>Introduction</h1>"));

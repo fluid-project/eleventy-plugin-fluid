@@ -11,6 +11,7 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 
 import fluidPlugin from "./index.js";
+import markdownItAnchor from "markdown-it-anchor";
 import markdownItDefList from "markdown-it-deflist";
 
 const inputPath = "fixtures";
@@ -19,6 +20,7 @@ export default function (eleventyConfig) {
     eleventyConfig.addPlugin(fluidPlugin, {
         markdown: {
             plugins: [
+                [markdownItAnchor, {permalink: markdownItAnchor.permalink.headerLink({ safariReaderFix: true })}],
                 markdownItDefList
             ]
         },
