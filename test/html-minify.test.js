@@ -26,6 +26,7 @@ const html = `
 </html>
 `;
 
-test("Minifies HTML", function (t) {
-    t.is(htmlMinifyTransform(html, "index.html"), "<!doctype html><html lang=\"en-ca\"><head><meta charset=\"utf-8\"><title>eleventy-plugin-fluid</title></head><body><h1>eleventy-plugin-fluid</h1><p>Not much to see here!</p></body></html>");
+test("Minifies HTML", async function (t) {
+    const result = await htmlMinifyTransform(html, "index.html");
+    t.is(result, "<!doctype html><html lang=\"en-ca\"><head><meta charset=\"utf-8\"><title>eleventy-plugin-fluid</title></head><body><h1>eleventy-plugin-fluid</h1><p>Not much to see here!</p></body></html>");
 });
