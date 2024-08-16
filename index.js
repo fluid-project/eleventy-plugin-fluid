@@ -129,8 +129,12 @@ const fluidPlugin = {
         eleventyConfig.amendLibrary("md", md => {
             md.set(options.markdown.options);
             options.markdown.plugins.forEach(plugin => {
-                const [pluginModule, options = {}] = plugin;
-                md.use(pluginModule, options);
+                if (Array.isArray(plugin)) {
+                    const [pluginModule, options = {}] = plugin;
+                    md.use(pluginModule, options);
+                } else {
+                    md.use(plugin);
+                }
             });
         });
 

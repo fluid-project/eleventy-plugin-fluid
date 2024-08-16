@@ -38,6 +38,11 @@ test("Builds minified JavaScript", async function (t) {
     t.is(nojsJs, "(()=>{document.documentElement.className=\"js\";})();\n");
 });
 
+test("Uses Markdown plugin", async  function (t) {
+    let indexPage = fs.readFileSync("_site/index.html", "utf8");
+    t.true(indexPage.includes("<dl><dt>Term 1</dt><dd>Definition 1</dd></dl>"))
+})
+
 test("Generates English permalinks", async function (t) {
     let englishPost = fs.readFileSync("_site/posts/introduction/index.html", "utf8");
     t.true(englishPost.includes("<h1>Introduction</h1>"));

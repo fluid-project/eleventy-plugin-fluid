@@ -11,11 +11,17 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 
 import fluidPlugin from "./index.js";
+import markdownItDefList from "markdown-it-deflist";
 
 const inputPath = "fixtures";
 
 export default function (eleventyConfig) {
     eleventyConfig.addPlugin(fluidPlugin, {
+        markdown: {
+            plugins: [
+                markdownItDefList
+            ]
+        },
         sass: {
             enabled: true
         },

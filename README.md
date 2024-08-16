@@ -433,16 +433,18 @@ registering `eleventy-plugin-fluid` as follows:
 
 ```diff
 import fluidPlugin from "eleventy-plugin-fluid";
++ import markdownItDefList from "markdown-it-deflist";
++ import markdownItEmoji from "markdown-it-emoji";
 
 export default function (eleventyConfig) {
 -    eleventyConfig.addPlugin(fluidPlugin);
 +    eleventyConfig.addPlugin(fluidPlugin, {
 +        markdown: {
 +            plugins: [
-+                // The npm package name of the plugin, which must be installed in your project.
-+                "markdown-it-emoji",
-+                // The npm package name of the plugin, which must be installed in your project, and an options object for the plugin.
-+                ["markdown-it-anchor", {}]
++                // The imported plugin.
++                markdownItDefList,
++                // The imported plugin and an options object for the plugin.
++                [markdownItEmoji, {}]
 +            ]
 +        }
 +    });

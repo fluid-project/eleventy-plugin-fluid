@@ -12,7 +12,7 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 
 import browserslist from "browserslist";
 import { transform, browserslistToTargets } from "lightningcss";
-import sass from "sass";
+import * as sass from "sass";
 import path from "node:path";
 
 export default async function (inputContent, inputPath, options, templateConfig) {
