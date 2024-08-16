@@ -109,9 +109,6 @@ const fluidPlugin = {
         eleventyConfig.addFilter("formatDate", formatDateFilter);
         eleventyConfig.addFilter("isoDate", isoDateFilter);
         eleventyConfig.addFilter("limit", limitFilter);
-        eleventyConfig.addFilter("slug", () => {
-            throw new Error("`slug` filter is no longer supported. Please use `slugify`.");
-        });
         eleventyConfig.addFilter("split", splitFilter);
 
         eleventyConfig.addPairedShortcode("figure", figureShortcode);
