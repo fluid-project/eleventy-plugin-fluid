@@ -9,11 +9,9 @@ Licensed under the New BSD license. You may not use this file except in complian
 You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
-"use strict";
+import MarkdownIt from "markdown-it";
 
-const MarkdownIt = require("markdown-it");
-
-module.exports = function (content, src, alt) {
+export default function (content, src, alt) {
     if (src === "" || alt === "") {
         // Both image source and alternative text are required. If either is missing, return an empty string.
         return "";

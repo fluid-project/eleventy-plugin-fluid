@@ -9,8 +9,7 @@ Licensed under the New BSD license. You may not use this file except in complian
 You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
-"use strict";
 
-const formatDate = require("../../../../src/filters/format-date-filter.js");
+import formatDate from "../../../../src/filters/format-date-filter.js";
 
-module.exports = formatDate;
+export default formatDate;

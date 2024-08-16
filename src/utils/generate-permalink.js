@@ -1,6 +1,4 @@
-"use strict";
-
-const TemplateConfig = require("@11ty/eleventy/src/TemplateConfig.js");
+import slugify from "../../node_modules/@11ty/eleventy/src/Filters/Slugify.js";
 
 /**
  * @param  {Object} data - The data object for the current collection item.
@@ -16,11 +14,10 @@ const generatePermalink = (data, collectionType, collectionSlug, paginationSlug 
         return false;
     }
 
-    const eleventyConfig = new TemplateConfig();
+    // const eleventyConfig = new UserConfig();
     const locale = data.locale || data.defaultLanguage;
     const langSlug = data.supportedLanguages[locale].slug || locale;
     collectionSlug = collectionSlug || collectionType;
-    const slugify = eleventyConfig.userConfig.getFilter("slugify");
 
     if (collectionType === "pages") {
 
@@ -46,4 +43,4 @@ const generatePermalink = (data, collectionType, collectionSlug, paginationSlug 
     }
 };
 
-module.exports = generatePermalink;
+export default generatePermalink;

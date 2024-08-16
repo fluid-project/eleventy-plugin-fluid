@@ -9,10 +9,9 @@ Licensed under the New BSD license. You may not use this file except in complian
 You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
-"use strict";
 
-const test = require("ava");
-const limitFilter = require("../src/filters/limit-filter.js");
+import test from "ava";
+import limitFilter from "../src/filters/limit-filter.js";
 
 test("Limits array to n items", function (t) {
     t.deepEqual(limitFilter(["a", "b", "c"], 2), ["a", "b"]);

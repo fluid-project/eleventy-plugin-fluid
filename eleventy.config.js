@@ -9,20 +9,13 @@ Licensed under the New BSD license. You may not use this file except in complian
 You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
-"use strict";
 
-const fluidPlugin = require("./index.js");
-const slugify = require("@sindresorhus/slugify");
+import fluidPlugin from "./index.js";
 
 const inputPath = "fixtures";
 
-module.exports = function (eleventyConfig) {
+export default function (eleventyConfig) {
     eleventyConfig.addPlugin(fluidPlugin, {
-        markdown: {
-            plugins: [
-                ["markdown-it-anchor", { slugify: s => slugify(s) }]
-            ]
-        },
         sass: {
             enabled: true
         },

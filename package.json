@@ -6,6 +6,7 @@
     "access": "public"
   },
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "build": "rimraf _site && eleventy",
     "coverage": "c8 -r text -r lcov -x \"test/*.js\" -x \"eleventy.config.js\" -x \"fixtures/**/*.js\" ava",
@@ -28,30 +29,30 @@
   },
   "homepage": "https://github.com/fluid-project/eleventy-plugin-fluid#readme",
   "devDependencies": {
-    "@11ty/eleventy": "2.0.1",
-    "@commitlint/cli": "19.4.0",
-    "@commitlint/config-conventional": "19.2.2",
-    "ava": "6.1.3",
-    "c8": "10.1.2",
-    "eslint-config-fluid": "2.1.2",
-    "fluid-lint-all": "1.2.11",
-    "husky": "9.1.4",
-    "infusion": "4.7.1",
-    "markdown-it-anchor": "9.0.1",
-    "rimraf": "6.0.1"
+    "@11ty/eleventy": "^3.0.0-beta.1",
+    "@commitlint/cli": "^19.4.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "ava": "^6.1.3",
+    "c8": "^10.1.2",
+    "eslint-config-fluid": "^2.1.2",
+    "fluid-lint-all": "^1.2.11",
+    "husky": "^9.1.4",
+    "infusion": "^4.7.1",
+    "markdown-it-anchor": "^9.0.1",
+    "rimraf": "^6.0.1"
   },
   "dependencies": {
-    "@11ty/eleventy-plugin-webc": "0.11.2",
-    "browserslist": "4.23.3",
-    "eleventy-plugin-i18n-gettext": "1.5.1",
-    "esbuild": "0.23.0",
-    "html-minifier": "4.0.0",
-    "lightningcss": "1.26.0",
-    "rtl-detect": "1.1.2",
-    "sass": "1.77.8"
+    "@11ty/eleventy-utils": "^1.0.3",
+    "browserslist": "^4.23.3",
+    "eleventy-plugin-i18n-gettext": "^1.5.1",
+    "esbuild": "^0.23.0",
+    "html-minifier": "^4.0.0",
+    "lightningcss": "^1.26.0",
+    "rtl-detect": "^1.1.2",
+    "sass": "^1.77.8"
   },
   "peerDependencies": {
-    "infusion": "4.x"
+    "infusion": "^4.7.1"
   },
   "ava": {
     "timeout": "30s"

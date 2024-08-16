@@ -9,10 +9,9 @@ Licensed under the New BSD license. You may not use this file except in complian
 You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
-"use strict";
 
-const test = require("ava");
-const htmlMinifyTransform = require("../src/transforms/html-minify-transform.js");
+import test from "ava";
+import htmlMinifyTransform from "../src/transforms/html-minify-transform.js";
 const html = `
 <!DOCTYPE html>
 <html lang="en-ca">

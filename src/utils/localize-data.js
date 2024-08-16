@@ -1,8 +1,7 @@
-"use strict";
 
-const i18n = require("eleventy-plugin-i18n-gettext");
-const { getLangDir } = require("rtl-detect");
-const path = require("path");
+import i18n from "eleventy-plugin-i18n-gettext";
+import rtlDetect from "rtl-detect";
+import path from "node:path";
 
 /**
  * @param  {Object} data - A directory data object.
@@ -12,7 +11,7 @@ const path = require("path");
  */
 const localizeData = (data, dir) => {
     let locale = path.basename(dir);
-    return i18n.enhance11tydata(data, locale, getLangDir(locale));
+    return i18n.enhance11tydata(data, locale, rtlDetect.getLangDir(locale));
 };
 
-module.exports = localizeData;
+export default localizeData;

@@ -9,33 +9,41 @@ Licensed under the New BSD license. You may not use this file except in complian
 You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
-"use strict";
 
-const fg = require("fast-glob");
-const path = require("path");
-const MarkdownIt = require("markdown-it");
-const { EleventyRenderPlugin, EleventyI18nPlugin } = require("@11ty/eleventy");
-const { getLangDir } = require("rtl-detect");
-const i18n = require("eleventy-plugin-i18n-gettext");
-const pluginWebc = require("@11ty/eleventy-plugin-webc");
-const figureShortcode = require("./src/shortcodes/figure-shortcode.js");
-const formatDateFilter = require("./src/filters/format-date-filter.js");
-const htmlMinifyTransform = require("./src/transforms/html-minify-transform.js");
-const isoDateFilter = require("./src/filters/iso-date-filter.js");
-const limitFilter = require("./src/filters/limit-filter.js");
-const splitFilter = require("./src/filters/split-filter.js");
-const uioShortcodes = require("./src/shortcodes/uio.js");
-const uioAssets = require("./src/config/uio-assets.json");
-const languages = require("./src/config/languages.json");
-const compileCss = require("./src/compilers/compile-css.js");
-const compileSass = require("./src/compilers/compile-sass.js");
-const compileJs = require("./src/compilers/compile-js.js");
-const merge = require("@11ty/eleventy/src/Util/Merge.js");
+import fg from "fast-glob";
+import path from "node:path";
+import { readFileSync } from "node:fs";
+import { EleventyRenderPlugin, EleventyI18nPlugin } from "@11ty/eleventy";
+import rtlDetect from "rtl-detect";
+import i18n from "eleventy-plugin-i18n-gettext";
+import figureShortcode from "./src/shortcodes/figure-shortcode.js";
+import formatDateFilter from "./src/filters/format-date-filter.js";
+import generatePermalink from "./src/utils/generate-permalink.js";
+import htmlMinifyTransform from "./src/transforms/html-minify-transform.js";
+import isoDateFilter from "./src/filters/iso-date-filter.js";
+import limitFilter from "./src/filters/limit-filter.js";
+import localizeData from "./src/utils/localize-data.js";
+import splitFilter from "./src/filters/split-filter.js";
+import uioShortcodes from "./src/shortcodes/uio.js";
+const uioAssets = JSON.parse(
+    readFileSync(
+        new URL("./src/config/uio-assets.json", import.meta.url)
+    )
+);
+const languages = JSON.parse(
+    readFileSync(
+        new URL("./src/config/languages.json", import.meta.url)
+    )
+);
+import compileCss from "./src/compilers/compile-css.js";
+import compileSass from "./src/compilers/compile-sass.js";
+import compileJs from "./src/compilers/compile-js.js";
+import eleventyUtils from "@11ty/eleventy-utils";
 
-module.exports = {
+const fluidPlugin = {
     initArguments: {},
     configFunction: function (eleventyConfig, options = {}) {
-        options = merge({
+        options = eleventyUtils.Merge({
             uio: true,
             markdown: {
                 options: {
@@ -78,20 +86,7 @@ module.exports = {
             supportedLanguages: languages,
             defaultLanguage: "en",
             i18n: true,
-            localesDirectory: `./${eleventyConfig.dir.input || "src"}/_locales`,
-            templateFormats: [
-                "html",
-                "md",
-                "webc",
-                "11ty.js",
-                "liquid",
-                "njk",
-                "hbs",
-                "mustache",
-                "ejs",
-                "haml",
-                "pug"
-            ]
+            localesDirectory: `./${eleventyConfig.dir.input || "src"}/_locales`
         }, options);
 
         /** Plugins */
@@ -104,46 +99,20 @@ module.exports = {
             });
         }
         eleventyConfig.addPlugin(EleventyRenderPlugin);
-        eleventyConfig.addPlugin(pluginWebc, options.webc);
 
         /** Global Data */
         eleventyConfig.addGlobalData("defaultLanguage", options.defaultLanguage);
-        eleventyConfig.addGlobalData("defaultLanguageDirection", getLangDir(options.defaultLanguage));
+        eleventyConfig.addGlobalData("defaultLanguageDirection", rtlDetect.getLangDir(options.defaultLanguage));
         eleventyConfig.addGlobalData("supportedLanguages", options.supportedLanguages);
 
         /** Filters */
         eleventyConfig.addFilter("formatDate", formatDateFilter);
         eleventyConfig.addFilter("isoDate", isoDateFilter);
         eleventyConfig.addFilter("limit", limitFilter);
-        eleventyConfig.addFilter("markdown", function (value) {
-            // eslint-disable-next-line no-console
-            console.warn("The markdown filter will be removed in a future version of eleventy-plugin-fluid. Use the renderString shortcode instead.");
-
-            const md = new MarkdownIt(options.markdown.options);
-            options.markdown.plugins.forEach(plugin => {
-                if (typeof plugin === "string") {
-                    md.use(require(plugin));
-                } else {
-                    const [pluginPackage, options = {}] = plugin;
-                    md.use(require(pluginPackage), options);
-                }
-            });
-
-            return md.render(value);
-        });
         eleventyConfig.addFilter("slug", () => {
             throw new Error("`slug` filter is no longer supported. Please use `slugify`.");
         });
         eleventyConfig.addFilter("split", splitFilter);
-
-        /** Shortcodes */
-        eleventyConfig.addShortcode("renderString", async function (content, format) {
-            if (options.templateFormats.includes(format)) {
-                return eleventyConfig.javascriptFunctions.renderTemplate.call(this, content, format);
-            }
-
-            return content;
-        });
 
         eleventyConfig.addPairedShortcode("figure", figureShortcode);
 
@@ -163,12 +132,8 @@ module.exports = {
         eleventyConfig.amendLibrary("md", md => {
             md.set(options.markdown.options);
             options.markdown.plugins.forEach(plugin => {
-                if (typeof plugin === "string") {
-                    md.use(require(plugin));
-                } else {
-                    const [pluginPackage, options = {}] = plugin;
-                    md.use(require(pluginPackage), options);
-                }
+                const [pluginModule, options = {}] = plugin;
+                md.use(pluginModule, options);
             });
         });
 
@@ -221,7 +186,13 @@ module.exports = {
 
         /** Transforms */
         eleventyConfig.addTransform("htmlMinify", htmlMinifyTransform);
-    },
-    generatePermalink: require("./src/utils/generate-permalink.js"),
-    localizeData: require("./src/utils/localize-data.js")
+    }
+};
+
+export default fluidPlugin;
+
+export {
+    fluidPlugin,
+    generatePermalink,
+    localizeData
 };

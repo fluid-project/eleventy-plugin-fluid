@@ -9,10 +9,9 @@ Licensed under the New BSD license. You may not use this file except in complian
 You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
-"use strict";
 
-const test = require("ava");
-const splitFilter = require("../src/filters/split-filter.js");
+import test from "ava";
+import splitFilter from "../src/filters/split-filter.js";
 
 test("Splits string into array", function (t) {
     t.deepEqual(splitFilter("a,b,c", ","), ["a", "b", "c"]);
