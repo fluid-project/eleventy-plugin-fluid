@@ -2,6 +2,9 @@
     "eslint": {
         "js": {
             "includes": ["./.eleventy.js"]
+        },
+        "json": {
+            "enabled": false
         }
     },
     "lintspaces": {

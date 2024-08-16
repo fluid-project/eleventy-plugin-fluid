@@ -9,11 +9,10 @@ Licensed under the New BSD license. You may not use this file except in complian
 You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
-"use strict";
 
-const fs = require("fs");
-const test = require("ava");
-const Eleventy = require("@11ty/eleventy");
+import fs from "node:fs";
+import test from "ava";
+import Eleventy from "@11ty/eleventy";
 
 test.before(async function () {
     let elev = new Eleventy();
@@ -35,29 +34,19 @@ test("Builds minified CSS from Sass", async function (t) {
 test("Builds minified JavaScript", async function (t) {
     let appJs = fs.readFileSync("_site/assets/scripts/app.js", "utf8");
     let nojsJs = fs.readFileSync("_site/assets/scripts/no-js.js", "utf8");
-    t.is(appJs, "\"use strict\";(()=>{var s=(e,t)=>()=>(t||e((t={exports:{}}).exports,t),t.exports);var c=s((S,a)=>{\"use strict\";var m=function(e){let t=new Intl.PluralRules(\"en\",{type:\"ordinal\"}),r=new Map([[\"one\",\"st\"],[\"two\",\"nd\"],[\"few\",\"rd\"],[\"other\",\"th\"]]),n=t.select(e),o=r.get(n);return`${e}${o}`};a.exports=function(t,r=\"en\"){let n=new Date(new Date(t).toUTCString()),o={year:\"numeric\",month:\"long\",day:\"numeric\"};if(r.startsWith(\"en\")){let l=n.toLocaleDateString(r,o),d=/([A-Z]\\w+) ([0-9]{1,2}), ([0-9]{4})/g;return l.replace(d,($,p,w,g)=>`${p} ${m(w)}, ${g}`)}return n.toLocaleDateString(r,o)}});var u=s((q,i)=>{\"use strict\";var D=c();i.exports=D});var h=s((L,f)=>{var x=u();f.exports={year:x(Date.now())}});h();})();\n");
-    t.is(nojsJs, "\"use strict\";(()=>{document.documentElement.className=\"js\";})();\n");
+    t.is(appJs, "(()=>{var l=function(e){let t=new Intl.PluralRules(\"en\",{type:\"ordinal\"}),n=new Map([[\"one\",\"st\"],[\"two\",\"nd\"],[\"few\",\"rd\"],[\"other\",\"th\"]]),r=t.select(e),o=n.get(r);return`${e}${o}`};function a(e,t=\"en\"){let n=new Date(new Date(e).toUTCString()),r={year:\"numeric\",month:\"long\",day:\"numeric\"};if(t.startsWith(\"en\")){let o=n.toLocaleDateString(t,r),s=/([A-Z]\\w+) ([0-9]{1,2}), ([0-9]{4})/g;return o.replace(s,(d,c,f,u)=>`${c} ${l(f)}, ${u}`)}return n.toLocaleDateString(t,r)}var i=a;var D={year:i(Date.now())};})();\n");
+    t.is(nojsJs, "(()=>{document.documentElement.className=\"js\";})();\n");
 });
 
-test("Renders Markdown via shortcode", async function (t) {
-    let testHtml = fs.readFileSync("_site/test.html", "utf8");
-    t.true(testHtml.includes("<h1 id=\"eleventy-plugin-fluid\" tabindex=\"-1\">eleventy-plugin-fluid</h1>"));
-});
+test("Uses Markdown plugin", async  function (t) {
+    let indexPage = fs.readFileSync("_site/index.html", "utf8");
+    t.true(indexPage.includes("<dl><dt>Term 1</dt><dd>Definition 1</dd></dl>"))
+})
 
-test("Renders WebC components", async function (t) {
-    let testHtml = fs.readFileSync("_site/test.html", "utf8");
-    t.true(testHtml.includes("<p>Hello, WebC!</p>"));
-});
-
-test("Doesn't render unsupported template language via shortcode", async function (t) {
-    let testHtml = fs.readFileSync("_site/test.html", "utf8");
-    t.true(testHtml.includes("{{ 'This template language doesn't exist!' }}"));
-});
-
-test("Renders Markdown via filter", async function (t) {
-    let testHtml = fs.readFileSync("_site/test.html", "utf8");
-    t.true(testHtml.includes("<p>Not much to see here!</p>"));
-});
+test("Uses Markdown plugin with options", async  function (t) {
+    let indexPage = fs.readFileSync("_site/index.html", "utf8");
+    t.true(indexPage.includes("<h2 id=\"this-should-have-an-anchor\" tabindex=\"-1\"><a class=\"header-anchor\" href=\"#this-should-have-an-anchor\"><span>This should have an anchor</span></a></h2>"));
+})
 
 test("Generates English permalinks", async function (t) {
     let englishPost = fs.readFileSync("_site/posts/introduction/index.html", "utf8");

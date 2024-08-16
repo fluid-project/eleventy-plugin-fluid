@@ -9,14 +9,13 @@ Licensed under the New BSD license. You may not use this file except in complian
 You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
-"use strict";
 
-const browserslist = require("browserslist");
-const { transform, browserslistToTargets } = require("lightningcss");
-const sass = require("sass");
-const path = require("path");
+import browserslist from "browserslist";
+import { transform, browserslistToTargets } from "lightningcss";
+import * as sass from "sass";
+import path from "node:path";
 
-module.exports = async function (inputContent, inputPath, options, templateConfig) {
+export default async function (inputContent, inputPath, options, templateConfig) {
     let parsed = path.parse(inputPath);
     if (!inputPath.startsWith(options.basePath) || parsed.name.startsWith("_")) {
         return;

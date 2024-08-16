@@ -1,14 +1,13 @@
-"use strict";
 
-const { getLangDir } = require("rtl-detect");
-const { generatePermalink } = require("../../index.js");
+import rtlDetect from "rtl-detect";
+import { generatePermalink } from "../../index.js";
 
-module.exports = {
+export default {
     layout: "layouts/base.njk",
     permalink: data => {
         return generatePermalink(data, "pages");
     },
     eleventyComputed: {
-        langDir: data => getLangDir(data.locale)
+        langDir: data => rtlDetect.getLangDir(data.locale)
     }
 };

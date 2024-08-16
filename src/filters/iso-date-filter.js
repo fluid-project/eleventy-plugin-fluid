@@ -9,8 +9,7 @@ Licensed under the New BSD license. You may not use this file except in complian
 You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
-"use strict";
 
-module.exports = function isoDate(value) {
+export default function isoDate(value) {
     return new Date(value).toISOString();
 };

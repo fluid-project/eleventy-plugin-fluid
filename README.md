@@ -25,13 +25,13 @@ npx install-peerdeps eleventy-plugin-fluid
 peer dependency in your project as well; the [`install-peerdeps`](https://www.npmjs.com/package/install-peerdeps)
 command handles both at the same time.)
 
-Then, in your Eleventy configuration file (usually `eleventy.config.js`), load the plugin as follows:
+Then, in your Eleventy configuration file (usually `eleventy.eleventyConfig.js`), load the plugin as follows:
 
 ```js
-const fluidPlugin = require("eleventy-plugin-fluid");
+import fluidPlugin from "eleventy-plugin-fluid";
 
-module.exports = function (config) {
-    config.addPlugin(fluidPlugin);
+export default function (eleventyConfig) {
+    eleventyConfig.addPlugin(fluidPlugin);
 };
 ```
 
@@ -42,11 +42,11 @@ rather than merging with it by passing the option with `override:` as a prefix t
 default options for the `css` configuration block, you could do the following:
 
 ```diff
-const fluidPlugin = require("eleventy-plugin-fluid");
+import fluidPlugin from "eleventy-plugin-fluid";
 
-module.exports = function (config) {
--    config.addPlugin(fluidPlugin);
-+    config.addPlugin(fluidPlugin, {
+export default function (eleventyConfig) {
+-    eleventyConfig.addPlugin(fluidPlugin);
++    eleventyConfig.addPlugin(fluidPlugin, {
 +        "override:css": {
 +              // Your options here.
 +        }
@@ -73,11 +73,11 @@ Options for LightningCSS may be modified by passing values to the `css` option w
 in your config:
 
 ```diff
-const fluidPlugin = require("eleventy-plugin-fluid");
+import fluidPlugin from "eleventy-plugin-fluid";
 
-module.exports = function (config) {
--    config.addPlugin(fluidPlugin);
-+    config.addPlugin(fluidPlugin, {
+export default function (eleventyConfig) {
+-    eleventyConfig.addPlugin(fluidPlugin);
++    eleventyConfig.addPlugin(fluidPlugin, {
 +        css: {
 +              cssModules: true,
 +        }
@@ -119,11 +119,11 @@ Sass processing is disabled by default. When enabled, any Sass files with the `.
 To enable Sass and disable CSS, add the following configuration when registering `eleventy-plugin-fluid` in your config:
 
 ```diff
-const fluidPlugin = require("eleventy-plugin-fluid");
+import fluidPlugin from "eleventy-plugin-fluid";
 
-module.exports = function (config) {
--    config.addPlugin(fluidPlugin);
-+    config.addPlugin(fluidPlugin, {
+export default function (eleventyConfig) {
+-    eleventyConfig.addPlugin(fluidPlugin);
++    eleventyConfig.addPlugin(fluidPlugin, {
 +        css: {
 +              enabled: false
 +        },
@@ -138,11 +138,11 @@ Options for Sass may be modified by passing values to the `sass` option when reg
 in your config:
 
 ```diff
-const fluidPlugin = require("eleventy-plugin-fluid");
+import fluidPlugin from "eleventy-plugin-fluid";
 
-module.exports = function (config) {
--    config.addPlugin(fluidPlugin);
-+    config.addPlugin(fluidPlugin, {
+export default function (eleventyConfig) {
+-    eleventyConfig.addPlugin(fluidPlugin);
++    eleventyConfig.addPlugin(fluidPlugin, {
 +        css: {
 +              enabled: false
 +        },
@@ -192,11 +192,11 @@ Options for esbuild may be modified by passing values to the `js` option when re
 in your config:
 
 ```diff
-const fluidPlugin = require("eleventy-plugin-fluid");
+import fluidPlugin from "eleventy-plugin-fluid";
 
-module.exports = function (config) {
--    config.addPlugin(fluidPlugin);
-+    config.addPlugin(fluidPlugin, {
+export default function (eleventyConfig) {
+-    eleventyConfig.addPlugin(fluidPlugin);
++    eleventyConfig.addPlugin(fluidPlugin, {
 +        js: {
 +            target: "esnext"
 +        }
@@ -241,11 +241,11 @@ You can add support for additional languages by passing values to the `supported
 `eleventy-plugin-fluid` in your config:
 
 ```diff
-const fluidPlugin = require("eleventy-plugin-fluid");
+import fluidPlugin from "eleventy-plugin-fluid";
 
-module.exports = function (config) {
--    config.addPlugin(fluidPlugin);
-+    config.addPlugin(fluidPlugin, {
+export default function (eleventyConfig) {
+-    eleventyConfig.addPlugin(fluidPlugin);
++    eleventyConfig.addPlugin(fluidPlugin, {
 +        supportedLanguages: {
 +            de: {
 +                // The slug which will be used in URLs to content in this language.
@@ -331,11 +331,11 @@ with full support for [pagination](https://www.11ty.dev/docs/pagination/). Here'
 file:
 
 ```js
-const { EleventyI18nPlugin } = require("@11ty/eleventy");
-const { generatePermalink } = require("eleventy-plugin-fluid");
-const { _ } = require("eleventy-plugin-i18n-gettext");
+import { EleventyI18nPlugin } from "@11ty/eleventy";
+import { generatePermalink } from "eleventy-plugin-fluid";
+import { _ } from "eleventy-plugin-i18n-gettext";
 
-module.exports = {
+export default {
     layout: "layouts/base.njk",
     eleventyComputed: {
         lang: data => EleventyI18nPlugin.LangUtils.getLanguageCodeFromInputPath(data.page.inputPath),
@@ -360,10 +360,10 @@ for a directory of content in a specific language (where the directory name is t
 as used in an `11tydata.js` file:
 
 ```js
-const { localizeData } = require("eleventy-plugin-fluid");
+import { localizeData } from "eleventy-plugin-fluid";
 
-module.exports = () => {
-    return localizeData({}, __dirname);
+export default () => {
+    return fluidPlugin.localizeData({}, __dirname);
 };
 ```
 
@@ -375,11 +375,11 @@ If you don't need string translation features in your project, you can disable s
 option to false when registering `eleventy-plugin-fluid` in your config:
 
 ```diff
-const fluidPlugin = require("eleventy-plugin-fluid");
+import fluidPlugin from "eleventy-plugin-fluid";
 
-module.exports = function (config) {
--    config.addPlugin(fluidPlugin);
-+    config.addPlugin(fluidPlugin, {
+export default function (eleventyConfig) {
+-    eleventyConfig.addPlugin(fluidPlugin);
++    eleventyConfig.addPlugin(fluidPlugin, {
 +        i18n: false
 +    });
 };
@@ -414,11 +414,11 @@ Options for Markdown may be modified by passing values to the `markdown` option 
 in your config:
 
 ```diff
-const fluidPlugin = require("eleventy-plugin-fluid");
+import fluidPlugin from "eleventy-plugin-fluid";
 
-module.exports = function (config) {
--    config.addPlugin(fluidPlugin);
-+    config.addPlugin(fluidPlugin, {
+export default function (eleventyConfig) {
+-    eleventyConfig.addPlugin(fluidPlugin);
++    eleventyConfig.addPlugin(fluidPlugin, {
 +        markdown: {
 +            options: {
 +                breaks: "true"
@@ -432,17 +432,19 @@ You can also enable [`markdown-it` plugins](https://www.npmjs.com/search?q=keywo
 registering `eleventy-plugin-fluid` as follows:
 
 ```diff
-const fluidPlugin = require("eleventy-plugin-fluid");
+import fluidPlugin from "eleventy-plugin-fluid";
++ import markdownItDefList from "markdown-it-deflist";
++ import markdownItEmoji from "markdown-it-emoji";
 
-module.exports = function (config) {
--    config.addPlugin(fluidPlugin);
-+    config.addPlugin(fluidPlugin, {
+export default function (eleventyConfig) {
+-    eleventyConfig.addPlugin(fluidPlugin);
++    eleventyConfig.addPlugin(fluidPlugin, {
 +        markdown: {
 +            plugins: [
-+                // The npm package name of the plugin, which must be installed in your project.
-+                "markdown-it-emoji",
-+                // The npm package name of the plugin, which must be installed in your project, and an options object for the plugin.
-+                ["markdown-it-anchor", {}]
++                // The imported plugin.
++                markdownItDefList,
++                // The imported plugin and an options object for the plugin.
++                [markdownItEmoji, {}]
 +            ]
 +        }
 +    });
@@ -550,69 +552,6 @@ Output:
         <p>An illustration of something, found <a href="https://example.com">here</a>.</p>
     </figcaption>
 </figure>
-```
-
-#### renderString
-
-Renders a string with a supported [template engine](https://www.11ty.dev/docs/languages/) using the Eleventy [Render plugin](https://www.11ty.dev/docs/plugins/render/).
-This can be particularly useful when front matter data from a template needs to be processed using Markdown.
-
-```md
----
-title: About
-subtitle: Learn about our [mission](/about/mission/), [vision](/about/vision/), and [values](/about/values/).
----
-This is what we do.
-```
-
-```nunjucks
-<h1>{{ title }}</h1>
-<div class="subtitle">
-  {% renderString subtitle, "md" %}
-</div>
-{{ content | safe }}
-```
-
-Result:
-
-```html
-<h1>About</h1>
-<div class="subtitle">
-  <p>Learn about our <a href="/about/mission/">mission</a>, <a href="/about/vision/">vision</a>, and <a href="/about/values/">values</a>.</p>
-</div>
-<p>This is what we do.</p>
-```
-
-By default, the following template formats are supported:
-
-- [HTML (`html`)](https://11ty.dev/docs/languages/html/)
-- [Markdown (`md`)](https://11ty.dev/docs/languages/markdown/)
-- [WebC (`webc`)](https://11ty.dev/docs/languages/webc/)
-- [JavaScript (`11ty.js`)](https://11ty.dev/docs/languages/javascript/)
-- [Liquid (`liquid`)](https://11ty.dev/docs/languages/liquid/)
-- [Nunjucks (`njk`)](https://11ty.dev/docs/languages/nunjucks/)
-- [Handlebars (`hbs`)](https://11ty.dev/docs/languages/handlebars/)
-- [Mustache (`mustache`)](https://11ty.dev/docs/languages/mustache/)
-- [EJS (`ejs`)](https://11ty.dev/docs/languages/ejs/)
-- [Haml (`haml`)](https://11ty.dev/docs/languages/haml/)
-- [Pug (`pug`)](https://11ty.dev/docs/languages/pug/)
-
-For example, you could enable [Vue](https://github.com/11ty/eleventy-plugin-vue) support when registering
-`eleventy-plugin-fluid` as follows:
-
-```diff
-const fluidPlugin = require("eleventy-plugin-fluid");
-+ const eleventyVue = require("@11ty/eleventy-plugin-vue");
-
-module.exports = function (config) {
-+    config.addPlugin(eleventyVue);
--    config.addPlugin(fluidPlugin);
-+    config.addPlugin(fluidPlugin, {
-+        templateFormats: [
-+            "vue"
-+        ]
-+    });
-};
 ```
 
 #### uioStyles
@@ -786,11 +725,11 @@ default, the plugin will look for WebC components in `./src/_components/**/*.web
 can be modified when registering `eleventy-plugin-fluid`:
 
 ```diff
-const fluidPlugin = require("eleventy-plugin-fluid");
+import fluidPlugin from "eleventy-plugin-fluid";
 
-module.exports = function (config) {
--    config.addPlugin(fluidPlugin);
-+    config.addPlugin(fluidPlugin, {
+export default function (eleventyConfig) {
+-    eleventyConfig.addPlugin(fluidPlugin);
++    eleventyConfig.addPlugin(fluidPlugin, {
 +        webc: {
 +            components: "./src/_includes/**/*.webc"
 +        }
@@ -811,6 +750,36 @@ By default, `eleventy-plugin-fluid` copies the [required assets](src/config/uio-
 [Infusion User Interface Options][1] into the `lib/infusion` directory of the build directory.
 
 [1]: https://docs.fluidproject.org/infusion/development/tutorial-userInterfaceOptions/UserInterfaceOptions.html
+
+## Upgrade Guide
+
+### v2.x to v3.x
+
+- **BREAKING:** `eleventy-plugin-fluid` v3.x requires Eleventy v3.x and is written in ESM. See [this post](https://www.11ty.dev/blog/canary-eleventy-v3/#new-features-and-a-short-upgrade-guide)
+  for upgrade information and guidance.
+- **BREAKING:** The [`markdown` filter](https://github.com/fluid-project/eleventy-plugin-fluid/tree/v2.7.3?tab=readme-ov-file#markdown)
+  has been removed. Please use the Eleventy Render plugin's [`renderContent` filter](https://github.com/11ty/eleventy/issues/3370)
+  instead.
+
+  ```diff
+  {% set string = "**Hi!** %}
+  - {{ string | markdown | safe }}
+  + {{ string | renderContent('md') | safe }}
+  ```
+
+- **BREAKING:** The [`renderString` shortcode](https://github.com/fluid-project/eleventy-plugin-fluid/tree/v2.7.3?tab=readme-ov-file#renderstring)
+  has been removed. Please use the Eleventy Render plugin's [`renderContent` filter](https://github.com/11ty/eleventy/issues/3370)
+  instead:
+
+  ```diff
+  {% set string = "**Hi!** %}
+  - {% renderString string, 'md' %}
+  + {{ string | renderContent('md') | safe }}
+  ```
+
+- **BREAKING:** The [Eleventy WebC plugin](https://www.11ty.dev/docs/languages/webc/) is no longer included. If your
+  project uses WebC, please follow the [installation instructions](https://www.11ty.dev/docs/languages/webc/#installation)
+  to add the plugin.
 
 ## Development
 

@@ -9,8 +9,6 @@ Licensed under the New BSD license. You may not use this file except in complian
 You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
-"use strict";
-
-module.exports = function (string, delimiter) {
+export default function (string, delimiter) {
     return string.split(delimiter);
 };

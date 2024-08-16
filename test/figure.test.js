@@ -9,10 +9,9 @@ Licensed under the New BSD license. You may not use this file except in complian
 You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
-"use strict";
 
-const test = require("ava");
-const figureShortcode = require("../src/shortcodes/figure-shortcode.js");
+import test from "ava";
+import figureShortcode from "../src/shortcodes/figure-shortcode.js";
 
 test("Renders with caption", function (t) {
     t.is(figureShortcode("A caption.", "/assets/image.png", "A description of the image."), "<figure><img src=\"/assets/image.png\" alt=\"A description of the image.\"><figcaption><p>A caption.</p></figcaption></figure>\n");

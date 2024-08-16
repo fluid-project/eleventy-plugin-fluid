@@ -1,7 +1,9 @@
-"use strict";
 
-const { localizeData } = require("../../../index.js");
+import { localizeData } from "../../../index.js";
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-module.exports = () => {
+export default () => {
     return localizeData({}, __dirname);
 };

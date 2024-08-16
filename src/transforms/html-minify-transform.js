@@ -9,12 +9,11 @@ Licensed under the New BSD license. You may not use this file except in complian
 You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
-"use strict";
-const htmlmin = require("html-minifier");
+import { minify } from "html-minifier";
 
-module.exports = function htmlMinTransform(value, outputPath) {
+export default function (value, outputPath) {
     if (outputPath && outputPath.includes(".html")) {
-        let minified = htmlmin.minify(value, {
+        let minified = minify(value, {
             useShortDoctype: true,
             removeComments: true,
             collapseWhitespace: true,

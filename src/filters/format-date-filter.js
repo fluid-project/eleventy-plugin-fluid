@@ -9,7 +9,6 @@ Licensed under the New BSD license. You may not use this file except in complian
 You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
-"use strict";
 
 const formatOrdinal = function (n) {
     const pr = new Intl.PluralRules("en", {
@@ -28,7 +27,7 @@ const formatOrdinal = function (n) {
     return `${n}${suffix}`;
 };
 
-module.exports = function dateFilter(value, locale = "en") {
+export default function dateFilter(value, locale = "en") {
     const dateObject = new Date(new Date(value).toUTCString());
     const options = { year: "numeric", month: "long", day: "numeric"};
 
