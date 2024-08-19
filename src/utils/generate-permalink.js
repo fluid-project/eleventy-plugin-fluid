@@ -14,7 +14,6 @@ const generatePermalink = (data, collectionType, collectionSlug, paginationSlug 
         return false;
     }
 
-    // const eleventyConfig = new UserConfig();
     const locale = data.locale || data.defaultLanguage;
     const langSlug = data.supportedLanguages[locale].slug || locale;
     collectionSlug = collectionSlug || collectionType;

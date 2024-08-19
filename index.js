@@ -15,7 +15,6 @@ import path from "node:path";
 import { readFileSync } from "node:fs";
 import { EleventyRenderPlugin, EleventyI18nPlugin } from "@11ty/eleventy";
 import rtlDetect from "rtl-detect";
-import i18n from "eleventy-plugin-i18n-gettext";
 import figureShortcode from "./src/shortcodes/figure-shortcode.js";
 import formatDateFilter from "./src/filters/format-date-filter.js";
 import generatePermalink from "./src/utils/generate-permalink.js";
@@ -93,11 +92,6 @@ const fluidPlugin = {
         eleventyConfig.addPlugin(EleventyI18nPlugin, {
             defaultLanguage: options.defaultLanguage
         });
-        if (options.i18n) {
-            eleventyConfig.addPlugin(i18n, {
-                localesDirectory: options.localesDirectory
-            });
-        }
         eleventyConfig.addPlugin(EleventyRenderPlugin);
 
         /** Global Data */

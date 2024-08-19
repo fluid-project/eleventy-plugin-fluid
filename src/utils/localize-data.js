@@ -1,6 +1,5 @@
-
-import i18n from "eleventy-plugin-i18n-gettext";
 import rtlDetect from "rtl-detect";
+import parseLocale from "./parse-locale.js";
 import path from "node:path";
 
 /**
@@ -10,8 +9,12 @@ import path from "node:path";
  * @return {Object} - The localized data.
  */
 const localizeData = (data, dir) => {
-    let locale = path.basename(dir);
-    return i18n.enhance11tydata(data, locale, rtlDetect.getLangDir(locale));
+    const { locale, lang } = parseLocale(path.win32.basename(dir));
+    const langDir = rtlDetect.getLangDir(locale);
+
+    return Object.assign(data, {
+        locale, lang, langDir
+    });
 };
 
 export default localizeData;

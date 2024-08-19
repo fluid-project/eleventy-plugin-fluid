@@ -62,7 +62,7 @@ test("Generates permalinks from a custom slug", async function (t) {
 });
 
 test("Generates French permalinks", async function (t) {
-    let frPost = fs.readFileSync("_site/fr/posts/introduction/index.html", "utf8");
+    let frPost = fs.readFileSync("_site/fr/articles/introduction/index.html", "utf8");
     t.true(frPost.includes("<h1>Introduction</h1>"));
 
     let fr404 = fs.readFileSync("_site/fr/404.html", "utf8");
@@ -70,6 +70,6 @@ test("Generates French permalinks", async function (t) {
 });
 
 test("Generates user-configured language permalinks", async function (t) {
-    let dePost = fs.readFileSync("_site/de/posts/einfuehrung/index.html", "utf8");
+    let dePost = fs.readFileSync("_site/de/artikel/einfuehrung/index.html", "utf8");
     t.true(dePost.includes("<h1>Einführung</h1>"));
 });

@@ -1,15 +1,22 @@
 
-import rtlDetect from "rtl-detect";
 import { generatePermalink } from "../../index.js";
-import i18n from "eleventy-plugin-i18n-gettext";
+import { readFileSync } from "node:fs";
+import rosetta from "rosetta";
+
+const translations = JSON.parse(
+    readFileSync(
+        new URL("../../fixtures/_data/translations.json", import.meta.url)
+    )
+);
+const i18n = rosetta(translations);
 
 export default {
     layout: "layouts/base.njk",
     eleventyComputed: {
-        langDir: data => rtlDetect.getLangDir(data.locale),
         permalink: data => {
             const locale = data.locale;
-            return generatePermalink(data, "posts", i18n._(locale, "posts"));
+            i18n.locale(locale);
+            return generatePermalink(data, "posts", i18n.t('posts'));
         }
     }
 };
