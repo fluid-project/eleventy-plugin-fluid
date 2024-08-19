@@ -1,8 +1,9 @@
 const parseLocale = function (locale) {
-    const match = locale.match(/^(?<lang>.{2})(?:-(?<country>.{2}))*$/);
+    const localeRegex = /^(?<lang>.{2})(?:-(?<country>.{2}))*$/;
+    const match = locale.match(localeRegex);
 
     if ( !match || !match.groups ) {
-        throw `Locale ${locale} does not match regex ${this.configuration.localeRegex}`;
+        throw new Error(`Locale ${locale} does not match regex ${localeRegex}`);
     }
 
     return {
