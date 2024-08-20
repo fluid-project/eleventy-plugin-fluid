@@ -38,6 +38,7 @@ import compileCss from "./src/compilers/compile-css.js";
 import compileSass from "./src/compilers/compile-sass.js";
 import compileJs from "./src/compilers/compile-js.js";
 import eleventyUtils from "@11ty/eleventy-utils";
+import { _e, _n } from "./src/shortcodes/translate-shortcodes.js";
 
 const fluidPlugin = {
     initArguments: {},
@@ -105,6 +106,8 @@ const fluidPlugin = {
         eleventyConfig.addFilter("limit", limitFilter);
         eleventyConfig.addFilter("split", splitFilter);
 
+        eleventyConfig.addShortcode("_e", _e);
+        eleventyConfig.addShortcode("_n", _n);
         eleventyConfig.addPairedShortcode("figure", figureShortcode);
 
         if (options.uio) {

@@ -14,16 +14,16 @@ import test from "ava";
 import parseLocale from "../src/utils/parse-locale.js";
 
 test("Parses language with country code ", function (t) {
-    t.deepEqual(parseLocale('en-CA'), {lang: 'en', locale: 'en-CA'});
+    t.deepEqual(parseLocale("en-CA"), {lang: "en", locale: "en-CA"});
 });
 
 test("Parses language without country code", function (t) {
-    t.deepEqual(parseLocale('en'), {lang: 'en', locale: 'en'});
+    t.deepEqual(parseLocale("en"), {lang: "en", locale: "en"});
 });
 
 test("Throws error with invalid input", function (t) {
     const error = t.throws(function () {
-        parseLocale('what???');
+        parseLocale("what???");
     }, {instanceOf: Error});
-    t.is(error.message, `Locale what??? does not match regex /^(?<lang>.{2})(?:-(?<country>.{2}))*$/`);
+    t.is(error.message, "Locale what??? does not match regex /^(?<lang>.{2})(?:-(?<country>.{2}))*$/");
 });

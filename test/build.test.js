@@ -40,13 +40,29 @@ test("Builds minified JavaScript", async function (t) {
 
 test("Uses Markdown plugin", async  function (t) {
     let indexPage = fs.readFileSync("_site/index.html", "utf8");
-    t.true(indexPage.includes("<dl><dt>Term 1</dt><dd>Definition 1</dd></dl>"))
-})
+    t.true(indexPage.includes("<dl><dt>Widdershins</dt><dd>Counter-clockwise.</dd></dl>"));
+});
 
 test("Uses Markdown plugin with options", async  function (t) {
     let indexPage = fs.readFileSync("_site/index.html", "utf8");
-    t.true(indexPage.includes("<h2 id=\"this-should-have-an-anchor\" tabindex=\"-1\"><a class=\"header-anchor\" href=\"#this-should-have-an-anchor\"><span>This should have an anchor</span></a></h2>"));
-})
+    t.true(indexPage.includes("<h2 id=\"definitions\" tabindex=\"-1\"><a class=\"header-anchor\" href=\"#definitions\"><span>Definitions</span></a></h2>"));
+});
+
+test("Translates strings with placeholders", async  function (t) {
+    let englishIndexPage = fs.readFileSync("_site/index.html", "utf8");
+    t.true(englishIndexPage.includes("Hello Alice!"));
+
+    let frenchIndexPage = fs.readFileSync("_site/fr/index.html", "utf8");
+    t.true(frenchIndexPage.includes("Bonjour Alice !"));
+});
+
+test("Translates singular/plural strings with placeholders", async  function (t) {
+    let englishIndexPage = fs.readFileSync("_site/index.html", "utf8");
+    t.true(englishIndexPage.includes("6 posts"));
+
+    let frenchIndexPage = fs.readFileSync("_site/fr/index.html", "utf8");
+    t.true(frenchIndexPage.includes("6 articles"));
+});
 
 test("Generates English permalinks", async function (t) {
     let englishPost = fs.readFileSync("_site/posts/introduction/index.html", "utf8");

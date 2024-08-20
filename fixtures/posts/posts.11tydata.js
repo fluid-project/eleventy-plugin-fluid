@@ -12,11 +12,12 @@ const i18n = rosetta(translations);
 
 export default {
     layout: "layouts/base.njk",
+    tags: ["posts"],
     eleventyComputed: {
         permalink: data => {
             const locale = data.locale;
             i18n.locale(locale);
-            return generatePermalink(data, "posts", i18n.t('posts'));
+            return generatePermalink(data, "posts", i18n.t("posts"));
         }
     }
 };

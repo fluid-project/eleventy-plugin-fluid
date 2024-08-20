@@ -1,11 +1,20 @@
 {
     "de": {
-        "posts": "artikel"
+        "posts": "artikel",
+        "posts_singular": "{{n}} Artikel",
+        "posts_plural": "{{n}} Artikel",
+        "helloworld": "Hallo {{name}}!"
     },
     "en": {
-        "posts": "posts"
+        "posts": "posts",
+        "posts_singular": "{{n}} post",
+        "posts_plural": "{{n}} posts",
+        "helloworld": "Hello {{name}}!"
     },
     "fr": {
-        "posts": "articles"
+        "posts": "articles",
+        "posts_singular": "{{n}} article",
+        "posts_plural": "{{n}} articles",
+        "helloworld": "Bonjour {{name}} !"
     }
 }
