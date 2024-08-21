@@ -106,8 +106,11 @@ const fluidPlugin = {
         eleventyConfig.addFilter("limit", limitFilter);
         eleventyConfig.addFilter("split", splitFilter);
 
-        eleventyConfig.addShortcode("_e", _e);
-        eleventyConfig.addShortcode("_n", _n);
+        if (options.i18n) {
+            eleventyConfig.addShortcode("_e", _e);
+            eleventyConfig.addShortcode("_n", _n);
+        }
+
         eleventyConfig.addPairedShortcode("figure", figureShortcode);
 
         if (options.uio) {

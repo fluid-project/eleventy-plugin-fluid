@@ -6,10 +6,10 @@
   </head>
   <body>
 	<h1>{{ title }}</h1>
-  {% _e 'helloworld', locale, translations, {name: 'Alice'} %}
+  {% _e 'helloworld', {name: 'Alice'} %}
 	{{ content | safe }}
   {% set count = collections.posts | length %}
-  <p>{% _n 'posts_singular', 'posts_plural', locale, translations, {n: count} %}</p>
+  <p>{% _n 'posts_singular', 'posts_plural', {n: count} %}</p>
   </body>
 </html>
 
