@@ -336,11 +336,88 @@ the following shape:
 
 #### `__`
 
-TODO.
+[`__`](src/utils/translation.js#L21) is used to translate a string, substituting values for placeholders where
+required. For example:
+
+```js
+import { __ } from "eleventy-plugin-fluid";
+
+console.log(__(
+    "hello",
+    {
+        "name": "world"
+    },
+    {
+        "locale": "fr",
+        "translations": {
+            "en": {
+                "hello": "Hello {{name}}!"
+            },
+            "fr": {
+                "hello": "Bonjour {{name}} !"
+            }
+        }
+    }
+));
+```
+
+Result: `Bonjour world !`
+
+The first parameter is the key for the translation string in the `translations` object, the second parameter is an
+object of values to substitute for placeholders in the translation string, and the third parameter is the data object
+containing the `locale` and `translations` values. If the third parameter is not provided, the function will try to
+retrieve these values from `this.ctx` which provides access to Eleventy's global data.
+
+`eleventy-plugin-fluid` also provides a [shortcode](https://www.11ty.dev/docs/shortcodes/) based on this function:
+
+```njk
+{% __ 'hello', {name: 'world'} %}
+```
 
 #### `_n`
 
-TODO.
+[`_n`](src/utils/translation.js#L39) is used to translate a string with a numerical value, supporting singular or plural
+forms depending on the value. For example:
+
+```js
+import { _n } from "eleventy-plugin-fluid";
+
+console.log(_n(
+    "posts_singular",
+    "posts_plural",
+    {
+        "n": 3
+    },
+    {
+        "locale": "fr",
+        "translations": {
+            "en": {
+                "posts_singular": "{{n}} post",
+                "posts_plural": "{{n}} posts"
+            },
+            "fr": {
+                "posts_singular": "{{n}} article",
+                "posts_plural": "{{n}} articles"
+            }
+        }
+    }
+));
+```
+
+Result: `3 articles`
+
+The first parameter is the key for the translation string with a singular value in the `translations` object, the second
+parameter is the key for the translation string with a plural value in the `translations` object, the third parameter is
+the object of values to substitute for placeholders in the translation string (which must at minimum contain the key `n`
+for the numeric value), and the fourth parameter is the data object containing the `locale` and `translations` values.
+If the fourth parameter is not provided, the function will try to retrieve these values from `this.ctx` which provides
+access to Eleventy's global data.
+
+`eleventy-plugin-fluid` also provides a [shortcode](https://www.11ty.dev/docs/shortcodes/) based on this function:
+
+```njk
+{% _n 'posts_singular', 'posts_plural', {n: count} %}
+```
 
 #### `generatePermalink`
 
