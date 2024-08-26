@@ -38,7 +38,7 @@ import compileCss from "./src/compilers/compile-css.js";
 import compileSass from "./src/compilers/compile-sass.js";
 import compileJs from "./src/compilers/compile-js.js";
 import eleventyUtils from "@11ty/eleventy-utils";
-import { _e, _n } from "./src/shortcodes/translate-shortcodes.js";
+import { __, _n } from "./src/utils/translation.js";
 
 const fluidPlugin = {
     initArguments: {},
@@ -107,7 +107,7 @@ const fluidPlugin = {
         eleventyConfig.addFilter("split", splitFilter);
 
         if (options.i18n) {
-            eleventyConfig.addShortcode("_e", _e);
+            eleventyConfig.addShortcode("__", __);
             eleventyConfig.addShortcode("_n", _n);
         }
 
@@ -195,5 +195,7 @@ export default fluidPlugin;
 export {
     fluidPlugin,
     generatePermalink,
-    localizeData
+    localizeData,
+    __,
+    _n
 };

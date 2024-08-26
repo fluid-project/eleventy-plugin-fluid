@@ -225,7 +225,7 @@ If you wish to disable JavaScript processing altogether, set the `enabled` key o
 ### Localization
 
 `eleventy-plugin-fluid` adds support for localization using Eleventy's [i18n plugin](https://11ty.dev/docs/plugins/i18n/)
-and [`eleventy-plugin-i18n-gettext`](https://github.com/sgissinger/eleventy-plugin-i18n-gettext) for string translation.
+and [`rosetta`](https://npmjs.com/packages/rosetta) for string translation.
 
 By default, the following languages are configured:
 
@@ -318,9 +318,19 @@ export default function (eleventyConfig) {
 The `defaultLanguage` can be overridden by passing a new value to the `defaultLanguage` options key when registering
 `eleventy-plugin-fluid`.
 
-By default, `eleventy-plugin-fluid` also configures a [`localesDirectory`](https://github.com/sgissinger/eleventy-plugin-i18n-gettext#localesdirectory)
-for `eleventy-plugin-i18n-getttext` as `./src/_locales`. This can be overridden by passing a new value to the
-`localesDirectory` options key when registering `eleventy-plugin-fluid`.
+The localization shortcodes included in `eleventy-plugin-fluid` requiere a global data object called `translations` with
+the following shape:
+
+```json
+{
+    "en": {
+        "hello": "Hello {{name}}!"
+    },
+    "fr": {
+        "hello": "Bonjour {{name}} !"
+    }
+}
+```
 
 `eleventy-plugin-fluid` also provides two localization-related helpers:
 
@@ -332,8 +342,7 @@ file:
 
 ```js
 import { EleventyI18nPlugin } from "@11ty/eleventy";
-import { generatePermalink } from "eleventy-plugin-fluid";
-import { _ } from "eleventy-plugin-i18n-gettext";
+import { generatePermalink, __ } from "eleventy-plugin-fluid";
 
 export default {
     layout: "layouts/base.njk",
@@ -343,7 +352,7 @@ export default {
         locale: data => data.lang,
         permalink: data => {
             const locale = data.locale;
-            return generatePermalink(data, "pages", _(locale, "pages"), _(locale, "page"));
+            return generatePermalink(data, "pages", __("pages", {}, data), __("pages", {}, data));
         }
     }
 };
