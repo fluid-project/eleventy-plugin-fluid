@@ -332,7 +332,15 @@ the following shape:
 }
 ```
 
-`eleventy-plugin-fluid` also provides two localization-related helpers:
+`eleventy-plugin-fluid` also provides four localization-related helpers:
+
+#### `__`
+
+TODO.
+
+#### `_n`
+
+TODO.
 
 #### `generatePermalink`
 
@@ -351,16 +359,19 @@ export default {
         langDir: data => data.supportedLanguages[data.lang].dir,
         locale: data => data.lang,
         permalink: data => {
-            const locale = data.locale;
-            return generatePermalink(data, "pages", __("pages", {}, data), __("pages", {}, data));
+            // Only localize the permalink if the locale and translations global data are present.
+            if (data.hasOwnProperty("locale") && data.hasOwnProperty("translations")) {
+                return generatePermalink(data, "pages", __("pages", {}, data), __("pages", {}, data));
+            }
+
+            return generatePermalink(data, "pages", "pages", "pages");
         }
     }
 };
 ```
 
-In this example, [`eleventy-plugin-i18n-gettext`](https://github.com/sgissinger/eleventy-plugin-i18n-gettext) is used
-to localize the URL path for the collection. The `_()` method provided by `eleventy-plugin-i18n-gettext` requires a
-variable called `locale` as its first parameter (see [this issue](https://github.com/sgissinger/eleventy-plugin-i18n-gettext/issues/22)).
+In this example, the [`__`](src/utils/translation.js#L21) function is used
+to localize the URL path for the collection.
 
 #### `localizeData`
 
@@ -376,7 +387,7 @@ export default () => {
 };
 ```
 
-This helper is a wrapper for [`i18n.enhance11tydata`](https://github.com/sgissinger/eleventy-plugin-i18n-gettext#i18nenhance11tydataobj-locale-dir).
+This helper ensures that the `locale`, `lang`, and `langDir` data are set for the directory of content.
 
 #### Disabling String Translation
 
@@ -394,16 +405,13 @@ export default function (eleventyConfig) {
 };
 ```
 
-Note that if you do this, you will need to remove any uses of the `localizeData` helper or
-[`eleventy-plugin-i18n-gettext` functions](https://github.com/sgissinger/eleventy-plugin-i18n-gettext#api) in your
-project.
+Note that if you do this, you will need to remove any uses of the `__`, `_n` or `localizeData` helpers in your project.
 
 #### Additional Reference
 
 For additional information on setting up localization/internationalization, see:
 
 - [Eleventy Internationalization plugin](https://www.11ty.dev/docs/plugins/i18n/)
-- [`eleventy-plugin-i18n-gettext`](https://github.com/sgissinger/eleventy-plugin-i18n-gettext)
 - [Trivet](https://github.com/fluid-project/trivet/#internationalization)
 
 ### Markdown Configuration
