@@ -24,9 +24,6 @@ export default function (eleventyConfig) {
                 markdownItDefList
             ]
         },
-        sass: {
-            enabled: true
-        },
         supportedLanguages: {
             de: {
                 slug: "de",

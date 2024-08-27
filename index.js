@@ -36,7 +36,6 @@ const languages = JSON.parse(
     )
 );
 import compileCss from "./src/compilers/compile-css.js";
-import compileSass from "./src/compilers/compile-sass.js";
 import compileJs from "./src/compilers/compile-js.js";
 import eleventyUtils from "@11ty/eleventy-utils";
 
@@ -56,16 +55,6 @@ const fluidPlugin = {
             css: {
                 basePath: `./${eleventyConfig.dir.input || "src"}/assets/styles`,
                 enabled: true,
-                minify: true,
-                sourceMap: false,
-                drafts: {
-                    nesting: true
-                },
-                browserslist: "> 1%"
-            },
-            sass: {
-                basePath: `./${eleventyConfig.dir.input || "src"}/assets/styles`,
-                enabled: false,
                 minify: true,
                 sourceMap: false,
                 drafts: {
@@ -149,21 +138,6 @@ const fluidPlugin = {
                 },
                 compile: async function (inputContent, inputPath) {
                     return await compileCss(inputContent, inputPath, options.css);
-                }
-            });
-        }
-
-        if (options.sass.enabled) {
-            eleventyConfig.addTemplateFormats("scss");
-            eleventyConfig.addExtension("scss", {
-                outputFileExtension: "css",
-                getData: async function () {
-                    return {
-                        eleventyExcludeFromCollections: true
-                    };
-                },
-                compile: async function (inputContent, inputPath) {
-                    return await compileSass(inputContent, inputPath, options.sass, this);
                 }
             });
         }
