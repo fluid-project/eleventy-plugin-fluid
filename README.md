@@ -59,8 +59,8 @@ proceed with caution if you are using this technique.
 
 ### Asset Handling
 
-`eleventy-plugin-fluid` includes configuration for processing and bundling Sass and CSS files using [Sass](https://sass-lang.com)
-and [LightningCSS](https://lightningcss.dev/), and JavaScript files using [esbuild](https://esbuild.github.io).
+`eleventy-plugin-fluid` includes configuration for processing and bundling CSS files using [LightningCSS](https://lightningcss.dev/),
+and JavaScript files using [esbuild](https://esbuild.github.io).
 
 #### CSS
 
@@ -111,77 +111,6 @@ If you wish to disable CSS processing altogether, set the `enabled` key of the `
 If you wish to disable Browserslist altogether, you can pass an empty array (`[]`) to the `browserslist` key.
 
 For more options, see the [LightningCSS docs](https://lightningcss.dev/docs.html).
-
-#### Sass
-
-Sass processing is disabled by default. When enabled, any Sass files with the `.scss` extension found in the
-`./src/assets/styles/` directory or its children will be processed _unless the filename begins with an underscore (`_`)_.
-To enable Sass and disable CSS, add the following configuration when registering `eleventy-plugin-fluid` in your config:
-
-```diff
-import fluidPlugin from "eleventy-plugin-fluid";
-
-export default function (eleventyConfig) {
--    eleventyConfig.addPlugin(fluidPlugin);
-+    eleventyConfig.addPlugin(fluidPlugin, {
-+        css: {
-+              enabled: false
-+        },
-+        sass: {
-+              enabled: true
-+        }
-+    });
-};
-```
-
-Options for Sass may be modified by passing values to the `sass` option when registering `eleventy-plugin-fluid`
-in your config:
-
-```diff
-import fluidPlugin from "eleventy-plugin-fluid";
-
-export default function (eleventyConfig) {
--    eleventyConfig.addPlugin(fluidPlugin);
-+    eleventyConfig.addPlugin(fluidPlugin, {
-+        css: {
-+              enabled: false
-+        },
-+        sass: {
-+              browserslist: '> 1.5%',
-+              enabled: true
-+        }
-+    });
-};
-```
-
-Default values are as follows:
-
-```js
-let options = {
-    /* Where should Eleventy look for Sass files to process? */
-    basePath: `./${eleventyConfig.dir.input || "src"}/assets/styles`,
-    /* Should Sass files be processed? */
-    enabled: false,
-    /* See: https://lightningcss.dev/minification.html */
-    minify: true,
-    /* Not yet supported, see https://github.com/fluid-project/eleventy-plugin-fluid/issues/170 */
-    sourceMap: false,
-    /* See: https://lightningcss.dev/transpilation.html#draft-syntax */
-    drafts: {
-        nesting: true
-    },
-    /* A Browserslist configuration string (see: https://browsersl.ist) */
-    browserslist: "> 1%"
-};
-```
-
-Note that all of these will be passed to LightningCSS, not Sass, with the exception of `basePath`, `enabled`, and `sourceMap`.
-
-If you wish to disable Sass processing altogether, set the `enabled` key of the `options.sass` object to `false`.
-
-If you wish to disable Browserslist altogether, you can pass an empty array (`[]`) to the `browserslist` key.
-
-For more options, see the [Sass](https://sass-lang.com/documentation/) and [LightningCSS docs](https://lightningcss.dev/docs.html).
 
 #### JavaScript
 
@@ -875,6 +804,8 @@ By default, `eleventy-plugin-fluid` copies the [required assets](src/config/uio-
   project uses WebC, please follow the [installation instructions](https://www.11ty.dev/docs/languages/webc/#installation)
   to add the plugin.
 
+- **BREAKING:** Sass support is no longer included. If your project uses Sass, please install [`eleventy-plugin-fluid-sass`](https://npmjs.com/packages/eleventy-plugin-fluid-sass).
+
 ## Development
 
 ### Releasing
@@ -902,7 +833,6 @@ For more information on publishing to npm, see the [npm publish documentation](h
 ### ISC License
 
 - [eleventy-plugin-lightningcss](https://github.com/5t3ph/eleventy-plugin-lightningcss)
-- [eleventy-plugin-sass-lightningcss](https://github.com/5t3ph/eleventy-plugin-sass-lightningcss)
 
 ### MIT License
 
