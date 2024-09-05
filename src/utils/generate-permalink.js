@@ -1,4 +1,4 @@
-import slugify from "../../node_modules/@11ty/eleventy/src/Filters/Slugify.js";
+import slugify from "@sindresorhus/slugify";
 
 /**
  * @param  {Object} data - The data object for the current collection item.
@@ -19,7 +19,6 @@ const generatePermalink = (data, collectionType, collectionSlug, paginationSlug 
     collectionSlug = collectionSlug || collectionType;
 
     if (collectionType === "pages") {
-
         /* If the page is a 404 page, return 404.html, optionally prepended with the language code. */
         if (data.page.fileSlug === "404") {
             return (locale === data.defaultLanguage) ? "/404.html" : `/${langSlug}/404.html`;
@@ -31,14 +30,14 @@ const generatePermalink = (data, collectionType, collectionSlug, paginationSlug 
         }
 
         /* If the page is not the index page, return the page title in a URL-safe format, optionally prepended with the language code. */
-        const slug = data.slug || slugify(data.title);
+        const slug = data.slug || slugify(data.title, { decamelize: false });
         if (data.hasOwnProperty("pagination") && data.pagination.pageNumber > 0) {
             return (locale === data.defaultLanguage) ? `/${slug}/${paginationSlug}/${data.pagination.pageNumber + 1}/` : `/${langSlug}/${slug}/${paginationSlug}/${data.pagination.pageNumber + 1}/`;
         }
-        return (locale === data.defaultLanguage) ? `/${slug}/` : `/${langSlug}/${slug}/`;
+        return locale === data.defaultLanguage ? `/${slug}/` : `/${langSlug}/${slug}/`;
     } else {
-        const slug = data.slug || slugify(data.title);
-        return (locale === data.defaultLanguage) ? `/${collectionSlug}/${slug}/` : `/${langSlug}/${collectionSlug}/${slug}/`;
+        const slug = data.slug || slugify(data.title, { decamelize: false });
+        return locale === data.defaultLanguage ? `/${collectionSlug}/${slug}/` : `/${langSlug}/${collectionSlug}/${slug}/`;
     }
 };
 
