@@ -247,8 +247,8 @@ export default function (eleventyConfig) {
 The `defaultLanguage` can be overridden by passing a new value to the `defaultLanguage` options key when registering
 `eleventy-plugin-fluid`.
 
-The localization shortcodes included in `eleventy-plugin-fluid` require a global data object called `translations` with
-the following shape:
+The localization shortcodes included in `eleventy-plugin-fluid` require a [global data object](https://www.11ty.dev/docs/data-global/)
+called `translations` with the following shape:
 
 ```json
 {
