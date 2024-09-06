@@ -19,12 +19,11 @@ import rosetta from "rosetta";
  * @return {String} - The localized string.
  */
 const __ = function (key, values = {}, data = {}) {
-    if (!data.hasOwnProperty("locale") || !data.hasOwnProperty("translations")) {
-        data = this.ctx;
-    }
+    const locale = data.locale || this.page.lang;
+    const translations = data.translations || this.ctx.translations;
 
-    const i18n = rosetta(data.translations);
-    i18n.locale(data.locale);
+    const i18n = rosetta(translations);
+    i18n.locale(locale);
     return i18n.t(key, values);
 };
 
@@ -37,12 +36,11 @@ const __ = function (key, values = {}, data = {}) {
  * @return {String} - The localized string.
  */
 const _n = function (singular, plural, values = {}, data = {}) {
-    if (!data.hasOwnProperty("locale") || !data.hasOwnProperty("translations")) {
-        data = this.ctx;
-    }
+    const locale = data.locale || this.page.lang;
+    const translations = data.translations || this.ctx.translations;
 
-    const i18n = rosetta(data.translations);
-    i18n.locale(data.locale);
+    const i18n = rosetta(translations);
+    i18n.locale(locale);
     const key = values.n === 1 ? singular : plural;
     return i18n.t(key, values);
 };
