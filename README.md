@@ -9,9 +9,9 @@ Eleventy plugin which provides common filters, shortcodes and transforms for [Fl
 
 ## Requirements
 
-- Node >= 18
-- Eleventy >= 2.0.1
-- Infusion >= 4.6.0
+- Node >= 20
+- Eleventy >= 3.0.0-beta.1
+- Infusion >= 4.7.1
 
 ## Installation
 
