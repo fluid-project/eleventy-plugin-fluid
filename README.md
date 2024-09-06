@@ -299,9 +299,34 @@ retrieve these values from `this.ctx` which provides access to Eleventy's global
 
 `eleventy-plugin-fluid` also provides a [shortcode](https://www.11ty.dev/docs/shortcodes/) based on this function:
 
-```njk
+<details>
+<summary>Liquid</summary>
+
+```liquid
 {% __ 'hello', {name: 'world'} %}
 ```
+
+</details>
+
+<details>
+<summary>Nunjucks</summary>
+
+```nunjucks
+{% __ 'hello', {name: 'world'} %}
+```
+
+</details>
+
+<details>
+<summary>11ty.js</summary>
+
+```js
+module.exports = function({ key, values }) {
+  return this.__(key, values);
+};
+```
+
+</details>
 
 #### `_n`
 
@@ -344,9 +369,34 @@ access to Eleventy's global data.
 
 `eleventy-plugin-fluid` also provides a [shortcode](https://www.11ty.dev/docs/shortcodes/) based on this function:
 
-```njk
+<details>
+<summary>Liquid</summary>
+
+```liquid
 {% _n 'posts_singular', 'posts_plural', {n: count} %}
 ```
+
+</details>
+
+<details>
+<summary>Nunjucks</summary>
+
+```nunjucks
+{% _n 'posts_singular', 'posts_plural', {n: count} %}
+```
+
+</details>
+
+<details>
+<summary>11ty.js</summary>
+
+```js
+module.exports = function({ singular, plural, values }) {
+  return this._n(singular, plural, values);
+};
+```
+
+</details>
 
 #### `generatePermalink`
 
