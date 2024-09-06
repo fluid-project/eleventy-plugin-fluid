@@ -321,8 +321,8 @@ retrieve these values from `this.ctx` which provides access to Eleventy's global
 <summary>11ty.js</summary>
 
 ```js
-module.exports = function({ key, values }) {
-  return this.__(key, values);
+module.exports = function ({ key, values }) {
+    return this.__(key, values);
 };
 ```
 
@@ -391,8 +391,8 @@ access to Eleventy's global data.
 <summary>11ty.js</summary>
 
 ```js
-module.exports = function({ singular, plural, values }) {
-  return this._n(singular, plural, values);
+module.exports = function ({ singular, plural, values }) {
+    return this._n(singular, plural, values);
 };
 ```
 
