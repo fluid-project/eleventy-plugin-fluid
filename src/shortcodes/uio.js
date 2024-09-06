@@ -25,7 +25,7 @@ export default {
     <link href="/lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" rel="stylesheet">`;
     },
     uioScripts: function () {
-	      return `<link rel="preload" href="/lib/infusion/infusion-uio.js" as="script" />
+        return `<link rel="preload" href="/lib/infusion/infusion-uio.js" as="script" />
     <script src="/lib/infusion/infusion-uio.js"></script>`;
     },
     uioTemplate: function () {
