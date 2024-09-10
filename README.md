@@ -9,9 +9,9 @@ Eleventy plugin which provides common filters, shortcodes and transforms for [Fl
 
 ## Requirements
 
-- Node >= 18
-- Eleventy >= 2.0.1
-- Infusion >= 4.6.0
+- Node >= 20
+- Eleventy >= 3.0.0-beta.1
+- Infusion >= 4.7.1
 
 ## Installation
 
@@ -154,7 +154,7 @@ If you wish to disable JavaScript processing altogether, set the `enabled` key o
 ### Localization
 
 `eleventy-plugin-fluid` adds support for localization using Eleventy's [i18n plugin](https://11ty.dev/docs/plugins/i18n/)
-and [`eleventy-plugin-i18n-gettext`](https://github.com/sgissinger/eleventy-plugin-i18n-gettext) for string translation.
+and [`rosetta`](https://npmjs.com/package/rosetta) for string translation.
 
 By default, the following languages are configured:
 
@@ -247,11 +247,156 @@ export default function (eleventyConfig) {
 The `defaultLanguage` can be overridden by passing a new value to the `defaultLanguage` options key when registering
 `eleventy-plugin-fluid`.
 
-By default, `eleventy-plugin-fluid` also configures a [`localesDirectory`](https://github.com/sgissinger/eleventy-plugin-i18n-gettext#localesdirectory)
-for `eleventy-plugin-i18n-getttext` as `./src/_locales`. This can be overridden by passing a new value to the
-`localesDirectory` options key when registering `eleventy-plugin-fluid`.
+The localization shortcodes included in `eleventy-plugin-fluid` require a [global data object](https://www.11ty.dev/docs/data-global/)
+called `translations` with the following shape:
 
-`eleventy-plugin-fluid` also provides two localization-related helpers:
+```json
+{
+    "en": {
+        "hello": "Hello {{name}}!"
+    },
+    "fr": {
+        "hello": "Bonjour {{name}} !"
+    }
+}
+```
+
+`eleventy-plugin-fluid` also provides four localization-related helpers:
+
+#### `__`
+
+[`__`](src/utils/translation.js#L21) is used to translate a string, substituting values for placeholders where
+required. For example:
+
+```js
+import { __ } from "eleventy-plugin-fluid";
+
+console.log(__(
+    "hello",
+    {
+        "name": "world"
+    },
+    {
+        "locale": "fr",
+        "translations": {
+            "en": {
+                "hello": "Hello {{name}}!"
+            },
+            "fr": {
+                "hello": "Bonjour {{name}} !"
+            }
+        }
+    }
+));
+```
+
+Result: `Bonjour world !`
+
+The first parameter is the key for the translation string in the `translations` object, the second parameter is an
+object of values to substitute for placeholders in the translation string, and the third parameter is the data object
+containing the `locale` and `translations` values. If the third parameter is not provided, the function will try to
+retrieve these values from `this.ctx` which provides access to Eleventy's global data.
+
+`eleventy-plugin-fluid` also provides a [shortcode](https://www.11ty.dev/docs/shortcodes/) based on this function:
+
+<details>
+<summary>Liquid</summary>
+
+```liquid
+{% __ 'hello', {name: 'world'} %}
+```
+
+</details>
+
+<details>
+<summary>Nunjucks</summary>
+
+```nunjucks
+{% __ 'hello', {name: 'world'} %}
+```
+
+</details>
+
+<details>
+<summary>11ty.js</summary>
+
+```js
+module.exports = function ({ key, values }) {
+    return this.__(key, values);
+};
+```
+
+</details>
+
+#### `_n`
+
+[`_n`](src/utils/translation.js#L39) is used to translate a string with a numerical value, supporting singular or plural
+forms depending on the value. For example:
+
+```js
+import { _n } from "eleventy-plugin-fluid";
+
+console.log(_n(
+    "posts_singular",
+    "posts_plural",
+    {
+        "n": 3
+    },
+    {
+        "locale": "fr",
+        "translations": {
+            "en": {
+                "posts_singular": "{{n}} post",
+                "posts_plural": "{{n}} posts"
+            },
+            "fr": {
+                "posts_singular": "{{n}} article",
+                "posts_plural": "{{n}} articles"
+            }
+        }
+    }
+));
+```
+
+Result: `3 articles`
+
+The first parameter is the key for the translation string with a singular value in the `translations` object, the second
+parameter is the key for the translation string with a plural value in the `translations` object, the third parameter is
+the object of values to substitute for placeholders in the translation string (which must at minimum contain the key `n`
+for the numeric value), and the fourth parameter is the data object containing the `locale` and `translations` values.
+If the fourth parameter is not provided, the function will try to retrieve these values from `this.ctx` which provides
+access to Eleventy's global data.
+
+`eleventy-plugin-fluid` also provides a [shortcode](https://www.11ty.dev/docs/shortcodes/) based on this function:
+
+<details>
+<summary>Liquid</summary>
+
+```liquid
+{% _n 'posts_singular', 'posts_plural', {n: count} %}
+```
+
+</details>
+
+<details>
+<summary>Nunjucks</summary>
+
+```nunjucks
+{% _n 'posts_singular', 'posts_plural', {n: count} %}
+```
+
+</details>
+
+<details>
+<summary>11ty.js</summary>
+
+```js
+module.exports = function ({ singular, plural, values }) {
+    return this._n(singular, plural, values);
+};
+```
+
+</details>
 
 #### `generatePermalink`
 
@@ -261,8 +406,7 @@ file:
 
 ```js
 import { EleventyI18nPlugin } from "@11ty/eleventy";
-import { generatePermalink } from "eleventy-plugin-fluid";
-import { _ } from "eleventy-plugin-i18n-gettext";
+import { generatePermalink, __ } from "eleventy-plugin-fluid";
 
 export default {
     layout: "layouts/base.njk",
@@ -271,16 +415,19 @@ export default {
         langDir: data => data.supportedLanguages[data.lang].dir,
         locale: data => data.lang,
         permalink: data => {
-            const locale = data.locale;
-            return generatePermalink(data, "pages", _(locale, "pages"), _(locale, "page"));
+            // Only localize the permalink if the locale and translations global data are present.
+            if (data.hasOwnProperty("locale") && data.hasOwnProperty("translations")) {
+                return generatePermalink(data, "pages", __("pages", {}, data), __("pages", {}, data));
+            }
+
+            return generatePermalink(data, "pages", "pages", "pages");
         }
     }
 };
 ```
 
-In this example, [`eleventy-plugin-i18n-gettext`](https://github.com/sgissinger/eleventy-plugin-i18n-gettext) is used
-to localize the URL path for the collection. The `_()` method provided by `eleventy-plugin-i18n-gettext` requires a
-variable called `locale` as its first parameter (see [this issue](https://github.com/sgissinger/eleventy-plugin-i18n-gettext/issues/22)).
+In this example, the [`__`](src/utils/translation.js#L21) function is used
+to localize the URL path for the collection.
 
 #### `localizeData`
 
@@ -296,7 +443,7 @@ export default () => {
 };
 ```
 
-This helper is a wrapper for [`i18n.enhance11tydata`](https://github.com/sgissinger/eleventy-plugin-i18n-gettext#i18nenhance11tydataobj-locale-dir).
+This helper ensures that the `locale`, `lang`, and `langDir` data are set for the directory of content.
 
 #### Disabling String Translation
 
@@ -314,16 +461,13 @@ export default function (eleventyConfig) {
 };
 ```
 
-Note that if you do this, you will need to remove any uses of the `localizeData` helper or
-[`eleventy-plugin-i18n-gettext` functions](https://github.com/sgissinger/eleventy-plugin-i18n-gettext#api) in your
-project.
+Note that if you do this, you will need to remove any uses of the `__`, `_n` or `localizeData` helpers in your project.
 
 #### Additional Reference
 
 For additional information on setting up localization/internationalization, see:
 
 - [Eleventy Internationalization plugin](https://www.11ty.dev/docs/plugins/i18n/)
-- [`eleventy-plugin-i18n-gettext`](https://github.com/sgissinger/eleventy-plugin-i18n-gettext)
 - [Trivet](https://github.com/fluid-project/trivet/#internationalization)
 
 ### Markdown Configuration

@@ -1,10 +1,7 @@
 ---
 title: Welcome
 ---
-Hello!
+## Definitions
+Widdershins
 
-Term 1
-
-:   Definition 1
-
-## This should have an anchor
+:   Counter-clockwise.

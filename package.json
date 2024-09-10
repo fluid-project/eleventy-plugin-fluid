@@ -45,11 +45,14 @@
   "dependencies": {
     "@11ty/eleventy-utils": "^1.0.3",
     "browserslist": "^4.23.3",
-    "eleventy-plugin-i18n-gettext": "^1.5.1",
     "esbuild": "^0.23.0",
     "html-minifier-terser": "^7.2.0",
     "lightningcss": "^1.26.0",
+    "rosetta": "^1.1.0",
     "rtl-detect": "^1.1.2"
+  },
+  "engines": {
+    "node": ">=20"
   },
   "peerDependencies": {
     "infusion": "^4.7.1"

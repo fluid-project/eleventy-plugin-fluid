@@ -15,7 +15,6 @@ import path from "node:path";
 import { readFileSync } from "node:fs";
 import { EleventyRenderPlugin, EleventyI18nPlugin } from "@11ty/eleventy";
 import rtlDetect from "rtl-detect";
-import i18n from "eleventy-plugin-i18n-gettext";
 import figureShortcode from "./src/shortcodes/figure-shortcode.js";
 import formatDateFilter from "./src/filters/format-date-filter.js";
 import generatePermalink from "./src/utils/generate-permalink.js";
@@ -38,6 +37,7 @@ const languages = JSON.parse(
 import compileCss from "./src/compilers/compile-css.js";
 import compileJs from "./src/compilers/compile-js.js";
 import eleventyUtils from "@11ty/eleventy-utils";
+import { __, _n } from "./src/utils/translation.js";
 
 const fluidPlugin = {
     initArguments: {},
@@ -82,11 +82,6 @@ const fluidPlugin = {
         eleventyConfig.addPlugin(EleventyI18nPlugin, {
             defaultLanguage: options.defaultLanguage
         });
-        if (options.i18n) {
-            eleventyConfig.addPlugin(i18n, {
-                localesDirectory: options.localesDirectory
-            });
-        }
         eleventyConfig.addPlugin(EleventyRenderPlugin);
 
         /** Global Data */
@@ -99,6 +94,11 @@ const fluidPlugin = {
         eleventyConfig.addFilter("isoDate", isoDateFilter);
         eleventyConfig.addFilter("limit", limitFilter);
         eleventyConfig.addFilter("split", splitFilter);
+
+        if (options.i18n) {
+            eleventyConfig.addShortcode("__", __);
+            eleventyConfig.addShortcode("_n", _n);
+        }
 
         eleventyConfig.addPairedShortcode("figure", figureShortcode);
 
@@ -169,5 +169,7 @@ export default fluidPlugin;
 export {
     fluidPlugin,
     generatePermalink,
-    localizeData
+    localizeData,
+    __,
+    _n
 };
