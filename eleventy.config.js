@@ -25,7 +25,7 @@ export default function (eleventyConfig) {
             ]
         },
         supportedLanguages: {
-            de: {
+            "de-DE": {
                 slug: "de",
                 uioSlug: "de",
                 dir: "ltr",
