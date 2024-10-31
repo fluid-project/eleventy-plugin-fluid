@@ -247,6 +247,8 @@ export default function (eleventyConfig) {
 The `defaultLanguage` can be overridden by passing a new value to the `defaultLanguage` options key when registering
 `eleventy-plugin-fluid`.
 
+#### Required Data
+
 The localization shortcodes included in `eleventy-plugin-fluid` require a [global data object](https://www.11ty.dev/docs/data-global/)
 called `translations` with the following shape:
 
@@ -261,9 +263,14 @@ called `translations` with the following shape:
 }
 ```
 
+All content—collections or individual pages—must have a front matter `lang` value corresponding to a configured
+language. If one is not provided, it will be assumed to equal the `defaultLanguage`.
+
+#### Helper Functions
+
 `eleventy-plugin-fluid` also provides four localization-related helpers:
 
-#### `__`
+##### `__`
 
 [`__`](src/utils/translation.js#L21) is used to translate a string, substituting values for placeholders where
 required. For example:
@@ -300,15 +307,6 @@ retrieve these values from `this.ctx` which provides access to Eleventy's global
 `eleventy-plugin-fluid` also provides a [shortcode](https://www.11ty.dev/docs/shortcodes/) based on this function:
 
 <details>
-<summary>Liquid</summary>
-
-```liquid
-{% __ 'hello', {name: 'world'} %}
-```
-
-</details>
-
-<details>
 <summary>Nunjucks</summary>
 
 ```nunjucks
@@ -328,7 +326,9 @@ module.exports = function ({ key, values }) {
 
 </details>
 
-#### `_n`
+**Note:** Using this function with Liquid requires extra work as Liquid shortcodes cannot accept a JSON object directly.
+
+##### `_n`
 
 [`_n`](src/utils/translation.js#L39) is used to translate a string with a numerical value, supporting singular or plural
 forms depending on the value. For example:
@@ -363,20 +363,11 @@ Result: `3 articles`
 The first parameter is the key for the translation string with a singular value in the `translations` object, the second
 parameter is the key for the translation string with a plural value in the `translations` object, the third parameter is
 the object of values to substitute for placeholders in the translation string (which must at minimum contain the key `n`
-for the numeric value), and the fourth parameter is the data object containing the `locale` and `translations` values.
+for the numeric value), and the fourth parameter is the data object containing the `lang` and `translations` values.
 If the fourth parameter is not provided, the function will try to retrieve these values from `this.ctx` which provides
 access to Eleventy's global data.
 
 `eleventy-plugin-fluid` also provides a [shortcode](https://www.11ty.dev/docs/shortcodes/) based on this function:
-
-<details>
-<summary>Liquid</summary>
-
-```liquid
-{% _n 'posts_singular', 'posts_plural', {n: count} %}
-```
-
-</details>
 
 <details>
 <summary>Nunjucks</summary>
@@ -398,7 +389,9 @@ module.exports = function ({ singular, plural, values }) {
 
 </details>
 
-#### `generatePermalink`
+**Note:** Using this function with Liquid requires extra work as Liquid shortcodes cannot accept a JSON object directly.
+
+##### `generatePermalink`
 
 [`generatePermalink`](src/utils/generate-permalink.js) is used to generate localized permalinks for a collection type,
 with full support for [pagination](https://www.11ty.dev/docs/pagination/). Here's an example, as used in an `11tydata.js`
