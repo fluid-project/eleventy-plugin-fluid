@@ -47,7 +47,7 @@ export default {
             </div>
         `;
     },
-    uioInit: function (locale, direction) {
+    uioInit: function (lang, direction) {
         let options = {
             auxiliarySchema: {
                 terms: {
@@ -67,7 +67,7 @@ export default {
             prefsEditorLoader: {
                 lazyLoad: true
             },
-            locale: locale,
+            locale: lang,
             direction: direction
         };
 

@@ -429,22 +429,6 @@ export default {
 In this example, the [`__`](src/utils/translation.js#L21) function is used
 to localize the URL path for the collection.
 
-#### `localizeData`
-
-[`localizeData`](src/utils/localize-data.js) is used to localize [directory data](https://www.11ty.dev/docs/data-template-dir/)
-for a directory of content in a specific language (where the directory name is the language code). Here's an example,
-as used in an `11tydata.js` file:
-
-```js
-import { localizeData } from "eleventy-plugin-fluid";
-
-export default () => {
-    return fluidPlugin.localizeData({}, __dirname);
-};
-```
-
-This helper ensures that the `locale`, `lang`, and `langDir` data are set for the directory of content.
-
 #### Disabling String Translation
 
 If you don't need string translation features in your project, you can disable string translation by setting the `i18n`
@@ -461,7 +445,7 @@ export default function (eleventyConfig) {
 };
 ```
 
-Note that if you do this, you will need to remove any uses of the `__`, `_n` or `localizeData` helpers in your project.
+Note that if you do this, you will need to remove any uses of the `__` or `_n` helpers in your project.
 
 #### Additional Reference
 

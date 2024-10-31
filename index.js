@@ -21,7 +21,6 @@ import generatePermalink from "./src/utils/generate-permalink.js";
 import htmlMinifyTransform from "./src/transforms/html-minify-transform.js";
 import isoDateFilter from "./src/filters/iso-date-filter.js";
 import limitFilter from "./src/filters/limit-filter.js";
-import localizeData from "./src/utils/localize-data.js";
 import splitFilter from "./src/filters/split-filter.js";
 import uioShortcodes from "./src/shortcodes/uio.js";
 const uioAssets = JSON.parse(
@@ -69,13 +68,9 @@ const fluidPlugin = {
                 target: "es2020",
                 outdir: `./${eleventyConfig.dir.output || "_site"}/assets/scripts`
             },
-            webc: {
-                components: `./${eleventyConfig.dir.input || "src"}/_components/**/*.webc`
-            },
             supportedLanguages: languages,
             defaultLanguage: "en",
-            i18n: true,
-            localesDirectory: `./${eleventyConfig.dir.input || "src"}/_locales`
+            i18n: true
         }, options);
 
         /** Plugins */
@@ -169,7 +164,6 @@ export default fluidPlugin;
 export {
     fluidPlugin,
     generatePermalink,
-    localizeData,
     __,
     _n
 };

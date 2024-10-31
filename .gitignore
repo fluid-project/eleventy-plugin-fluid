@@ -1,5 +1,4 @@
 coverage
 _site
-fixtures/_locales/*.js
 node_modules
 .DS_Store

@@ -29,7 +29,7 @@ test("Builds minified CSS", async function (t) {
 test("Builds minified JavaScript", async function (t) {
     let appJs = fs.readFileSync("_site/assets/scripts/app.js", "utf8");
     let nojsJs = fs.readFileSync("_site/assets/scripts/no-js.js", "utf8");
-    t.is(appJs, "(()=>{var l=function(e){let t=new Intl.PluralRules(\"en\",{type:\"ordinal\"}),n=new Map([[\"one\",\"st\"],[\"two\",\"nd\"],[\"few\",\"rd\"],[\"other\",\"th\"]]),r=t.select(e),o=n.get(r);return`${e}${o}`};function a(e,t=\"en\"){let n=new Date(new Date(e).toUTCString()),r={year:\"numeric\",month:\"long\",day:\"numeric\"};if(t.startsWith(\"en\")){let o=n.toLocaleDateString(t,r),s=/([A-Z]\\w+) ([0-9]{1,2}), ([0-9]{4})/g;return o.replace(s,(d,c,f,u)=>`${c} ${l(f)}, ${u}`)}return n.toLocaleDateString(t,r)}var i=a;var D={year:i(Date.now())};})();\n");
+    t.is(appJs, "(()=>{var l=function(e){let t=new Intl.PluralRules(\"en\",{type:\"ordinal\"}),r=new Map([[\"one\",\"st\"],[\"two\",\"nd\"],[\"few\",\"rd\"],[\"other\",\"th\"]]),n=t.select(e),o=r.get(n);return\`${e}${o}\`};function a(e,t=\"en\"){let r=new Date(new Date(e).toUTCString()),n={year:\"numeric\",month:\"long\",day:\"numeric\"};if(t.startsWith(\"en\")){let o=r.toLocaleDateString(t,n),i=/([A-Z]\\w+) ([0-9]{1,2}), ([0-9]{4})/g;return o.replace(i,(d,s,f,u)=>\`${s} ${l(f)}, ${u}\`)}return r.toLocaleDateString(t,n)}var c=a;var x={year:c(Date.now())};})();\n");
     t.is(nojsJs, "(()=>{document.documentElement.className=\"js\";})();\n");
 });
 
