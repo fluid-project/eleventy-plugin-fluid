@@ -422,6 +422,19 @@ export default {
 In this example, the [`__`](src/utils/translation.js#L21) function is used
 to localize the URL path for the collection.
 
+##### `languageDirection`
+
+The `languageDirection` filter can be used to determin the language direction (`ltr` or `rtl`) for an input language:
+
+<details>
+<summary>Nunjucks</summary>
+
+```nunjucks
+<html lang="{{ lang }}" dir="{{ lang | languageDirection }}">
+```
+
+</details>
+
 #### Disabling String Translation
 
 If you don't need string translation features in your project, you can disable string translation by setting the `i18n`

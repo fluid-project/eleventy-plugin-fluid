@@ -89,6 +89,7 @@ const fluidPlugin = {
         eleventyConfig.addFilter("isoDate", isoDateFilter);
         eleventyConfig.addFilter("limit", limitFilter);
         eleventyConfig.addFilter("split", splitFilter);
+        eleventyConfig.addFilter("languageDirection", rtlDetect.getLangDir);
 
         if (options.i18n) {
             eleventyConfig.addShortcode("__", __);
