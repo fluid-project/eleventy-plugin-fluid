@@ -328,69 +328,6 @@ module.exports = function ({ key, values }) {
 
 **Note:** Using this function with Liquid requires extra work as Liquid shortcodes cannot accept a JSON object directly.
 
-##### `_n`
-
-[`_n`](src/utils/translation.js#L39) is used to translate a string with a numerical value, supporting singular or plural
-forms depending on the value. For example:
-
-```js
-import { _n } from "eleventy-plugin-fluid";
-
-console.log(_n(
-    "posts_singular",
-    "posts_plural",
-    {
-        "n": 3
-    },
-    {
-        "locale": "fr",
-        "translations": {
-            "en": {
-                "posts_singular": "{{n}} post",
-                "posts_plural": "{{n}} posts"
-            },
-            "fr": {
-                "posts_singular": "{{n}} article",
-                "posts_plural": "{{n}} articles"
-            }
-        }
-    }
-));
-```
-
-Result: `3 articles`
-
-The first parameter is the key for the translation string with a singular value in the `translations` object, the second
-parameter is the key for the translation string with a plural value in the `translations` object, the third parameter is
-the object of values to substitute for placeholders in the translation string (which must at minimum contain the key `n`
-for the numeric value), and the fourth parameter is the data object containing the `lang` and `translations` values.
-If the fourth parameter is not provided, the function will try to retrieve these values from `this.ctx` which provides
-access to Eleventy's global data.
-
-`eleventy-plugin-fluid` also provides a [shortcode](https://www.11ty.dev/docs/shortcodes/) based on this function:
-
-<details>
-<summary>Nunjucks</summary>
-
-```nunjucks
-{% _n 'posts_singular', 'posts_plural', {n: count} %}
-```
-
-</details>
-
-<details>
-<summary>11ty.js</summary>
-
-```js
-module.exports = function ({ singular, plural, values }) {
-    return this._n(singular, plural, values);
-};
-```
-
-</details>
-
-**Note:** Using this function with Liquid requires extra work as Liquid shortcodes cannot accept a JSON object directly.
-
 ##### `generatePermalink`
 
 [`generatePermalink`](src/utils/generate-permalink.js) is used to generate localized permalinks for a collection type,

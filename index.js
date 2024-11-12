@@ -36,7 +36,7 @@ const languages = JSON.parse(
 import compileCss from "./src/compilers/compile-css.js";
 import compileJs from "./src/compilers/compile-js.js";
 import eleventyUtils from "@11ty/eleventy-utils";
-import { __, _n } from "./src/utils/translation.js";
+import { __ } from "./src/utils/translation.js";
 
 const fluidPlugin = {
     initArguments: {},
@@ -93,7 +93,6 @@ const fluidPlugin = {
 
         if (options.i18n) {
             eleventyConfig.addShortcode("__", __);
-            eleventyConfig.addShortcode("_n", _n);
         }
 
         eleventyConfig.addPairedShortcode("figure", figureShortcode);
@@ -165,6 +164,5 @@ export default fluidPlugin;
 export {
     fluidPlugin,
     generatePermalink,
-    __,
-    _n
+    __
 };

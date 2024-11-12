@@ -9,7 +9,7 @@ Licensed under the New BSD license. You may not use this file except in complian
 You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
-import rosetta from "rosetta";
+import { I18n } from "i18n-js";
 
 /**
  *
@@ -22,30 +22,11 @@ const __ = function (key, values = {}, data = {}) {
     const lang = data.lang || this.page.lang;
     const translations = data.translations || this.ctx.translations;
 
-    const i18n = rosetta(translations);
-    i18n.locale(lang);
-    return i18n.t(key, values);
-};
-
-/**
- *
- * @param {String} singular - The translation key for the singular version of the string. Must exist in (at least) one language within the translations object.
- * @param {String} plural - The translation key for the plural version of the string. Must exist in (at least) one language within the translations object.
- * @param {Object} values - An object containing data which can be substituted for keyed placeholders in the translated string. Must contain the key n, corresponding to the count within the translatable string.
- * @param {Object} data - An object containing the translations and lang keys from Eleventy's global data.
- * @return {String} - The localized string.
- */
-const _n = function (singular, plural, values = {}, data = {}) {
-    const lang = data.lang || this.page.lang;
-    const translations = data.translations || this.ctx.translations;
-
-    const i18n = rosetta(translations);
-    i18n.locale(lang);
-    const key = values.n === 1 ? singular : plural;
+    const i18n = new I18n(translations);
+    i18n.locale = lang;
     return i18n.t(key, values);
 };
 
 export {
-    __,
-    _n
+    __
 };

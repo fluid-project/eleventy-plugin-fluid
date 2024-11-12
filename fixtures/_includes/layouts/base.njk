@@ -9,7 +9,7 @@
   {% __ 'helloworld', {name: 'Alice'} %}
 	{{ content | safe }}
   {% set count = collections.posts | length %}
-  <p>{% _n 'posts_singular', 'posts_plural', {n: count} %}</p>
+  <p>{% __ 'posts_count', {count: count} %}</p>
   </body>
 </html>
 
