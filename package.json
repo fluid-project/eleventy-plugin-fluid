@@ -49,7 +49,6 @@
     "html-minifier-terser": "^7.2.0",
     "i18n-js": "^4.5.0",
     "lightningcss": "^1.26.0",
-    "rosetta": "^1.1.0",
     "rtl-detect": "^1.1.2"
   },
   "engines": {

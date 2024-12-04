@@ -154,7 +154,7 @@ If you wish to disable JavaScript processing altogether, set the `enabled` key o
 ### Localization
 
 `eleventy-plugin-fluid` adds support for localization using Eleventy's [i18n plugin](https://11ty.dev/docs/plugins/i18n/)
-and [`rosetta`](https://npmjs.com/package/rosetta) for string translation.
+and [`i18n-js`](https://www.npmjs.com/package/i18n-js) for string translation.
 
 By default, the following languages are configured:
 
