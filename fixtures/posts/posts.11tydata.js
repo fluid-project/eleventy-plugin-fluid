@@ -5,7 +5,7 @@ export default {
     tags: ["posts"],
     eleventyComputed: {
         permalink: data => {
-            if (data.hasOwnProperty("lang") && data.hasOwnProperty("translations")) {
+            if (data.hasOwnProperty("lang") || data.hasOwnProperty("translations")) {
                 return generatePermalink(data, "posts", __("posts", {}, data));
             }
 

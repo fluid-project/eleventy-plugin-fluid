@@ -10,7 +10,7 @@ Eleventy plugin which provides common filters, shortcodes and transforms for [Fl
 ## Requirements
 
 - Node >= 20
-- Eleventy >= 3.0.0-beta.1
+- Eleventy >= 3.0.0
 - Infusion >= 4.7.1
 
 ## Installation
@@ -263,8 +263,10 @@ called `translations` with the following shape:
 }
 ```
 
-All content—collections or individual pages—must have a front matter `lang` value corresponding to a configured
-language. If one is not provided, it will be assumed to equal the `defaultLanguage`.
+All content—collections or individual pages—must have a `lang` data value corresponding to a configured language. This will
+be automatically populated by the Eleventy [internationalization plugin](https://www.11ty.dev/docs/plugins/i18n/)
+based on the page's [`inputPath`](https://www.11ty.dev/docs/data-eleventy-supplied/#page-variable) or configured permalink,
+falling back the configured `defaultLanguage`.
 
 #### Helper Functions
 
@@ -284,7 +286,7 @@ console.log(__(
         "name": "world"
     },
     {
-        "locale": "fr",
+        "lang": "fr",
         "translations": {
             "en": {
                 "hello": "Hello {{name}}!"
@@ -301,7 +303,7 @@ Result: `Bonjour world !`
 
 The first parameter is the key for the translation string in the `translations` object, the second parameter is an
 object of values to substitute for placeholders in the translation string, and the third parameter is the data object
-containing the `locale` and `translations` values. If the third parameter is not provided, the function will try to
+containing the `lang` and `translations` values. If the third parameter is not provided, the function will try to
 retrieve these values from `this.ctx` which provides access to Eleventy's global data.
 
 `eleventy-plugin-fluid` also provides a [shortcode](https://www.11ty.dev/docs/shortcodes/) based on this function:
@@ -346,7 +348,7 @@ export default {
         locale: data => data.lang,
         permalink: data => {
             // Only localize the permalink if the locale and translations global data are present.
-            if (data.hasOwnProperty("locale") && data.hasOwnProperty("translations")) {
+            if (data.hasOwnProperty("lang") || data.hasOwnProperty("translations")) {
                 return generatePermalink(data, "pages", __("pages", {}, data), __("pages", {}, data));
             }
 
