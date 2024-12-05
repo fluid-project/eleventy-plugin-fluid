@@ -347,7 +347,7 @@ export default {
         langDir: data => data.supportedLanguages[data.lang].dir,
         locale: data => data.lang,
         permalink: data => {
-            // Only localize the permalink if the locale and translations global data are present.
+            // Only localize the permalink if the locale or translations global data are present.
             if (data.hasOwnProperty("lang") || data.hasOwnProperty("translations")) {
                 return generatePermalink(data, "pages", __("pages", {}, data), __("pages", {}, data));
             }
