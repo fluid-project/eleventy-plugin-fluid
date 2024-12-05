@@ -390,7 +390,7 @@ export default function (eleventyConfig) {
 };
 ```
 
-**Note:** if you do this, you will need to remove any uses of the `__` or `_n` helpers in your project.
+**Note:** if you do this, you will need to remove any uses of the `__` helper in your project.
 
 #### Additional Reference
 
