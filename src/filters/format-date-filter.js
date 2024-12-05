@@ -27,17 +27,17 @@ const formatOrdinal = function (n) {
     return `${n}${suffix}`;
 };
 
-export default function dateFilter(value, locale = "en") {
+export default function dateFilter(value, lang = "en") {
     const dateObject = new Date(new Date(value).toUTCString());
     const options = { year: "numeric", month: "long", day: "numeric"};
 
-    if (locale.startsWith("en")) {
-        let date = dateObject.toLocaleDateString(locale, options);
+    if (lang.startsWith("en")) {
+        let date = dateObject.toLocaleDateString(lang, options);
         const regex = /([A-Z]\w+) ([0-9]{1,2}), ([0-9]{4})/g;
         return date.replace(regex, (match, p1, p2, p3) => {
             return `${p1} ${formatOrdinal(p2)}, ${p3}`;
         });
     }
 
-    return dateObject.toLocaleDateString(locale, options);
+    return dateObject.toLocaleDateString(lang, options);
 };

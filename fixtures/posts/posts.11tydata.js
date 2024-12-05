@@ -1,15 +1,15 @@
-
-import rtlDetect from "rtl-detect";
-import { generatePermalink } from "../../index.js";
-import i18n from "eleventy-plugin-i18n-gettext";
+import { generatePermalink, __ } from "../../index.js";
 
 export default {
     layout: "layouts/base.njk",
+    tags: ["posts"],
     eleventyComputed: {
-        langDir: data => rtlDetect.getLangDir(data.locale),
         permalink: data => {
-            const locale = data.locale;
-            return generatePermalink(data, "posts", i18n._(locale, "posts"));
+            if (data.hasOwnProperty("lang") || data.hasOwnProperty("translations")) {
+                return generatePermalink(data, "posts", __("posts", {}, data));
+            }
+
+            return generatePermalink(data, "posts", "posts");
         }
     }
 };

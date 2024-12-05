@@ -1,0 +1,29 @@
+{
+    "de-DE": {
+        "posts": "artikel",
+        "posts_count": {
+            "zero": "0 Artikel",
+            "one": "1 Artikel",
+            "other": "{{count}} Artikel"
+        },
+        "helloworld": "Hallo {{name}}!"
+    },
+    "en": {
+        "posts": "posts",
+        "posts_count": {
+            "zero": "0 posts",
+            "one": "1 post",
+            "other": "{{count}} posts"
+        },
+        "helloworld": "Hello {{name}}!"
+    },
+    "fr": {
+        "posts": "articles",
+        "posts_count": {
+            "zero": "0 articles",
+            "one": "1 article",
+            "other": "{{count}} articles"
+        },
+        "helloworld": "Bonjour {{name}} !"
+    }
+}

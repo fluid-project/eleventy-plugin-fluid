@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html lang="en-ca">
+<html lang="{{ lang }}" dir="{{ lang | languageDirection }}">
   <head>
 	<meta charset="utf-8">
 	<title>{{ title }}</title>
   </head>
   <body>
 	<h1>{{ title }}</h1>
+  {% __ 'helloworld', {name: 'Alice'} %}
 	{{ content | safe }}
+  {% set count = collections.posts | length %}
+  <p>{% __ 'posts_count', {count: count} %}</p>
   </body>
 </html>
+

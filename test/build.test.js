@@ -29,19 +29,35 @@ test("Builds minified CSS", async function (t) {
 test("Builds minified JavaScript", async function (t) {
     let appJs = fs.readFileSync("_site/assets/scripts/app.js", "utf8");
     let nojsJs = fs.readFileSync("_site/assets/scripts/no-js.js", "utf8");
-    t.is(appJs, "(()=>{var l=function(e){let t=new Intl.PluralRules(\"en\",{type:\"ordinal\"}),n=new Map([[\"one\",\"st\"],[\"two\",\"nd\"],[\"few\",\"rd\"],[\"other\",\"th\"]]),r=t.select(e),o=n.get(r);return`${e}${o}`};function a(e,t=\"en\"){let n=new Date(new Date(e).toUTCString()),r={year:\"numeric\",month:\"long\",day:\"numeric\"};if(t.startsWith(\"en\")){let o=n.toLocaleDateString(t,r),s=/([A-Z]\\w+) ([0-9]{1,2}), ([0-9]{4})/g;return o.replace(s,(d,c,f,u)=>`${c} ${l(f)}, ${u}`)}return n.toLocaleDateString(t,r)}var i=a;var D={year:i(Date.now())};})();\n");
+    t.is(appJs, "(()=>{var l=function(e){let t=new Intl.PluralRules(\"en\",{type:\"ordinal\"}),r=new Map([[\"one\",\"st\"],[\"two\",\"nd\"],[\"few\",\"rd\"],[\"other\",\"th\"]]),n=t.select(e),o=r.get(n);return\`${e}${o}\`};function a(e,t=\"en\"){let r=new Date(new Date(e).toUTCString()),n={year:\"numeric\",month:\"long\",day:\"numeric\"};if(t.startsWith(\"en\")){let o=r.toLocaleDateString(t,n),i=/([A-Z]\\w+) ([0-9]{1,2}), ([0-9]{4})/g;return o.replace(i,(d,s,f,u)=>\`${s} ${l(f)}, ${u}\`)}return r.toLocaleDateString(t,n)}var c=a;var x={year:c(Date.now())};})();\n");
     t.is(nojsJs, "(()=>{document.documentElement.className=\"js\";})();\n");
 });
 
 test("Uses Markdown plugin", async  function (t) {
     let indexPage = fs.readFileSync("_site/index.html", "utf8");
-    t.true(indexPage.includes("<dl><dt>Term 1</dt><dd>Definition 1</dd></dl>"))
-})
+    t.true(indexPage.includes("<dl><dt>Widdershins</dt><dd>Counter-clockwise.</dd></dl>"));
+});
 
 test("Uses Markdown plugin with options", async  function (t) {
     let indexPage = fs.readFileSync("_site/index.html", "utf8");
-    t.true(indexPage.includes("<h2 id=\"this-should-have-an-anchor\" tabindex=\"-1\"><a class=\"header-anchor\" href=\"#this-should-have-an-anchor\"><span>This should have an anchor</span></a></h2>"));
-})
+    t.true(indexPage.includes("<h2 id=\"definitions\" tabindex=\"-1\"><a class=\"header-anchor\" href=\"#definitions\"><span>Definitions</span></a></h2>"));
+});
+
+test("Translates strings with placeholders", async  function (t) {
+    let englishIndexPage = fs.readFileSync("_site/index.html", "utf8");
+    t.true(englishIndexPage.includes("Hello Alice!"));
+
+    let frenchIndexPage = fs.readFileSync("_site/fr/index.html", "utf8");
+    t.true(frenchIndexPage.includes("Bonjour Alice !"));
+});
+
+test("Translates singular/plural strings with placeholders", async  function (t) {
+    let englishIndexPage = fs.readFileSync("_site/index.html", "utf8");
+    t.true(englishIndexPage.includes("6 posts"));
+
+    let frenchIndexPage = fs.readFileSync("_site/fr/index.html", "utf8");
+    t.true(frenchIndexPage.includes("6 articles"));
+});
 
 test("Generates English permalinks", async function (t) {
     let englishPost = fs.readFileSync("_site/posts/introduction/index.html", "utf8");
@@ -57,7 +73,7 @@ test("Generates permalinks from a custom slug", async function (t) {
 });
 
 test("Generates French permalinks", async function (t) {
-    let frPost = fs.readFileSync("_site/fr/posts/introduction/index.html", "utf8");
+    let frPost = fs.readFileSync("_site/fr/articles/introduction/index.html", "utf8");
     t.true(frPost.includes("<h1>Introduction</h1>"));
 
     let fr404 = fs.readFileSync("_site/fr/404.html", "utf8");
@@ -65,6 +81,6 @@ test("Generates French permalinks", async function (t) {
 });
 
 test("Generates user-configured language permalinks", async function (t) {
-    let dePost = fs.readFileSync("_site/de/posts/einfuehrung/index.html", "utf8");
+    let dePost = fs.readFileSync("_site/de/artikel/einfuehrung/index.html", "utf8");
     t.true(dePost.includes("<h1>Einführung</h1>"));
 });
