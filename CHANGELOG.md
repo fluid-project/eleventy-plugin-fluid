@@ -2,6 +2,42 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.7.3...v3.0.0) (2025-01-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* overhaul localization using i18n-js (resolves #304) ([#313](https://github.com/fluid-project/eleventy-plugin-fluid/issues/313))
+* remove WebC plugin (resolves #302)
+* require Eleventy v3.x, convert to ESM (resolves #306)
+* remove Markdown filter and renderString shortcode (resolves #301) ([#308](https://github.com/fluid-project/eleventy-plugin-fluid/issues/308))
+
+### Features
+
+* overhaul localization using i18n-js (resolves [#304](https://github.com/fluid-project/eleventy-plugin-fluid/issues/304)) ([#313](https://github.com/fluid-project/eleventy-plugin-fluid/issues/313)) ([b565134](https://github.com/fluid-project/eleventy-plugin-fluid/commit/b5651347a90db6880f7bffdf88422a9cf244b3e7))
+* remove Markdown filter and renderString shortcode (resolves [#301](https://github.com/fluid-project/eleventy-plugin-fluid/issues/301)) ([#308](https://github.com/fluid-project/eleventy-plugin-fluid/issues/308)) ([77bfe44](https://github.com/fluid-project/eleventy-plugin-fluid/commit/77bfe44067e8b6b89fbf3241a5a62032d2277116))
+* remove Sass support (resolves [#303](https://github.com/fluid-project/eleventy-plugin-fluid/issues/303)) ([#318](https://github.com/fluid-project/eleventy-plugin-fluid/issues/318)) ([fe59e75](https://github.com/fluid-project/eleventy-plugin-fluid/commit/fe59e75d4cf37381d95d69e3219b2f2e825dcc00))
+* remove slug filter (resolves [#305](https://github.com/fluid-project/eleventy-plugin-fluid/issues/305)) ([#307](https://github.com/fluid-project/eleventy-plugin-fluid/issues/307)) ([c655a02](https://github.com/fluid-project/eleventy-plugin-fluid/commit/c655a02f6afea5b115476eb9ce05f26d46bd2fe1))
+* remove WebC plugin (resolves [#302](https://github.com/fluid-project/eleventy-plugin-fluid/issues/302)) ([77bfe44](https://github.com/fluid-project/eleventy-plugin-fluid/commit/77bfe44067e8b6b89fbf3241a5a62032d2277116))
+* replace html-minifier with html-minifier-terser ([#309](https://github.com/fluid-project/eleventy-plugin-fluid/issues/309)) ([60c67eb](https://github.com/fluid-project/eleventy-plugin-fluid/commit/60c67eb321a291c4f293864701a464727f1cf811))
+* require Eleventy v3.x, convert to ESM (resolves [#306](https://github.com/fluid-project/eleventy-plugin-fluid/issues/306)) ([77bfe44](https://github.com/fluid-project/eleventy-plugin-fluid/commit/77bfe44067e8b6b89fbf3241a5a62032d2277116))
+
+
+### Bug Fixes
+
+* **deps:** update dependency @11ty/eleventy-utils to v2 ([#356](https://github.com/fluid-project/eleventy-plugin-fluid/issues/356)) ([9017792](https://github.com/fluid-project/eleventy-plugin-fluid/commit/901779262508d5b200e1ae421cd4c93f38cc2f52))
+* **deps:** update dependency browserslist to v4.24.2 ([#331](https://github.com/fluid-project/eleventy-plugin-fluid/issues/331)) ([fa3bd52](https://github.com/fluid-project/eleventy-plugin-fluid/commit/fa3bd52ddf934b5fff85bff81236158d006b32dd))
+* **deps:** update dependency browserslist to v4.24.3 ([#351](https://github.com/fluid-project/eleventy-plugin-fluid/issues/351)) ([25b02ed](https://github.com/fluid-project/eleventy-plugin-fluid/commit/25b02ed500f5ecd47f992b9ef4343da94ccb9a41))
+* **deps:** update dependency browserslist to v4.24.4 ([#358](https://github.com/fluid-project/eleventy-plugin-fluid/issues/358)) ([f869630](https://github.com/fluid-project/eleventy-plugin-fluid/commit/f869630a587580065f616498395ccc41687fb3a8))
+* **deps:** update dependency esbuild to ^0.24.0 ([#330](https://github.com/fluid-project/eleventy-plugin-fluid/issues/330)) ([3da7f83](https://github.com/fluid-project/eleventy-plugin-fluid/commit/3da7f8360627287860a9fe387791349fdd2518f0))
+* **deps:** update dependency esbuild to v0.23.1 ([#310](https://github.com/fluid-project/eleventy-plugin-fluid/issues/310)) ([4d4e3f4](https://github.com/fluid-project/eleventy-plugin-fluid/commit/4d4e3f40f114142289863de166f8981866e2e708))
+* **deps:** update dependency esbuild to v0.24.2 ([#355](https://github.com/fluid-project/eleventy-plugin-fluid/issues/355)) ([c20499c](https://github.com/fluid-project/eleventy-plugin-fluid/commit/c20499c5b3022e3bb6acfe9cabc0c38f60ce5bac))
+* **deps:** update dependency i18n-js to v4.5.1 ([#352](https://github.com/fluid-project/eleventy-plugin-fluid/issues/352)) ([988abcc](https://github.com/fluid-project/eleventy-plugin-fluid/commit/988abcc79993c40bf0b89ebbcdd92ac3c4d91d06))
+* **deps:** update dependency lightningcss to v1.27.0 ([#327](https://github.com/fluid-project/eleventy-plugin-fluid/issues/327)) ([f91f82a](https://github.com/fluid-project/eleventy-plugin-fluid/commit/f91f82a366ce5d1bddfb17c8d93ede6d914a3325))
+* **deps:** update dependency lightningcss to v1.28.1 ([#337](https://github.com/fluid-project/eleventy-plugin-fluid/issues/337)) ([764a8fd](https://github.com/fluid-project/eleventy-plugin-fluid/commit/764a8fdf4b98e429da96bd4b16c8d24850a1a26c))
+* **deps:** update dependency lightningcss to v1.28.2 ([#345](https://github.com/fluid-project/eleventy-plugin-fluid/issues/345)) ([5051125](https://github.com/fluid-project/eleventy-plugin-fluid/commit/5051125b209857ef9f1c432c9f0046c38e155674))
+* **deps:** update dependency lightningcss to v1.29.1 ([#359](https://github.com/fluid-project/eleventy-plugin-fluid/issues/359)) ([e9137c9](https://github.com/fluid-project/eleventy-plugin-fluid/commit/e9137c91ec5e7d037b399b45414a245f82ac78a1))
+
 ## [2.7.3](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.7.2...v2.7.3) (2024-08-15)
 
 
