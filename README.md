@@ -11,7 +11,7 @@ Eleventy plugin which provides common filters, shortcodes and transforms for [Fl
 
 - Node >= 20
 - Eleventy >= 3.0.0
-- Infusion >= 4.7.1
+- Infusion >= 4.8.0
 
 ## Installation
 
