@@ -43,7 +43,7 @@
     "rimraf": "^6.0.1"
   },
   "dependencies": {
-    "@11ty/eleventy-utils": "^1.0.3",
+    "@11ty/eleventy-utils": "^2.0.0",
     "browserslist": "^4.23.3",
     "esbuild": "^0.24.0",
     "html-minifier-terser": "^7.2.0",
