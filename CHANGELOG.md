@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.1](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v3.0.0...v3.0.1) (2025-02-22)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @11ty/eleventy-utils to v2.0.1 ([#364](https://github.com/fluid-project/eleventy-plugin-fluid/issues/364)) ([d3ad045](https://github.com/fluid-project/eleventy-plugin-fluid/commit/d3ad045d9a96f41e87c645e0fed8ac5e15ce249d))
+* **deps:** update dependency esbuild to ^0.25.0 ([#366](https://github.com/fluid-project/eleventy-plugin-fluid/issues/366)) ([e2621f0](https://github.com/fluid-project/eleventy-plugin-fluid/commit/e2621f0f557de637c11ff5e7ed08c7f06400fb89))
+
+
+### Miscellaneous Chores
+
+* **release:** release 3.0.1 ([#369](https://github.com/fluid-project/eleventy-plugin-fluid/issues/369)) ([0dde746](https://github.com/fluid-project/eleventy-plugin-fluid/commit/0dde746797b43fccc8a5383cc1b2da6da9ffb99c))
+
 ## [3.0.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.7.3...v3.0.0) (2025-01-15)
 
 
