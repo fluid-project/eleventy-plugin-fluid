@@ -9,7 +9,7 @@ Eleventy plugin which provides common filters, shortcodes and transforms for [Fl
 
 ## Requirements
 
-- Node >= 20
+- Node >= 22
 - Eleventy >= 3.0.0
 - Infusion >= 4.8.0
 
@@ -458,6 +458,38 @@ export default function (eleventyConfig) {
 All examples use the [Nunjucks](https://mozilla.github.io/nunjucks/) template language. Eleventy supports a number of
 other template languages; see Eleventy's [documentation on filters](https://www.11ty.dev/docs/filters/) for usage with
 different template languages.
+
+#### find
+
+Given an array of objects, finds the object within the array that has a specified property. Useful for finding an item
+in a [collection](https://www.11ty.dev/docs/collections/).
+
+```nunjucks
+{% set iceCream = [
+    {
+        flavour: 'chocolate',
+        scoops: 2,
+        waffle: true
+    },
+    {
+        flavour: 'vanilla',
+        scoops: 1,
+        waffle: false
+    }
+]; %}
+
+{{ iceCream | find('flavour', 'chocolate') | dump }}
+```
+
+Output:
+
+```json
+{
+    "flavour": "chocolate",
+    "scoops": 2,
+    "waffle": true
+}
+```
 
 #### formatDate
 
