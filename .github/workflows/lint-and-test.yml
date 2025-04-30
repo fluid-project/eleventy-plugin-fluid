@@ -11,4 +11,4 @@ jobs:
     uses: inclusive-design/workflows/.github/workflows/node-lint-and-test-with-coverage.yml@main
 
   upload-coverage:
-    uses: inclusive-design/workflows/.github/workflows/upload-coverage.yml@main
+    uses: inclusive-design/workflows/.github/workflows/node-upload-coverage.yml@main
