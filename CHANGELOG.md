@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.1.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v3.0.1...v3.1.0) (2025-04-30)
+
+
+### Features
+
+* add find filter ([#382](https://github.com/fluid-project/eleventy-plugin-fluid/issues/382)) ([e77f4e2](https://github.com/fluid-project/eleventy-plugin-fluid/commit/e77f4e203b5b7aa8193d0506f21ac74e642fdc1c))
+
+
+### Bug Fixes
+
+* improvements to testing and CI processes ([#379](https://github.com/fluid-project/eleventy-plugin-fluid/issues/379)) ([318cb8c](https://github.com/fluid-project/eleventy-plugin-fluid/commit/318cb8c0d7fbe74c1135e8bac1dd922eb21675a1))
+
 ## [3.0.1](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v3.0.0...v3.0.1) (2025-02-22)
 
 
