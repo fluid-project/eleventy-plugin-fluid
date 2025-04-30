@@ -1,0 +1,13 @@
+name: Lint and test with coverage
+
+on:
+  push:
+    branches: [ dev, main ]
+  pull_request:
+    branches: [ dev, main ]
+
+jobs:
+  lint-and-test-with-coverage:
+    uses: inclusive-design/workflows/.github/workflows/node-lint-and-test-with-coverage.yml@main
+    secrets:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

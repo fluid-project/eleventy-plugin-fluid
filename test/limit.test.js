@@ -10,9 +10,10 @@ You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 
-import test from "ava";
+import assert from 'node:assert';
+import test from 'node:test';
 import limitFilter from "../src/filters/limit-filter.js";
 
-test("Limits array to n items", function (t) {
-    t.deepEqual(limitFilter(["a", "b", "c"], 2), ["a", "b"]);
+test("Limits array to n items", () => {
+    assert.deepStrictEqual(limitFilter(["a", "b", "c"], 2), ["a", "b"]);
 });

@@ -10,29 +10,30 @@ You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 
-import test from "ava";
+import assert from 'node:assert';
+import test from 'node:test';
 import eleventyUtils from "@11ty/eleventy-utils";
 
-test("Passing false replaces an original value", function (t) {
-    t.deepEqual(eleventyUtils.Merge({browserslist: "> 2%"}, {browserslist: false}), {browserslist: false});
+test("Passing false replaces an original value", () => {
+    assert.deepStrictEqual(eleventyUtils.Merge({browserslist: "> 2%"}, {browserslist: false}), {browserslist: false});
 });
 
-test("Passing key with override prefix overrides an original value", function (t) {
-    t.deepEqual(eleventyUtils.Merge({browserslist: "> 2%"}, {"override:browserslist": "> 1%"}), {browserslist: "> 1%"});
+test("Passing key with override prefix overrides an original value", () => {
+    assert.deepStrictEqual(eleventyUtils.Merge({browserslist: "> 2%"}, {"override:browserslist": "> 1%"}), {browserslist: "> 1%"});
 });
 
-test("Nested objects can be merged", function (t) {
-    t.deepEqual(eleventyUtils.Merge({drafts: {nesting: true}}, {drafts: {customMedia: true}}), {drafts: {nesting: true, customMedia: true}});
+test("Nested objects can be merged", () => {
+    assert.deepStrictEqual(eleventyUtils.Merge({drafts: {nesting: true}}, {drafts: {customMedia: true}}), {drafts: {nesting: true, customMedia: true}});
 });
 
-test("Nested objects can be overriden", function (t) {
-    t.deepEqual(eleventyUtils.Merge({drafts: {nesting: true}}, {"override:drafts": {customMedia: true}}), {drafts: {customMedia: true}});
+test("Nested objects can be overriden", () => {
+    assert.deepStrictEqual(eleventyUtils.Merge({drafts: {nesting: true}}, {"override:drafts": {customMedia: true}}), {drafts: {customMedia: true}});
 });
 
-test("Nested arrays can be merged", function (t) {
-    t.deepEqual(eleventyUtils.Merge({browserslist: ["ie 8", "ie 9"]}, {browserslist: ["ie 7"]}), {browserslist: ["ie 8", "ie 9", "ie 7"]});
+test("Nested arrays can be merged", () =>{
+    assert.deepStrictEqual(eleventyUtils.Merge({browserslist: ["ie 8", "ie 9"]}, {browserslist: ["ie 7"]}), {browserslist: ["ie 8", "ie 9", "ie 7"]});
 });
 
-test("Nested arrays can be overridden", function (t) {
-    t.deepEqual(eleventyUtils.Merge({browserslist: ["ie 8", "ie 9"]}, {"override:browserslist": ["ie 7"]}), {browserslist: ["ie 7"]});
+test("Nested arrays can be overridden", () => {
+    assert.deepStrictEqual(eleventyUtils.Merge({browserslist: ["ie 8", "ie 9"]}, {"override:browserslist": ["ie 7"]}), {browserslist: ["ie 7"]});
 });
