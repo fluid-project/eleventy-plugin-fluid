@@ -11,7 +11,7 @@
     "build": "rimraf _site && eleventy",
     "lint": "fluid-lint-all",
     "start": "rimraf _site && eleventy --serve",
-    "test": "node --test --experimental-test-coverage --test-reporter=lcov --test-reporter-destination=lcov.info --test-coverage-exclude=eleventy.config.js --test-coverage-exclude=fixtures/**/*.js",
+    "test": "node --test --experimental-test-coverage --test-reporter=lcov --test-reporter-destination=coverage/lcov.info --test-coverage-exclude=eleventy.config.js --test-coverage-exclude=fixtures/**/*.js",
     "prepare": "husky"
   },
   "repository": {
