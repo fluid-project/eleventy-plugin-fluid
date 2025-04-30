@@ -9,13 +9,14 @@ Licensed under the New BSD license. You may not use this file except in complian
 You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
-import test from "ava";
+import assert from 'node:assert';
+import test from 'node:test';
 import formatDateFilter from "../src/filters/format-date-filter.js";
 
-test("Formats local date properly", function (t) {
-    t.is(formatDateFilter("Sun Jun 21 2020 18:00:00 GMT-0300 (Atlantic Daylight Time)"), "June 21st, 2020");
+test("Formats local date properly", () => {
+    assert.strictEqual(formatDateFilter("Sun Jun 21 2020 18:00:00 GMT-0300 (Atlantic Daylight Time)"), "June 21st, 2020");
 });
 
-test("Formats local date properly in French", function (t) {
-    t.is(formatDateFilter("Sun Jun 21 2020 18:00:00 GMT-0300 (Atlantic Daylight Time)", "fr"), "21 juin 2020");
+test("Formats local date properly in French", () => {
+    assert.strictEqual(formatDateFilter("Sun Jun 21 2020 18:00:00 GMT-0300 (Atlantic Daylight Time)", "fr"), "21 juin 2020");
 });
