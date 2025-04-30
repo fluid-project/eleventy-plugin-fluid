@@ -15,9 +15,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
+          version: 22
           cache: npm
-      - name: Check node version
-        run: node -v
       - name: Install dependencies, lint files and run tests
         run: |
           npm ci
