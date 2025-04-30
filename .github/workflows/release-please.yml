@@ -6,14 +6,8 @@ on:
 
 jobs:
   release-please:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/create-github-app-token@v2
-        id: app-token
-        with:
-          app-id: ${{ vars.GHA_APP_ID }}
-          private-key: ${{ secrets.GHA_PRIVATE_KEY }}
-      - uses: googleapis/release-please-action@v4
-        id: release
-        with:
-          token: ${{ steps.app-token.outputs.token }}
+    uses: inclusive-design/workflows/.github/workflows/release-please.yml@main
+    with:
+      GHA_APP_ID: ${{ vars.GHA_APP_ID }}
+    secrets:
+      GHA_PRIVATE_KEY: ${{ secrets.GHA_PRIVATE_KEY }}
