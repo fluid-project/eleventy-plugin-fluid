@@ -9,3 +9,4 @@ on:
 jobs:
   lint-and-test-with-coverage:
     uses: inclusive-design/workflows/.github/workflows/node-lint-and-test-with-coverage.yml@main
+    secrets: inherit
