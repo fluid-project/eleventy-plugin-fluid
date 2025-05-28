@@ -5,6 +5,7 @@
         "enabled": true,
         "automerge": true
     },
+    "labels": ["dependencies"],
     "packageRules": [
         {
             "matchUpdateTypes": ["minor", "patch"],
