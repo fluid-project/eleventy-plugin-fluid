@@ -69,6 +69,9 @@ const fluidPlugin = {
                 target: "es2020",
                 outdir: `./${eleventyConfig.dir.output || "_site"}/assets/scripts`
             },
+            minify: {
+                enabled: true
+            },
             supportedLanguages: languages,
             defaultLanguage: "en",
             i18n: true
@@ -157,7 +160,9 @@ const fluidPlugin = {
         }
 
         /** Transforms */
-        eleventyConfig.addTransform("htmlMinify", htmlMinifyTransform);
+        if (options.minify.enabled) {
+            eleventyConfig.addTransform("htmlMinify", htmlMinifyTransform);
+        }
     }
 };
 
