@@ -2,13 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [3.1.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v3.0.1...v3.1.0) (2025-04-30)
+## [v3.1.1](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v3.1.0...v3.1.1) - 2025-08-08
 
+### Features
+
+* feat: allow minify to be disabled (#396) [@greatislander](https://github.com/greatislander)
+
+### Chores
+
+* chore: adjust reference to reusable workflow (#393) [@greatislander](https://github.com/greatislander)
+* chore: adjust version name (#392) [@greatislander](https://github.com/greatislander)
+* chore: configure version (#390) [@greatislander](https://github.com/greatislander)
+* chore: use semver release (#389) [@greatislander](https://github.com/greatislander)
+
+### Dependencies
+
+* chore(deps): lock file maintenance (#394) @[renovate[bot]](https://github.com/apps/renovate)
+* chore(deps): lock file maintenance (#384) @[renovate[bot]](https://github.com/apps/renovate)
+* fix(deps): update dependency esbuild to v0.25.5 (#376) @[renovate[bot]](https://github.com/apps/renovate)
+
+## [3.1.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v3.0.1...v3.1.0) (2025-04-30)
 
 ### Features
 
 * add find filter ([#382](https://github.com/fluid-project/eleventy-plugin-fluid/issues/382)) ([e77f4e2](https://github.com/fluid-project/eleventy-plugin-fluid/commit/e77f4e203b5b7aa8193d0506f21ac74e642fdc1c))
-
 
 ### Bug Fixes
 
@@ -16,19 +33,16 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [3.0.1](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v3.0.0...v3.0.1) (2025-02-22)
 
-
 ### Bug Fixes
 
 * **deps:** update dependency @11ty/eleventy-utils to v2.0.1 ([#364](https://github.com/fluid-project/eleventy-plugin-fluid/issues/364)) ([d3ad045](https://github.com/fluid-project/eleventy-plugin-fluid/commit/d3ad045d9a96f41e87c645e0fed8ac5e15ce249d))
 * **deps:** update dependency esbuild to ^0.25.0 ([#366](https://github.com/fluid-project/eleventy-plugin-fluid/issues/366)) ([e2621f0](https://github.com/fluid-project/eleventy-plugin-fluid/commit/e2621f0f557de637c11ff5e7ed08c7f06400fb89))
-
 
 ### Miscellaneous Chores
 
 * **release:** release 3.0.1 ([#369](https://github.com/fluid-project/eleventy-plugin-fluid/issues/369)) ([0dde746](https://github.com/fluid-project/eleventy-plugin-fluid/commit/0dde746797b43fccc8a5383cc1b2da6da9ffb99c))
 
 ## [3.0.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.7.3...v3.0.0) (2025-01-15)
-
 
 ### ⚠ BREAKING CHANGES
 
@@ -47,7 +61,6 @@ All notable changes to this project will be documented in this file. See [standa
 * replace html-minifier with html-minifier-terser ([#309](https://github.com/fluid-project/eleventy-plugin-fluid/issues/309)) ([60c67eb](https://github.com/fluid-project/eleventy-plugin-fluid/commit/60c67eb321a291c4f293864701a464727f1cf811))
 * require Eleventy v3.x, convert to ESM (resolves [#306](https://github.com/fluid-project/eleventy-plugin-fluid/issues/306)) ([77bfe44](https://github.com/fluid-project/eleventy-plugin-fluid/commit/77bfe44067e8b6b89fbf3241a5a62032d2277116))
 
-
 ### Bug Fixes
 
 * **deps:** update dependency @11ty/eleventy-utils to v2 ([#356](https://github.com/fluid-project/eleventy-plugin-fluid/issues/356)) ([9017792](https://github.com/fluid-project/eleventy-plugin-fluid/commit/901779262508d5b200e1ae421cd4c93f38cc2f52))
@@ -65,13 +78,11 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [2.7.3](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.7.2...v2.7.3) (2024-08-15)
 
-
 ### Bug Fixes
 
 * update deprecated Husky command ([#297](https://github.com/fluid-project/eleventy-plugin-fluid/issues/297)) ([027df65](https://github.com/fluid-project/eleventy-plugin-fluid/commit/027df65bdea3a49cba6c1e1be737a67f4a0ddc1d))
 
 ## [2.7.2](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.7.1...v2.7.2) (2024-08-12)
-
 
 ### Bug Fixes
 
@@ -82,13 +93,11 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [2.7.1](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.7.0...v2.7.1) (2024-01-13)
 
-
 ### Bug Fixes
 
 * resolve issue with LightningCSS ([#248](https://github.com/fluid-project/eleventy-plugin-fluid/issues/248)) ([caa6684](https://github.com/fluid-project/eleventy-plugin-fluid/commit/caa6684dfef7a60f4e53bee990a32524ef4bd4cd))
 
 ## [2.7.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.6.0...v2.7.0) (2023-10-04)
-
 
 ### Features
 
@@ -96,13 +105,11 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [2.6.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.5.0...v2.6.0) (2023-09-11)
 
-
 ### Features
 
 * allow WebC plugin to be customized (resolves [#209](https://github.com/fluid-project/eleventy-plugin-fluid/issues/209)) ([#210](https://github.com/fluid-project/eleventy-plugin-fluid/issues/210)) ([9e96185](https://github.com/fluid-project/eleventy-plugin-fluid/commit/9e961851ea166737d50f0c92286f5cb5512d62d5))
 
 ## [2.5.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.4.0...v2.5.0) (2023-08-17)
-
 
 ### Features
 
@@ -110,13 +117,11 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [2.4.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.3.2...v2.4.0) (2023-08-15)
 
-
 ### Features
 
 * exclude CSS and Sass files from collections ([#204](https://github.com/fluid-project/eleventy-plugin-fluid/issues/204)) ([d25c434](https://github.com/fluid-project/eleventy-plugin-fluid/commit/d25c4342d7952f111c54dd4b51a49f345b6577c5))
 
 ## [2.3.2](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.3.1...v2.3.2) (2023-08-14)
-
 
 ### Bug Fixes
 
@@ -125,18 +130,15 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [2.3.1](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.3.0...v2.3.1) (2023-08-04)
 
-
 ### Bug Fixes
 
 * rely on data.locale for permalink generation ([#198](https://github.com/fluid-project/eleventy-plugin-fluid/issues/198)) ([b4ca4ff](https://github.com/fluid-project/eleventy-plugin-fluid/commit/b4ca4ff843d0372c560b08737c4ee7f39b803b57))
 
 ## [2.3.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.2.0...v2.3.0) (2023-08-03)
 
-
 ### Features
 
 * allow generatePermalink to work for unlocalized content (fix [#195](https://github.com/fluid-project/eleventy-plugin-fluid/issues/195)) ([#196](https://github.com/fluid-project/eleventy-plugin-fluid/issues/196)) ([f1d2376](https://github.com/fluid-project/eleventy-plugin-fluid/commit/f1d23761c6c23f3fd57233c28fe95655beed0566))
-
 
 ### Bug Fixes
 
@@ -144,20 +146,17 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [2.2.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.1.0...v2.2.0) (2023-08-02)
 
-
 ### Features
 
 * use underscore for locales directory ([#192](https://github.com/fluid-project/eleventy-plugin-fluid/issues/192)) ([79181c1](https://github.com/fluid-project/eleventy-plugin-fluid/commit/79181c1c313a524155e54f9e864f4683610a53fe))
 
 ## [2.1.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v2.0.0...v2.1.0) (2023-08-02)
 
-
 ### Features
 
 * use configured input and output paths ([#190](https://github.com/fluid-project/eleventy-plugin-fluid/issues/190)) ([253e59a](https://github.com/fluid-project/eleventy-plugin-fluid/commit/253e59a02b5cbf248fa3adea924e5fb5a5a974c5))
 
 ## [2.0.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v1.2.0...v2.0.0) (2023-08-02)
-
 
 ### ⚠ BREAKING CHANGES
 
@@ -172,7 +171,6 @@ All notable changes to this project will be documented in this file. See [standa
 * process JS in an event rather than as a template format ([#180](https://github.com/fluid-project/eleventy-plugin-fluid/issues/180)) ([df8120f](https://github.com/fluid-project/eleventy-plugin-fluid/commit/df8120fefc1d48eb1ea59c934a4912427822908e))
 * use Eleventy configuration for basePaths ([df8120f](https://github.com/fluid-project/eleventy-plugin-fluid/commit/df8120fefc1d48eb1ea59c934a4912427822908e))
 
-
 ### Bug Fixes
 
 * resolve issue where use of eleventyConfig variables omitted files ([#181](https://github.com/fluid-project/eleventy-plugin-fluid/issues/181)) ([eccd990](https://github.com/fluid-project/eleventy-plugin-fluid/commit/eccd990232044cafb3cb91a62cba6e8f06321ffb))
@@ -180,13 +178,11 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [1.2.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v1.1.0...v1.2.0) (2023-07-13)
 
-
 ### Features
 
 * add Sass processing configuration ([#168](https://github.com/fluid-project/eleventy-plugin-fluid/issues/168)) ([26e55b5](https://github.com/fluid-project/eleventy-plugin-fluid/commit/26e55b5f32958990330d25af17bfe9597ebcb361))
 
 ## [1.1.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v1.0.2...v1.1.0) (2023-07-11)
-
 
 ### Features
 
@@ -194,20 +190,17 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [1.0.2](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v1.0.1...v1.0.2) (2023-06-28)
 
-
 ### Bug Fixes
 
 * resolve issue with props-only UIO implementation ([#159](https://github.com/fluid-project/eleventy-plugin-fluid/issues/159)) ([6f8e33b](https://github.com/fluid-project/eleventy-plugin-fluid/commit/6f8e33b6657e4c0c3ce0d2180a03f066305e7fb1))
 
 ## [1.0.1](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v1.0.0...v1.0.1) (2023-06-14)
 
-
 ### Bug Fixes
 
 * resolve incompatibility between the Markdown filter and Eleventy v2.0.1 ([#156](https://github.com/fluid-project/eleventy-plugin-fluid/issues/156)) ([4b0643a](https://github.com/fluid-project/eleventy-plugin-fluid/commit/4b0643a2ec02e2c403ec12cb13c8e265aa8e42ee))
 
 ## [1.0.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v0.3.1...v1.0.0) (2022-03-22)
-
 
 ### ⚠ BREAKING CHANGES
 
@@ -219,13 +212,11 @@ All notable changes to this project will be documented in this file. See [standa
 * markdown filter inherits base configuration (fix [#85](https://github.com/fluid-project/eleventy-plugin-fluid/issues/85)) ([a8511e7](https://github.com/fluid-project/eleventy-plugin-fluid/commit/a8511e7a40488bdaba1968ff11cd218ace3076e0))
 * support Eleventy 1.0 (resolve [#93](https://github.com/fluid-project/eleventy-plugin-fluid/issues/93)) ([#109](https://github.com/fluid-project/eleventy-plugin-fluid/issues/109)) ([a8511e7](https://github.com/fluid-project/eleventy-plugin-fluid/commit/a8511e7a40488bdaba1968ff11cd218ace3076e0))
 
-
 ### Bug Fixes
 
 * add fluid.css to uioStyles shortcode and add shortcode for CSS Custom Props (resolves [#81](https://github.com/fluid-project/eleventy-plugin-fluid/issues/81)) ([#110](https://github.com/fluid-project/eleventy-plugin-fluid/issues/110)) ([90d2489](https://github.com/fluid-project/eleventy-plugin-fluid/commit/90d24892786246830659ca9934ba3c210c4e4ff8))
 
 ### [0.3.1](https://www.github.com/fluid-project/eleventy-plugin-fluid/compare/v0.3.0...v0.3.1) (2021-10-04)
-
 
 ### Bug Fixes
 
@@ -234,19 +225,16 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [0.3.0](https://www.github.com/fluid-project/eleventy-plugin-fluid/compare/v0.2.1...v0.3.0) (2021-08-23)
 
-
 ### Features
 
 * add HTML minifier (resolves [#20](https://www.github.com/fluid-project/eleventy-plugin-fluid/issues/20)) ([#29](https://www.github.com/fluid-project/eleventy-plugin-fluid/issues/29)) ([6ba865b](https://www.github.com/fluid-project/eleventy-plugin-fluid/commit/6ba865b6231a888055a60f102cd13a056e94ce49))
 * add multilingual UIO (resolves [#58](https://www.github.com/fluid-project/eleventy-plugin-fluid/issues/58)) ([#67](https://www.github.com/fluid-project/eleventy-plugin-fluid/issues/67)) ([e1f80bc](https://www.github.com/fluid-project/eleventy-plugin-fluid/commit/e1f80bc3e5048b2fb5f584b944785fd15387af32))
-
 
 ### Bug Fixes
 
 * exclude package-lock.json ([9b266de](https://www.github.com/fluid-project/eleventy-plugin-fluid/commit/9b266de37770fdacfcbf39006818294d49b524ce))
 
 ### [0.2.1](https://github.com/fluid-project/eleventy-plugin-fluid/compare/0.2.0...0.2.1) (2021-02-08)
-
 
 ### Bug Fixes
 
@@ -255,24 +243,19 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [0.2.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/0.1.0...0.2.0) (2021-02-04)
 
-
 ### Features
 
 * update to development version of Infusion ([589ba25](https://github.com/fluid-project/eleventy-plugin-fluid/commit/589ba25927d7f28c3c6d68b60510bb81b8543b27))
 
-
 ## 0.1.0 (2020-12-08)
 
-
 ### Features
-
 
 * add date, ISO date, and Markdown filters (resolve [#1](https://github.com/fluid-project/eleventy-plugin-fluid/issues/1)) ([#5](https://github.com/fluid-project/eleventy-plugin-fluid/issues/5)) ([62512ef](https://github.com/fluid-project/eleventy-plugin-fluid/commit/62512efc46da81688a5751f307bc1aac622ddffd))
 * add figure shortcode (resolves [#16](https://github.com/fluid-project/eleventy-plugin-fluid/issues/16)) ([#17](https://github.com/fluid-project/eleventy-plugin-fluid/issues/17)) ([4cf140c](https://github.com/fluid-project/eleventy-plugin-fluid/commit/4cf140c4ce738465d1068a7dac4037a00cf7ca76))
 * add passthroughCopy and shortcodes for UIO (resolves [#2](https://github.com/fluid-project/eleventy-plugin-fluid/issues/2)) ([#7](https://github.com/fluid-project/eleventy-plugin-fluid/issues/7)) ([f361b6a](https://github.com/fluid-project/eleventy-plugin-fluid/commit/f361b6a3fcd9afea9d678034a859adb704b40c75))
 * add split filter ([#9](https://github.com/fluid-project/eleventy-plugin-fluid/issues/9)) ([47efccc](https://github.com/fluid-project/eleventy-plugin-fluid/commit/47efcccbf846796b34b27adfbe31bc0dde680e75))
 * add limit filter and slug filter ([1dcdce2](https://github.com/fluid-project/eleventy-plugin-fluid/commit/1dcdce2c8f19ac09e2e8cd0a4661387059e57dd2))
-
 
 ### Bug Fixes
 
