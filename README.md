@@ -500,7 +500,7 @@ Output:
 ```json
 {
     "flavour": ["chocolate", "vanilla", "coffee"],
-    "scoops": 2,
+    "scoops": 1,
     "waffle": true
 }
 ```
