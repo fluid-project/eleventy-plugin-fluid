@@ -475,10 +475,16 @@ in a [collection](https://www.11ty.dev/docs/collections/).
         flavour: 'vanilla',
         scoops: 1,
         waffle: false
+    },
+    {
+        flavour: ['chocolate', 'vanilla', 'coffee'],
+        scoops: 1,
+        waffle: true
     }
 ]; %}
 
 {{ iceCream | find('flavour', 'chocolate') | dump }}
+{{ iceCream | find('flavour', 'coffee') | dump }}
 ```
 
 Output:
@@ -486,6 +492,14 @@ Output:
 ```json
 {
     "flavour": "chocolate",
+    "scoops": 2,
+    "waffle": true
+}
+```
+
+```json
+{
+    "flavour": ["chocolate", "vanilla", "coffee"],
     "scoops": 2,
     "waffle": true
 }
