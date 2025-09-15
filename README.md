@@ -461,7 +461,8 @@ different template languages.
 
 #### find
 
-Given an array of objects, finds the object within the array that has a specified property. Useful for finding an item
+Given an array of objects, this finds the first object where the specified property matches the given value.
+If the property is an array, it checks whether the array contains the value. Useful for finding an item
 in a [collection](https://www.11ty.dev/docs/collections/).
 
 ```nunjucks
@@ -478,12 +479,12 @@ in a [collection](https://www.11ty.dev/docs/collections/).
     },
     {
         flavour: ['chocolate', 'vanilla', 'coffee'],
-        scoops: 1,
+        scoops: 3,
         waffle: true
     }
 ]; %}
 
-{{ iceCream | find('flavour', 'chocolate') | dump }}
+{{ iceCream | find('scoops', 2) | dump }}
 {{ iceCream | find('flavour', 'coffee') | dump }}
 ```
 
@@ -500,7 +501,7 @@ Output:
 ```json
 {
     "flavour": ["chocolate", "vanilla", "coffee"],
-    "scoops": 1,
+    "scoops": 3,
     "waffle": true
 }
 ```
