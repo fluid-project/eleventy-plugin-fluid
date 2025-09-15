@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [v3.1.2](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v3.1.1...v3.1.2) - 2025-09-15
+
+### Features
+
+* feat: add array support to find filter (#398) [@chosww](https://github.com/chosww)
+
+### Dependencies
+
+* chore(deps): lock file maintenance (#397) @[renovate[bot]](https://github.com/apps/renovate)
+
 ## [v3.1.1](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v3.1.0...v3.1.1) - 2025-08-08
 
 ### Features
