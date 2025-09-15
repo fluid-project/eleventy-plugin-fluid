@@ -13,5 +13,11 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 import _ from "lodash";
 
 export default function findFilter(arr = [], key = "", value) {
-    return arr.find((post) => _.get(post, key) === value);
+    return arr.find((item) => {
+        const keyItem = _.get(item, key);
+        if (Array.isArray(keyItem)) {
+            return keyItem.includes(value);
+        }
+        return keyItem === value;
+    });
 };

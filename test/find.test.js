@@ -24,6 +24,11 @@ const arr = [
         flavour: 'vanilla',
         scoops: 1,
         waffle: false
+    },
+    {
+        flavour: ['chocolate', 'vanilla', 'coffee'],
+        scoops: 1,
+        waffle: true
     }
 ];
 
@@ -50,3 +55,11 @@ test("Object in array can be found by boolean property value", () => {
         waffle: true
     });
 });
+
+test("Object in array can have an array value and it can be bound by contained value", () => {
+    assert.deepStrictEqual(findFilter(arr, 'flavour', 'coffee'), {
+        flavour: ['chocolate', 'vanilla', 'coffee'],
+        scoops: 1,
+        waffle: true
+    });
+})
