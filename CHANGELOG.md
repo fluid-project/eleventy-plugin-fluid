@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [v3.1.4](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v3.1.3...v3.1.4) - 2026-01-21
+
+### Dependencies
+
+* chore(deps): lock file maintenance (#419) @[renovate[bot]](https://github.com/apps/renovate)
+* chore(deps): update commitlint monorepo to v20.3.0 (#417) @[renovate[bot]](https://github.com/apps/renovate)
+* chore(deps): lock file maintenance (#416) @[renovate[bot]](https://github.com/apps/renovate)
+* chore(deps): update dependency esbuild to v0.27.2 (#415) @[renovate[bot]](https://github.com/apps/renovate)
+* chore(deps): lock file maintenance (#414) @[renovate[bot]](https://github.com/apps/renovate)
+* chore(deps): update commitlint monorepo to v20.2.0 (#413) @[renovate[bot]](https://github.com/apps/renovate)
+* chore(deps): update dependency esbuild to v0.27.1 (#412) @[renovate[bot]](https://github.com/apps/renovate)
+* chore(deps): lock file maintenance (#410) @[renovate[bot]](https://github.com/apps/renovate)
+* fix(deps): update dependency esbuild to ^0.27.0 (#407) @[renovate[bot]](https://github.com/apps/renovate)
+* chore(deps): update node.js to v24 (#405) @[renovate[bot]](https://github.com/apps/renovate)
+* chore(deps): update commitlint monorepo to v20 (major) (#403) @[renovate[bot]](https://github.com/apps/renovate)
+* chore(deps): lock file maintenance (#402) @[renovate[bot]](https://github.com/apps/renovate)
+
 ## [v3.1.3](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v3.1.2...v3.1.3) - 2025-09-15
 
 * No changes
