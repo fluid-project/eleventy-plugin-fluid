@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [v3.1.5](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v3.1.4...v3.1.5) - 2026-01-26
+
+### Dependencies
+
+* chore(deps): lock file maintenance (#422) @[renovate[bot]](https://github.com/apps/renovate)
+
 ## [v3.1.4](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v3.1.3...v3.1.4) - 2026-01-21
 
 ### Dependencies
