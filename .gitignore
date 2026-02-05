@@ -2,3 +2,4 @@ lcov.info
 _site
 node_modules
 .DS_Store
+.zed
