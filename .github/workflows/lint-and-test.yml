@@ -8,6 +8,6 @@ on:
 
 jobs:
   lint-and-test-with-coverage:
-    uses: inclusive-design/workflows/.github/workflows/node-lint-and-test-with-coverage.yml@main
+    uses: inclusive-design/workflows/.github/workflows/node-pnpm-lint-and-test-with-coverage.yml@main
     secrets:
       CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

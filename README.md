@@ -21,7 +21,8 @@ Add `eleventy-plugin-fluid` to your Eleventy-based static site by running:
 npx install-peerdeps eleventy-plugin-fluid
 ```
 
-(You can also run `npm install --save eleventy-plugin-fluid`, but you'll then need to install the specified [`infusion`](https://www.npmjs.com/package/infusion)
+(You can also run `npm install --save eleventy-plugin-fluid`, but you'll then
+need to install the specified [`infusion`](https://www.npmjs.com/package/infusion)
 peer dependency in your project as well; the [`install-peerdeps`](https://www.npmjs.com/package/install-peerdeps)
 command handles both at the same time.)
 
@@ -854,8 +855,8 @@ By default, `eleventy-plugin-fluid` copies the [required assets](src/config/uio-
 ### Releasing
 
 This package uses [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), enforced with
-[commitlint](https://commitlint.js.org/). This facilitates releasing new versions of the package via [Release Please](https://github.com/googleapis/release-please).
-To cut a release, merge the current [release pull request](https://github.com/google-github-actions/release-please-action#whats-a-release-pr).
+[commitlint](https://commitlint.js.org/). This facilitates releasing new versions of the package via [Release Drafter](https://github.com/release-drafter/release-drafter).
+To cut a release, merge the current [release pull request](https://github.com/fluid-project/eleventy-plugin-fluid/pulls?q=is%3Apr+is%3Aopen+label%3Achangelog).
 
 This will tag an appropriate [semantic version](https://semver.org) based on the nature of the recent commits to the
 project and update [the changelog](CHANGELOG.md).
@@ -864,10 +865,10 @@ You will then need to publish the updated version to the [npm registry](http://n
 with appropriate maintainer permissions. To publish the package, run:
 
 ```bash
-npm publish
+pnpm publish
 ```
 
-For more information on publishing to npm, see the [npm publish documentation](https://docs.npmjs.com/cli/publish).
+For more information on publishing to npm, see the [pnpm publish documentation](https://pnpm.io/cli/publish).
 
 ## Third Party Software in `eleventy-plugin-fluid`
 
