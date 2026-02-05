@@ -9,7 +9,7 @@ Eleventy plugin which provides common filters, shortcodes and transforms for [Fl
 
 ## Requirements
 
-- Node >= 22
+- Node >= 24
 - Eleventy >= 3.0.0
 - Infusion >= 4.8.0
 
@@ -505,6 +505,23 @@ Output:
     "waffle": true
 }
 ```
+
+#### findTranslation
+
+Given a collection item, a collection object, the current language and the
+desired language, this filter will return the URL of the matching collection
+item in the desired language.
+
+For example, if there is a `posts` collection with content and English and French,
+you can use this filter to create a link to the post in the other language as follows:
+
+```nunjucks
+<a href="{{ page | findTranslation(collections.posts, lang, lang === 'en' ? 'fr' : 'en') }}" hreflang="{{ lang === 'en' ? 'fr' : 'en' }}">{{ lang === 'en' ? 'Lire en français' : 'Read in English' }}</a>
+```
+
+On the English page, the link will be: `<a href="/fr/article/" hreflang="fr">Lire en français</a>`
+
+On the French page, the link will be: `<a href="/en/post/" hreflang="en">Read in English</a>`
 
 #### formatDate
 

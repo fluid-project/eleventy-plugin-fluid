@@ -35,7 +35,7 @@ export default function (eleventyConfig) {
     });
     eleventyConfig.addPassthroughCopy(`${inputPath}/assets/images`, "/assets/");
 
-    ["en", "fr"].forEach(lang => {
+    ["en", "fr", "de-DE"].forEach(lang => {
         eleventyConfig.addCollection(`posts_${lang}`, collection => {
             return collection.getFilteredByGlob(`./fixtures/posts/${lang}/*.md`);
         });

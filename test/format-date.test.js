@@ -9,8 +9,8 @@ Licensed under the New BSD license. You may not use this file except in complian
 You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
-import assert from 'node:assert';
-import test from 'node:test';
+import assert from "node:assert";
+import test from "node:test";
 import formatDateFilter from "../src/filters/format-date-filter.js";
 
 test("Formats local date properly", () => {
