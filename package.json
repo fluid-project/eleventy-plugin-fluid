@@ -49,7 +49,7 @@
     "rtl-detect": "^1.1.2"
   },
   "engines": {
-    "node": ">=22"
+    "node": ">=24"
   },
   "peerDependencies": {
     "infusion": "^4.8.0"

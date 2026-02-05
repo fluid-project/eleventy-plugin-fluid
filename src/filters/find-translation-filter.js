@@ -10,14 +10,16 @@ You may obtain a copy of the New B SD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 
-import _ from "lodash";
+export default function findTranslationFilter(page, collection = [], lang, desiredLang) {
+    const expectedFilePathStem = page.filePathStem.replace(lang, desiredLang);
 
-export default function findFilter(arr = [], key = "", value) {
-    return arr.find((item) => {
-        const keyItem = _.get(item, key);
-        if (Array.isArray(keyItem)) {
-            return keyItem.includes(value);
+    let translationUrl = false;
+
+    for (const element of collection) {
+        if (element.filePathStem === expectedFilePathStem) {
+            translationUrl = element.url;
         }
-        return keyItem === value;
-    });
+    }
+
+    return translationUrl;
 };

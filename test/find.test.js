@@ -10,56 +10,56 @@ You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 
-import assert from 'node:assert';
-import test from 'node:test';
-import findFilter from '../src/filters/find-filter.js';
+import assert from "node:assert";
+import test from "node:test";
+import findFilter from "../src/filters/find-filter.js";
 
 const arr = [
     {
-        flavour: 'chocolate',
+        flavour: "chocolate",
         scoops: 2,
         waffle: true
     },
     {
-        flavour: 'vanilla',
+        flavour: "vanilla",
         scoops: 1,
         waffle: false
     },
     {
-        flavour: ['chocolate', 'vanilla', 'coffee'],
+        flavour: ["chocolate", "vanilla", "coffee"],
         scoops: 1,
         waffle: true
     }
 ];
 
 test("Object in array can be found by string property value", () => {
-    assert.deepStrictEqual(findFilter(arr, 'flavour', 'chocolate'), {
-        flavour: 'chocolate',
+    assert.deepStrictEqual(findFilter(arr, "flavour", "chocolate"), {
+        flavour: "chocolate",
         scoops: 2,
         waffle: true
     });
 });
 
 test("Object in array can be found by integer property value", () => {
-    assert.deepStrictEqual(findFilter(arr, 'scoops', 1), {
-        flavour: 'vanilla',
+    assert.deepStrictEqual(findFilter(arr, "scoops", 1), {
+        flavour: "vanilla",
         scoops: 1,
         waffle: false
     });
 });
 
 test("Object in array can be found by boolean property value", () => {
-    assert.deepStrictEqual(findFilter(arr, 'waffle', true), {
-        flavour: 'chocolate',
+    assert.deepStrictEqual(findFilter(arr, "waffle", true), {
+        flavour: "chocolate",
         scoops: 2,
         waffle: true
     });
 });
 
 test("Object in array can have array values and the object can be bound by contained value", () => {
-    assert.deepStrictEqual(findFilter(arr, 'flavour', 'coffee'), {
-        flavour: ['chocolate', 'vanilla', 'coffee'],
+    assert.deepStrictEqual(findFilter(arr, "flavour", "coffee"), {
+        flavour: ["chocolate", "vanilla", "coffee"],
         scoops: 1,
         waffle: true
     });
-})
+});

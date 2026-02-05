@@ -10,8 +10,8 @@ You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 
-import assert from 'node:assert';
-import test from 'node:test';
+import assert from "node:assert";
+import test from "node:test";
 import splitFilter from "../src/filters/split-filter.js";
 
 test("Splits string into array", () => {
