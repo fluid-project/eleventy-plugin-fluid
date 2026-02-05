@@ -6,7 +6,7 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/AUTHORS.md.
 
 Licensed under the New BSD license. You may not use this file except in compliance with this License.
 
-You may obtain a copy of the New B SD License at
+You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 
