@@ -9,8 +9,8 @@ Licensed under the New BSD license. You may not use this file except in complian
 You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
-import formatDate from "./helpers/_format-date.js";
+import formatDate from './helpers/_format-date.js';
 
 export default {
-    year: formatDate(Date.now())
+	year: formatDate(Date.now()),
 };

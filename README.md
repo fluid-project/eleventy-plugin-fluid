@@ -21,25 +21,31 @@ Add `eleventy-plugin-fluid` to your Eleventy-based static site by running:
 npx install-peerdeps eleventy-plugin-fluid
 ```
 
-(You can also run `npm install --save eleventy-plugin-fluid`, but you'll then need to install the specified [`infusion`](https://www.npmjs.com/package/infusion)
+(You can also run `npm install --save eleventy-plugin-fluid`, but you'll then
+need to install the specified [`infusion`](https://www.npmjs.com/package/infusion)
 peer dependency in your project as well; the [`install-peerdeps`](https://www.npmjs.com/package/install-peerdeps)
 command handles both at the same time.)
 
 Then, in your Eleventy configuration file (usually `eleventy.eleventyConfig.js`), load the plugin as follows:
 
 ```js
-import fluidPlugin from "eleventy-plugin-fluid";
+import fluidPlugin from 'eleventy-plugin-fluid';
 
-export default function (eleventyConfig) {
-    eleventyConfig.addPlugin(fluidPlugin);
-};
+/**
+ * @param {object} eleventyConfig The Eleventy configuration object.
+ */
+export default function eleventy(eleventyConfig) {
+	eleventyConfig.addPlugin(fluidPlugin);
+}
 ```
 
 ## Usage
 
-For any options passed to `eleventy-plugin-fluid` in the configurations described below, you can override the default
-rather than merging with it by passing the option with `override:` as a prefix to the key. For example, to override the
-default options for the `css` configuration block, you could do the following:
+For any options passed to `eleventy-plugin-fluid` in the configurations
+described below, you can override the default rather than merging with it by
+passing the option with `override:` as a prefix to the key. For example, to
+override the default options for the `css` configuration block, you could do the
+following:
 
 ```diff
 import fluidPlugin from "eleventy-plugin-fluid";
@@ -88,21 +94,23 @@ export default function (eleventyConfig) {
 Default values are as follows:
 
 ```js
-let options = {
-    /* Where should Eleventy look for CSS files to process? */
-    basePath: `./${eleventyConfig.dir.input || "src"}/assets/styles`,
-    /* Should CSS files be processed? */
-    enabled: true,
-    /* See: https://lightningcss.dev/minification.html */
-    minify: true,
-    /* Not yet supported, see https://github.com/fluid-project/eleventy-plugin-fluid/issues/170 */
-    sourceMap: false,
-    /* See: https://lightningcss.dev/transpilation.html#draft-syntax */
-    drafts: {
-        nesting: true
-    },
-    /* A Browserslist configuration string (see: https://browsersl.ist) */
-    browserslist: "> 1%"
+/* global eleventyConfig */
+/* eslint-disable no-unused-vars */
+const options = {
+	/* Where should Eleventy look for CSS files to process? */
+	basePath: `./${eleventyConfig.dir.input || 'src'}/assets/styles`,
+	/* Should CSS files be processed? */
+	enabled: true,
+	/* See: https://lightningcss.dev/minification.html */
+	minify: true,
+	/* Not yet supported, see https://github.com/fluid-project/eleventy-plugin-fluid/issues/170 */
+	sourceMap: false,
+	/* See: https://lightningcss.dev/transpilation.html#draft-syntax */
+	drafts: {
+		nesting: true,
+	},
+	/* A Browserslist configuration string (see: https://browsersl.ist) */
+	browserslist: '> 1%',
 };
 ```
 
@@ -136,16 +144,17 @@ export default function (eleventyConfig) {
 Default values are as follows:
 
 ```js
-let options = {
-    /* Where should Eleventy look for JavaScript files to process? */
-    basePath: `./${eleventyConfig.dir.input || "src"}/assets/scripts`,
-    /* Should JavaScript files be processed? */
-    enabled: true,
-    /* See: https://esbuild.github.io/api/#minify */
-    minify: true,
-    /* See: https://esbuild.github.io/content-types/#javascript */
-    target: "es2020",
-    basePath: `./${eleventyConfig.dir.output || "_site"}/assets/styles`
+/* global eleventyConfig */
+/* eslint-disable no-unused-vars */
+const options = {
+	/* Where should Eleventy look for JavaScript files to process? */
+	basePath: `./${eleventyConfig.dir.input || 'src'}/assets/scripts`,
+	/* Should JavaScript files be processed? */
+	enabled: true,
+	/* See: https://esbuild.github.io/api/#minify */
+	minify: true,
+	/* See: https://esbuild.github.io/content-types/#javascript */
+	target: 'es2022',
 };
 ```
 
@@ -278,24 +287,24 @@ falling back the configured `defaultLanguage`.
 required. For example:
 
 ```js
-import { __ } from "eleventy-plugin-fluid";
+import {__} from 'eleventy-plugin-fluid';
 
 console.log(__(
-    "hello",
-    {
-        "name": "world"
-    },
-    {
-        "lang": "fr",
-        "translations": {
-            "en": {
-                "hello": "Hello {{name}}!"
-            },
-            "fr": {
-                "hello": "Bonjour {{name}} !"
-            }
-        }
-    }
+	'hello',
+	{
+		name: 'world',
+	},
+	{
+		lang: 'fr',
+		translations: {
+			en: {
+				hello: 'Hello {{name}}!',
+			},
+			fr: {
+				hello: 'Bonjour {{name}} !',
+			},
+		},
+	},
 ));
 ```
 
@@ -321,9 +330,15 @@ retrieve these values from `this.ctx` which provides access to Eleventy's global
 <summary>11ty.js</summary>
 
 ```js
-module.exports = function ({ key, values }) {
-    return this.__(key, values);
-};
+/* eslint-disable unicorn/no-anonymous-default-export */
+/**
+ * @param {string} key - The translation key. Must exist in (at least) one language within the translations object.
+ * @param {object} values - An object containing values which can be substituted for keyed placeholders in the translated string.
+ * @returns {string} - The localized string.
+ */
+export default function (key, values) {
+	return this.__(key, values);
+}
 ```
 
 </details>
@@ -337,24 +352,24 @@ with full support for [pagination](https://www.11ty.dev/docs/pagination/). Here'
 file:
 
 ```js
-import { EleventyI18nPlugin } from "@11ty/eleventy";
-import { generatePermalink, __ } from "eleventy-plugin-fluid";
+import {EleventyI18nPlugin} from '@11ty/eleventy';
+import {generatePermalink, __} from 'eleventy-plugin-fluid';
 
 export default {
-    layout: "layouts/base.njk",
-    eleventyComputed: {
-        lang: data => EleventyI18nPlugin.LangUtils.getLanguageCodeFromInputPath(data.page.inputPath),
-        langDir: data => data.supportedLanguages[data.lang].dir,
-        locale: data => data.lang,
-        permalink: data => {
-            // Only localize the permalink if the locale or translations global data are present.
-            if (data.hasOwnProperty("lang") || data.hasOwnProperty("translations")) {
-                return generatePermalink(data, "pages", __("pages", {}, data), __("pages", {}, data));
-            }
+	layout: 'layouts/base.njk',
+	eleventyComputed: {
+		lang: data => EleventyI18nPlugin.LangUtils.getLanguageCodeFromInputPath(data.page.inputPath),
+		langDir: data => data.supportedLanguages[data.lang].dir,
+		locale: data => data.lang,
+		permalink(data) {
+			// Only localize the permalink if the locale or translations global data are present.
+			if (Object.hasOwn(data, 'lang') || Object.hasOwn(data, 'translations')) {
+				return generatePermalink(data, 'pages', __('pages', {}, data), __('pages', {}, data));
+			}
 
-            return generatePermalink(data, "pages", "pages", "pages");
-        }
-    }
+			return generatePermalink(data, 'pages', 'pages', 'pages');
+		},
+	},
 };
 ```
 
@@ -594,8 +609,9 @@ Output: `["a", "b", "c"]`
 ### Shortcodes
 
 All examples use the [Nunjucks](https://mozilla.github.io/nunjucks/) template language. Eleventy supports a number of
-other template languages; see Eleventy's [documentation on shortcodes](https://www.11ty.dev/docs/shortcodes/) for usage with
-different template languages.
+other template languages; see Eleventy's
+[documentation on shortcodes](https://www.11ty.dev/docs/shortcodes/)
+for usage with different template languages.
 
 #### figure
 
@@ -779,8 +795,8 @@ Result:
 </script>
 ```
 
-If you want to use a custom integration of User Interface Options, you can insert the required script tag directly into your
-[base template](https://github.com/fluid-project/fluidic-11ty/blob/main/src/_includes/layouts/base.njk).
+If you want to use a custom integration of User Interface Options, you can insert the required script tag directly into
+your [base template](https://github.com/fluid-project/fluidic-11ty/blob/main/src/_includes/layouts/base.njk).
 
 ### Template Languages
 

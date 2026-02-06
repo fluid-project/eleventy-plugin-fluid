@@ -10,6 +10,11 @@ You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 
-export default function (array, limit) {
-    return array.slice(0, limit);
-};
+/**
+ * @param {Array} array - An array of items.
+ * @param {number} limit - The maximum number of items.
+ * @returns {Array} - The truncated array.
+ */
+export default function limitFilter(array, limit) {
+	return array.slice(0, limit);
+}

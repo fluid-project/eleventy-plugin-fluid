@@ -10,10 +10,10 @@ You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 
-import assert from "node:assert";
-import test from "node:test";
-import isoDateFilter from "../src/filters/iso-date-filter.js";
+import assert from 'node:assert';
+import test from 'node:test';
+import isoDateFilter from '../src/filters/iso-date-filter.js';
 
-test("Formats date properly", () => {
-    assert.strictEqual(isoDateFilter("Sun Jun 21 2020 18:00:00 GMT-0300 (Atlantic Daylight Time)"), "2020-06-21T21:00:00.000Z");
+test('Formats date properly', () => {
+	assert.strictEqual(isoDateFilter('Sun Jun 21 2020 18:00:00 GMT-0300 (Atlantic Daylight Time)'), '2020-06-21T21:00:00.000Z');
 });

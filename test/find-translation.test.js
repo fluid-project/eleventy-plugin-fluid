@@ -10,25 +10,25 @@ You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 
-import assert from "node:assert";
-import test from "node:test";
-import findTranslationFilter from "../src/filters/find-translation-filter.js";
+import assert from 'node:assert';
+import test from 'node:test';
+import findTranslationFilter from '../src/filters/find-translation-filter.js';
 
 const posts = [
-    {
-        filePathStem: "/en/chocolate.md",
-        url: "/en/chocolate/"
-    },
-    {
-        filePathStem: "/fr/chocolate.md",
-        url: "/fr/chocolat/"
-    }
+	{
+		filePathStem: '/en/chocolate.md',
+		url: '/en/chocolate/',
+	},
+	{
+		filePathStem: '/fr/chocolate.md',
+		url: '/fr/chocolat/',
+	},
 ];
 
-test("Object in array can be found by string property value", () => {
-    const chocolate = {
-        filePathStem: "/en/chocolate.md",
-        url: "/en/chocolate/"
-    };
-    assert.strictEqual(findTranslationFilter(chocolate, posts, "en", "fr"), "/fr/chocolat/");
+test('Object in array can be found by string property value', () => {
+	const chocolate = {
+		filePathStem: '/en/chocolate.md',
+		url: '/en/chocolate/',
+	};
+	assert.strictEqual(findTranslationFilter(chocolate, posts, 'en', 'fr'), '/fr/chocolat/');
 });

@@ -9,24 +9,24 @@ Licensed under the New BSD license. You may not use this file except in complian
 You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
-import { I18n } from "i18n-js";
+import {I18n} from 'i18n-js';
 
 /**
  *
- * @param {String} key - The translation key. Must exist in (at least) one language within the translations object.
- * @param {Object} values - An object containing values which can be substituted for keyed placeholders in the translated string.
- * @param {Object} data - An object containing the translations and lang keys from Eleventy's global data.
- * @return {String} - The localized string.
+ * @param {string} key - The translation key. Must exist in (at least) one language within the translations object.
+ * @param {object} values - An object containing values which can be substituted for keyed placeholders in the translated string.
+ * @param {object} data - An object containing the translations and lang keys from Eleventy's global data.
+ * @returns {string} - The localized string.
  */
 const __ = function (key, values = {}, data = {}) {
-    const lang = data.lang || this.page.lang;
-    const translations = data.translations || this.ctx.translations;
+	const lang = data.lang || this.page.lang;
+	const translations = data.translations || this.ctx.translations;
 
-    const i18n = new I18n(translations);
-    i18n.locale = lang;
-    return i18n.t(key, values);
+	const i18n = new I18n(translations);
+	i18n.locale = lang;
+	return i18n.t(key, values);
 };
 
 export {
-    __
+	__,
 };

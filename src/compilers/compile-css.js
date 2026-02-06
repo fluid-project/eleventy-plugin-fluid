@@ -10,26 +10,33 @@ You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 
-import browserslist from "browserslist";
-import { bundle, browserslistToTargets } from "lightningcss";
-import path from "node:path";
+import browserslist from 'browserslist';
+import {bundle, browserslistToTargets} from 'lightningcss';
+import path from 'node:path';
 
-export default async (_content, inputPath, options) => {
-    let parsed = path.parse(inputPath);
-    if (!inputPath.startsWith(options.basePath) || parsed.name.startsWith("_")) {
-        return;
-    }
+/**
+ *
+ * @param {string} _content - The content of the CSS file.
+ * @param {string} inputPath - The path of the CSS file to compile.
+ * @param {object} options - The options for the compiler.
+ * @returns {string} The compiled CSS.
+ */
+export default async function compileCss(_content, inputPath, options) {
+	const parsed = path.parse(inputPath);
+	if (!inputPath.startsWith(options.basePath) || parsed.name.startsWith('_')) {
+		return;
+	}
 
-    let targets = browserslistToTargets(browserslist(options.browserslist));
+	const targets = browserslistToTargets(browserslist(options.browserslist));
 
-    return async () => {
-        let { code } = await bundle(Object.assign(
-            options,
-            {
-                filename: inputPath,
-                targets
-            }
-        ));
-        return code;
-    };
-};
+	return async () => {
+		const {code} = await bundle(Object.assign(
+			options,
+			{
+				filename: inputPath,
+				targets,
+			},
+		));
+		return code;
+	};
+}

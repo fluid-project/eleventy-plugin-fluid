@@ -10,26 +10,26 @@ You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 export default {
-    uioStyles: function () {
-        return `<link href="/lib/infusion/src/framework/core/css/fluid.css" rel="stylesheet">
+	uioStyles() {
+		return `<link href="/lib/infusion/src/framework/core/css/fluid.css" rel="stylesheet">
     <link href="/lib/infusion/src/framework/preferences/css/Enactors.css" rel="stylesheet">
     <link href="/lib/infusion/src/framework/preferences/css/PrefsEditor.css" rel="stylesheet">
     <link href="/lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" rel="stylesheet">`;
-    },
-    uioStyleProps: function () {
-        return `<link href="/lib/infusion/src/framework/core/css/fluid.css" rel="stylesheet">
+	},
+	uioStyleProps() {
+		return `<link href="/lib/infusion/src/framework/core/css/fluid.css" rel="stylesheet">
     <link href="/lib/infusion/src/framework/preferences/css/Contrast_base.css" rel="stylesheet">
     <link href="/lib/infusion/src/framework/preferences/css/EnhanceInputs_base.css" rel="stylesheet">
     <link href="/lib/infusion/src/framework/preferences/css/Font_base.css" rel="stylesheet">
     <link href="/lib/infusion/src/framework/preferences/css/PrefsEditor.css" rel="stylesheet">
     <link href="/lib/infusion/src/framework/preferences/css/SeparatedPanelPrefsEditor.css" rel="stylesheet">`;
-    },
-    uioScripts: function () {
-        return `<link rel="preload" href="/lib/infusion/infusion-uio.js" as="script" />
+	},
+	uioScripts() {
+		return `<link rel="preload" href="/lib/infusion/infusion-uio.js" as="script" />
     <script src="/lib/infusion/infusion-uio.js"></script>`;
-    },
-    uioTemplate: function () {
-        return `
+	},
+	uioTemplate() {
+		return `
             <div class="flc-prefsEditor-separatedPanel fl-prefsEditor-separatedPanel">
                 <div class="fl-panelBar fl-panelBar-smallScreen" id="Editorspace">
                     <span class="fl-prefsEditor-buttons">
@@ -46,33 +46,33 @@ export default {
                 </div>
             </div>
         `;
-    },
-    uioInit: function (lang, direction) {
-        let options = {
-            auxiliarySchema: {
-                terms: {
-                    "templatePrefix": "/lib/infusion/src/framework/preferences/html",
-                    "messagePrefix": "/lib/infusion/src/framework/preferences/messages"
-                },
-                "fluid.prefs.tableOfContents": {
-                    enactor: {
-                        "tocTemplate": "/lib/infusion/src/components/tableOfContents/html/TableOfContents.html",
-                        "tocMessage": "/lib/infusion/src/framework/preferences/messages/tableOfContents-enactor.json",
-                        ignoreForToC: {
-                            ignoreClass: ".flc-toc-ignore"
-                        }
-                    }
-                }
-            },
-            prefsEditorLoader: {
-                lazyLoad: true
-            },
-            locale: lang,
-            direction: direction
-        };
+	},
+	uioInit(lang, direction) {
+		const options = {
+			auxiliarySchema: {
+				terms: {
+					templatePrefix: '/lib/infusion/src/framework/preferences/html',
+					messagePrefix: '/lib/infusion/src/framework/preferences/messages',
+				},
+				'fluid.prefs.tableOfContents': {
+					enactor: {
+						tocTemplate: '/lib/infusion/src/components/tableOfContents/html/TableOfContents.html',
+						tocMessage: '/lib/infusion/src/framework/preferences/messages/tableOfContents-enactor.json',
+						ignoreForToC: {
+							ignoreClass: '.flc-toc-ignore',
+						},
+					},
+				},
+			},
+			prefsEditorLoader: {
+				lazyLoad: true,
+			},
+			locale: lang,
+			direction,
+		};
 
-        return `<script>
+		return `<script>
             fluid.uiOptions.multilingual(".flc-prefsEditor-separatedPanel", ${JSON.stringify(options)});
         </script>`;
-    }
+	},
 };
