@@ -9,18 +9,25 @@ Licensed under the New BSD license. You may not use this file except in complian
 You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
-import { minify } from "html-minifier-terser";
+import {minify} from 'html-minifier-terser';
 
-export default async function (value, outputPath) {
-    if (outputPath && outputPath.includes(".html")) {
-        const result = await minify(value, {
-            useShortDoctype: true,
-            removeComments: true,
-            collapseWhitespace: true,
-            minifyCSS: true
-        });
+/**
+ *
+ * @param {string} value - The text content of the file.
+ * @param {string} outputPath - The path to the built file.
+ * @returns {string} The minified HTML or unmodified text content if the file is not HTML.
+ */
+export default async function htmlMinifyTransform(value, outputPath) {
+	if (outputPath && outputPath.includes('.html')) {
+		const result = await minify(value, {
+			useShortDoctype: true,
+			removeComments: true,
+			collapseWhitespace: true,
+			minifyCSS: true,
+		});
 
-        return result;
-    }
-    return value;
-};
+		return result;
+	}
+
+	return value;
+}

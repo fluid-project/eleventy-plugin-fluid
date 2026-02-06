@@ -10,6 +10,4 @@ You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 
-import formatDate from "../../../../src/filters/format-date-filter.js";
-
-export default formatDate;
+export {default} from '../../../../src/filters/format-date-filter.js';

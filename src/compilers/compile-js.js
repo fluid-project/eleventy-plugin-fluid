@@ -10,21 +10,26 @@ You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 
-import esbuild from "esbuild";
-import path from "node:path";
+import esbuild from 'esbuild';
+import path from 'node:path';
 
-export default async (inputPath, options) => {
-    let {minify, target, outdir} = options;
+/**
+ *
+ * @param {string} inputPath - The path of the JavaScript file to compile.
+ * @param {object} options - The options for the compiler.
+ */
+export default async function compileJs(inputPath, options) {
+	const {minify, target, outdir} = options;
 
-    const outputBasename = path.basename(outdir);
-    const relativePath = inputPath.split(outputBasename)[1];
-    const outputDir = `./${path.dirname(path.join(outdir, relativePath))}`;
+	const outputBasename = path.basename(outdir);
+	const relativePath = inputPath.split(outputBasename)[1];
+	const outputDirectory = `./${path.dirname(path.join(outdir, relativePath))}`;
 
-    await esbuild.build({
-        bundle: true,
-        entryPoints: [inputPath],
-        minify,
-        target,
-        outdir: outputDir
-    });
-};
+	await esbuild.build({
+		bundle: true,
+		entryPoints: [inputPath],
+		minify,
+		target,
+		outdir: outputDirectory,
+	});
+}

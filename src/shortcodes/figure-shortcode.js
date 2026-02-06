@@ -10,27 +10,33 @@ You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 
-import MarkdownIt from "markdown-it";
+import MarkdownIt from 'markdown-it';
 
-export default function (content, src, alt) {
-    if (src === "" || alt === "") {
-        // Both image source and alternative text are required. If either is missing, return an empty string.
-        return "";
-    }
+/**
+ * @param {string} content - The optional caption content.
+ * @param {string} source - The image source URL.
+ * @param {string} alt - The image alternative text.
+ * @returns {string} The rendered <figure>.
+ */
+export default function figureShortcode(content, source, alt) {
+	if (source === '' || alt === '') {
+		// Both image source and alternative text are required. If either is missing, return an empty string.
+		return '';
+	}
 
-    let caption;
+	let caption;
 
-    // Captions are optional; if the shortcode is empty, supply an empty string as the caption.
-    if (content.trim()) {
-        const md = new MarkdownIt({
-            html: true,
-            linkify: true
-        });
+	// Captions are optional; if the shortcode is empty, supply an empty string as the caption.
+	if (content.trim()) {
+		const md = new MarkdownIt({
+			html: true,
+			linkify: true,
+		});
 
-        caption = `<figcaption>${md.render(content).trim()}</figcaption>`;
-    } else {
-        caption = "";
-    }
+		caption = `<figcaption>${md.render(content).trim()}</figcaption>`;
+	} else {
+		caption = '';
+	}
 
-    return `<figure><img src="${src}" alt="${alt}">${caption}</figure>\n`;
-};
+	return `<figure><img src="${source}" alt="${alt}">${caption}</figure>\n`;
+}

@@ -10,6 +10,11 @@ You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 
+/**
+ *
+ * @param {string} value - The datetime string to be formatted.
+ * @returns {string} An ISO datetime string.
+ */
 export default function isoDate(value) {
-    return new Date(value).toISOString();
-};
+	return new Date(value).toISOString();
+}

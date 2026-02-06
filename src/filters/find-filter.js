@@ -10,14 +10,21 @@ You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 
-import _ from "lodash";
+import _ from 'lodash';
 
-export default function findFilter(arr = [], key = "", value) {
-    return arr.find((item) => {
-        const keyItem = _.get(item, key);
-        if (Array.isArray(keyItem)) {
-            return keyItem.includes(value);
-        }
-        return keyItem === value;
-    });
-};
+/**
+ * @param {Array} array - An array of objects to search.
+ * @param {string} key - The key to compare in each object.
+ * @param {string} value - The value to search for within the specified object key.
+ * @returns {object} The first matching object in the array.
+ */
+export default function findFilter(array = [], key = '', value) {
+	return array.find(item => {
+		const keyItem = _.get(item, key);
+		if (Array.isArray(keyItem)) {
+			return keyItem.includes(value);
+		}
+
+		return keyItem === value;
+	});
+}
