@@ -1,6 +1,6 @@
 {
   "name": "eleventy-plugin-fluid",
-  "version": "3.1.5",
+  "version": "3.1.6",
   "description": "Eleventy plugin which provides common filters, shortcodes and transforms for Fluid Project websites.",
   "publishConfig": {
     "access": "public"

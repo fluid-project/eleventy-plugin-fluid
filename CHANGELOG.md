@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [v3.1.6](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v3.1.5...v3.1.6) - 2026-02-06
+
+* chore(deps): set minimum release age to 2 days (#431) [@nedatidrc](https://github.com/nedatidrc)
+
+### Features
+
+* feat: switch to new linters (#433) [@nedatidrc](https://github.com/nedatidrc)
+* feat: add findTranslation filter (#426) [@nedatidrc](https://github.com/nedatidrc)
+
+### Dependencies
+
+* chore(deps): lock file maintenance (#432) @[renovate[bot]](https://github.com/apps/renovate)
+* chore(deps): update dependency i18n-js to v4.5.2 (#427) @[renovate[bot]](https://github.com/apps/renovate)
+* chore(deps): lock file maintenance (#425) @[renovate[bot]](https://github.com/apps/renovate)
+
 ## [v3.1.5](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v3.1.4...v3.1.5) - 2026-01-26
 
 ### Dependencies
