@@ -35,7 +35,7 @@
     "@commitlint/config-conventional": "^20.0.0",
     "@inclusive-design/eslint-config": "^0.2.0",
     "@inclusive-design/markdownlint-config": "^0.1.0",
-    "eslint": "^9.39.2",
+    "eslint": "^10.0.0",
     "husky": "^9.1.4",
     "infusion": "^4.8.0",
     "lint-staged": "^16.2.7",
