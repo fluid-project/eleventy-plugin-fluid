@@ -16,10 +16,10 @@ import get from 'just-safe-get';
  * @param {Array} array - An array of objects to search.
  * @param {string} key - The key to compare in each object. Can use dot notation, e.g. item.data.uuid.
  * @param {string} value - The value to search for within the specified object key.
- * @returns {object} The first matching object in the array.
+ * @returns {Array} An array of matching object(s) from the input array.
  */
-export default function findFilter(array = [], key = '', value) {
-	return array.find(item => {
+export default function findAllFilter(array = [], key = '', value) {
+	return array.filter(item => {
 		const keyItem = get(item, key);
 		if (Array.isArray(keyItem)) {
 			return keyItem.includes(value);

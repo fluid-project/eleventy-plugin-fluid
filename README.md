@@ -521,6 +521,62 @@ Output:
 }
 ```
 
+#### findAll
+
+Given an array of objects, this finds the all objects where the specified property matches the given value.
+If the property is an array, it checks whether the array contains the value. Useful for finding items
+in a [collection](https://www.11ty.dev/docs/collections/).
+
+```nunjucks
+{% set iceCream = [
+    {
+        flavour: 'chocolate',
+        scoops: 2,
+        waffle: true
+    },
+    {
+        flavour: 'vanilla',
+        scoops: 1,
+        waffle: false
+    },
+    {
+        flavour: ['chocolate', 'vanilla', 'coffee'],
+        scoops: 3,
+        waffle: true
+    }
+]; %}
+
+{{ iceCream | findAll('scoops', 2) | dump }}
+{{ iceCream | findAll('flavour', 'chocolate') | dump }}
+```
+
+Output:
+
+```json
+[
+    {
+        "flavour": "chocolate",
+        "scoops": 2,
+        "waffle": true
+    }
+]
+```
+
+```json
+[
+    {
+        "flavour": "chocolate",
+        "scoops": 2,
+        "waffle": true
+    },
+    {
+        "flavour": ["chocolate", "vanilla", "coffee"],
+        "scoops": 3,
+        "waffle": true
+    }
+]
+```
+
 #### findTranslation
 
 Given a collection item, a collection object, the current language and the
