@@ -16,6 +16,7 @@ import {EleventyRenderPlugin, EleventyI18nPlugin} from '@11ty/eleventy';
 import rtlDetect from 'rtl-detect';
 import figureShortcode from './src/shortcodes/figure-shortcode.js';
 import findFilter from './src/filters/find-filter.js';
+import findAllFilter from './src/filters/find-all-filter.js';
 import findTranslationFilter from './src/filters/find-translation-filter.js';
 import formatDateFilter from './src/filters/format-date-filter.js';
 
@@ -82,6 +83,7 @@ const fluidPlugin = {
 
 		/** Filters */
 		eleventyConfig.addFilter('find', findFilter);
+		eleventyConfig.addFilter('findAll', findAllFilter);
 		eleventyConfig.addFilter('findTranslation', findTranslationFilter);
 		eleventyConfig.addFilter('formatDate', formatDateFilter);
 		eleventyConfig.addFilter('isoDate', isoDateFilter);
