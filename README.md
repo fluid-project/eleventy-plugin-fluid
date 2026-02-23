@@ -523,7 +523,7 @@ Output:
 
 #### findAll
 
-Given an array of objects, this finds the all objects where the specified property matches the given value.
+Given an array of objects, this finds all the objects where the specified property matches the given value.
 If the property is an array, it checks whether the array contains the value. Useful for finding items
 in a [collection](https://www.11ty.dev/docs/collections/).
 
