@@ -528,6 +528,24 @@ If the property is an array, it checks whether the array contains the value. Use
 in a [collection](https://www.11ty.dev/docs/collections/).
 
 ```nunjucks
+{% set iceCream = [
+    {
+        flavour: 'chocolate',
+        scoops: 2,
+        waffle: true
+    },
+    {
+        flavour: 'vanilla',
+        scoops: 1,
+        waffle: false
+    },
+    {
+        flavour: ['chocolate', 'vanilla', 'coffee'],
+        scoops: 3,
+        waffle: true
+    }
+]; %}
+
 {% set pages = [
     {
         data: {
@@ -549,6 +567,8 @@ in a [collection](https://www.11ty.dev/docs/collections/).
     }
 ]; %}
 
+{{ iceCream | find('scoops', 2) | dump }}
+{{ iceCream | find('flavour', 'coffee') | dump }}
 {{ pages | findAll('data.lang', 'en') | dump }}
 ```
 
@@ -556,18 +576,11 @@ Output:
 
 ```json
 [
-  {
-      "data": {
-        "title": "Home",
-        "lang": "en"
-      }
-  },
-  {
-    "data": {
-      "title": "About",
-      "lang": "en"
-      }
-  }
+    {
+        "flavour": "chocolate",
+        "scoops": 2,
+        "waffle": true
+    }
 ]
 ```
 
@@ -582,6 +595,23 @@ Output:
         "flavour": ["chocolate", "vanilla", "coffee"],
         "scoops": 3,
         "waffle": true
+    }
+]
+```
+
+```json
+[
+    {
+        "data": {
+          "title": "Home",
+          "lang": "en"
+        }
+    },
+    {
+        "data": {
+            "title": "About",
+            "lang": "en"
+        }
     }
 ]
 ```
