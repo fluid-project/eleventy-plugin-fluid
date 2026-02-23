@@ -567,8 +567,8 @@ in a [collection](https://www.11ty.dev/docs/collections/).
     }
 ]; %}
 
-{{ iceCream | find('scoops', 2) | dump }}
-{{ iceCream | find('flavour', 'chocolate') | dump }}
+{{ iceCream | findAll('scoops', 2) | dump }}
+{{ iceCream | findAll('flavour', 'chocolate') | dump }}
 {{ pages | findAll('data.lang', 'en') | dump }}
 ```
 
