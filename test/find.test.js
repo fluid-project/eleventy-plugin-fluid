@@ -32,11 +32,35 @@ const array = [
 	},
 ];
 
+const deepArray = [
+	{
+		data: {
+			lang: 'en',
+			title: 'English page',
+		},
+	},
+	{
+		data: {
+			lang: 'fr',
+			title: 'page français',
+		},
+	},
+];
+
 test('Object in array can be found by string property value', () => {
 	assert.deepStrictEqual(findFilter(array, 'flavour', 'chocolate'), {
 		flavour: 'chocolate',
 		scoops: 2,
 		waffle: true,
+	});
+});
+
+test('Object in deep array can be found by string property value', () => {
+	assert.deepStrictEqual(findFilter(deepArray, 'data.lang', 'en'), {
+		data: {
+			lang: 'en',
+			title: 'English page',
+		},
 	});
 });
 

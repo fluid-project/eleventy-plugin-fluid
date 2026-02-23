@@ -149,8 +149,9 @@ const fluidPlugin = {
 						const outputBasename = path.basename(options.js.outdir);
 						const relativePath = item.split(outputBasename)[1];
 						const outputDirectory = `./${path.dirname(path.join(options.js.outdir, relativePath))}`;
-
-						console.log(`[11ty] Writing ${path.join(outputDirectory, path.basename(item))} from ${item}`);
+						if (!eleventyConfig.quietMode) {
+							console.log(`[11ty] Writing ${path.join(outputDirectory, path.basename(item))} from ${item}`);
+						}
 					}
 				}
 			});
