@@ -528,37 +528,46 @@ If the property is an array, it checks whether the array contains the value. Use
 in a [collection](https://www.11ty.dev/docs/collections/).
 
 ```nunjucks
-{% set iceCream = [
+{% set pages = [
     {
-        flavour: 'chocolate',
-        scoops: 2,
-        waffle: true
+        data: {
+            title: 'Home',
+            lang: 'en'
+        }
     },
     {
-        flavour: 'vanilla',
-        scoops: 1,
-        waffle: false
+        data: {
+            title: 'Acceuil',
+            lang: 'fr'
+        }
     },
     {
-        flavour: ['chocolate', 'vanilla', 'coffee'],
-        scoops: 3,
-        waffle: true
+        data: {
+            title: 'About',
+            lang: 'en'
+        }
     }
 ]; %}
 
-{{ iceCream | findAll('scoops', 2) | dump }}
-{{ iceCream | findAll('flavour', 'chocolate') | dump }}
+{{ pages | findAll('data.lang', 'en') | dump }}
 ```
 
 Output:
 
 ```json
 [
-    {
-        "flavour": "chocolate",
-        "scoops": 2,
-        "waffle": true
-    }
+  {
+      "data": {
+        "title": "Home",
+        "lang": "en"
+      }
+  },
+  {
+    "data": {
+      "title": "About",
+      "lang": "en"
+      }
+  }
 ]
 ```
 
