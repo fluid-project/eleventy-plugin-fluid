@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [v3.1.7](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v3.1.6...v3.1.7) - 2026-02-23
+
+### Features
+
+* feat: add findAll filter, replace lodash with just-safe-get (#439) [@nedatidrc](https://github.com/nedatidrc)
+
+### Dependencies
+
+* chore(deps): lock file maintenance (#440) @[renovate[bot]](https://github.com/apps/renovate)
+* chore(deps): update dependency markdownlint-cli2 to ^0.21.0 (#436) @[renovate[bot]](https://github.com/apps/renovate)
+* chore(deps): lock file maintenance (#435) @[renovate[bot]](https://github.com/apps/renovate)
+* chore(deps): update dependency eslint to v10 (#434) @[renovate[bot]](https://github.com/apps/renovate)
+
 ## [v3.1.6](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v3.1.5...v3.1.6) - 2026-02-06
 
 * chore(deps): set minimum release age to 2 days (#431) [@nedatidrc](https://github.com/nedatidrc)
