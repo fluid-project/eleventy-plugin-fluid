@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.2.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v3.1.6...v3.2.0) (2026-02-23)
+
+
+### Features
+
+* add findAll filter, replace lodash with just-safe-get ([#439](https://github.com/fluid-project/eleventy-plugin-fluid/issues/439)) ([3919bc2](https://github.com/fluid-project/eleventy-plugin-fluid/commit/3919bc2da1faffed6461b2f67a3e15d7389e8057))
+
 ## [v3.1.6](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v3.1.5...v3.1.6) - 2026-02-06
 
 * chore(deps): set minimum release age to 2 days (#431) [@nedatidrc](https://github.com/nedatidrc)
