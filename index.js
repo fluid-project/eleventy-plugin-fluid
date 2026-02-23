@@ -16,6 +16,7 @@ import {EleventyRenderPlugin, EleventyI18nPlugin} from '@11ty/eleventy';
 import rtlDetect from 'rtl-detect';
 import figureShortcode from './src/shortcodes/figure-shortcode.js';
 import findFilter from './src/filters/find-filter.js';
+import findAllFilter from './src/filters/find-all-filter.js';
 import findTranslationFilter from './src/filters/find-translation-filter.js';
 import formatDateFilter from './src/filters/format-date-filter.js';
 
@@ -82,6 +83,7 @@ const fluidPlugin = {
 
 		/** Filters */
 		eleventyConfig.addFilter('find', findFilter);
+		eleventyConfig.addFilter('findAll', findAllFilter);
 		eleventyConfig.addFilter('findTranslation', findTranslationFilter);
 		eleventyConfig.addFilter('formatDate', formatDateFilter);
 		eleventyConfig.addFilter('isoDate', isoDateFilter);
@@ -147,8 +149,9 @@ const fluidPlugin = {
 						const outputBasename = path.basename(options.js.outdir);
 						const relativePath = item.split(outputBasename)[1];
 						const outputDirectory = `./${path.dirname(path.join(options.js.outdir, relativePath))}`;
-
-						console.log(`[11ty] Writing ${path.join(outputDirectory, path.basename(item))} from ${item}`);
+						if (!eleventyConfig.quietMode) {
+							console.log(`[11ty] Writing ${path.join(outputDirectory, path.basename(item))} from ${item}`);
+						}
 					}
 				}
 			});

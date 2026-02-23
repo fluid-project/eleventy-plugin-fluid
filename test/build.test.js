@@ -16,7 +16,9 @@ import fs from 'node:fs';
 import Eleventy from '@11ty/eleventy';
 
 beforeEach(async () => {
-	const elev = new Eleventy();
+	const elev = new Eleventy('.', '_site', {
+		quietMode: true,
+	});
 	await elev.write();
 });
 
