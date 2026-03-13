@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.2.1](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v3.2.0...v3.2.1) (2026-03-13)
+
+
+### Bug Fixes
+
+* **deps:** lock file maintenance ([d4271b4](https://github.com/fluid-project/eleventy-plugin-fluid/commit/d4271b43e590ef6f905d17f313bec088aee32e71))
+
 ## [3.2.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v3.1.6...v3.2.0) (2026-02-23)
 
 
