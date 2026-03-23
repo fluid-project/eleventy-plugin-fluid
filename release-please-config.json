@@ -5,7 +5,7 @@
   "pull-request-title-pattern": "chore(release): release ${version}",
   "packages": {
     ".": {
-      "package-name": "trivet"
+      "package-name": "eleventy-plugin-fluid"
     }
   }
 }
