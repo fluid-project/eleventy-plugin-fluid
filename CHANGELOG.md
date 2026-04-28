@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.2.2](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v3.2.1...v3.2.2) (2026-04-28)
+
+
+### Bug Fixes
+
+* **deps:** update dependency esbuild to ^0.28.0 ([#468](https://github.com/fluid-project/eleventy-plugin-fluid/issues/468)) ([a213125](https://github.com/fluid-project/eleventy-plugin-fluid/commit/a213125e9519e64a3ce23ec92ee4af7a9dc23842))
+
 ## [3.2.1](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v3.2.0...v3.2.1) (2026-03-13)
 
 
