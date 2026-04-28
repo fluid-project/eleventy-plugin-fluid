@@ -13,6 +13,7 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 import assert from 'node:assert';
 import test from 'node:test';
 import htmlMinifyTransform from '../src/transforms/html-minify-transform.js';
+
 const html = `
 <!DOCTYPE html>
 <html lang="en-ca">

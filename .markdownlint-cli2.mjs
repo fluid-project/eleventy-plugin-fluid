@@ -1,6 +1,6 @@
 import markdownlintConfig from '@inclusive-design/markdownlint-config';
 
-export default {
+const config = {
 	config: Object.assign(markdownlintConfig.config, {
 		'no-hard-tabs': {
 			code_blocks: false,
@@ -8,3 +8,5 @@ export default {
 	}),
 	ignores: ['node_modules', 'CHANGELOG.md', 'fixtures/**/*.md'],
 };
+
+export default config;

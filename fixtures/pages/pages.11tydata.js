@@ -1,7 +1,9 @@
 
 import {generatePermalink} from '../../index.js';
 
-export default {
+const pages = {
 	layout: 'layouts/base.njk',
 	permalink: data => generatePermalink(data, 'pages'),
 };
+
+export default pages;

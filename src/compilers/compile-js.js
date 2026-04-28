@@ -10,8 +10,8 @@ You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 
-import esbuild from 'esbuild';
 import path from 'node:path';
+import esbuild from 'esbuild';
 
 /**
  *

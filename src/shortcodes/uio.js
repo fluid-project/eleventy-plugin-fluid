@@ -9,7 +9,8 @@ Licensed under the New BSD license. You may not use this file except in complian
 You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
-export default {
+
+const uioShortcodes = {
 	uioStyles() {
 		return `<link href="/lib/infusion/src/framework/core/css/fluid.css" rel="stylesheet">
     <link href="/lib/infusion/src/framework/preferences/css/Enactors.css" rel="stylesheet">
@@ -76,3 +77,5 @@ export default {
         </script>`;
 	},
 };
+
+export default uioShortcodes;

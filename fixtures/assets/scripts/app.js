@@ -11,6 +11,8 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 import formatDate from './helpers/_format-date.js';
 
-export default {
+const formattedDate = {
 	year: formatDate(Date.now()),
 };
+
+export default formattedDate;

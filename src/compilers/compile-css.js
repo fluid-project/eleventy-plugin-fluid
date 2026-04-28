@@ -10,9 +10,9 @@ You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 
+import path from 'node:path';
 import browserslist from 'browserslist';
 import {bundle, browserslistToTargets} from 'lightningcss';
-import path from 'node:path';
 
 /**
  *

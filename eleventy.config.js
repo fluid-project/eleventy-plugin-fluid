@@ -10,9 +10,9 @@ You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 
-import fluidPlugin from './index.js';
 import markdownItAnchor from 'markdown-it-anchor';
 import markdownItDefList from 'markdown-it-deflist';
+import fluidPlugin from './index.js';
 
 const inputPath = 'fixtures';
 
