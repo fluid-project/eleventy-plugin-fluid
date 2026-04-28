@@ -330,7 +330,7 @@ retrieve these values from `this.ctx` which provides access to Eleventy's global
 <summary>11ty.js</summary>
 
 ```js
-/* eslint-disable unicorn/no-anonymous-default-export */
+/* eslint-disable unicorn/no-anonymous-default-export, import-x/no-anonymous-default-export */
 /**
  * @param {string} key - The translation key. Must exist in (at least) one language within the translations object.
  * @param {object} values - An object containing values which can be substituted for keyed placeholders in the translated string.
@@ -352,6 +352,7 @@ with full support for [pagination](https://www.11ty.dev/docs/pagination/). Here'
 file:
 
 ```js
+/* eslint-disable import-x/no-anonymous-default-export */
 import {EleventyI18nPlugin} from '@11ty/eleventy';
 import {generatePermalink, __} from 'eleventy-plugin-fluid';
 

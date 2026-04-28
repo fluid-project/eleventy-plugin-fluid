@@ -10,16 +10,16 @@ You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 
-import fg from 'fast-glob';
 import path from 'node:path';
+import fg from 'fast-glob';
 import {EleventyRenderPlugin, EleventyI18nPlugin} from '@11ty/eleventy';
 import rtlDetect from 'rtl-detect';
+import {Merge as mergeUtility} from '@11ty/eleventy-utils';
 import figureShortcode from './src/shortcodes/figure-shortcode.js';
 import findFilter from './src/filters/find-filter.js';
 import findAllFilter from './src/filters/find-all-filter.js';
 import findTranslationFilter from './src/filters/find-translation-filter.js';
 import formatDateFilter from './src/filters/format-date-filter.js';
-
 import htmlMinifyTransform from './src/transforms/html-minify-transform.js';
 import isoDateFilter from './src/filters/iso-date-filter.js';
 import limitFilter from './src/filters/limit-filter.js';
@@ -29,7 +29,6 @@ import uioAssets from './src/config/uio-assets.json' with {type: 'json'};
 import languages from './src/config/languages.json' with {type: 'json'};
 import compileCss from './src/compilers/compile-css.js';
 import compileJs from './src/compilers/compile-js.js';
-import {Merge as mergeUtility} from '@11ty/eleventy-utils';
 import {__} from './src/utils/translation.js';
 
 const fluidPlugin = {
@@ -116,8 +115,8 @@ const fluidPlugin = {
 			md.set(options.markdown.options);
 			for (const plugin of options.markdown.plugins) {
 				if (Array.isArray(plugin)) {
-					const [pluginModule, options = {}] = plugin;
-					md.use(pluginModule, options);
+					const [pluginModule, pluginOptions = {}] = plugin;
+					md.use(pluginModule, pluginOptions);
 				} else {
 					md.use(plugin);
 				}

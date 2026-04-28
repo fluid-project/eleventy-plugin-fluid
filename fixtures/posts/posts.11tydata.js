@@ -1,6 +1,6 @@
 import {generatePermalink, __} from '../../index.js';
 
-export default {
+const posts = {
 	layout: 'layouts/base.njk',
 	tags: ['posts'],
 	eleventyComputed: {
@@ -13,3 +13,5 @@ export default {
 		},
 	},
 };
+
+export default posts;
