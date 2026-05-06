@@ -12,7 +12,7 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 
 import path from 'node:path';
 import browserslist from 'browserslist';
-import {bundle, browserslistToTargets} from 'lightningcss';
+import { bundle, browserslistToTargets } from 'lightningcss';
 
 /**
  *
@@ -30,7 +30,7 @@ export default async function compileCss(_content, inputPath, options) {
 	const targets = browserslistToTargets(browserslist(options.browserslist));
 
 	return async () => {
-		const {code} = await bundle(Object.assign(
+		const { code } = await bundle(Object.assign(
 			options,
 			{
 				filename: inputPath,

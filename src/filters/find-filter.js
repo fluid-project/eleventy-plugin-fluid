@@ -19,7 +19,7 @@ import get from 'just-safe-get';
  * @returns {object} The first matching object in the array.
  */
 export default function findFilter(array = [], key = '', value) {
-	return array.find(item => {
+	return array.find((item) => {
 		const keyItem = get(item, key);
 		if (Array.isArray(keyItem)) {
 			return keyItem.includes(value);

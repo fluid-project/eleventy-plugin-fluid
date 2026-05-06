@@ -12,28 +12,28 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 
 import assert from 'node:assert';
 import test from 'node:test';
-import {Merge as mergeUtility} from '@11ty/eleventy-utils';
+import { Merge as mergeUtility } from '@11ty/eleventy-utils';
 
 test('Passing false replaces an original value', () => {
-	assert.deepStrictEqual(mergeUtility({browserslist: '> 2%'}, {browserslist: false}), {browserslist: false});
+	assert.deepStrictEqual(mergeUtility({ browserslist: '> 2%' }, { browserslist: false }), { browserslist: false });
 });
 
 test('Passing key with override prefix overrides an original value', () => {
-	assert.deepStrictEqual(mergeUtility({browserslist: '> 2%'}, {'override:browserslist': '> 1%'}), {browserslist: '> 1%'});
+	assert.deepStrictEqual(mergeUtility({ browserslist: '> 2%' }, { 'override:browserslist': '> 1%' }), { browserslist: '> 1%' });
 });
 
 test('Nested objects can be merged', () => {
-	assert.deepStrictEqual(mergeUtility({drafts: {nesting: true}}, {drafts: {customMedia: true}}), {drafts: {nesting: true, customMedia: true}});
+	assert.deepStrictEqual(mergeUtility({ drafts: { nesting: true } }, { drafts: { customMedia: true } }), { drafts: { nesting: true, customMedia: true } });
 });
 
 test('Nested objects can be overriden', () => {
-	assert.deepStrictEqual(mergeUtility({drafts: {nesting: true}}, {'override:drafts': {customMedia: true}}), {drafts: {customMedia: true}});
+	assert.deepStrictEqual(mergeUtility({ drafts: { nesting: true } }, { 'override:drafts': { customMedia: true } }), { drafts: { customMedia: true } });
 });
 
 test('Nested arrays can be merged', () => {
-	assert.deepStrictEqual(mergeUtility({browserslist: ['ie 8', 'ie 9']}, {browserslist: ['ie 7']}), {browserslist: ['ie 8', 'ie 9', 'ie 7']});
+	assert.deepStrictEqual(mergeUtility({ browserslist: ['ie 8', 'ie 9'] }, { browserslist: ['ie 7'] }), { browserslist: ['ie 8', 'ie 9', 'ie 7'] });
 });
 
 test('Nested arrays can be overridden', () => {
-	assert.deepStrictEqual(mergeUtility({browserslist: ['ie 8', 'ie 9']}, {'override:browserslist': ['ie 7']}), {browserslist: ['ie 7']});
+	assert.deepStrictEqual(mergeUtility({ browserslist: ['ie 8', 'ie 9'] }, { 'override:browserslist': ['ie 7'] }), { browserslist: ['ie 7'] });
 });

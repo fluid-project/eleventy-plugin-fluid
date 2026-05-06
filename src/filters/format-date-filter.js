@@ -38,7 +38,7 @@ const formatOrdinal = function (n) {
  */
 export default function dateFilter(value, lang = 'en') {
 	const dateObject = new Date(new Date(value).toUTCString());
-	const options = {year: 'numeric', month: 'long', day: 'numeric'};
+	const options = { year: 'numeric', month: 'long', day: 'numeric' };
 
 	if (lang.startsWith('en')) {
 		const date = dateObject.toLocaleDateString(lang, options);

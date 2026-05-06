@@ -24,7 +24,7 @@ export default function eleventy(eleventyConfig) {
 	eleventyConfig.addPlugin(fluidPlugin, {
 		markdown: {
 			plugins: [
-				[markdownItAnchor, {permalink: markdownItAnchor.permalink.headerLink({safariReaderFix: true})}],
+				[markdownItAnchor, { permalink: markdownItAnchor.permalink.headerLink({ safariReaderFix: true }) }],
 				markdownItDefList,
 			],
 		},
@@ -40,7 +40,7 @@ export default function eleventy(eleventyConfig) {
 	eleventyConfig.addPassthroughCopy(`${inputPath}/assets/images`, '/assets/');
 
 	for (const lang of ['en', 'fr', 'de-DE']) {
-		eleventyConfig.addCollection(`posts_${lang}`, collection => collection.getFilteredByGlob(`./fixtures/posts/${lang}/*.md`));
+		eleventyConfig.addCollection(`posts_${lang}`, (collection) => collection.getFilteredByGlob(`./fixtures/posts/${lang}/*.md`));
 	}
 
 	return {
