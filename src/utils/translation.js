@@ -9,7 +9,7 @@ Licensed under the New BSD license. You may not use this file except in complian
 You may obtain a copy of the New BSD License at
 https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
-import {I18n} from 'i18n-js';
+import { I18n } from 'i18n-js';
 
 /**
  *

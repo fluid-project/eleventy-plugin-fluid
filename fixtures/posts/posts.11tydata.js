@@ -1,4 +1,4 @@
-import {generatePermalink, __} from '../../index.js';
+import { generatePermalink, __ } from '../../index.js';
 
 const posts = {
 	layout: 'layouts/base.njk',

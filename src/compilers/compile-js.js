@@ -19,7 +19,7 @@ import esbuild from 'esbuild';
  * @param {object} options - The options for the compiler.
  */
 export default async function compileJs(inputPath, options) {
-	const {minify, target, outdir} = options;
+	const { minify, target, outdir } = options;
 
 	const outputBasename = path.basename(outdir);
 	const relativePath = inputPath.split(outputBasename)[1];

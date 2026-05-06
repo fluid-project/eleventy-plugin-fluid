@@ -11,7 +11,7 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 */
 
 import assert from 'node:assert';
-import {beforeEach, test} from 'node:test';
+import { beforeEach, test } from 'node:test';
 import fs from 'node:fs';
 import Eleventy from '@11ty/eleventy';
 

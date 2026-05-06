@@ -12,9 +12,9 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 
 import path from 'node:path';
 import fg from 'fast-glob';
-import {EleventyRenderPlugin, EleventyI18nPlugin} from '@11ty/eleventy';
+import { EleventyRenderPlugin, EleventyI18nPlugin } from '@11ty/eleventy';
 import rtlDetect from 'rtl-detect';
-import {Merge as mergeUtility} from '@11ty/eleventy-utils';
+import { Merge as mergeUtility } from '@11ty/eleventy-utils';
 import figureShortcode from './src/shortcodes/figure-shortcode.js';
 import findFilter from './src/filters/find-filter.js';
 import findAllFilter from './src/filters/find-all-filter.js';
@@ -25,11 +25,11 @@ import isoDateFilter from './src/filters/iso-date-filter.js';
 import limitFilter from './src/filters/limit-filter.js';
 import splitFilter from './src/filters/split-filter.js';
 import uioShortcodes from './src/shortcodes/uio.js';
-import uioAssets from './src/config/uio-assets.json' with {type: 'json'};
-import languages from './src/config/languages.json' with {type: 'json'};
+import uioAssets from './src/config/uio-assets.json' with { type: 'json' };
+import languages from './src/config/languages.json' with { type: 'json' };
 import compileCss from './src/compilers/compile-css.js';
 import compileJs from './src/compilers/compile-js.js';
-import {__} from './src/utils/translation.js';
+import { __ } from './src/utils/translation.js';
 
 const fluidPlugin = {
 	initArguments: {},
@@ -111,7 +111,7 @@ const fluidPlugin = {
 		}
 
 		/** Template Formats */
-		eleventyConfig.amendLibrary('md', md => {
+		eleventyConfig.amendLibrary('md', (md) => {
 			md.set(options.markdown.options);
 			for (const plugin of options.markdown.plugins) {
 				if (Array.isArray(plugin)) {
@@ -169,5 +169,5 @@ export {
 	fluidPlugin,
 
 };
-export {default as generatePermalink} from './src/utils/generate-permalink.js';
-export {__} from './src/utils/translation.js';
+export { default as generatePermalink } from './src/utils/generate-permalink.js';
+export { __ } from './src/utils/translation.js';

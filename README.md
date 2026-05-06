@@ -287,7 +287,7 @@ falling back the configured `defaultLanguage`.
 required. For example:
 
 ```js
-import {__} from 'eleventy-plugin-fluid';
+import { __ } from 'eleventy-plugin-fluid';
 
 console.log(__(
 	'hello',
@@ -352,16 +352,16 @@ with full support for [pagination](https://www.11ty.dev/docs/pagination/). Here'
 file:
 
 ```js
-/* eslint-disable import-x/no-anonymous-default-export */
-import {EleventyI18nPlugin} from '@11ty/eleventy';
-import {generatePermalink, __} from 'eleventy-plugin-fluid';
+
+import { EleventyI18nPlugin } from '@11ty/eleventy';
+import { generatePermalink, __ } from 'eleventy-plugin-fluid';
 
 export default {
 	layout: 'layouts/base.njk',
 	eleventyComputed: {
-		lang: data => EleventyI18nPlugin.LangUtils.getLanguageCodeFromInputPath(data.page.inputPath),
-		langDir: data => data.supportedLanguages[data.lang].dir,
-		locale: data => data.lang,
+		lang: (data) => EleventyI18nPlugin.LangUtils.getLanguageCodeFromInputPath(data.page.inputPath),
+		langDir: (data) => data.supportedLanguages[data.lang].dir,
+		locale: (data) => data.lang,
 		permalink(data) {
 			// Only localize the permalink if the locale or translations global data are present.
 			if (Object.hasOwn(data, 'lang') || Object.hasOwn(data, 'translations')) {

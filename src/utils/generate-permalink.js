@@ -29,7 +29,7 @@ const generatePermalink = (data, collectionType, collectionSlug, paginationSlug 
 		}
 
 		/* If the page is not the index page, return the page title in a URL-safe format, optionally prepended with the language code. */
-		const slug = data.slug || slugify(data.title, {decamelize: false});
+		const slug = data.slug || slugify(data.title, { decamelize: false });
 		if (Object.hasOwn(data, 'pagination') && data.pagination.pageNumber > 0) {
 			return (lang === data.defaultLanguage) ? `/${slug}/${paginationSlug}/${data.pagination.pageNumber + 1}/` : `/${langSlug}/${slug}/${paginationSlug}/${data.pagination.pageNumber + 1}/`;
 		}
@@ -37,7 +37,7 @@ const generatePermalink = (data, collectionType, collectionSlug, paginationSlug 
 		return lang === data.defaultLanguage ? `/${slug}/` : `/${langSlug}/${slug}/`;
 	}
 
-	const slug = data.slug || slugify(data.title, {decamelize: false});
+	const slug = data.slug || slugify(data.title, { decamelize: false });
 	return lang === data.defaultLanguage ? `/${collectionSlug}/${slug}/` : `/${langSlug}/${collectionSlug}/${slug}/`;
 };
 
