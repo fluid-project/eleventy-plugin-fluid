@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.2.3](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v3.2.2...v3.2.3) (2026-06-23)
+
+
+### Bug Fixes
+
+* **deps:** lock file maintenance ([4ee662d](https://github.com/fluid-project/eleventy-plugin-fluid/commit/4ee662d013e72ec0f0bf1d0163383d7e40be535f))
+* **deps:** update dependencies (minor) ([a19590f](https://github.com/fluid-project/eleventy-plugin-fluid/commit/a19590f0e29426b7ee0f12b9c9b6d75a656bff39))
+* **deps:** update dependencies (minor) ([620a263](https://github.com/fluid-project/eleventy-plugin-fluid/commit/620a26393be5432d50a3131833afe3466b63d08c))
+* **deps:** update dependencies (minor) ([53a82c4](https://github.com/fluid-project/eleventy-plugin-fluid/commit/53a82c4ddd0e7d08a4c57ea033c0de326dc490d5))
+* **deps:** update dependency @commitlint/cli to v21 ([d52c06c](https://github.com/fluid-project/eleventy-plugin-fluid/commit/d52c06c677525ac19011f7e21314a89f9798a4a0))
+* **deps:** update dependency @commitlint/config-conventional to v21 ([49e4fa5](https://github.com/fluid-project/eleventy-plugin-fluid/commit/49e4fa5408baef47952b3c606896506fd910b820))
+* **deps:** update dependency lint-staged to v17 ([d94d938](https://github.com/fluid-project/eleventy-plugin-fluid/commit/d94d938cef4e955ef55e984ab006c349bc331d45))
+* **deps:** update dependency npm-run-all2 to v9 ([74cfa0e](https://github.com/fluid-project/eleventy-plugin-fluid/commit/74cfa0ece4c8af947c5b4f9a09257ceaa1d85507))
+
 ## [3.2.2](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v3.2.1...v3.2.2) (2026-04-28)
 
 
