@@ -36,7 +36,7 @@ test('Builds minified JavaScript', async () => {
 
 test('Uses Markdown plugin', async () => {
 	const indexPage = fs.readFileSync('_site/index.html', 'utf8');
-	assert.ok(indexPage.includes('<dt>Widdershins</dt><dd>Counter-clockwise.</dd></dl>'));
+	assert.ok(indexPage.includes('<dl><dt>Widdershins</dt><dd>Counter-clockwise.</dd></dl>'));
 });
 
 test('Uses Markdown plugin with options', async () => {
