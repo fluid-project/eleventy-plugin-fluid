@@ -20,13 +20,13 @@ https://github.com/fluid-project/eleventy-plugin-fluid/raw/main/LICENSE.md.
 export default function findTranslationFilter(page, collection = [], lang, desiredLang) {
 	const expectedFilePathStem = page.filePathStem.replace(lang, desiredLang);
 
-	let translationUrl = false;
+	let isTranslationUrl = false;
 
 	for (const element of collection) {
 		if (element.filePathStem === expectedFilePathStem) {
-			translationUrl = element.url;
+			isTranslationUrl = element.url;
 		}
 	}
 
-	return translationUrl;
+	return isTranslationUrl;
 }

@@ -7,8 +7,10 @@ import slugify from '@sindresorhus/slugify';
  * @param  {string} paginationSlug - A localized, URL-safe slug for paginated URLs such as /page/2, used in the generated permalink.
  * @returns {string} - The generated permalink.
  */
-const generatePermalink = (data, collectionType, collectionSlug, paginationSlug = 'page') => {
-	/* If this post is a "stub" with no localized title, we assume it does not exist and prevent it from building. */
+export default function generatePermalink(data, collectionType, collectionSlug, paginationSlug = 'page') {
+	/*
+	If this post is a "stub" with no localized title, we assume it does not exist and prevent it from building.
+	*/
 	if (!Object.hasOwn(data, 'title')) {
 		return false;
 	}
@@ -18,17 +20,23 @@ const generatePermalink = (data, collectionType, collectionSlug, paginationSlug 
 	collectionSlug ||= collectionType;
 
 	if (collectionType === 'pages') {
-		/* If the page is a 404 page, return 404.html, optionally prepended with the language code. */
+		/*
+		If the page is a 404 page, return 404.html, optionally prepended with the language code.
+		*/
 		if (data.page.fileSlug === '404') {
 			return (lang === data.defaultLanguage) ? '/404.html' : `/${langSlug}/404.html`;
 		}
 
-		/** If the page is the index page, the base path, optionally prepended with the language code. */
+		/**
+		If the page is the index page, the base path, optionally prepended with the language code.
+		 */
 		if (data.page.fileSlug === lang || data.page.inputPath.endsWith('index.md')) {
 			return (lang === data.defaultLanguage) ? '/' : `/${langSlug}/`;
 		}
 
-		/* If the page is not the index page, return the page title in a URL-safe format, optionally prepended with the language code. */
+		/*
+		If the page is not the index page, return the page title in a URL-safe format, optionally prepended with the language code.
+		*/
 		const slug = data.slug || slugify(data.title, { decamelize: false });
 		if (Object.hasOwn(data, 'pagination') && data.pagination.pageNumber > 0) {
 			return (lang === data.defaultLanguage) ? `/${slug}/${paginationSlug}/${data.pagination.pageNumber + 1}/` : `/${langSlug}/${slug}/${paginationSlug}/${data.pagination.pageNumber + 1}/`;
@@ -39,6 +47,4 @@ const generatePermalink = (data, collectionType, collectionSlug, paginationSlug 
 
 	const slug = data.slug || slugify(data.title, { decamelize: false });
 	return lang === data.defaultLanguage ? `/${collectionSlug}/${slug}/` : `/${langSlug}/${collectionSlug}/${slug}/`;
-};
-
-export default generatePermalink;
+}

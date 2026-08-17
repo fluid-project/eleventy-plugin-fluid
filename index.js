@@ -69,18 +69,24 @@ const fluidPlugin = {
 			i18n: true,
 		}, options);
 
-		/** Plugins */
+		/**
+		Plugins
+		 */
 		eleventyConfig.addPlugin(EleventyI18nPlugin, {
 			defaultLanguage: options.defaultLanguage,
 		});
 		eleventyConfig.addPlugin(EleventyRenderPlugin);
 
-		/** Global Data */
+		/**
+		Global Data
+		 */
 		eleventyConfig.addGlobalData('defaultLanguage', options.defaultLanguage);
 		eleventyConfig.addGlobalData('defaultLanguageDirection', rtlDetect.getLangDir(options.defaultLanguage));
 		eleventyConfig.addGlobalData('supportedLanguages', options.supportedLanguages);
 
-		/** Filters */
+		/**
+		Filters
+		 */
 		eleventyConfig.addFilter('find', findFilter);
 		eleventyConfig.addFilter('findAll', findAllFilter);
 		eleventyConfig.addFilter('findTranslation', findTranslationFilter);
@@ -97,8 +103,8 @@ const fluidPlugin = {
 		eleventyConfig.addPairedShortcode('figure', figureShortcode);
 
 		if (options.uio) {
-			for (const shortcodeName of Object.keys(uioShortcodes)) {
-				eleventyConfig.addShortcode(shortcodeName, uioShortcodes[shortcodeName]);
+			for (const [shortcodeName, value] of Object.entries(uioShortcodes)) {
+				eleventyConfig.addShortcode(shortcodeName, value);
 			}
 
 			for (const asset of uioAssets) {
@@ -110,7 +116,9 @@ const fluidPlugin = {
 			}
 		}
 
-		/** Template Formats */
+		/**
+		Template Formats
+		 */
 		eleventyConfig.amendLibrary('md', (md) => {
 			md.set(options.markdown.options);
 			for (const plugin of options.markdown.plugins) {
@@ -143,20 +151,24 @@ const fluidPlugin = {
 			eleventyConfig.on('eleventy.before', async () => {
 				const entryPoints = await fg([`${options.js.basePath}/**/*.js`]);
 				for (const item of entryPoints) {
-					if (!path.basename(item).startsWith('_')) {
-						compileJs(item, options.js);
-						const outputBasename = path.basename(options.js.outdir);
-						const relativePath = item.split(outputBasename)[1];
-						const outputDirectory = `./${path.dirname(path.join(options.js.outdir, relativePath))}`;
-						if (!eleventyConfig.quietMode) {
-							console.log(`[11ty] Writing ${path.join(outputDirectory, path.basename(item))} from ${item}`);
-						}
+					if (path.basename(item).startsWith('_')) {
+						continue;
+					}
+
+					compileJs(item, options.js);
+					const outputBasename = path.basename(options.js.outdir);
+					const relativePath = item.split(outputBasename)[1];
+					const outputDirectory = `./${path.dirname(path.join(options.js.outdir, relativePath))}`;
+					if (!eleventyConfig.quietMode) {
+						console.log(`[11ty] Writing ${path.join(outputDirectory, path.basename(item))} from ${item}`);
 					}
 				}
 			});
 		}
 
-		/** Transforms */
+		/**
+		Transforms
+		 */
 		if (options.minify.enabled) {
 			eleventyConfig.addTransform('htmlMinify', htmlMinifyTransform);
 		}
