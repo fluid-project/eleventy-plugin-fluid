@@ -2,6 +2,6 @@
 title: Welcome
 ---
 ## Definitions
-Widdershins
 
+Widdershins
 :   Counter-clockwise.
