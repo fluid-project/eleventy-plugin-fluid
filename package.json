@@ -55,7 +55,7 @@
     "i18n-js": "^4.5.0",
     "just-safe-get": "^4.2.0",
     "lightningcss": "^1.26.0",
-    "markdown-it": "^14.1.1",
+    "markdown-it": "^15.0.0",
     "rtl-detect": "^1.1.2"
   },
   "engines": {
