@@ -4,5 +4,4 @@ title: Welcome
 ## Definitions
 
 Widdershins
-
-: Counter-clockwise.
+:   Counter-clockwise.
