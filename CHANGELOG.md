@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.3.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v3.2.3...v3.3.0) (2026-08-17)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @inclusive-design/eslint-config to v1 ([726d250](https://github.com/fluid-project/eleventy-plugin-fluid/commit/726d25093fca62825935b3d67517f0523bdac9d6))
+* **deps:** update dependency markdown-it to v15 ([#506](https://github.com/fluid-project/eleventy-plugin-fluid/issues/506)) ([c82d90a](https://github.com/fluid-project/eleventy-plugin-fluid/commit/c82d90a469c583fc828b3025684978d7c9eea653))
+* **deps:** update dependency markdown-it-deflist to v4 ([#505](https://github.com/fluid-project/eleventy-plugin-fluid/issues/505)) ([ad2683b](https://github.com/fluid-project/eleventy-plugin-fluid/commit/ad2683b9ab22a95a5c12fa93165184c093cd0ef2))
+
+
+### Miscellaneous Chores
+
+* **release:** bump ([c6b1d16](https://github.com/fluid-project/eleventy-plugin-fluid/commit/c6b1d1606f44c9e648ff2c4fdcea455bdded748e))
+
 ## [3.2.3](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v3.2.2...v3.2.3) (2026-06-23)
 
 
