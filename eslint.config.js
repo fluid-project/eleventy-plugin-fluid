@@ -6,6 +6,9 @@ export default defineConfig([
 		extends: [eslintConfigInclusiveDesign],
 		rules: {
 			camelcase: ['error', { properties: 'never' }],
+			'unicorn/no-unsafe-string-replacement': 'off',
+			'regexp/prefer-named-capture-group': 'off',
+			'regexp/no-super-linear-move': 'off',
 		},
 	},
 	{

@@ -95,21 +95,35 @@ Default values are as follows:
 
 ```js
 /* global eleventyConfig */
-/* eslint-disable no-unused-vars */
+/* eslint-disable no-unused-vars --
+ * Not required for example code.
+ */
 const options = {
-	/* Where should Eleventy look for CSS files to process? */
+	/*
+	Where should Eleventy look for CSS files to process?
+	*/
 	basePath: `./${eleventyConfig.dir.input || 'src'}/assets/styles`,
-	/* Should CSS files be processed? */
+	/*
+	Should CSS files be processed?
+	*/
 	enabled: true,
-	/* See: https://lightningcss.dev/minification.html */
+	/*
+	See: https://lightningcss.dev/minification.html
+	*/
 	minify: true,
-	/* Not yet supported, see https://github.com/fluid-project/eleventy-plugin-fluid/issues/170 */
+	/*
+	Not yet supported, see https://github.com/fluid-project/eleventy-plugin-fluid/issues/170
+	*/
 	sourceMap: false,
-	/* See: https://lightningcss.dev/transpilation.html#draft-syntax */
+	/*
+	See: https://lightningcss.dev/transpilation.html#draft-syntax
+	*/
 	drafts: {
 		nesting: true,
 	},
-	/* A Browserslist configuration string (see: https://browsersl.ist) */
+	/*
+	A Browserslist configuration string (see: https://browsersl.ist)
+	*/
 	browserslist: '> 1%',
 };
 ```
@@ -145,15 +159,25 @@ Default values are as follows:
 
 ```js
 /* global eleventyConfig */
-/* eslint-disable no-unused-vars */
+/* eslint-disable no-unused-vars --
+ * Not required for example code.
+ */
 const options = {
-	/* Where should Eleventy look for JavaScript files to process? */
+	/*
+	Where should Eleventy look for JavaScript files to process?
+	*/
 	basePath: `./${eleventyConfig.dir.input || 'src'}/assets/scripts`,
-	/* Should JavaScript files be processed? */
+	/*
+	Should JavaScript files be processed?
+	*/
 	enabled: true,
-	/* See: https://esbuild.github.io/api/#minify */
+	/*
+	See: https://esbuild.github.io/api/#minify
+	*/
 	minify: true,
-	/* See: https://esbuild.github.io/content-types/#javascript */
+	/*
+	See: https://esbuild.github.io/content-types/#javascript
+	*/
 	target: 'es2022',
 };
 ```
@@ -330,7 +354,9 @@ retrieve these values from `this.ctx` which provides access to Eleventy's global
 <summary>11ty.js</summary>
 
 ```js
-/* eslint-disable unicorn/no-anonymous-default-export, import-x/no-anonymous-default-export */
+/* eslint-disable import-x/no-anonymous-default-export, unicorn/no-anonymous-default-export --
+ * Not required for example code.
+ */
 /**
  * @param {string} key - The translation key. Must exist in (at least) one language within the translations object.
  * @param {object} values - An object containing values which can be substituted for keyed placeholders in the translated string.

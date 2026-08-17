@@ -42,7 +42,7 @@ export default function dateFilter(value, lang = 'en') {
 
 	if (lang.startsWith('en')) {
 		const date = dateObject.toLocaleDateString(lang, options);
-		const regex = /([A-Z]\w+) ([0-9]{1,2}), ([0-9]{4})/gv;
+		const regex = /([A-Z]\w+) (\d{1,2}), (\d{4})/gv;
 		return date.replaceAll(regex, (match, p1, p2, p3) => `${p1} ${formatOrdinal(p2)}, ${p3}`);
 	}
 
