@@ -21,10 +21,6 @@ import get from 'just-safe-get';
 export default function findAllFilter(array = [], key = '', value) {
 	return array.filter((item) => {
 		const keyItem = get(item, key);
-		if (Array.isArray(keyItem)) {
-			return keyItem.includes(value);
-		}
-
-		return keyItem === value;
+		return Array.isArray(keyItem) ? keyItem.includes(value) : keyItem === value;
 	});
 }

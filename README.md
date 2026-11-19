@@ -29,6 +29,9 @@ command handles both at the same time.)
 Then, in your Eleventy configuration file (usually `eleventy.eleventyConfig.js`), load the plugin as follows:
 
 ```js
+/* eslint-disable import-x/no-extraneous-dependencies --
+ * Not required for example code.
+ */
 import fluidPlugin from 'eleventy-plugin-fluid';
 
 /**
@@ -311,6 +314,9 @@ falling back the configured `defaultLanguage`.
 required. For example:
 
 ```js
+/* eslint-disable import-x/no-extraneous-dependencies --
+ * Not required for example code.
+ */
 import { __ } from 'eleventy-plugin-fluid';
 
 console.log(__(
@@ -378,7 +384,9 @@ with full support for [pagination](https://www.11ty.dev/docs/pagination/). Here'
 file:
 
 ```js
-
+/* eslint-disable import-x/no-extraneous-dependencies --
+ * Not required for example code.
+ */
 import { EleventyI18nPlugin } from '@11ty/eleventy';
 import { generatePermalink, __ } from 'eleventy-plugin-fluid';
 
@@ -390,11 +398,9 @@ export default {
 		locale: (data) => data.lang,
 		permalink(data) {
 			// Only localize the permalink if the locale or translations global data are present.
-			if (Object.hasOwn(data, 'lang') || Object.hasOwn(data, 'translations')) {
-				return generatePermalink(data, 'pages', __('pages', {}, data), __('pages', {}, data));
-			}
-
-			return generatePermalink(data, 'pages', 'pages', 'pages');
+			return Object.hasOwn(data, 'lang') || Object.hasOwn(data, 'translations')
+				? generatePermalink(data, 'pages', __('pages', {}, data), __('pages', {}, data))
+				: generatePermalink(data, 'pages', 'pages', 'pages');
 		},
 	},
 };
