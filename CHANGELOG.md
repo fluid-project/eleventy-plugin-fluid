@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.3.1](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v3.3.0...v3.3.1) (2026-11-19)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @11ty/eleventy-utils to v3 ([#516](https://github.com/fluid-project/eleventy-plugin-fluid/issues/516)) ([965e741](https://github.com/fluid-project/eleventy-plugin-fluid/commit/965e74179199516e1823248d02394112a532dded))
+* **deps:** update dependency @sindresorhus/slugify to v4 ([#519](https://github.com/fluid-project/eleventy-plugin-fluid/issues/519)) ([72e1f35](https://github.com/fluid-project/eleventy-plugin-fluid/commit/72e1f35d6a5d19afa88673507d793d383f4ddd69))
+
 ## [3.3.0](https://github.com/fluid-project/eleventy-plugin-fluid/compare/v3.2.3...v3.3.0) (2026-08-17)
 
 
