@@ -1,4 +1,3 @@
-
 import { generatePermalink } from '../../index.js';
 
 const pages = {
